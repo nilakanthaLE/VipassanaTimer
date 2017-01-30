@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MeditationsKalenderEintrag" customModule="VipassanaTimer" customModuleProvider="target">
+            <connections>
+                <outlet property="anapanaView" destination="IDJ-vb-Stg" id="Y1o-4N-9rG"/>
+                <outlet property="anteilAnapanaConstraint" destination="ou5-QU-425" id="NYO-xY-ctc"/>
+                <outlet property="anteilVipassanaConstraint" destination="1X3-sN-NBU" id="eSu-nz-Lzh"/>
+                <outlet property="vipassanaView" destination="kYF-dn-IMP" id="gLV-4t-hPD"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="123"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IDJ-vb-Stg">
+                    <rect key="frame" x="0.0" y="0.0" width="75" height="123"/>
+                    <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kYF-dn-IMP">
+                    <rect key="frame" x="75" y="0.0" width="75" height="123"/>
+                    <color key="backgroundColor" red="0.41176470590000003" green="0.58823529409999997" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ti1-9h-G1e">
+                    <rect key="frame" x="150" y="0.0" width="225" height="123"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="kYF-dn-IMP" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.2" id="1X3-sN-NBU"/>
+                <constraint firstItem="IDJ-vb-Stg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="4Ew-iX-2rw"/>
+                <constraint firstItem="IDJ-vb-Stg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7cv-Wr-oIP"/>
+                <constraint firstAttribute="trailing" secondItem="ti1-9h-G1e" secondAttribute="trailing" id="ImJ-7X-yAf"/>
+                <constraint firstItem="kYF-dn-IMP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Stw-Ve-5Ci"/>
+                <constraint firstItem="ti1-9h-G1e" firstAttribute="leading" secondItem="kYF-dn-IMP" secondAttribute="trailing" id="Vdp-0z-Nhw"/>
+                <constraint firstAttribute="bottom" secondItem="ti1-9h-G1e" secondAttribute="bottom" id="YQm-Ts-oyE"/>
+                <constraint firstAttribute="bottom" secondItem="kYF-dn-IMP" secondAttribute="bottom" id="hj5-A5-Isj"/>
+                <constraint firstItem="IDJ-vb-Stg" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.2" id="ou5-QU-425"/>
+                <constraint firstItem="kYF-dn-IMP" firstAttribute="leading" secondItem="IDJ-vb-Stg" secondAttribute="trailing" id="qmm-GR-bMA"/>
+                <constraint firstAttribute="bottom" secondItem="IDJ-vb-Stg" secondAttribute="bottom" id="w4M-SK-slr"/>
+                <constraint firstItem="ti1-9h-G1e" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="znG-af-Wga"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="sU7-pm-lKC" appends="YES" id="LWv-NY-8ic"/>
+            </connections>
+            <point key="canvasLocation" x="7.5" y="-54.5"/>
+        </view>
+        <tapGestureRecognizer id="sU7-pm-lKC">
+            <connections>
+                <action selector="viewTapped:" destination="-1" id="acn-Jf-RDr"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+</document>

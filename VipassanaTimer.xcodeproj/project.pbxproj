@@ -7,23 +7,108 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F729124BDB8FC647A780650 /* Pods_VipassanaTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA9F84A927CF18181FB1766 /* Pods_VipassanaTimer.framework */; };
+		5C2D03861E3B6C4500A113FF /* KalenderTagHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2D03851E3B6C4500A113FF /* KalenderTagHeader.xib */; };
+		5C2D03891E3B882800A113FF /* KalenderTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2D03881E3B882800A113FF /* KalenderTitleView.xib */; };
 		5C342A4B1E1C03DD007D2305 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C342A4A1E1C03DD007D2305 /* AppDelegate.swift */; };
-		5C342A4D1E1C03DD007D2305 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C342A4C1E1C03DD007D2305 /* ViewController.swift */; };
-		5C342A501E1C03DD007D2305 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C342A4E1E1C03DD007D2305 /* Main.storyboard */; };
 		5C342A531E1C03DD007D2305 /* VipassanaTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C342A511E1C03DD007D2305 /* VipassanaTimer.xcdatamodeld */; };
 		5C342A551E1C03DD007D2305 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C342A541E1C03DD007D2305 /* Assets.xcassets */; };
 		5C342A581E1C03DD007D2305 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C342A561E1C03DD007D2305 /* LaunchScreen.storyboard */; };
+		5C4B5DCD1E27AB3300307437 /* WochenUndTagesKalenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4B5DCB1E27AB3300307437 /* WochenUndTagesKalenderVC.swift */; };
+		5C4B5DD01E27AF4300307437 /* WochenUndTagesKalenderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C4B5DCF1E27AF4300307437 /* WochenUndTagesKalenderVC.xib */; };
+		5C4B5DD31E2A7BF300307437 /* MeditationsKalenderEintrag.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C4B5DD21E2A7BF300307437 /* MeditationsKalenderEintrag.xib */; };
+		5C5501F31E1D0212004C700D /* TimerConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5501F21E1D0212004C700D /* TimerConfigView.swift */; };
+		5C5501FA1E1D0292004C700D /* TimerConfigView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C5501F91E1D0292004C700D /* TimerConfigView.xib */; };
+		5C5502041E1E614F004C700D /* TimerConfigExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5502031E1E614F004C700D /* TimerConfigExtensions.swift */; };
+		5C5502071E1E7088004C700D /* TimerConfigsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5502061E1E7088004C700D /* TimerConfigsTableVC.swift */; };
+		5C5502091E1E7216004C700D /* TimerConfigTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5502081E1E7216004C700D /* TimerConfigTableViewCell.swift */; };
+		5C55020B1E1E73DD004C700D /* ConfigureTimerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C55020A1E1E73DD004C700D /* ConfigureTimerVC.swift */; };
+		5C55020D1E1E899C004C700D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C55020C1E1E899C004C700D /* Extensions.swift */; };
+		5C55020F1E1E8D7E004C700D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C55020E1E1E8D7E004C700D /* Main.storyboard */; };
+		5C5502111E1EA94C004C700D /* NibLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5502101E1EA94C004C700D /* NibLoadingView.swift */; };
+		5C70572D1E2CF11500D307EF /* EditMeditationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70572C1E2CF11500D307EF /* EditMeditationVC.swift */; };
+		5C70572F1E2D2CF400D307EF /* DesignPatterns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70572E1E2D2CF400D307EF /* DesignPatterns.swift */; };
+		5C7057331E325DF800D307EF /* silence.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5C7057321E325DF800D307EF /* silence.mp3 */; };
+		5CAFE7E71E24F93A008F740A /* klangschale.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5CAFE7E61E24F93A008F740A /* klangschale.wav */; };
+		5CAFE7E91E24FE1E008F740A /* HauptMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAFE7E81E24FE1E008F740A /* HauptMenuVC.swift */; };
+		5CAFE7EB1E250327008F740A /* MeditationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAFE7EA1E250327008F740A /* MeditationExtensions.swift */; };
+		5CAFE7ED1E250606008F740A /* DauerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAFE7EC1E250606008F740A /* DauerExtensions.swift */; };
+		5CEE460B1E3A3832005C8713 /* KalenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEE460A1E3A3832005C8713 /* KalenderVC.swift */; };
+		5CEE460F1E3A391E005C8713 /* MyCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CEE46071E3A3765005C8713 /* MyCalendar.framework */; };
+		5CEE46101E3A391E005C8713 /* MyCalendar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5CEE46071E3A3765005C8713 /* MyCalendar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5CF0B6801E1FB8FD00745BB7 /* MeditationStartenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0B67F1E1FB8FD00745BB7 /* MeditationStartenVC.swift */; };
+		5CF0B6821E226FF800745BB7 /* TimerConfigTimerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0B6811E226FF800745BB7 /* TimerConfigTimerExtension.swift */; };
+		5CF0B6841E23B8C600745BB7 /* BackgroundInfoExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0B6831E23B8C600745BB7 /* BackgroundInfoExtensions.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5CEE46061E3A3765005C8713 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5CEE46021E3A3765005C8713 /* MyCalendar.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5C0228C31E3A20B80071ECA2;
+			remoteInfo = MyCalendar;
+		};
+		5CEE46111E3A391E005C8713 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5CEE46021E3A3765005C8713 /* MyCalendar.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C0228C21E3A20B80071ECA2;
+			remoteInfo = MyCalendar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5CEE46131E3A391E005C8713 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5CEE46101E3A391E005C8713 /* MyCalendar.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		3DA9F84A927CF18181FB1766 /* Pods_VipassanaTimer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VipassanaTimer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C2D03851E3B6C4500A113FF /* KalenderTagHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KalenderTagHeader.xib; sourceTree = "<group>"; };
+		5C2D03881E3B882800A113FF /* KalenderTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KalenderTitleView.xib; sourceTree = "<group>"; };
 		5C342A471E1C03DD007D2305 /* VipassanaTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VipassanaTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C342A4A1E1C03DD007D2305 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5C342A4C1E1C03DD007D2305 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5C342A4F1E1C03DD007D2305 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5C342A521E1C03DD007D2305 /* VipassanaTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VipassanaTimer.xcdatamodel; sourceTree = "<group>"; };
 		5C342A541E1C03DD007D2305 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C342A571E1C03DD007D2305 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C342A591E1C03DD007D2305 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C4B5DCB1E27AB3300307437 /* WochenUndTagesKalenderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WochenUndTagesKalenderVC.swift; sourceTree = "<group>"; };
+		5C4B5DCF1E27AF4300307437 /* WochenUndTagesKalenderVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WochenUndTagesKalenderVC.xib; sourceTree = "<group>"; };
+		5C4B5DD21E2A7BF300307437 /* MeditationsKalenderEintrag.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeditationsKalenderEintrag.xib; sourceTree = "<group>"; };
+		5C5501F21E1D0212004C700D /* TimerConfigView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerConfigView.swift; sourceTree = "<group>"; };
+		5C5501F91E1D0292004C700D /* TimerConfigView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TimerConfigView.xib; path = VipassanaTimer/TimerConfigView.xib; sourceTree = "<group>"; };
+		5C5502031E1E614F004C700D /* TimerConfigExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerConfigExtensions.swift; sourceTree = "<group>"; };
+		5C5502061E1E7088004C700D /* TimerConfigsTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerConfigsTableVC.swift; sourceTree = "<group>"; };
+		5C5502081E1E7216004C700D /* TimerConfigTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimerConfigTableViewCell.swift; path = VipassanaTimer/TimerConfigTableViewCell.swift; sourceTree = "<group>"; };
+		5C55020A1E1E73DD004C700D /* ConfigureTimerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureTimerVC.swift; sourceTree = "<group>"; };
+		5C55020C1E1E899C004C700D /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		5C55020E1E1E8D7E004C700D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		5C5502101E1EA94C004C700D /* NibLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoadingView.swift; sourceTree = "<group>"; };
+		5C70572C1E2CF11500D307EF /* EditMeditationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMeditationVC.swift; sourceTree = "<group>"; };
+		5C70572E1E2D2CF400D307EF /* DesignPatterns.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignPatterns.swift; sourceTree = "<group>"; };
+		5C7057321E325DF800D307EF /* silence.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = silence.mp3; sourceTree = "<group>"; };
+		5C7057341E32684200D307EF /* VipassanaTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VipassanaTimer.entitlements; sourceTree = "<group>"; };
+		5CAFE7E61E24F93A008F740A /* klangschale.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = klangschale.wav; sourceTree = "<group>"; };
+		5CAFE7E81E24FE1E008F740A /* HauptMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HauptMenuVC.swift; sourceTree = "<group>"; };
+		5CAFE7EA1E250327008F740A /* MeditationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeditationExtensions.swift; sourceTree = "<group>"; };
+		5CAFE7EC1E250606008F740A /* DauerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DauerExtensions.swift; sourceTree = "<group>"; };
+		5CEE46021E3A3765005C8713 /* MyCalendar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MyCalendar.xcodeproj; path = ../MyCalendar/MyCalendar.xcodeproj; sourceTree = "<group>"; };
+		5CEE460A1E3A3832005C8713 /* KalenderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KalenderVC.swift; sourceTree = "<group>"; };
+		5CF0B67F1E1FB8FD00745BB7 /* MeditationStartenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeditationStartenVC.swift; sourceTree = "<group>"; };
+		5CF0B6811E226FF800745BB7 /* TimerConfigTimerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerConfigTimerExtension.swift; sourceTree = "<group>"; };
+		5CF0B6831E23B8C600745BB7 /* BackgroundInfoExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundInfoExtensions.swift; sourceTree = "<group>"; };
+		D776B673FAABE5F36EB3BA0A /* Pods-VipassanaTimer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VipassanaTimer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VipassanaTimer/Pods-VipassanaTimer.debug.xcconfig"; sourceTree = "<group>"; };
+		FF76ADCC301E7AE36570BEF9 /* Pods-VipassanaTimer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VipassanaTimer.release.xcconfig"; path = "Pods/Target Support Files/Pods-VipassanaTimer/Pods-VipassanaTimer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +116,40 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CEE460F1E3A391E005C8713 /* MyCalendar.framework in Frameworks */,
+				4F729124BDB8FC647A780650 /* Pods_VipassanaTimer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14A6926BD097386B939C5B71 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3DA9F84A927CF18181FB1766 /* Pods_VipassanaTimer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5C2D03871E3B7B1500A113FF /* Kalender */ = {
+			isa = PBXGroup;
+			children = (
+				5CEE460A1E3A3832005C8713 /* KalenderVC.swift */,
+				5C2D03881E3B882800A113FF /* KalenderTitleView.xib */,
+				5C2D03851E3B6C4500A113FF /* KalenderTagHeader.xib */,
+			);
+			name = Kalender;
+			sourceTree = "<group>";
+		};
 		5C342A3E1E1C03DC007D2305 = {
 			isa = PBXGroup;
 			children = (
 				5C342A491E1C03DD007D2305 /* VipassanaTimer */,
+				5CEE46021E3A3765005C8713 /* MyCalendar.xcodeproj */,
 				5C342A481E1C03DD007D2305 /* Products */,
+				E2C6AAE36BBECAB5DAF51DB6 /* Pods */,
+				14A6926BD097386B939C5B71 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +164,103 @@
 		5C342A491E1C03DD007D2305 /* VipassanaTimer */ = {
 			isa = PBXGroup;
 			children = (
+				5C7057341E32684200D307EF /* VipassanaTimer.entitlements */,
+				5C55020E1E1E8D7E004C700D /* Main.storyboard */,
+				5CF0B67F1E1FB8FD00745BB7 /* MeditationStartenVC.swift */,
+				5CAFE7E81E24FE1E008F740A /* HauptMenuVC.swift */,
+				5C70572C1E2CF11500D307EF /* EditMeditationVC.swift */,
+				5C2D03871E3B7B1500A113FF /* Kalender */,
+				5CF0B67E1E1EAA6A00745BB7 /* TimerConfig */,
+				5C5502121E1EA96C004C700D /* helper */,
+				5C5502011E1E5B0F004C700D /* CoreData */,
+				5C5502021E1E5B37004C700D /* supporting files */,
+			);
+			path = VipassanaTimer;
+			sourceTree = "<group>";
+		};
+		5C4B5DD11E27F5DE00307437 /* Kalender old */ = {
+			isa = PBXGroup;
+			children = (
+				5C4B5DCB1E27AB3300307437 /* WochenUndTagesKalenderVC.swift */,
+				5C4B5DCF1E27AF4300307437 /* WochenUndTagesKalenderVC.xib */,
+			);
+			name = "Kalender old";
+			sourceTree = "<group>";
+		};
+		5C5502011E1E5B0F004C700D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				5C342A511E1C03DD007D2305 /* VipassanaTimer.xcdatamodeld */,
+				5CAFE7EA1E250327008F740A /* MeditationExtensions.swift */,
+				5CF0B6831E23B8C600745BB7 /* BackgroundInfoExtensions.swift */,
+				5C5502031E1E614F004C700D /* TimerConfigExtensions.swift */,
+				5CAFE7EC1E250606008F740A /* DauerExtensions.swift */,
+				5C4B5DD21E2A7BF300307437 /* MeditationsKalenderEintrag.xib */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		5C5502021E1E5B37004C700D /* supporting files */ = {
+			isa = PBXGroup;
+			children = (
 				5C342A4A1E1C03DD007D2305 /* AppDelegate.swift */,
-				5C342A4C1E1C03DD007D2305 /* ViewController.swift */,
-				5C342A4E1E1C03DD007D2305 /* Main.storyboard */,
 				5C342A541E1C03DD007D2305 /* Assets.xcassets */,
 				5C342A561E1C03DD007D2305 /* LaunchScreen.storyboard */,
 				5C342A591E1C03DD007D2305 /* Info.plist */,
-				5C342A511E1C03DD007D2305 /* VipassanaTimer.xcdatamodeld */,
+				5CAFE7E61E24F93A008F740A /* klangschale.wav */,
+				5C7057321E325DF800D307EF /* silence.mp3 */,
+				5C4B5DD11E27F5DE00307437 /* Kalender old */,
 			);
-			path = VipassanaTimer;
+			name = "supporting files";
+			sourceTree = "<group>";
+		};
+		5C5502051E1E6FF5004C700D /* TimerConfigControl */ = {
+			isa = PBXGroup;
+			children = (
+				5C5501F91E1D0292004C700D /* TimerConfigView.xib */,
+				5C5501F21E1D0212004C700D /* TimerConfigView.swift */,
+				5CF0B6811E226FF800745BB7 /* TimerConfigTimerExtension.swift */,
+				5C5502081E1E7216004C700D /* TimerConfigTableViewCell.swift */,
+			);
+			name = TimerConfigControl;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		5C5502121E1EA96C004C700D /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				5C55020C1E1E899C004C700D /* Extensions.swift */,
+				5C70572E1E2D2CF400D307EF /* DesignPatterns.swift */,
+				5C5502101E1EA94C004C700D /* NibLoadingView.swift */,
+			);
+			name = helper;
+			sourceTree = "<group>";
+		};
+		5CEE46031E3A3765005C8713 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5CEE46071E3A3765005C8713 /* MyCalendar.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5CF0B67E1E1EAA6A00745BB7 /* TimerConfig */ = {
+			isa = PBXGroup;
+			children = (
+				5C5502061E1E7088004C700D /* TimerConfigsTableVC.swift */,
+				5C55020A1E1E73DD004C700D /* ConfigureTimerVC.swift */,
+				5C5502051E1E6FF5004C700D /* TimerConfigControl */,
+			);
+			name = TimerConfig;
+			sourceTree = "<group>";
+		};
+		E2C6AAE36BBECAB5DAF51DB6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D776B673FAABE5F36EB3BA0A /* Pods-VipassanaTimer.debug.xcconfig */,
+				FF76ADCC301E7AE36570BEF9 /* Pods-VipassanaTimer.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,13 +270,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5C342A5C1E1C03DD007D2305 /* Build configuration list for PBXNativeTarget "VipassanaTimer" */;
 			buildPhases = (
+				94715CF7D9404B88DCF54DDD /* [CP] Check Pods Manifest.lock */,
 				5C342A431E1C03DC007D2305 /* Sources */,
 				5C342A441E1C03DC007D2305 /* Frameworks */,
 				5C342A451E1C03DC007D2305 /* Resources */,
+				B0D9E8A6C9A396FFE1BC119B /* [CP] Embed Pods Frameworks */,
+				3A615C8933C1E866E8A43050 /* [CP] Copy Pods Resources */,
+				5CEE46131E3A391E005C8713 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5CEE46121E3A391E005C8713 /* PBXTargetDependency */,
 			);
 			name = VipassanaTimer;
 			productName = VipassanaTimer;
@@ -101,6 +302,14 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = XAD3F7PHKG;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.HealthKit = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -115,6 +324,12 @@
 			mainGroup = 5C342A3E1E1C03DC007D2305;
 			productRefGroup = 5C342A481E1C03DD007D2305 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5CEE46031E3A3765005C8713 /* Products */;
+					ProjectRef = 5CEE46021E3A3765005C8713 /* MyCalendar.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				5C342A461E1C03DC007D2305 /* VipassanaTimer */,
@@ -122,41 +337,122 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		5CEE46071E3A3765005C8713 /* MyCalendar.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MyCalendar.framework;
+			remoteRef = 5CEE46061E3A3765005C8713 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		5C342A451E1C03DC007D2305 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C2D03861E3B6C4500A113FF /* KalenderTagHeader.xib in Resources */,
+				5CAFE7E71E24F93A008F740A /* klangschale.wav in Resources */,
 				5C342A581E1C03DD007D2305 /* LaunchScreen.storyboard in Resources */,
 				5C342A551E1C03DD007D2305 /* Assets.xcassets in Resources */,
-				5C342A501E1C03DD007D2305 /* Main.storyboard in Resources */,
+				5C5501FA1E1D0292004C700D /* TimerConfigView.xib in Resources */,
+				5C7057331E325DF800D307EF /* silence.mp3 in Resources */,
+				5C55020F1E1E8D7E004C700D /* Main.storyboard in Resources */,
+				5C2D03891E3B882800A113FF /* KalenderTitleView.xib in Resources */,
+				5C4B5DD01E27AF4300307437 /* WochenUndTagesKalenderVC.xib in Resources */,
+				5C4B5DD31E2A7BF300307437 /* MeditationsKalenderEintrag.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3A615C8933C1E866E8A43050 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VipassanaTimer/Pods-VipassanaTimer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		94715CF7D9404B88DCF54DDD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B0D9E8A6C9A396FFE1BC119B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VipassanaTimer/Pods-VipassanaTimer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5C342A431E1C03DC007D2305 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C342A4D1E1C03DD007D2305 /* ViewController.swift in Sources */,
+				5CF0B6801E1FB8FD00745BB7 /* MeditationStartenVC.swift in Sources */,
+				5CEE460B1E3A3832005C8713 /* KalenderVC.swift in Sources */,
+				5CF0B6821E226FF800745BB7 /* TimerConfigTimerExtension.swift in Sources */,
+				5C5502071E1E7088004C700D /* TimerConfigsTableVC.swift in Sources */,
+				5C55020B1E1E73DD004C700D /* ConfigureTimerVC.swift in Sources */,
+				5C5502091E1E7216004C700D /* TimerConfigTableViewCell.swift in Sources */,
+				5CAFE7ED1E250606008F740A /* DauerExtensions.swift in Sources */,
+				5CF0B6841E23B8C600745BB7 /* BackgroundInfoExtensions.swift in Sources */,
+				5C5502111E1EA94C004C700D /* NibLoadingView.swift in Sources */,
+				5C70572F1E2D2CF400D307EF /* DesignPatterns.swift in Sources */,
+				5CAFE7EB1E250327008F740A /* MeditationExtensions.swift in Sources */,
+				5C55020D1E1E899C004C700D /* Extensions.swift in Sources */,
 				5C342A531E1C03DD007D2305 /* VipassanaTimer.xcdatamodeld in Sources */,
+				5CAFE7E91E24FE1E008F740A /* HauptMenuVC.swift in Sources */,
+				5C70572D1E2CF11500D307EF /* EditMeditationVC.swift in Sources */,
+				5C5502041E1E614F004C700D /* TimerConfigExtensions.swift in Sources */,
+				5C5501F31E1D0212004C700D /* TimerConfigView.swift in Sources */,
+				5C4B5DCD1E27AB3300307437 /* WochenUndTagesKalenderVC.swift in Sources */,
 				5C342A4B1E1C03DD007D2305 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		5C342A4E1E1C03DD007D2305 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5C342A4F1E1C03DD007D2305 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
+/* Begin PBXTargetDependency section */
+		5CEE46121E3A391E005C8713 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MyCalendar;
+			targetProxy = 5CEE46111E3A391E005C8713 /* PBXContainerItemProxy */;
 		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
 		5C342A561E1C03DD007D2305 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -263,7 +559,9 @@
 		};
 		5C342A5D1E1C03DD007D2305 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D776B673FAABE5F36EB3BA0A /* Pods-VipassanaTimer.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XAD3F7PHKG;
 				INFOPLIST_FILE = VipassanaTimer/Info.plist;
@@ -276,7 +574,9 @@
 		};
 		5C342A5E1E1C03DD007D2305 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF76ADCC301E7AE36570BEF9 /* Pods-VipassanaTimer.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XAD3F7PHKG;
 				INFOPLIST_FILE = VipassanaTimer/Info.plist;
@@ -306,6 +606,7 @@
 				5C342A5E1E1C03DD007D2305 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

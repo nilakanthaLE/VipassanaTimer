@@ -8,14 +8,132 @@
 
 import UIKit
 import CoreData
+import UserNotifications
+import AVFoundation
+
+import AudioToolbox
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    //MARK: TIMER
+    var foregroundTimers = [Timer]()
+    func invalidateForegroundTimers(){
+        for subTimer in foregroundTimers{
+            subTimer.invalidate()
+        }
+        foregroundTimers = [Timer]()
+    }
+    func scheduleForegroundTimers(){
+        let backgroundInfo  = BackgroundInfo.getInfo()
+        if let anapanaEnde = backgroundInfo?.anapanaEnde{
+            if anapanaEnde.isGreaterThanDate(dateToCompare: Date()){
+                starteSubTimer(fireAt: anapanaEnde as Date, typ: "anapana")
+            }
+        }
+        if let vipassanaEnde = backgroundInfo?.vipassanaEnde, let ende = backgroundInfo?.meditationsEnde{
+            if vipassanaEnde == ende{
+                if vipassanaEnde.isGreaterThanDate(dateToCompare: Date()){
+                    starteSubTimer(fireAt: vipassanaEnde as Date, typ: "ende")
+                }
+            }else{
+                if vipassanaEnde.isGreaterThanDate(dateToCompare: Date()){
+                    starteSubTimer(fireAt: vipassanaEnde as Date, typ: "vipassana")
+                }
+                if ende.isGreaterThanDate(dateToCompare: Date()){
+                    starteSubTimer(fireAt: ende as Date, typ: "ende")
+                }
+            }
+        }
+    }
+    private func starteSubTimer(fireAt:Date,typ:String){
+        let timer           = Timer(fireAt: fireAt, interval: 0, target: self, selector: #selector(zeitraumBeendet(_:)), userInfo: ["typ":typ], repeats: false)
+        foregroundTimers.append(timer)
+        RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
+    }
+    @objc private func zeitraumBeendet(_ sender:Timer){
+        playSound()
+        print("zeitraumBeendet")
+    }
+    func scheduleBackgroundTimers(){
+        let backgroundInfo  = BackgroundInfo.getInfo()
+        
+        if let anapanaEnde = backgroundInfo?.anapanaEnde{
+            if anapanaEnde.isGreaterThanDate(dateToCompare: Date()){
+                scheduleNotification(at: anapanaEnde as Date, typ: "anapana")
+            }
+        }
+        if let vipassanaEnde = backgroundInfo?.vipassanaEnde, let ende = backgroundInfo?.meditationsEnde{
+            if vipassanaEnde == ende{
+                if vipassanaEnde.isGreaterThanDate(dateToCompare: Date()){
+                    scheduleNotification(at: vipassanaEnde as Date, typ: "ende")
+                }
+            }else{
+                if vipassanaEnde.isGreaterThanDate(dateToCompare: Date()){
+                    scheduleNotification(at: vipassanaEnde as Date, typ: "vipassana")
+                }
+                if ende.isGreaterThanDate(dateToCompare: Date()){
+                    scheduleNotification(at: ende as Date, typ: "ende")
+                }
+            }
+        }
+    }
+    var player: AVAudioPlayer?
+    
+    func playSound()->Bool{
+        let url = Bundle.main.url(forResource: "klangschale", withExtension: "wav")!
+        //Preparation to play
+        do{
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            player = try AVAudioPlayer(contentsOf: url)
+            
+            guard let player = player else { return false}
+            player.setVolume(0.4, fadeDuration: TimeInterval(5))
+            player.prepareToPlay()
+            player.play()
+            return true
+        }
+        catch let error as NSError {
+            print(error.description)
+            return false
+        }
+    }
 
+    func scheduleNotification(at date: Date,typ:String) {
+        let calendar = Calendar(identifier: .gregorian)
+        let components = calendar.dateComponents(in: .current, from: date)
+        let newComponents = DateComponents(calendar: calendar, timeZone: .current, month: components.month, day: components.day, hour: components.hour, minute: components.minute)
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
+        
+        let content = UNMutableNotificationContent()
+        content.title   = "Tutorial Reminder"
+        content.body    = "\(typ) fertig"
+        content.sound   = UNNotificationSound.init(named: "klangschale.wav")//default()
+   
+        let request = UNNotificationRequest(identifier: "textNotification\(typ)", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) {(error) in
+            if let error = error {
+                print("Uh oh! We had an error: \(error)")
+            }
+        }
+    }
+    func removeBackgroundNotification(){
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(accepted, error) in
+            if !accepted {
+                print("Notification access denied.")
+            }
+        }
+        
         // Override point for customization after application launch.
         return true
     }
@@ -23,24 +141,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        self.saveContext()
+        print("applicationWillResignActive")
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
+//        invalidateForegroundTimers()
+//        scheduleBackgroundTimers()
 
+        print("applicationDidEnterBackground")
+    }
+    
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        print("applicationWillEnterForeground")
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+//        removeBackgroundNotification()
+//        scheduleForegroundTimers()
+        print("applicationDidBecomeActive")
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
+        print("applicationWillTerminate")
         self.saveContext()
     }
 
