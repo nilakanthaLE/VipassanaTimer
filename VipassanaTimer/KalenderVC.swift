@@ -67,9 +67,6 @@ class KalenderVC: UIViewController,KalenderViewDelegate {
     }
     func newVisibleDates(dates: [Date]) {
         navigationItem.titleView = KalenderTitleView(dates: dates)
-        print(dates)
-        print(Date.monthOfMostDays(in: dates).string("MMM").trimmingCharacters(in: ["."]).uppercased())
-        
     }
     
     //MARK: Segue
@@ -105,6 +102,9 @@ class KalenderTagHeader:NibLoadingView{
         }
         layer.borderColor = UIColor.lightGray.withAlphaComponent(0.1).cgColor
         layer.borderWidth = 0.5
+        if datum.isSunday {
+            _ = addBorder(edges: .right, colour: .red, thickness: 0.5)
+        }
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

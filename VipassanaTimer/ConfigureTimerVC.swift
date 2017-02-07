@@ -66,7 +66,6 @@ class ConfigureTimerVC: UIViewController,TimerConfigViewDelegate,UITextFieldDele
             let stunden         = gesamtDauer/60/60
             let minuten         = (gesamtDauer - stunden * 60 * 60) / 6
             
-            print("\(stunden):\(minuten)")
             //umgeht Bug, durch den die erste Wahl des Countdowns nichts bewirkt
             var dateComp : DateComponents = DateComponents()
             dateComp.hour           = stunden
@@ -89,5 +88,9 @@ class ConfigureTimerVC: UIViewController,TimerConfigViewDelegate,UITextFieldDele
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        countDownTimePicker.setValue(DesignPatterns.mocha, forKey: "textColor")
     }
 }

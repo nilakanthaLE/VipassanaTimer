@@ -79,6 +79,7 @@ class TimerConfigView: NibLoadingView,YSRangeSliderDelegate {
             let minuten                 = (gesamtDauer - stunden * 60 * 60) / Int32(60)
             let minutenText             = minuten>9 ? "\(minuten)" : "0\(minuten)"
             gesamtDauerLabel.text       = "\(stunden):"+minutenText
+            gesamtDauerLabel.sizeToFit()
             gesamtDauerWirdGesetzt = false
         }
     }
@@ -127,10 +128,10 @@ class TimerConfigView: NibLoadingView,YSRangeSliderDelegate {
             rangeSlider.isEnabled   = isEnabled
             
             //Rahmen
-            layer.borderColor   = UIColor.lightGray.cgColor
-            layer.borderWidth   = 1
-            layer.cornerRadius  = 10.0
-            clipsToBounds       = true
+            layer.borderColor       = DesignPatterns.mocha.cgColor
+            layer.borderWidth       = 0.5
+            layer.cornerRadius      = 10.0
+            clipsToBounds           = true
         }
     }
     @IBOutlet weak var startenButton: UIButton!
@@ -235,7 +236,6 @@ class TimerConfigView: NibLoadingView,YSRangeSliderDelegate {
         delegate?.saveContext()
         
         guard let backgroundInfos = backgroundInfo else{return}
-        print("anapanaEnde:\((backgroundInfos.anapanaEnde as! Date).string("hh:mm")) vipassanaEnde:\((backgroundInfos.vipassanaEnde as! Date).string("hh:mm")) meditationsEnde:\((backgroundInfos.meditationsEnde as! Date).string("hh:mm"))")
     }
     
     func resetTimer(){

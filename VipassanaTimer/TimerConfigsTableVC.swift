@@ -27,7 +27,7 @@ class TimerConfigsTableVC: UITableViewController {
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return 85
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

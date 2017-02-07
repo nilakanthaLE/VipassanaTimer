@@ -23,6 +23,32 @@ extension UIViewController{
     }
 }
 extension Date{
+    static func anzahlMonate(von:Date, bis:Date) -> Int{
+        let calendar    = Calendar.current
+        return (calendar.dateComponents([.month], from: von, to: bis).month ?? 0 ) + 1
+    }
+    
+    var startOfMonth:Date{
+        let calendar = Calendar.current
+        let currentDateComponents = calendar.dateComponents([.year , .month], from: self)
+        return calendar.date(from: currentDateComponents)!
+
+    }
+    func dateByAddingMonths(monthsToAdd: Int) -> Date {
+        let calendar    = Calendar.current
+        var months      = DateComponents()
+        months.month    = monthsToAdd
+        return calendar.date(byAdding: months, to: self)!
+    }
+    
+    var endOfMonth : Date {
+        let calendar = Calendar.current
+        let plusOneMonthDate = dateByAddingMonths(monthsToAdd: 1)
+        let plusOneMonthDateComponents = calendar.dateComponents([.year , .month], from: plusOneMonthDate)
+        let endOfMonth = calendar.date(from:plusOneMonthDateComponents)?.addingTimeInterval(-1)
+        return endOfMonth!
+    }
+    
     var isSunday:Bool{
         return istGleicherTag(wie: sundayOfWeek)
     }

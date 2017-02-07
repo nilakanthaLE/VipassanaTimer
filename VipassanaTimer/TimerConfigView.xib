@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -29,7 +29,7 @@
             <rect key="frame" x="0.0" y="0.0" width="437" height="125"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Bm-Jj-QaZ">
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Bm-Jj-QaZ">
                     <rect key="frame" x="0.0" y="85" width="437" height="40"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBZ-8p-37M" userLabel="starten">
@@ -47,7 +47,6 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="3Hb-uR-Hhd" firstAttribute="leading" secondItem="2Bm-Jj-QaZ" secondAttribute="leading" constant="20" symbolic="YES" id="DKu-Of-XtX"/>
                         <constraint firstAttribute="bottom" secondItem="3Hb-uR-Hhd" secondAttribute="bottom" constant="8" id="UMh-Ze-bXo"/>
@@ -62,38 +61,38 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q8g-hN-8gj">
                             <rect key="frame" x="20" y="71" width="8" height="14"/>
                             <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="12"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boa-HO-rb0">
-                            <rect key="frame" x="183" y="71" width="15" height="14"/>
+                            <rect key="frame" x="188.5" y="71" width="15" height="14"/>
                             <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="12"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23:59:59" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="aW5-kh-o3x">
-                            <rect key="frame" x="369" y="38" width="60" height="17"/>
+                            <rect key="frame" x="384" y="38" width="45" height="17"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="60" id="ALk-ak-UeN"/>
+                                <constraint firstAttribute="width" constant="45" id="ALk-ak-UeN"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="14"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A29-PJ-jfn">
                             <rect key="frame" x="8" y="8" width="34" height="14"/>
                             <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="12"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avA-qd-zHE">
-                            <rect key="frame" x="353.5" y="71" width="7.5" height="14"/>
+                            <rect key="frame" x="364.5" y="71" width="7.5" height="14"/>
                             <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="12"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdU-L1-Oe8" customClass="YSRangeSlider" customModule="YSRangeSlider">
-                            <rect key="frame" x="20" y="30" width="341" height="33"/>
+                            <rect key="frame" x="20" y="30" width="352" height="33"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
                                     <real key="value" value="0.0"/>
@@ -143,7 +142,6 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="boa-HO-rb0" firstAttribute="baseline" secondItem="Q8g-hN-8gj" secondAttribute="baseline" id="5Me-rQ-70E"/>
@@ -159,14 +157,14 @@
                         <constraint firstItem="Q8g-hN-8gj" firstAttribute="baseline" secondItem="avA-qd-zHE" secondAttribute="baseline" id="kIl-9p-kb5"/>
                         <constraint firstItem="vdU-L1-Oe8" firstAttribute="top" secondItem="A29-PJ-jfn" secondAttribute="bottom" constant="8" symbolic="YES" id="sfD-Fy-rh9"/>
                         <constraint firstItem="vdU-L1-Oe8" firstAttribute="leading" secondItem="rdh-jS-BRl" secondAttribute="leading" constant="20" symbolic="YES" id="syQ-vg-Bsh"/>
-                        <constraint firstItem="aW5-kh-o3x" firstAttribute="leading" secondItem="vdU-L1-Oe8" secondAttribute="trailing" constant="8" symbolic="YES" id="wAW-4I-C9S"/>
+                        <constraint firstItem="aW5-kh-o3x" firstAttribute="leading" secondItem="vdU-L1-Oe8" secondAttribute="trailing" constant="12" id="wAW-4I-C9S"/>
                     </constraints>
                     <connections>
                         <outletCollection property="gestureRecognizers" destination="24F-Uf-dCL" appends="YES" id="iNW-gf-1D7"/>
                     </connections>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="2Bm-Jj-QaZ" secondAttribute="trailing" id="2dC-8E-I2r"/>
                 <constraint firstItem="rdh-jS-BRl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="91N-M9-XUX"/>

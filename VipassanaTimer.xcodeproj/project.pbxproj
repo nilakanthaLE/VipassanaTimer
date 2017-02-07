@@ -8,8 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		4F729124BDB8FC647A780650 /* Pods_VipassanaTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA9F84A927CF18181FB1766 /* Pods_VipassanaTimer.framework */; };
+		5C1A6D551E48CEAA0032A0F3 /* AppConfigExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A6D541E48CEAA0032A0F3 /* AppConfigExtensions.swift */; };
+		5C1A6D571E48CF800032A0F3 /* SetAnfangsDatumStatistikVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A6D561E48CF800032A0F3 /* SetAnfangsDatumStatistikVC.swift */; };
 		5C2D03861E3B6C4500A113FF /* KalenderTagHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2D03851E3B6C4500A113FF /* KalenderTagHeader.xib */; };
 		5C2D03891E3B882800A113FF /* KalenderTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2D03881E3B882800A113FF /* KalenderTitleView.xib */; };
+		5C2D038D1E3F6F2C00A113FF /* MeditationTemplateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D038C1E3F6F2C00A113FF /* MeditationTemplateExtension.swift */; };
+		5C2D038F1E3F6FD900A113FF /* KursTemplateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D038E1E3F6FD900A113FF /* KursTemplateExtensions.swift */; };
+		5C2D03911E3F7E5B00A113FF /* MeineKurseTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D03901E3F7E5B00A113FF /* MeineKurseTableVC.swift */; };
+		5C2D03931E3F7EB000A113FF /* KursErstellenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D03921E3F7EB000A113FF /* KursErstellenVC.swift */; };
 		5C342A4B1E1C03DD007D2305 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C342A4A1E1C03DD007D2305 /* AppDelegate.swift */; };
 		5C342A531E1C03DD007D2305 /* VipassanaTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C342A511E1C03DD007D2305 /* VipassanaTimer.xcdatamodeld */; };
 		5C342A551E1C03DD007D2305 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C342A541E1C03DD007D2305 /* Assets.xcassets */; };
@@ -26,9 +32,15 @@
 		5C55020D1E1E899C004C700D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C55020C1E1E899C004C700D /* Extensions.swift */; };
 		5C55020F1E1E8D7E004C700D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C55020E1E1E8D7E004C700D /* Main.storyboard */; };
 		5C5502111E1EA94C004C700D /* NibLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5502101E1EA94C004C700D /* NibLoadingView.swift */; };
+		5C61C45D1E44AF4D005B744D /* StatistikUeberblick.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C61C45C1E44AF4D005B744D /* StatistikUeberblick.xib */; };
+		5C61C45F1E44B9A8005B744D /* StatistikUeberblick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C61C45E1E44B9A8005B744D /* StatistikUeberblick.swift */; };
 		5C70572D1E2CF11500D307EF /* EditMeditationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70572C1E2CF11500D307EF /* EditMeditationVC.swift */; };
 		5C70572F1E2D2CF400D307EF /* DesignPatterns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70572E1E2D2CF400D307EF /* DesignPatterns.swift */; };
 		5C7057331E325DF800D307EF /* silence.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5C7057321E325DF800D307EF /* silence.mp3 */; };
+		5CA9A1331E3F9A64000C28F6 /* KursExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9A1321E3F9A64000C28F6 /* KursExtensions.swift */; };
+		5CA9A1361E40B84C000C28F6 /* KursTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CA9A1351E40B84C000C28F6 /* KursTableCellView.xib */; };
+		5CA9A1381E40C7F3000C28F6 /* StatistikView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9A1371E40C7F3000C28F6 /* StatistikView.swift */; };
+		5CA9A13A1E40D2B9000C28F6 /* StatistikVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9A1391E40D2B9000C28F6 /* StatistikVC.swift */; };
 		5CAFE7E71E24F93A008F740A /* klangschale.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5CAFE7E61E24F93A008F740A /* klangschale.wav */; };
 		5CAFE7E91E24FE1E008F740A /* HauptMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAFE7E81E24FE1E008F740A /* HauptMenuVC.swift */; };
 		5CAFE7EB1E250327008F740A /* MeditationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAFE7EA1E250327008F740A /* MeditationExtensions.swift */; };
@@ -74,8 +86,14 @@
 
 /* Begin PBXFileReference section */
 		3DA9F84A927CF18181FB1766 /* Pods_VipassanaTimer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VipassanaTimer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C1A6D541E48CEAA0032A0F3 /* AppConfigExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfigExtensions.swift; sourceTree = "<group>"; };
+		5C1A6D561E48CF800032A0F3 /* SetAnfangsDatumStatistikVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetAnfangsDatumStatistikVC.swift; sourceTree = "<group>"; };
 		5C2D03851E3B6C4500A113FF /* KalenderTagHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KalenderTagHeader.xib; sourceTree = "<group>"; };
 		5C2D03881E3B882800A113FF /* KalenderTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KalenderTitleView.xib; sourceTree = "<group>"; };
+		5C2D038C1E3F6F2C00A113FF /* MeditationTemplateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeditationTemplateExtension.swift; sourceTree = "<group>"; };
+		5C2D038E1E3F6FD900A113FF /* KursTemplateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KursTemplateExtensions.swift; sourceTree = "<group>"; };
+		5C2D03901E3F7E5B00A113FF /* MeineKurseTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeineKurseTableVC.swift; sourceTree = "<group>"; };
+		5C2D03921E3F7EB000A113FF /* KursErstellenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KursErstellenVC.swift; sourceTree = "<group>"; };
 		5C342A471E1C03DD007D2305 /* VipassanaTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VipassanaTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C342A4A1E1C03DD007D2305 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C342A521E1C03DD007D2305 /* VipassanaTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VipassanaTimer.xcdatamodel; sourceTree = "<group>"; };
@@ -94,10 +112,15 @@
 		5C55020C1E1E899C004C700D /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5C55020E1E1E8D7E004C700D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		5C5502101E1EA94C004C700D /* NibLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoadingView.swift; sourceTree = "<group>"; };
+		5C61C45C1E44AF4D005B744D /* StatistikUeberblick.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatistikUeberblick.xib; sourceTree = "<group>"; };
+		5C61C45E1E44B9A8005B744D /* StatistikUeberblick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatistikUeberblick.swift; sourceTree = "<group>"; };
 		5C70572C1E2CF11500D307EF /* EditMeditationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMeditationVC.swift; sourceTree = "<group>"; };
 		5C70572E1E2D2CF400D307EF /* DesignPatterns.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignPatterns.swift; sourceTree = "<group>"; };
 		5C7057321E325DF800D307EF /* silence.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = silence.mp3; sourceTree = "<group>"; };
-		5C7057341E32684200D307EF /* VipassanaTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VipassanaTimer.entitlements; sourceTree = "<group>"; };
+		5CA9A1321E3F9A64000C28F6 /* KursExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KursExtensions.swift; sourceTree = "<group>"; };
+		5CA9A1351E40B84C000C28F6 /* KursTableCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KursTableCellView.xib; sourceTree = "<group>"; };
+		5CA9A1371E40C7F3000C28F6 /* StatistikView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatistikView.swift; sourceTree = "<group>"; };
+		5CA9A1391E40D2B9000C28F6 /* StatistikVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatistikVC.swift; sourceTree = "<group>"; };
 		5CAFE7E61E24F93A008F740A /* klangschale.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = klangschale.wav; sourceTree = "<group>"; };
 		5CAFE7E81E24FE1E008F740A /* HauptMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HauptMenuVC.swift; sourceTree = "<group>"; };
 		5CAFE7EA1E250327008F740A /* MeditationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeditationExtensions.swift; sourceTree = "<group>"; };
@@ -164,11 +187,12 @@
 		5C342A491E1C03DD007D2305 /* VipassanaTimer */ = {
 			isa = PBXGroup;
 			children = (
-				5C7057341E32684200D307EF /* VipassanaTimer.entitlements */,
 				5C55020E1E1E8D7E004C700D /* Main.storyboard */,
-				5CF0B67F1E1FB8FD00745BB7 /* MeditationStartenVC.swift */,
 				5CAFE7E81E24FE1E008F740A /* HauptMenuVC.swift */,
+				5CF0B67F1E1FB8FD00745BB7 /* MeditationStartenVC.swift */,
 				5C70572C1E2CF11500D307EF /* EditMeditationVC.swift */,
+				5CA9A13B1E40D2C1000C28F6 /* Statistik */,
+				5CA9A1341E40AC36000C28F6 /* Kurse */,
 				5C2D03871E3B7B1500A113FF /* Kalender */,
 				5CF0B67E1E1EAA6A00745BB7 /* TimerConfig */,
 				5C5502121E1EA96C004C700D /* helper */,
@@ -191,7 +215,11 @@
 			isa = PBXGroup;
 			children = (
 				5C342A511E1C03DD007D2305 /* VipassanaTimer.xcdatamodeld */,
+				5C1A6D541E48CEAA0032A0F3 /* AppConfigExtensions.swift */,
+				5C2D038E1E3F6FD900A113FF /* KursTemplateExtensions.swift */,
+				5CA9A1321E3F9A64000C28F6 /* KursExtensions.swift */,
 				5CAFE7EA1E250327008F740A /* MeditationExtensions.swift */,
+				5C2D038C1E3F6F2C00A113FF /* MeditationTemplateExtension.swift */,
 				5CF0B6831E23B8C600745BB7 /* BackgroundInfoExtensions.swift */,
 				5C5502031E1E614F004C700D /* TimerConfigExtensions.swift */,
 				5CAFE7EC1E250606008F740A /* DauerExtensions.swift */,
@@ -234,6 +262,28 @@
 				5C5502101E1EA94C004C700D /* NibLoadingView.swift */,
 			);
 			name = helper;
+			sourceTree = "<group>";
+		};
+		5CA9A1341E40AC36000C28F6 /* Kurse */ = {
+			isa = PBXGroup;
+			children = (
+				5C2D03901E3F7E5B00A113FF /* MeineKurseTableVC.swift */,
+				5C2D03921E3F7EB000A113FF /* KursErstellenVC.swift */,
+				5CA9A1351E40B84C000C28F6 /* KursTableCellView.xib */,
+			);
+			name = Kurse;
+			sourceTree = "<group>";
+		};
+		5CA9A13B1E40D2C1000C28F6 /* Statistik */ = {
+			isa = PBXGroup;
+			children = (
+				5CA9A1391E40D2B9000C28F6 /* StatistikVC.swift */,
+				5CA9A1371E40C7F3000C28F6 /* StatistikView.swift */,
+				5C61C45E1E44B9A8005B744D /* StatistikUeberblick.swift */,
+				5C1A6D561E48CF800032A0F3 /* SetAnfangsDatumStatistikVC.swift */,
+				5C61C45C1E44AF4D005B744D /* StatistikUeberblick.xib */,
+			);
+			name = Statistik;
 			sourceTree = "<group>";
 		};
 		5CEE46031E3A3765005C8713 /* Products */ = {
@@ -352,10 +402,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C61C45D1E44AF4D005B744D /* StatistikUeberblick.xib in Resources */,
 				5C2D03861E3B6C4500A113FF /* KalenderTagHeader.xib in Resources */,
 				5CAFE7E71E24F93A008F740A /* klangschale.wav in Resources */,
 				5C342A581E1C03DD007D2305 /* LaunchScreen.storyboard in Resources */,
 				5C342A551E1C03DD007D2305 /* Assets.xcassets in Resources */,
+				5CA9A1361E40B84C000C28F6 /* KursTableCellView.xib in Resources */,
 				5C5501FA1E1D0292004C700D /* TimerConfigView.xib in Resources */,
 				5C7057331E325DF800D307EF /* silence.mp3 in Resources */,
 				5C55020F1E1E8D7E004C700D /* Main.storyboard in Resources */,
@@ -423,21 +475,31 @@
 				5CF0B6801E1FB8FD00745BB7 /* MeditationStartenVC.swift in Sources */,
 				5CEE460B1E3A3832005C8713 /* KalenderVC.swift in Sources */,
 				5CF0B6821E226FF800745BB7 /* TimerConfigTimerExtension.swift in Sources */,
+				5C1A6D551E48CEAA0032A0F3 /* AppConfigExtensions.swift in Sources */,
 				5C5502071E1E7088004C700D /* TimerConfigsTableVC.swift in Sources */,
+				5C2D038F1E3F6FD900A113FF /* KursTemplateExtensions.swift in Sources */,
+				5C2D03931E3F7EB000A113FF /* KursErstellenVC.swift in Sources */,
 				5C55020B1E1E73DD004C700D /* ConfigureTimerVC.swift in Sources */,
+				5C1A6D571E48CF800032A0F3 /* SetAnfangsDatumStatistikVC.swift in Sources */,
 				5C5502091E1E7216004C700D /* TimerConfigTableViewCell.swift in Sources */,
+				5C61C45F1E44B9A8005B744D /* StatistikUeberblick.swift in Sources */,
 				5CAFE7ED1E250606008F740A /* DauerExtensions.swift in Sources */,
 				5CF0B6841E23B8C600745BB7 /* BackgroundInfoExtensions.swift in Sources */,
 				5C5502111E1EA94C004C700D /* NibLoadingView.swift in Sources */,
 				5C70572F1E2D2CF400D307EF /* DesignPatterns.swift in Sources */,
 				5CAFE7EB1E250327008F740A /* MeditationExtensions.swift in Sources */,
 				5C55020D1E1E899C004C700D /* Extensions.swift in Sources */,
+				5C2D03911E3F7E5B00A113FF /* MeineKurseTableVC.swift in Sources */,
+				5CA9A13A1E40D2B9000C28F6 /* StatistikVC.swift in Sources */,
 				5C342A531E1C03DD007D2305 /* VipassanaTimer.xcdatamodeld in Sources */,
 				5CAFE7E91E24FE1E008F740A /* HauptMenuVC.swift in Sources */,
 				5C70572D1E2CF11500D307EF /* EditMeditationVC.swift in Sources */,
 				5C5502041E1E614F004C700D /* TimerConfigExtensions.swift in Sources */,
 				5C5501F31E1D0212004C700D /* TimerConfigView.swift in Sources */,
+				5CA9A1331E3F9A64000C28F6 /* KursExtensions.swift in Sources */,
+				5C2D038D1E3F6F2C00A113FF /* MeditationTemplateExtension.swift in Sources */,
 				5C4B5DCD1E27AB3300307437 /* WochenUndTagesKalenderVC.swift in Sources */,
+				5CA9A1381E40C7F3000C28F6 /* StatistikView.swift in Sources */,
 				5C342A4B1E1C03DD007D2305 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -566,6 +628,7 @@
 				DEVELOPMENT_TEAM = XAD3F7PHKG;
 				INFOPLIST_FILE = VipassanaTimer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = DNS.VipassanaTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -581,6 +644,7 @@
 				DEVELOPMENT_TEAM = XAD3F7PHKG;
 				INFOPLIST_FILE = VipassanaTimer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = DNS.VipassanaTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;

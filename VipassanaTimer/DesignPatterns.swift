@@ -14,11 +14,13 @@ struct DesignPatterns{
     
     static let gelb     = UIColor(red: 255.0/255.0, green: 204.0/255.0, blue: 51.0/255.0, alpha: 1)
     static let darkBlue = UIColor(red: 0.0, green: 0.0, blue: 1.0, alpha: 1)
+    static let mocha    = UIColor(red: 128.0/255.0, green: 64.0/255.0, blue: 0.0, alpha: 1)
+    
     
     static let tageView     = Design(font: UIFont.systemFont(ofSize: 18), textAlignment: .center, textColor: gelb)
     static let stundenLabel = Design(font: UIFont.systemFont(ofSize: 12), textAlignment: .right, textColor: gelb)
     
-    static let standardButton   = LayerDesign(borderColor: darkBlue, borderWidth: 1, cornerRadius: 2)
+    static let standardButton   = LayerDesign(borderColor: DesignPatterns.mocha, borderWidth: 0.5, cornerRadius: 2)
 }
 struct LayerDesign{
     let borderColor:UIColor

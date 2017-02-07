@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HauptMenuVC: UIViewController {
+class HauptMenuVC: UIViewController,StatistikUeberblickDelegate {
 
     @IBAction func unwindToHauptmenu(segue: UIStoryboardSegue){
         let delegate = UIApplication.shared.delegate as? AppDelegate
@@ -31,6 +31,21 @@ class HauptMenuVC: UIViewController {
                 print("deleted")
             }
         }
+        KursTemplate.createKursTemplates()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        TimerConfig.deleteToDelete()
+        statistikUeberblickView.daten = StatistikUeberblickDaten()
+    }
+    @IBOutlet weak var statistikUeberblickView: StatistikUeberblick!{ didSet{statistikUeberblickView.delegate = self} }
+    
+    func infoButtonPressed(){
+        performSegue(withIdentifier: "statistikStartDatumInfoSegue", sender: nil)
     }
     
+    @IBOutlet weak var meditationStartenButton: UIButton!{didSet{meditationStartenButton.set(layerDesign: DesignPatterns.standardButton)}}
+    @IBOutlet weak var kalenderButton: UIButton!{didSet{kalenderButton.set(layerDesign: DesignPatterns.standardButton)}}
+    @IBOutlet weak var kurseButton: UIButton!{didSet{kurseButton.set(layerDesign: DesignPatterns.standardButton)}}
+    @IBOutlet weak var statistikButton: UIButton!{didSet{statistikButton.set(layerDesign: DesignPatterns.standardButton)}}
 }

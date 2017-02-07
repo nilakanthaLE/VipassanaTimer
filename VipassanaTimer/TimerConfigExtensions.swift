@@ -77,16 +77,34 @@ extension TimerConfig {
         }
         
         if let timerConfig = (try? context.fetch(request))?.first{
+            timerConfig.toDelete    = false
             return timerConfig
         }
         if let timerConfig      = TimerConfig.new(dauerAnapana: dauerAnapana, dauerVipassana: dauerVipassana, dauerMetta:dauerMetta, mettaOpenEnd: mettaOpenEnd){
-            timerConfig.name    = name
+            timerConfig.name        = name
+            timerConfig.toDelete    = false
             return timerConfig
         }
         return nil
     }
     class func get(with meditation:Meditation) ->TimerConfig?{
-        return TimerConfig.get(dauerAnapana: meditation.dauerAnapana, dauerVipassana: meditation.dauerVipassana, dauerMetta: meditation.dauerMetta, mettaOpenEnd: meditation.mettaOpenEnd, name: meditation.name)
+        let anzahlVorher = getAll().count
+        let timerConfig = TimerConfig.get(dauerAnapana: meditation.dauerAnapana, dauerVipassana: meditation.dauerVipassana, dauerMetta: meditation.dauerMetta, mettaOpenEnd: meditation.mettaOpenEnd, name: meditation.name)
+        //wenn Timer neu erstellt wird
+        if anzahlVorher < getAll().count{
+            timerConfig?.toDelete = true
+        }
+        return timerConfig
+    }
+    class func deleteToDelete(){
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let request             = NSFetchRequest<TimerConfig>(entityName: "TimerConfig")
+        request.predicate       = NSPredicate(format: "toDelete == YES")
+        if let timerConfigs = try? context.fetch(request){
+            for timerConfig in timerConfigs{
+                timerConfig.delete()
+            }
+        }
     }
 }
 

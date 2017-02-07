@@ -18,7 +18,6 @@ class EditMeditationVC: UIViewController,TimerConfigViewDelegateControlTapped {
         }
     }
     @IBAction func loeschenButtonPressed(_ sender: UIButton) {
-        let date = meditation?.start
         meditation?.delete()
         performSegue(withIdentifier: "reloadKalender", sender: nil)
     }
@@ -31,6 +30,7 @@ class EditMeditationVC: UIViewController,TimerConfigViewDelegateControlTapped {
     var meditation:Meditation? {
         didSet{
             guard let meditation        = meditation else{return}
+            TimerConfig.deleteToDelete()
             timerConfig                 = TimerConfig.get(with: meditation)
             startZeitPicker?.date       = meditation.start as! Date
             loeschenButton?.isHidden    = false
@@ -51,7 +51,6 @@ class EditMeditationVC: UIViewController,TimerConfigViewDelegateControlTapped {
     }
     @IBAction func meditationEintragenPressed(_ sender: UIButton) {
         let start = startZeitPicker.date
-        print(start.string("hh:mm"))
 
         guard let timerConfig = timerConfig  else {return}
         if meditation == nil{
@@ -84,18 +83,9 @@ class EditMeditationVC: UIViewController,TimerConfigViewDelegateControlTapped {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        startZeitPicker.setValue(DesignPatterns.gelb, forKey: "textColor")
+        startZeitPicker.setValue(DesignPatterns.mocha, forKey: "textColor")
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     func controlTapped() {
         performSegue(withIdentifier: "goToMeineTimer", sender: nil)
     }
