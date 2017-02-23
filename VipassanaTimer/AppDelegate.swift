@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
     }
     @objc private func zeitraumBeendet(_ sender:Timer){
-        playSound()
+        _ = playSound()
         print("zeitraumBeendet")
     }
     func scheduleBackgroundTimers(){

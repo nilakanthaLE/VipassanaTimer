@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="anapanaLabel" destination="Q8g-hN-8gj" id="Xic-S7-BNb"/>
                 <outlet property="beendenButton" destination="3Hb-uR-Hhd" id="zBz-av-s0g"/>
+                <outlet property="blurView" destination="HLK-Fp-WQN" id="heY-uj-Qj5"/>
                 <outlet property="gesamtDauerLabel" destination="aW5-kh-o3x" id="oZc-H6-KYd"/>
                 <outlet property="hoeheSteuerungPanel" destination="mkH-0J-6aZ" id="8Ai-eS-xkj"/>
                 <outlet property="mettaLabel" destination="avA-qd-zHE" id="tIi-we-nWc"/>
@@ -163,15 +164,62 @@
                         <outletCollection property="gestureRecognizers" destination="24F-Uf-dCL" appends="YES" id="iNW-gf-1D7"/>
                     </connections>
                 </view>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLK-Fp-WQN">
+                    <rect key="frame" x="0.0" y="0.0" width="437" height="125"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="3Z6-ft-LUl">
+                        <rect key="frame" x="0.0" y="0.0" width="437" height="125"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7z-E8-SDD">
+                                <rect key="frame" x="0.0" y="0.0" width="437" height="125"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="3Qe-Bq-nLe">
+                                    <rect key="frame" x="0.0" y="0.0" width="437" height="125"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitte hier tippen, um einen Timer zu wählen oder neu zu kofigurieren." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7n3-ng-ash">
+                                            <rect key="frame" x="51.5" y="42" width="334.5" height="41"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7n3-ng-ash" secondAttribute="trailing" constant="50" id="14q-f2-fHp"/>
+                                        <constraint firstItem="7n3-ng-ash" firstAttribute="centerY" secondItem="3Qe-Bq-nLe" secondAttribute="centerY" id="CEL-g1-Mh7"/>
+                                        <constraint firstItem="7n3-ng-ash" firstAttribute="centerX" secondItem="3Qe-Bq-nLe" secondAttribute="centerX" id="XVv-0E-Fab"/>
+                                    </constraints>
+                                </view>
+                                <vibrancyEffect>
+                                    <blurEffect style="extraLight"/>
+                                </vibrancyEffect>
+                            </visualEffectView>
+                        </subviews>
+                    </view>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstItem="a7z-E8-SDD" firstAttribute="centerX" secondItem="HLK-Fp-WQN" secondAttribute="centerX" id="8jG-KS-kjg"/>
+                        <constraint firstItem="a7z-E8-SDD" firstAttribute="centerY" secondItem="HLK-Fp-WQN" secondAttribute="centerY" id="Puf-TZ-jP0"/>
+                        <constraint firstItem="a7z-E8-SDD" firstAttribute="height" secondItem="HLK-Fp-WQN" secondAttribute="height" id="VAv-ek-rUj"/>
+                        <constraint firstItem="a7z-E8-SDD" firstAttribute="width" secondItem="HLK-Fp-WQN" secondAttribute="width" id="aYz-yP-NQM"/>
+                    </constraints>
+                    <blurEffect style="light"/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="or2-Kp-EWV" appends="YES" id="uGs-Bh-NCc"/>
+                    </connections>
+                </visualEffectView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="HLK-Fp-WQN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="1qk-QS-1Tr"/>
                 <constraint firstAttribute="trailing" secondItem="2Bm-Jj-QaZ" secondAttribute="trailing" id="2dC-8E-I2r"/>
+                <constraint firstItem="HLK-Fp-WQN" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="4wc-dC-dJ4"/>
                 <constraint firstItem="rdh-jS-BRl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="91N-M9-XUX"/>
                 <constraint firstAttribute="bottom" secondItem="2Bm-Jj-QaZ" secondAttribute="bottom" id="PWl-Ey-hfJ"/>
                 <constraint firstItem="2Bm-Jj-QaZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="XSd-AC-EAh"/>
+                <constraint firstItem="HLK-Fp-WQN" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ZGS-Qj-PdB"/>
                 <constraint firstItem="rdh-jS-BRl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cfr-IO-I3R"/>
                 <constraint firstItem="2Bm-Jj-QaZ" firstAttribute="top" secondItem="rdh-jS-BRl" secondAttribute="bottom" id="dCs-Y2-uwb"/>
+                <constraint firstItem="HLK-Fp-WQN" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="wRb-h2-EG2"/>
                 <constraint firstAttribute="trailing" secondItem="rdh-jS-BRl" secondAttribute="trailing" id="xkv-Ba-OhX"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -183,6 +231,11 @@
         <tapGestureRecognizer id="24F-Uf-dCL">
             <connections>
                 <action selector="viewTapped:" destination="-1" id="7iz-aX-hNl"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="or2-Kp-EWV">
+            <connections>
+                <action selector="tappedOnEmptyTimer:" destination="-1" id="bja-GK-RO2"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

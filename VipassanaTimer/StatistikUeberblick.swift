@@ -137,8 +137,52 @@ class StatistikUeberblick: NibLoadingView {
             statistikView.layer.borderWidth     = 0.5
         }
     }
+    @IBAction func viewTapped(_ sender: UITapGestureRecognizer) {
+        delegate?.viewTapped()
+    }
+    
+    
     
 }
 protocol StatistikUeberblickDelegate {
     func infoButtonPressed()
+    func viewTapped()
+}
+class StatistikUeberblick2:NibLoadingView{
+    var delegate:StatistikUeberblickDelegate?
+    @IBAction func viewTapped(_ sender: UITapGestureRecognizer) {
+        delegate?.viewTapped()
+    }
+    @IBOutlet weak var statistikView: UIView!{
+        didSet{
+            statistikView.layer.cornerRadius    = 5.0
+            statistikView.layer.borderColor     = DesignPatterns.mocha.cgColor
+            statistikView.layer.borderWidth     = 0.5
+        }
+    }
+    private var regelmaessig = StatistikUeberblickDaten().regelmaessigEinmalAmTagBisHeute
+    
+    @IBOutlet weak var gesamtZeitOhneKurse: UILabel!
+        {didSet{gesamtZeitOhneKurse.text = "\(daten.gesamtOhneKurse.hhmmString)"}}
+    @IBOutlet weak var einmalAmTagBisHeute: UILabel!
+        {didSet{einmalAmTagBisHeute.text = "\(regelmaessig.anzahlBisHeute)"}}
+    @IBOutlet weak var einmalAmTagMax: UILabel!
+        {didSet{einmalAmTagMax.text = "\(regelmaessig.anzahlMax)"}}
+    @IBOutlet weak var zweimalAmTagBisHeute: UILabel!
+        {didSet{zweimalAmTagBisHeute.text = "\(regelmaessig.anzahlZweiMalAmTagBisHeute)"}}
+    @IBOutlet weak var zweiMalAmTagMax: UILabel!
+        {didSet{zweiMalAmTagMax.text = "\(regelmaessig.anzahlZweiMalAmTagMax)"}}
+    @IBOutlet weak var kursTage: UILabel!
+        {didSet{kursTage.text = "\(daten.kursTage)"}}
+    var daten = StatistikUeberblickDaten(){
+        didSet{
+            regelmaessig                = StatistikUeberblickDaten().regelmaessigEinmalAmTagBisHeute
+            einmalAmTagBisHeute.text    = "\(regelmaessig.anzahlBisHeute)"
+            einmalAmTagMax.text         = "\(regelmaessig.anzahlMax)"
+            zweimalAmTagBisHeute.text   = "\(regelmaessig.anzahlZweiMalAmTagBisHeute)"
+            zweiMalAmTagMax.text        = "\(regelmaessig.anzahlZweiMalAmTagMax)"
+            kursTage.text               = "\(daten.kursTage)"
+        }
+    }
+    
 }

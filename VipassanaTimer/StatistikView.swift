@@ -45,8 +45,14 @@ class StatistikView: UIView {
         }
         maxY = maxOfSubarrays.max()
         minY = minOfSubarrays.min()
+        if maxY == 0 && minY == 0{
+            maxY = nil
+            minY = nil
+        }
     }
-    
+    deinit {
+        print("deinit StatistikView")
+    }
     var lastFrame:CGRect?
     override func layoutSubviews() {
         if lastFrame != frame{
@@ -73,6 +79,7 @@ class StatistikView: UIView {
         if maxY < 0.0{ posY0 = 0.0
         }else if minY > 0.0{ posY0 = height + rand
         }else{ posY0 = height / CGFloat((abs(maxY) + abs(minY))) * CGFloat(abs(maxY))  + rand }
+        
         let xAchse = UIBezierPath()
         xAchse.move(to: CGPoint(x: rand, y: posY0))
         xAchse.addLine(to: CGPoint(x: width + rand, y: posY0))
@@ -121,7 +128,6 @@ class StatistikView: UIView {
         let schritt         = schritte.schritt
         let anzahlSchritte  = schritte.anzahlSchritte
         let schrittHoehe    = height / CGFloat(anzahlSchritte)
-        print("schritt:\(schritt) anzahl:\(anzahlSchritte)")
         //kleine Striche && Labels
         for i in 1 ... anzahlSchritte{
             if i < anzahlSchritte{

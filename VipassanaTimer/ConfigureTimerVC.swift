@@ -80,7 +80,52 @@ class ConfigureTimerVC: UIViewController,TimerConfigViewDelegate,UITextFieldDele
     @IBAction private func countDownTimePickerValueChanged(_ sender: UIDatePicker) {
         timerConfigControl.gesamtDauer = Int32(sender.countDownDuration)
     }
-    
+    @IBAction private func infoButtonPressed(_ sender: UIButton) {
+        
+        let paragraphStyle          = NSMutableParagraphStyle()
+        paragraphStyle.alignment    = .justified
+        let messageText = NSMutableAttributedString(
+        
+            string: "\n1) mit dem Picker im unteren Teil die Dauer der Meditation festlegen.\n\n2) einen Namen für den Timer vergeben (optional).\n\n3 den Schieberegler anpassen. Der erste Teil ist Anapana, der mittlere Teil ist Vipassana und der dritte Teil bestimmt die Dauer von Metta. (Minuten)\n\n4) wird ",
+            attributes: [
+                NSParagraphStyleAttributeName: paragraphStyle,
+                NSFontAttributeName : UIFont.preferredFont(forTextStyle: UIFontTextStyle.body),
+                NSForegroundColorAttributeName : UIColor.black
+            ]
+        )
+        let size = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body).pointSize
+        let font = UIFont.boldSystemFont(ofSize: size)
+        let messageText2 = NSMutableAttributedString(
+            
+            string: "Metta ohne zeitliche Begrenzung",
+            attributes: [
+                NSParagraphStyleAttributeName: paragraphStyle,
+                NSFontAttributeName : font,
+                NSForegroundColorAttributeName : UIColor.black
+            ]
+        )
+        messageText.append(messageText2)
+        let messageText3 = NSMutableAttributedString(
+            
+            string: " gesetzt, dann läuft der Timer solange weiter, bis er manuell gestoppt wird.",
+            attributes: [
+                NSParagraphStyleAttributeName: paragraphStyle,
+                NSFontAttributeName : UIFont.preferredFont(forTextStyle: UIFontTextStyle.body),
+                NSForegroundColorAttributeName : UIColor.black
+            ]
+        )
+        messageText.append(messageText3)
+        
+        let alertVC = UIAlertController(title: "Anleitung", message: "", preferredStyle: .alert)
+        alertVC.setValue(messageText, forKey: "attributedMessage")
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        
+        let action = UIAlertAction(title: "🔊 Lautstärke testen", style: .default, handler: { (_) in
+            _ = (UIApplication.shared.delegate as? AppDelegate)?.playSound()})
+        alertVC.addAction(action)
+        
+        present(alertVC, animated: true, completion: nil)
+    }
     func rechterDaumenBeiMettaOpenEndBewegt() {
         mettaOpenEndSwitch?.isOn = false
     }

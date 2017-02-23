@@ -98,9 +98,15 @@ class WochenUndTagesKalenderVC: UIViewController,UIScrollViewDelegate {
     private var angezeigterTag:Date?{
         didSet{
             guard let angezeigterTag    = angezeigterTag else {return}
+            
+            
             let meditations             = Meditation.getDays(start: angezeigterTag, ende: angezeigterTag)
             statistic                   = Statistik(meditationen: meditations, start: angezeigterTag, ende: angezeigterTag)
         }
+    }
+    
+    @IBAction func monatsButtonPressed(_ sender: UIButton) {
+        
     }
     
     //MARK: unwindSegue (ungenutzt?)
@@ -113,6 +119,7 @@ class WochenUndTagesKalenderVC: UIViewController,UIScrollViewDelegate {
     private var stundenView:StundenView?
     private var kalenderView:KalenderView?
     private var tageView:TageView?
+    @IBOutlet weak var monatsButton: UIButton!
     
     
     private var anzahlSichtbareTageInView:Int{ return isLandscape ? 4 : 1 }

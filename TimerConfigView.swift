@@ -23,14 +23,15 @@ class TimerConfigView: NibLoadingView,YSRangeSliderDelegate {
     
     var timerConfig:TimerConfig?{
         didSet{
+            guard let timerConfig = timerConfig  else {return}
             resetTimer()
             initSlider                          = true
             
-            mettaOpenEnd                        = timerConfig?.mettaOpenEnd ?? false
+            mettaOpenEnd                        = timerConfig.mettaOpenEnd
             
-            anapanaAnteil                       = timerConfig?.dauerAnapana ?? 0
-            vipassanaAnteil                     = timerConfig?.dauerVipassana ?? 0
-            mettaAnteil                         = timerConfig?.dauerMetta ?? 0
+            anapanaAnteil                       = timerConfig.dauerAnapana
+            vipassanaAnteil                     = timerConfig.dauerVipassana
+            mettaAnteil                         = timerConfig.dauerMetta
             
             gesamtDauer                         = Int32(mettaAnteil!) + Int32(anapanaAnteil!) + Int32(vipassanaAnteil!)
             
@@ -39,7 +40,8 @@ class TimerConfigView: NibLoadingView,YSRangeSliderDelegate {
             
             initSlider                           = false
             
-            nameLabel?.text     = timerConfig?.name
+            nameLabel?.text                     = timerConfig.name
+            blurView.isHidden                   = true
         }
     }
     var mettaOpenEnd=false{
@@ -112,6 +114,11 @@ class TimerConfigView: NibLoadingView,YSRangeSliderDelegate {
     
     
     //Outlets
+    
+    @IBOutlet weak var blurView: UIVisualEffectView!
+    @IBAction func tappedOnEmptyTimer(_ sender: UITapGestureRecognizer) {
+        controlTappedDelegate?.controlTapped()
+    }
     
     @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!{ didSet{ tapGestureRecognizer.isEnabled  = zeigeSteuerungsPanel}}
     @IBAction func viewTapped(_ sender: UITapGestureRecognizer) {
@@ -194,8 +201,8 @@ class TimerConfigView: NibLoadingView,YSRangeSliderDelegate {
         
 
     }
-    var delegate:TimerConfigViewDelegate?
-    var controlTappedDelegate:TimerConfigViewDelegateControlTapped?
+    weak var delegate:TimerConfigViewDelegate?
+    weak var controlTappedDelegate:TimerConfigViewDelegateControlTapped?
     
     //MARK: TIMER FUNCTIONS
     //Timer Funktionalität
@@ -286,23 +293,21 @@ class TimerConfigView: NibLoadingView,YSRangeSliderDelegate {
                     //resetTimer()
                 }
             }
-            
-//            if ergebnis.gong{
-//                guard let delegate = UIApplication.shared.delegate as? AppDelegate else{return}
-//                if delegate.playSound(){mettaLabel.text = "played Sound"}else{mettaLabel.text = "Fehler"}
-//            }
-            
         }
     }
     private func initAblaufBalken(){
         rangeSlider.coverSlider()
     }
+    
+    deinit {
+        print("deinit TimerConfigView")
+    }
 }
-protocol TimerConfigViewDelegate {
+protocol TimerConfigViewDelegate : class{
     func rechterDaumenBeiMettaOpenEndBewegt()
 }
 
-protocol TimerConfigViewDelegateControlTapped {
+protocol TimerConfigViewDelegateControlTapped : class {
     func controlTapped()
 }
 

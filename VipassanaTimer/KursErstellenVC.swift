@@ -80,4 +80,7 @@ class KursErstellenVC: UIViewController,UIPickerViewDataSource,UIPickerViewDeleg
         kursTemplatePicker.setValue(DesignPatterns.mocha, forKey: "textColor")
         startDatePicker.setValue(DesignPatterns.mocha, forKey: "textColor")
     }
+    deinit {
+        print("deinit KursErstellenVC")
+    }
 }

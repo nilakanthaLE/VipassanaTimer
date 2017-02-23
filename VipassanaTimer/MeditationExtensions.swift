@@ -32,6 +32,7 @@ extension Meditation:EintragInKalender{
         }
         return nil
     }
+    
     func addPause(start:Date,ende:Date){
         if let pause = Dauer.new(start: start, ende: ende){
             pausen?.adding(pause)
@@ -41,6 +42,28 @@ extension Meditation:EintragInKalender{
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         let request             = NSFetchRequest<Meditation>(entityName: "Meditation")
+        request.sortDescriptors = [NSSortDescriptor(key: "start", ascending: true)]
+        if let meditationen = (try? context.fetch(request)){
+            return meditationen
+        }
+        return [Meditation]()
+    }
+    class func getAllTillToday()->[Meditation]{
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        let request             = NSFetchRequest<Meditation>(entityName: "Meditation")
+        request.predicate       = NSPredicate(format: "start <= %@", Date() as CVarArg)
+        request.sortDescriptors = [NSSortDescriptor(key: "start", ascending: true)]
+        if let meditationen = (try? context.fetch(request)){
+            return meditationen
+        }
+        return [Meditation]()
+    }
+    class func getAllOhneKurse()->[Meditation]{
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        let request             = NSFetchRequest<Meditation>(entityName: "Meditation")
+        request.predicate       = NSPredicate(format: "kurs = nil")
         request.sortDescriptors = [NSSortDescriptor(key: "start", ascending: true)]
         if let meditationen = (try? context.fetch(request)){
             return meditationen
@@ -135,8 +158,8 @@ extension Meditation:EintragInKalender{
         return eintraege
     }
     var kalenderEintrag:KalenderEintrag{
-        guard let start = start, let ende = ende else{return KalenderEintrag()}
-        return KalenderEintrag(starts: start as Date, ende: ende as Date, view: eintragView)
+        guard let start = start else{return KalenderEintrag()}
+        return KalenderEintrag(starts: start as Date, ende: start.addingTimeInterval(gesamtDauer) as Date, view: eintragView)
     }
     
     class func getValuesFor(graphTyp:GraphTypen,von:Date,bis:Date) -> (werte:[Double],xAchsenBeschriftung:[String]){
@@ -203,191 +226,10 @@ class MeditationsKalenderEintrag: NibLoadingView{
     @IBOutlet weak var vipassanaView: UIView!
     
     @IBAction func viewTapped(_ sender: UITapGestureRecognizer) {
-        
+        print("meditation tapped\(meditation)")
         
         NotificationCenter.default.post(name: Notification.Name.MyNames.meditationsKalenderEintragPressed, object: nil, userInfo: ["meditation":meditation])
     }
 
 }
 
-struct Statistik {
-    private let start:Date
-    private let ende:Date
-    private let gesamtDauer:TimeInterval
-    private let anzahlMeditationen:Int
-    private var numberOfDays:Int{
-        return Date.daysBetween(start: start, end: ende)
-    }
-    //init
-    init (start _start:Date,ende _ende:Date){
-        self.init(meditationen:Meditation.getDays(start: _start, ende: _ende),start:_start,ende:_ende)
-    }
-    init(meditationen:[Meditation],start _start:Date,ende _ende:Date){
-        start   = _start
-        ende    = _ende
-        anzahlMeditationen      = meditationen.count
-        gesamtDauer             = meditationen.reduce(0.0) { $0 + ($1.gesamtDauer) }
-    }
-    //Ergebnis
-    var meditationsPerDay:Double{
-        return Double(anzahlMeditationen) / Double(numberOfDays)
-    }
-    var timePerDay:TimeInterval{
-        return numberOfDays == 0 ? 0 : gesamtDauer / Double(numberOfDays)
-    }
-    var timePerMeditation:TimeInterval{
-        return anzahlMeditationen == 0 ? 0 : gesamtDauer / Double(anzahlMeditationen)
-    }
-    var timePerWeek:TimeInterval{
-        let anzahlWochen = ceil(Double(numberOfDays) / 7.0)
-        return anzahlWochen == 0 ? 0 : gesamtDauer / Double(anzahlWochen)
-    }
-    var timePerMonth:TimeInterval{
-        let anzahlMonate = Date.anzahlMonate(von: start, bis: ende)
-        print("start:\(start.string("dd.MM.yyyy")) bis:\(ende.string("dd.MM.yyyy")) monate:\(anzahlMonate)")
-        return anzahlMonate == 0 ? 0 : gesamtDauer / Double(anzahlMonate)
-    }
-    
-    var timesPerDay:Double{
-        return numberOfDays == 0 ? 0 : Double(anzahlMeditationen) / Double(numberOfDays)
-    }
-    var tagDauerLabelText:String{
-        return "∑ \(gesamtDauer.hhmmString)h | ø \(timePerMeditation.hhmmString)h pro M."
-    }
-    var wocheDauerLabelText:String{
-        return "∑ \(gesamtDauer.hhmmString)h | ø \(timePerDay.hhmmString)h pro Tag"
-    }
-    
-    var tagAnzahlLabelText:String{
-        return "∑ \(anzahlMeditationen) | ø \(timePerMeditation.hhmmString)h pro M."
-    }
-    var wocheAnzahlLabelText:String{
-        return "∑ \(anzahlMeditationen) | ø \(timesPerDay.zweiKommaStellenString) pro Tag"
-    }
-    
-    
-}
-
-struct StatistikUeberblickDaten{
-    //Zeitraum = erster Eintrag / letzter Eintrag
-    var gesamtAktuellTag:TimeInterval{
-        let meditationen    = Meditation.getDays(start: Date(), ende: Date())
-        return Meditation.gesamtDauer(meditationen: meditationen)
-    }
-    var gesamtAktuellWoche:TimeInterval{
-        let meditationen    = Meditation.getDays(start: Date().mondayOfWeek, ende: Date().sundayOfWeek)
-        return Meditation.gesamtDauer(meditationen: meditationen)
-    }
-    var gesamtAktuellMonat:TimeInterval{
-        let meditationen    = Meditation.getDays(start: Date().startOfMonth, ende: Date().endOfMonth)
-        return Meditation.gesamtDauer(meditationen: meditationen)
-    }
-    
-    var gesamtVorherigTag:TimeInterval{
-        let meditationen    = Meditation.getDays(start: Date().addDays(-1), ende: Date().addDays(-1))
-        return Meditation.gesamtDauer(meditationen: meditationen)
-    }
-    var gesamtVorherigWoche:TimeInterval{
-        let vorwoche        = Date().mondayOfWeek.addDays(-1)
-        let meditationen    = Meditation.getDays(start: vorwoche.mondayOfWeek, ende: vorwoche.sundayOfWeek)
-        return Meditation.gesamtDauer(meditationen: meditationen)
-    }
-    var gesamtVorherigMonat:TimeInterval{
-        let vormonat        = Date().startOfMonth.addDays(-1)
-        let meditationen    = Meditation.getDays(start: vormonat.startOfMonth, ende: vormonat.endOfMonth)
-        return Meditation.gesamtDauer(meditationen: meditationen)
-    }
-    
-    var gesamtAenderungTag:(text:String,farbe:UIColor){
-        let aenderung   = gesamtAktuellTag - gesamtVorherigTag
-        let farbe       = getFarbe(aenderung:aenderung)
-        let dreieck     = getZeichen(aenderung: aenderung)
-        let prozent     = (gesamtVorherigTag == 0 ? (gesamtAktuellTag == 0 ? 0 : 1) :  1 - (gesamtAktuellTag/gesamtVorherigTag))*100
-        let string      = dreieck + " " + abs(aenderung).hhmmString + " (" +  "\(Int(abs(prozent)))%" + ")"
-        return (text:string,farbe:farbe)
-    }
-    
-    var gesamtAenderungWoche:(text:String,farbe:UIColor){
-        let aenderung   = gesamtAktuellWoche - gesamtVorherigWoche
-        let farbe       = getFarbe(aenderung:aenderung)
-        let dreieck     = getZeichen(aenderung: aenderung)
-        let prozent     = (gesamtVorherigWoche == 0 ? (gesamtAktuellWoche == 0 ? 0 : 1) : 1 - (gesamtAktuellWoche/gesamtVorherigWoche) )*100
-        let string      = dreieck + " " + abs(aenderung).hhmmString + " (" +  "\(Int(abs(prozent)))%" + ")"
-        return (text:string,farbe:farbe)
-    }
-    
-    var gesamtAenderungMonat:(text:String,farbe:UIColor){
-        let aenderung   = gesamtAktuellMonat - gesamtVorherigMonat
-        let farbe       = getFarbe(aenderung:aenderung)
-        let dreieck     = getZeichen(aenderung: aenderung)
-        let prozent     = (gesamtVorherigMonat == 0 ? (gesamtAktuellMonat == 0 ? 0 : 1) : 1 - (gesamtAktuellMonat/gesamtVorherigMonat))*100
-        let string      = dreieck + " " + abs(aenderung).hhmmString + " (" +  "\(Int(abs(prozent)))%" + ")"
-        return (text:string,farbe:farbe)
-    }
-    
-    var durchschnittAenderungTag:(text:String,farbe:UIColor){
-        let aenderung   = gesamtVorherigTag - durchschnittTag
-        let farbe       = getFarbe(aenderung:aenderung)
-        let dreieck     = getZeichen(aenderung: aenderung)
-        let prozent     = (durchschnittTag == 0 ? (gesamtVorherigTag == 0 ? 0 : 1) :  1 - (gesamtVorherigTag/durchschnittTag))*100
-        let string      = dreieck + " " + abs(aenderung).hhmmString + " (" +  "\(Int(abs(prozent)))%" + ")"
-        return (text:string,farbe:farbe)
-    }
-    var durchschnittAenderungWoche:(text:String,farbe:UIColor){
-        let aenderung   = gesamtVorherigWoche - durchSchnittWoche
-        let farbe       = getFarbe(aenderung:aenderung)
-        let dreieck     = getZeichen(aenderung: aenderung)
-        let prozent     = (durchSchnittWoche == 0 ? (gesamtVorherigWoche == 0 ? 0 : 1) : 1 - (gesamtVorherigWoche/durchSchnittWoche) )*100
-        let string      = dreieck + " " + abs(aenderung).hhmmString + " (" +  "\(Int(abs(prozent)))%" + ")"
-        return (text:string,farbe:farbe)
-    }
-    var durchschnittAenderungMonat:(text:String,farbe:UIColor){
-        let aenderung   = gesamtVorherigMonat - durchSchnittMonat
-        let farbe       = getFarbe(aenderung:aenderung)
-        let dreieck     = getZeichen(aenderung: aenderung)
-        let prozent     = (durchSchnittMonat == 0 ? (gesamtVorherigMonat == 0 ? 0 : 1) : 1 - (gesamtVorherigMonat/durchSchnittMonat))*100
-        let string      = dreieck + " " + abs(aenderung).hhmmString + " (" +  "\(Int(abs(prozent)))%" + ")"
-        return (text:string,farbe:farbe)
-    }
-    
-    var startDateFuerDurchschnitt:Date? {
-        let appConfig = AppConfig.get()
-        if let datum = appConfig?.startDatumStatistik{
-            return datum as Date
-        }else{
-            return Meditation.getAll().first?.start as Date?
-        }
-    }
-    var endeDateFuerDurchschnitt:Date? = Date()
-    var durchschnittTag:TimeInterval{
-        guard let start     = startDateFuerDurchschnitt, let ende = endeDateFuerDurchschnitt else{return 0}
-        let meditationen    = Meditation.getDays(start: start, ende: ende)
-        let statistik       = Statistik(meditationen: meditationen, start: start, ende: ende)
-        return statistik.timePerDay
-    }
-    var durchSchnittWoche:TimeInterval{
-        guard let start = startDateFuerDurchschnitt, let ende = endeDateFuerDurchschnitt else{return 0}
-        let meditationen    = Meditation.getDays(start: start, ende: ende)
-        let statistik       = Statistik(meditationen: meditationen, start: start, ende: ende)
-        return statistik.timePerWeek
-    }
-    var durchSchnittMonat:TimeInterval{
-        guard let start = startDateFuerDurchschnitt, let ende = endeDateFuerDurchschnitt else{return 0}
-        let meditationen    = Meditation.getDays(start: start, ende: ende)
-        let statistik       = Statistik(meditationen: meditationen, start: start, ende: ende)
-        return statistik.timePerMonth
-    }
-    
-    var gesamt:TimeInterval{
-        return Meditation.gesamtDauer(meditationen: Meditation.getAll())
-    }
-    //helper
-    private func getZeichen(aenderung:TimeInterval) -> String{
-        return aenderung > 0 ? "▲" : aenderung == 0 ? "=" : "▼"
-    }
-    private func getFarbe(aenderung:TimeInterval) -> UIColor{
-        return aenderung > 0 ? UIColor.init(red: 51.0/255.0, green: 102.0/255.0, blue: 0.0/255.0, alpha: 1.0) : aenderung == 0 ? UIColor.black : UIColor.red
-    }
-    
-    
-}

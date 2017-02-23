@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,11 +19,11 @@
                         <viewControllerLayoutGuide type="bottom" id="nn9-sq-Jxz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xx4-aD-4sF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WWM-hT-CWL" customClass="KalenderView" customModule="MyCalendar">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -55,7 +55,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vWa-PG-CDm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="UEt-AQ-A4Z" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1531" y="897"/>
+            <point key="canvasLocation" x="1592" y="897"/>
         </scene>
         <!--StatistikVC-->
         <scene sceneID="CSx-M8-oJa">
@@ -66,14 +66,14 @@
                         <viewControllerLayoutGuide type="bottom" id="Q2f-gu-YiL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="m9D-H3-ogq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GyZ-Da-mIx">
-                                <rect key="frame" x="0.0" y="64" width="414" height="75"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="75"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1k-wS-WgJ">
-                                        <rect key="frame" x="20" y="0.0" width="374" height="42"/>
+                                        <rect key="frame" x="20" y="0.0" width="280" height="42"/>
                                         <connections>
                                             <outlet property="dataSource" destination="hTH-2v-QKF" id="tgr-Nf-fyx"/>
                                             <outlet property="delegate" destination="hTH-2v-QKF" id="3Md-ff-mwo"/>
@@ -86,20 +86,20 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bis:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gq8-vV-i72">
-                                        <rect key="frame" x="281" y="49.666666666666671" width="28" height="20.999999999999986"/>
+                                        <rect key="frame" x="187" y="49.5" width="28" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hXn-Wk-Nr2">
-                                        <rect key="frame" x="61" y="45.333333333333329" width="72" height="30.000000000000014"/>
+                                        <rect key="frame" x="61" y="45.5" width="72" height="30"/>
                                         <state key="normal" title="01.01.2017"/>
                                         <connections>
                                             <action selector="vonButtonPressed:" destination="hTH-2v-QKF" eventType="touchUpInside" id="8Eu-t1-uiJ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPy-CL-U5i">
-                                        <rect key="frame" x="317" y="45" width="77" height="30"/>
+                                        <rect key="frame" x="223" y="45" width="77" height="30"/>
                                         <state key="normal" title="02.02.2017"/>
                                         <connections>
                                             <action selector="bisButtonPressed:" destination="hTH-2v-QKF" eventType="touchUpInside" id="3zi-eX-ANC"/>
@@ -125,10 +125,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xUu-iy-PYT">
-                                <rect key="frame" x="20" y="139" width="374" height="100"/>
+                                <rect key="frame" x="16" y="139" width="288" height="100"/>
                                 <subviews>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="hRw-Cb-OXR">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="100"/>
                                         <date key="date" timeIntervalSinceReferenceDate="507733814.98868102">
                                             <!--2017-02-02 13:10:14 +0000-->
                                         </date>
@@ -147,7 +147,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YG1-RK-JhQ" customClass="StatistikView" customModule="VipassanaTimer" customModuleProvider="target">
-                                <rect key="frame" x="20" y="239" width="374" height="477"/>
+                                <rect key="frame" x="16" y="239" width="288" height="309"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
@@ -195,74 +195,83 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3WK-7L-aoh">
-                                <rect key="frame" x="82" y="28" width="250" height="30"/>
+                                <rect key="frame" x="35" y="28" width="250" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="ear-7A-7Tc"/>
+                                    <constraint firstAttribute="height" constant="40" id="igi-KJ-Euh"/>
                                 </constraints>
                                 <state key="normal" title="Meditation starten">
                                     <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="gXi-Gn-IRQ" kind="presentation" id="Efm-H0-wPh"/>
+                                    <segue destination="gXi-Gn-IRQ" kind="presentation" modalTransitionStyle="flipHorizontal" id="Efm-H0-wPh"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPV-FH-kCn">
-                                <rect key="frame" x="20" y="698" width="119.33333333333334" height="30"/>
+                                <rect key="frame" x="16" y="520" width="90.5" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Kalender">
                                     <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="S2M-uB-MAp" kind="presentation" id="o7J-Ea-2Od"/>
+                                    <segue destination="S2M-uB-MAp" kind="presentation" modalTransitionStyle="flipHorizontal" id="o7J-Ea-2Od"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hXr-mK-oaU">
-                                <rect key="frame" x="147.33333333333331" y="698" width="119.33333333333331" height="30"/>
+                                <rect key="frame" x="114.5" y="520" width="91" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Kurse">
                                     <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="bTq-fa-2io" kind="presentation" id="rVq-dT-cKM"/>
+                                    <segue destination="bTq-fa-2io" kind="presentation" modalTransitionStyle="flipHorizontal" id="rVq-dT-cKM"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YRd-Hi-XvD" customClass="StatistikUeberblick" customModule="VipassanaTimer" customModuleProvider="target">
-                                <rect key="frame" x="20" y="66" width="374" height="624"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YRd-Hi-XvD" customClass="StatistikUeberblick" customModule="VipassanaTimer" customModuleProvider="target">
+                                <rect key="frame" x="16" y="76" width="288" height="436"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPj-Yp-57x">
-                                <rect key="frame" x="274.66666666666674" y="698" width="119.33333333333331" height="30"/>
+                                <rect key="frame" x="213.5" y="520" width="90.5" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Statistiken">
                                     <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="1VQ-Sf-ZdZ" kind="presentation" id="SBZ-A9-a3F"/>
+                                    <segue destination="1VQ-Sf-ZdZ" kind="presentation" modalTransitionStyle="flipHorizontal" id="SBZ-A9-a3F"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J0w-hm-GqN" customClass="StatistikUeberblick2" customModule="VipassanaTimer" customModuleProvider="target">
+                                <rect key="frame" x="16" y="76" width="288" height="436"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="J0w-hm-GqN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0DT-hO-8YT"/>
                             <constraint firstItem="hXr-mK-oaU" firstAttribute="height" secondItem="3WK-7L-aoh" secondAttribute="height" id="24X-DD-vuy"/>
                             <constraint firstItem="sPV-FH-kCn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="2vU-Q4-S0S"/>
                             <constraint firstItem="dPj-Yp-57x" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="6Oh-c6-E8R"/>
                             <constraint firstItem="hXr-mK-oaU" firstAttribute="top" secondItem="YRd-Hi-XvD" secondAttribute="bottom" constant="8" symbolic="YES" id="8mX-F9-9M7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="J0w-hm-GqN" secondAttribute="trailing" id="9w6-K9-pJR"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sPV-FH-kCn" secondAttribute="bottom" constant="8" symbolic="YES" id="Cce-7e-Mpt"/>
                             <constraint firstItem="YRd-Hi-XvD" firstAttribute="centerX" secondItem="3WK-7L-aoh" secondAttribute="centerX" id="Clv-kM-wLT"/>
                             <constraint firstItem="hXr-mK-oaU" firstAttribute="width" secondItem="sPV-FH-kCn" secondAttribute="width" id="HnO-DT-a6k"/>
                             <constraint firstItem="sPV-FH-kCn" firstAttribute="width" secondItem="hXr-mK-oaU" secondAttribute="width" id="L7k-aw-JLH"/>
+                            <constraint firstItem="J0w-hm-GqN" firstAttribute="top" secondItem="3WK-7L-aoh" secondAttribute="bottom" constant="8" symbolic="YES" id="PB8-XE-ANd"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hXr-mK-oaU" secondAttribute="bottom" constant="8" symbolic="YES" id="T9q-X3-sK2"/>
                             <constraint firstItem="hXr-mK-oaU" firstAttribute="leading" secondItem="sPV-FH-kCn" secondAttribute="trailing" constant="8" symbolic="YES" id="UjJ-R7-zgk"/>
                             <constraint firstItem="3WK-7L-aoh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="ZmU-sL-lcm"/>
+                            <constraint firstItem="J0w-hm-GqN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="aCq-oU-NIp"/>
                             <constraint firstItem="3WK-7L-aoh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dvt-0M-5p1"/>
                             <constraint firstItem="YRd-Hi-XvD" firstAttribute="top" secondItem="3WK-7L-aoh" secondAttribute="bottom" constant="8" symbolic="YES" id="eBB-cl-K9a"/>
                             <constraint firstItem="dPj-Yp-57x" firstAttribute="width" secondItem="hXr-mK-oaU" secondAttribute="width" id="fst-06-fgB"/>
@@ -270,6 +279,7 @@
                             <constraint firstItem="dPj-Yp-57x" firstAttribute="leading" secondItem="hXr-mK-oaU" secondAttribute="trailing" constant="8" symbolic="YES" id="kd3-aB-C5a"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dPj-Yp-57x" secondAttribute="bottom" constant="8" symbolic="YES" id="rIY-Jd-PXd"/>
                             <constraint firstItem="YRd-Hi-XvD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="sx9-wS-T0a"/>
+                            <constraint firstItem="dPj-Yp-57x" firstAttribute="top" secondItem="J0w-hm-GqN" secondAttribute="bottom" constant="8" symbolic="YES" id="tSc-Ze-hOh"/>
                             <constraint firstItem="sPV-FH-kCn" firstAttribute="height" secondItem="3WK-7L-aoh" secondAttribute="height" id="vGQ-S7-yNL"/>
                             <constraint firstItem="hXr-mK-oaU" firstAttribute="width" secondItem="dPj-Yp-57x" secondAttribute="width" id="whw-ai-Hcu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YRd-Hi-XvD" secondAttribute="trailing" id="yjv-ID-fVD"/>
@@ -280,33 +290,34 @@
                         <outlet property="kurseButton" destination="hXr-mK-oaU" id="WJZ-Q2-EvM"/>
                         <outlet property="meditationStartenButton" destination="3WK-7L-aoh" id="cPx-Tu-rfd"/>
                         <outlet property="statistikButton" destination="dPj-Yp-57x" id="CEs-mD-FYG"/>
+                        <outlet property="statistikUeberblick2View" destination="J0w-hm-GqN" id="rWT-YI-iHj"/>
                         <outlet property="statistikUeberblickView" destination="YRd-Hi-XvD" id="shX-Vg-aY2"/>
                         <segue destination="GHq-yl-v76" kind="presentation" identifier="statistikStartDatumInfoSegue" modalTransitionStyle="partialCurl" id="yHX-1c-niS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="748.36956521739137" y="15.942028985507248"/>
+            <point key="canvasLocation" x="747.82608695652175" y="15.489130434782609"/>
         </scene>
         <!--meine Kurse-->
         <scene sceneID="gsh-X9-0hz">
             <objects>
                 <tableViewController id="dKC-TO-lnL" customClass="MeineKurseTableVC" customModule="VipassanaTimer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="pQG-Lp-Mm6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="Luk-SM-GJ9">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Luk-SM-GJ9" id="KEb-LX-wPV">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XgA-CU-mJc" customClass="KursTableCellView" customModule="VipassanaTimer" customModuleProvider="target">
-                                            <rect key="frame" x="20" y="0.0" width="374" height="44"/>
+                                            <rect key="frame" x="20" y="0.0" width="280" height="44"/>
                                         </view>
                                     </subviews>
                                     <constraints>
@@ -351,11 +362,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Dmx-yC-dlc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="i1m-09-42N">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mae-pa-ItT">
-                                <rect key="frame" x="20" y="100" width="374" height="109"/>
+                                <rect key="frame" x="20" y="100" width="280" height="109"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="109" id="zaw-Zy-PJX"/>
                                 </constraints>
@@ -364,22 +375,22 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kurstyp wählen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QcR-pl-Uxq">
-                                <rect key="frame" x="20" y="72" width="117.33333333333334" height="20.333333333333329"/>
+                                <rect key="frame" x="16" y="72" width="117.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8XR-ur-DQ9">
-                                <rect key="frame" x="20" y="217" width="132.66666666666666" height="20.333333333333343"/>
+                                <rect key="frame" x="20" y="217" width="133" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vom:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBf-7J-M6Y">
-                                        <rect key="frame" x="0.0" y="0.0" width="37.333333333333336" height="20.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="37.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02.05.2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAX-U7-hni">
-                                        <rect key="frame" x="47.333333333333336" y="0.0" width="85.333333333333314" height="20.333333333333343"/>
+                                        <rect key="frame" x="47.5" y="0.0" width="85.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -387,16 +398,16 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cAO-eE-mbj">
-                                <rect key="frame" x="274" y="217" width="120" height="20.333333333333343"/>
+                                <rect key="frame" x="180" y="217" width="120" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bis:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pht-67-KFI">
-                                        <rect key="frame" x="0.0" y="0.0" width="27.333333333333314" height="20.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="27.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13.05.2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yo6-dk-aK5">
-                                        <rect key="frame" x="37.333333333333314" y="0.0" width="82.666666666666686" height="20.333333333333343"/>
+                                        <rect key="frame" x="37.5" y="0.0" width="82.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -404,14 +415,14 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfh-eR-6Ak">
-                                <rect key="frame" x="177.66666666666666" y="698" width="59" height="30"/>
+                                <rect key="frame" x="130.5" y="530" width="59" height="30"/>
                                 <state key="normal" title="erstellen"/>
                                 <connections>
                                     <action selector="erstellenButtonPressed:" destination="HeS-6a-ogq" eventType="touchUpInside" id="qB7-bA-RBz"/>
                                 </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="57p-Y2-tZZ">
-                                <rect key="frame" x="20" y="570" width="374" height="120"/>
+                                <rect key="frame" x="16" y="402" width="288" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="ica-Zx-Fhk"/>
                                 </constraints>
@@ -453,7 +464,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q1M-QS-Qyv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4438.858695652174" y="-1126.0869565217392"/>
+            <point key="canvasLocation" x="4598" y="-724"/>
         </scene>
         <!--Meditation starten-->
         <scene sceneID="WNv-Ll-Fgd">
@@ -464,19 +475,19 @@
                         <viewControllerLayoutGuide type="bottom" id="wyS-SY-dPb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="M7d-k9-9dc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ofg-fA-uZa" customClass="TimerConfigView" customModule="VipassanaTimer" customModuleProvider="target">
-                                <rect key="frame" x="20" y="141" width="374" height="110"/>
+                                <rect key="frame" x="16" y="123" width="288" height="110"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="gGg-Ha-bAr"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Damit die Hinweistöne erklingen können, darf die App während der Meditation nicht geschlossen werden." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uY-lb-RhF">
-                                <rect key="frame" x="20" y="72" width="374" height="61"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="16" y="72" width="288" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -507,27 +518,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R13-sz-fvn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="96E-sf-sbl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2195" y="51"/>
+            <point key="canvasLocation" x="2518" y="90"/>
         </scene>
         <!--meine Timer-->
         <scene sceneID="I5W-yb-I8s">
             <objects>
                 <tableViewController id="PRY-vK-6Bc" customClass="TimerConfigsTableVC" customModule="VipassanaTimer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="SK6-uB-Tkn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="cell" rowHeight="100" id="nox-si-RK9" customClass="TimerConfigTableViewCell" customModule="VipassanaTimer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nox-si-RK9" id="SI0-bg-N4D">
-                                    <rect key="frame" x="0.0" y="0.0" width="347" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="253" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7NT-Fc-STn" customClass="TimerConfigView" customModule="VipassanaTimer" customModuleProvider="target">
-                                            <rect key="frame" x="8" y="8" width="331" height="83.666666666666671"/>
+                                            <rect key="frame" x="8" y="8" width="237" height="83.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <gestureRecognizers/>
                                         </view>
@@ -565,7 +576,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oBG-dm-xtJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3102" y="519"/>
+            <point key="canvasLocation" x="3339" y="518"/>
         </scene>
         <!--Timer konfigurieren-->
         <scene sceneID="hXx-h4-A4G">
@@ -576,19 +587,19 @@
                         <viewControllerLayoutGuide type="bottom" id="WLr-1R-Jp3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1tE-Yc-dO0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sNg-RO-mnv" customClass="TimerConfigView" customModule="VipassanaTimer" customModuleProvider="target">
-                                <rect key="frame" x="20" y="72" width="374" height="70"/>
+                                <rect key="frame" x="16" y="72" width="250" height="70"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="8iH-zO-VOv"/>
                                 </constraints>
                             </view>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6y-b3-wIv">
-                                <rect key="frame" x="20" y="287.66666666666674" width="374" height="428.33333333333326"/>
+                            <datePicker contentMode="scaleToFill" verticalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6y-b3-wIv">
+                                <rect key="frame" x="20" y="256" width="280" height="292"/>
                                 <date key="date" timeIntervalSinceReferenceDate="505267200.93220198">
                                     <!--2017-01-05 00:00:00 +0000-->
                                 </date>
@@ -597,28 +608,29 @@
                                 </connections>
                             </datePicker>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gMl-j7-Lt1">
-                                <rect key="frame" x="20" y="162" width="51" height="31"/>
+                                <rect key="frame" x="16" y="150" width="51" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="dVe-Cj-DAt"/>
+                                    <constraint firstAttribute="width" constant="49" id="dma-SA-VJ2"/>
                                 </constraints>
                                 <connections>
                                     <action selector="mettaOpenEndSwitchValueChanged:" destination="OkD-UW-EM1" eventType="valueChanged" id="8l5-VO-gCM"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Metta ohne zeitliche Begrenzung" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8a-K6-YM0">
-                                <rect key="frame" x="77" y="168" width="317" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Metta ohne zeitliche Begrenzung" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="V8a-K6-YM0">
+                                <rect key="frame" x="73" y="156" width="231" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name des Timers, zum Beispiel &quot;Morgenmeditation&quot;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2Q-XE-8xj">
-                                <rect key="frame" x="20" y="239.00000000000003" width="374" height="40.666666666666714"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name des Timers, z.B. &quot;Morgenmeditation&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="A2Q-XE-8xj">
+                                <rect key="frame" x="16" y="227" width="288" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name des Timers" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gDB-Jd-HMN">
-                                <rect key="frame" x="20" y="201" width="374" height="30"/>
+                                <rect key="frame" x="16" y="189" width="288" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="hpB-i7-flY"/>
@@ -631,6 +643,16 @@
                                     <outlet property="delegate" destination="OkD-UW-EM1" id="zGY-GV-1b1"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="toe-YY-sbW">
+                                <rect key="frame" x="274" y="92" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="GOs-mJ-yVv"/>
+                                    <constraint firstAttribute="height" constant="30" id="aTo-JA-Y1r"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="infoButtonPressed:" destination="OkD-UW-EM1" eventType="touchUpInside" id="Ycx-6P-cG4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -638,25 +660,25 @@
                             <constraint firstItem="f6y-b3-wIv" firstAttribute="top" secondItem="A2Q-XE-8xj" secondAttribute="bottom" constant="8" symbolic="YES" id="GGs-bD-GEd"/>
                             <constraint firstItem="f6y-b3-wIv" firstAttribute="leading" secondItem="1tE-Yc-dO0" secondAttribute="leading" constant="20" symbolic="YES" id="IaA-D1-hvX"/>
                             <constraint firstAttribute="bottom" secondItem="f6y-b3-wIv" secondAttribute="bottom" constant="20" symbolic="YES" id="KlF-Kb-Vg7"/>
+                            <constraint firstItem="V8a-K6-YM0" firstAttribute="leading" secondItem="gMl-j7-Lt1" secondAttribute="trailing" constant="8" symbolic="YES" id="R6r-LA-YWl"/>
+                            <constraint firstItem="toe-YY-sbW" firstAttribute="leading" secondItem="sNg-RO-mnv" secondAttribute="trailing" constant="8" symbolic="YES" id="RoX-TY-g59"/>
                             <constraint firstItem="gDB-Jd-HMN" firstAttribute="trailing" secondItem="A2Q-XE-8xj" secondAttribute="trailing" id="T3Q-2y-6qJ"/>
                             <constraint firstAttribute="trailing" secondItem="f6y-b3-wIv" secondAttribute="trailing" constant="20" symbolic="YES" id="TJe-Xd-PUd"/>
                             <constraint firstItem="A2Q-XE-8xj" firstAttribute="leading" secondItem="1tE-Yc-dO0" secondAttribute="leadingMargin" id="YMz-FS-tbF"/>
                             <constraint firstItem="sNg-RO-mnv" firstAttribute="top" secondItem="bHv-cE-pRQ" secondAttribute="bottom" constant="8" symbolic="YES" id="ZIB-WC-ymU"/>
-                            <constraint firstItem="gMl-j7-Lt1" firstAttribute="top" secondItem="sNg-RO-mnv" secondAttribute="bottom" constant="20" id="aGL-5b-XXS"/>
+                            <constraint firstItem="gMl-j7-Lt1" firstAttribute="top" secondItem="sNg-RO-mnv" secondAttribute="bottom" constant="8" symbolic="YES" id="aGL-5b-XXS"/>
                             <constraint firstItem="gDB-Jd-HMN" firstAttribute="leading" secondItem="A2Q-XE-8xj" secondAttribute="leading" id="b3A-VE-egR"/>
                             <constraint firstItem="gMl-j7-Lt1" firstAttribute="leading" secondItem="1tE-Yc-dO0" secondAttribute="leadingMargin" id="b6P-N4-Nt0"/>
-                            <constraint firstItem="sNg-RO-mnv" firstAttribute="trailing" secondItem="1tE-Yc-dO0" secondAttribute="trailingMargin" id="d5i-Hs-PXs"/>
-                            <constraint firstItem="V8a-K6-YM0" firstAttribute="leading" secondItem="gMl-j7-Lt1" secondAttribute="trailing" constant="8" symbolic="YES" id="e9a-Op-OH6"/>
+                            <constraint firstItem="V8a-K6-YM0" firstAttribute="centerY" secondItem="gMl-j7-Lt1" secondAttribute="centerY" id="eFh-Kw-MIL"/>
                             <constraint firstItem="gDB-Jd-HMN" firstAttribute="top" secondItem="gMl-j7-Lt1" secondAttribute="bottom" constant="8" symbolic="YES" id="ghG-Dd-ZXQ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="V8a-K6-YM0" secondAttribute="trailing" id="gmB-Xd-8hF"/>
-                            <constraint firstItem="V8a-K6-YM0" firstAttribute="centerY" secondItem="gMl-j7-Lt1" secondAttribute="centerY" id="kgD-4N-ZPJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="V8a-K6-YM0" secondAttribute="trailing" id="hZM-IM-A5F"/>
+                            <constraint firstItem="toe-YY-sbW" firstAttribute="trailing" secondItem="1tE-Yc-dO0" secondAttribute="trailingMargin" id="lGw-B4-Ith"/>
                             <constraint firstItem="A2Q-XE-8xj" firstAttribute="trailing" secondItem="1tE-Yc-dO0" secondAttribute="trailingMargin" id="miR-Rb-wYs"/>
+                            <constraint firstItem="toe-YY-sbW" firstAttribute="centerY" secondItem="sNg-RO-mnv" secondAttribute="centerY" id="npM-2E-L2k"/>
                             <constraint firstItem="sNg-RO-mnv" firstAttribute="leading" secondItem="1tE-Yc-dO0" secondAttribute="leadingMargin" id="nqn-72-8Ta"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Timer konfigurieren" id="Mzr-SD-8Gr">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="iG6-CX-BM3"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Timer konfigurieren" id="Mzr-SD-8Gr"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="countDownTimePicker" destination="f6y-b3-wIv" id="kBL-cB-dbH"/>
@@ -667,7 +689,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqs-xj-SPu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3818.8405797101454" y="518.47826086956525"/>
+            <point key="canvasLocation" x="4130.625" y="517.6056338028169"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1nt-Fu-BOd">
@@ -685,7 +707,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a4m-iV-kBj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1423" y="51"/>
+            <point key="canvasLocation" x="1725" y="90"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Wqb-PV-ykX">
@@ -703,7 +725,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tMu-L0-Bcl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="683" y="897"/>
+            <point key="canvasLocation" x="746" y="897"/>
         </scene>
         <!--Meditation anpassen-->
         <scene sceneID="idk-2M-7DW">
@@ -714,11 +736,11 @@
                         <viewControllerLayoutGuide type="bottom" id="z85-PM-f36"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tpv-G7-PaD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6h9-hh-uSY" customClass="TimerConfigView" customModule="VipassanaTimer" customModuleProvider="target">
-                                <rect key="frame" x="20" y="72" width="374" height="70"/>
+                                <rect key="frame" x="16" y="72" width="288" height="70"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -726,13 +748,13 @@
                                 </constraints>
                             </view>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Xbf-dV-MOS">
-                                <rect key="frame" x="20" y="150" width="374" height="540"/>
+                                <rect key="frame" x="16" y="150" width="288" height="372"/>
                                 <date key="date" timeIntervalSinceReferenceDate="506260625.72791201">
                                     <!--2017-01-16 11:57:05 +0000-->
                                 </date>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uGf-3e-YxJ">
-                                <rect key="frame" x="321" y="698" width="73" height="30"/>
+                                <rect key="frame" x="231" y="530" width="73" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="mCQ-38-uT1"/>
@@ -745,7 +767,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6M-5f-ORJ">
-                                <rect key="frame" x="20" y="698" width="62" height="30"/>
+                                <rect key="frame" x="16" y="530" width="62" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title=" löschen ">
                                     <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -784,7 +806,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LXu-Dg-4qy" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Qzb-YR-Vra" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2342" y="897"/>
+            <point key="canvasLocation" x="2516" y="897"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="N9a-Ia-VYY">
@@ -813,11 +835,11 @@
                         <viewControllerLayoutGuide type="bottom" id="jmB-P1-73h"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oJ8-K3-QCz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3BQ-yZ-CZx">
-                                <rect key="frame" x="20" y="71.999999999999986" width="374" height="182.66666666666663"/>
+                                <rect key="frame" x="16" y="72" width="284" height="223.5"/>
                                 <string key="text">Ohne Angabe eines Datums wird der Durchschnitt basierend auf dem Datum der ersten eingetragenen Meditation berechnet. Sollten Sie bereits länger zurückliegende Kurse nachgetragen haben, so kann das die Durchschnittswerte verfälschen. Geben Sie in diesem Fall bitte hier das Datum ein, seit dem die app regelmäßig zum Einsatz kommt.
 </string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -825,7 +847,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="nnW-hU-Mn4">
-                                <rect key="frame" x="20" y="540" width="374" height="150"/>
+                                <rect key="frame" x="20" y="372" width="280" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="6oF-PD-tEI"/>
                                 </constraints>
@@ -837,16 +859,16 @@
                                 </connections>
                             </datePicker>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w2q-7c-vla">
-                                <rect key="frame" x="20" y="262.66666666666674" width="374" height="269.33333333333326"/>
+                                <rect key="frame" x="16" y="303.5" width="288" height="60.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Startdatum für Durchschnitt:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECz-fa-1Fs">
-                                        <rect key="frame" x="20" y="124.33333333333331" width="220" height="21"/>
+                                        <rect key="frame" x="20" y="20.5" width="220" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01.01.2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Glo-L3-brS">
-                                        <rect key="frame" x="248" y="124.33333333333331" width="81" height="21"/>
+                                        <rect key="frame" x="248" y="20.5" width="81" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -860,7 +882,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tuB-ID-3H0">
-                                <rect key="frame" x="20" y="698" width="374" height="30"/>
+                                <rect key="frame" x="16" y="530" width="288" height="30"/>
                                 <state key="normal" title="zurücksetzen"/>
                                 <connections>
                                     <action selector="zuruecksetzenButtonPressed:" destination="8Lh-VC-RV7" eventType="touchUpInside" id="fIf-Kd-NJG"/>

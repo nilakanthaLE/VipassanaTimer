@@ -243,6 +243,7 @@
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="vWJ-ac-Y60" firstAttribute="leading" secondItem="WGq-9N-iMn" secondAttribute="trailing" constant="15" id="1IH-nq-TQL"/>
                         <constraint firstItem="mic-7d-y7B" firstAttribute="leading" secondItem="n3p-5E-Wnh" secondAttribute="leading" id="1Jc-GG-S1Z"/>
@@ -315,16 +316,23 @@
                         <constraint firstItem="SrM-Tz-Y7y" firstAttribute="trailing" secondItem="MVE-gi-EbP" secondAttribute="trailing" id="xei-Jv-9Ag"/>
                         <constraint firstAttribute="trailing" secondItem="oeW-YS-rSM" secondAttribute="trailing" constant="30" id="yll-es-jal"/>
                     </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="za9-wi-laZ" appends="YES" id="EJx-ky-E75"/>
+                    </connections>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.80000000000000004" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="vGF-Ol-kpV" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="2Qu-iv-yR5"/>
                 <constraint firstItem="vGF-Ol-kpV" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ke7-XT-Yvi"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
-            <point key="canvasLocation" x="33.5" y="53.5"/>
+            <point key="canvasLocation" x="35" y="59"/>
         </view>
+        <tapGestureRecognizer id="za9-wi-laZ">
+            <connections>
+                <action selector="viewTapped:" destination="-1" id="dNN-7K-ewX"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>

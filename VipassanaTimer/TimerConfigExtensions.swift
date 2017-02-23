@@ -55,16 +55,16 @@ extension TimerConfig {
         if let timerConfig = (try? context.fetch(request))?.first{
             return timerConfig
         }
-        if TimerConfig.getAll().count > 0{
-            let first   = TimerConfig.getAll().first
-            first?.setActive()
-            return first
-        }
-        if let timerConfig      = TimerConfig.new(dauerAnapana: 5 * 60, dauerVipassana: 50 * 60, dauerMetta: 5 * 60, mettaOpenEnd: false){
-            timerConfig.setActive()
-            timerConfig.name    = "meine erste Meditation"
-            return timerConfig
-        }
+//        if TimerConfig.getAll().count > 0{
+//            let first   = TimerConfig.getAll().first
+//            first?.setActive()
+//            return first
+//        }
+//        if let timerConfig      = TimerConfig.new(dauerAnapana: 5 * 60, dauerVipassana: 50 * 60, dauerMetta: 5 * 60, mettaOpenEnd: false){
+//            timerConfig.setActive()
+//            timerConfig.name    = "meine erste Meditation"
+//            return timerConfig
+//        }
         return nil
     }
     class private func get(dauerAnapana:Int32,dauerVipassana:Int32,dauerMetta:Int32,mettaOpenEnd:Bool,name:String?)->TimerConfig?{

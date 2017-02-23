@@ -37,4 +37,7 @@ class MeditationStartenVC: UIViewController,TimerConfigViewDelegateControlTapped
         super.viewWillDisappear(animated)
         UIApplication.shared.isIdleTimerDisabled = false
     }
+    deinit {
+        print("deinit MeditationStartenVC")
+    }
 }

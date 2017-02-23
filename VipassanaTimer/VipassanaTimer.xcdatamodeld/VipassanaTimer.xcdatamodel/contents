@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AppConfig" representedClassName="AppConfig" syncable="YES" codeGenerationType="class">
+        <attribute name="kalenderErstesErscheinen" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="startDatumStatistik" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <entity name="BackgroundInfo" representedClassName="BackgroundInfo" syncable="YES" codeGenerationType="class">
@@ -16,11 +17,14 @@
         <relationship name="meditation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Meditation" inverseName="pausen" inverseEntity="Meditation" syncable="YES"/>
     </entity>
     <entity name="Kurs" representedClassName="Kurs" syncable="YES" codeGenerationType="class">
+        <attribute name="kursTage" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="start" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="kursTemplate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KursTemplate" inverseName="kurse" inverseEntity="KursTemplate" syncable="YES"/>
         <relationship name="meditations" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Meditation" inverseName="kurs" inverseEntity="Meditation" syncable="YES"/>
     </entity>
     <entity name="KursTemplate" representedClassName="KursTemplate" syncable="YES" codeGenerationType="class">
+        <attribute name="kursTage" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="kurse" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Kurs" inverseName="kursTemplate" inverseEntity="Kurs" syncable="YES"/>
         <relationship name="meditationsTemplates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MeditationTemplate" inverseName="kursTemplate" inverseEntity="MeditationTemplate" syncable="YES"/>
@@ -57,13 +61,13 @@
         <attribute name="toDelete" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
+        <element name="AppConfig" positionX="-621" positionY="0" width="128" height="75"/>
         <element name="BackgroundInfo" positionX="-225" positionY="-9" width="128" height="118"/>
         <element name="Dauer" positionX="-218" positionY="227" width="128" height="88"/>
-        <element name="Kurs" positionX="-621" positionY="135" width="128" height="88"/>
-        <element name="KursTemplate" positionX="-830" positionY="243" width="128" height="88"/>
+        <element name="Kurs" positionX="-621" positionY="135" width="128" height="120"/>
+        <element name="KursTemplate" positionX="-830" positionY="243" width="128" height="105"/>
         <element name="Meditation" positionX="-423" positionY="45" width="128" height="193"/>
         <element name="MeditationTemplate" positionX="-621" positionY="296" width="128" height="163"/>
         <element name="TimerConfig" positionX="-432" positionY="-153" width="128" height="148"/>
-        <element name="AppConfig" positionX="-621" positionY="0" width="128" height="60"/>
     </elements>
 </model>

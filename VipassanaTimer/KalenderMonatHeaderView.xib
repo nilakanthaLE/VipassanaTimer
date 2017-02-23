@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KalenderMonatHeaderView" customModule="VipassanaTimer" customModuleProvider="target">
+            <connections>
+                <outlet property="durchschnittLabel" destination="lMO-FR-7Qe" id="8vU-iG-kml"/>
+                <outlet property="monatLabel" destination="IbL-We-D68" id="v5D-nj-Hvq"/>
+                <outlet property="summeLabel" destination="jma-Dq-nZf" id="jgy-El-jzf"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="351" height="88"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summe: 2:07 h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jma-Dq-nZf">
+                    <rect key="frame" x="2" y="71.5" width="85" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Februar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IbL-We-D68">
+                    <rect key="frame" x="145.5" y="2" width="60" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ø 2:07 h pro Tag" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMO-FR-7Qe">
+                    <rect key="frame" x="256.5" y="71.5" width="92.5" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="IbL-We-D68" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="2" id="2Sh-TY-GSx"/>
+                <constraint firstItem="jma-Dq-nZf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="2" id="6d8-qw-ZSN"/>
+                <constraint firstAttribute="bottom" secondItem="jma-Dq-nZf" secondAttribute="bottom" constant="2" id="QDp-nN-d8g"/>
+                <constraint firstAttribute="bottom" secondItem="lMO-FR-7Qe" secondAttribute="bottom" constant="2" id="oUa-Nu-Bhw"/>
+                <constraint firstAttribute="trailing" secondItem="lMO-FR-7Qe" secondAttribute="trailing" constant="2" id="tlB-fu-dVc"/>
+                <constraint firstItem="IbL-We-D68" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="x3t-8A-rB1"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="22.5" y="-236"/>
+        </view>
+    </objects>
+</document>

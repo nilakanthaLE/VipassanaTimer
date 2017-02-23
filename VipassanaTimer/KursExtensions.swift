@@ -16,13 +16,15 @@ extension Kurs{
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         if let kurs = NSEntityDescription.insertNewObject(forEntityName: "Kurs", into: context) as? Kurs{
             kurs.name               = template.name
+            kurs.kursTage           = template.kursTage
+            kurs.kursTemplate       = template
+            kurs.start              = start as NSDate?
             guard let meditations = template.meditationsTemplates as? Set<MeditationTemplate> else {return nil}
             for meditationTemplate in meditations{
                 guard let timeToAdd = meditationTemplate.start?.timeIntervalSince1970 else {return nil}
                 guard let newStartDate    = start.firstSecondOfDay?.addingTimeInterval(timeToAdd) else {return nil}
                 guard let meditation      = Meditation.new(template: meditationTemplate, start: newStartDate) else {return nil}
                 kurs.addToMeditations(meditation)
-                
             }
             return kurs
         }
@@ -37,7 +39,15 @@ extension Kurs{
         }
         return [Kurs]()
     }
-    
+    class func getAllTillToday()->[Kurs]{
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let request             = NSFetchRequest<Kurs>(entityName: "Kurs")
+        request.predicate       = NSPredicate(format: "start <= %@", Date() as CVarArg)
+        if let kurse = try? context.fetch(request){
+            return kurse
+        }
+        return [Kurs]()
+    }
     func delete(){
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         context.delete(self)

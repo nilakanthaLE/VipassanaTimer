@@ -56,7 +56,9 @@ class MeineKurseTableVC: UITableViewController {
     }
     
 
-   
+    deinit {
+        print("deinit MeineKurseTableVC")
+    }
 
 }
 class KursTableCellView:NibLoadingView{
@@ -79,5 +81,7 @@ class KursTableCellView:NibLoadingView{
             
         }
     }
-    
+    deinit {
+        print("deinit KursTableCellView")
+    }
 }

@@ -61,6 +61,7 @@ extension KursTemplate{
             let kursTemplate = new(name: "10-Tage Kurs")
             let tagNull = Date.init(timeIntervalSince1970: 0)
             
+            kursTemplate?.kursTage   = 10
             //0. Tag
             var name                = "nullter Tag"
             var addedTimeToDayNull  = TimeInterval(20*60*60)

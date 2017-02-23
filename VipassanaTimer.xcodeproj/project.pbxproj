@@ -37,6 +37,7 @@
 		5C70572D1E2CF11500D307EF /* EditMeditationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70572C1E2CF11500D307EF /* EditMeditationVC.swift */; };
 		5C70572F1E2D2CF400D307EF /* DesignPatterns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70572E1E2D2CF400D307EF /* DesignPatterns.swift */; };
 		5C7057331E325DF800D307EF /* silence.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5C7057321E325DF800D307EF /* silence.mp3 */; };
+		5C7296B91E5B523000F9B4B1 /* MyCalendar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5CEE46071E3A3765005C8713 /* MyCalendar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5CA9A1331E3F9A64000C28F6 /* KursExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9A1321E3F9A64000C28F6 /* KursExtensions.swift */; };
 		5CA9A1361E40B84C000C28F6 /* KursTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CA9A1351E40B84C000C28F6 /* KursTableCellView.xib */; };
 		5CA9A1381E40C7F3000C28F6 /* StatistikView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9A1371E40C7F3000C28F6 /* StatistikView.swift */; };
@@ -45,27 +46,34 @@
 		5CAFE7E91E24FE1E008F740A /* HauptMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAFE7E81E24FE1E008F740A /* HauptMenuVC.swift */; };
 		5CAFE7EB1E250327008F740A /* MeditationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAFE7EA1E250327008F740A /* MeditationExtensions.swift */; };
 		5CAFE7ED1E250606008F740A /* DauerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAFE7EC1E250606008F740A /* DauerExtensions.swift */; };
+		5CCE42B71E5B5942001373D8 /* EndlessScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7296BC1E5B523F00F9B4B1 /* EndlessScrollView.framework */; };
+		5CCE42B81E5B5942001373D8 /* EndlessScrollView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7296BC1E5B523F00F9B4B1 /* EndlessScrollView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5CD00D2A1E4B36FF0092A352 /* StatistikUeberblick2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CD00D291E4B36FF0092A352 /* StatistikUeberblick2.xib */; };
+		5CD00D2C1E4DF8D80092A352 /* Statistiken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD00D2B1E4DF8D80092A352 /* Statistiken.swift */; };
+		5CD00D331E5360C40092A352 /* KalenderMonatHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CD00D321E5360C40092A352 /* KalenderMonatHeaderView.xib */; };
+		5CD00D351E53640A0092A352 /* DayViewForMonthView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CD00D341E53640A0092A352 /* DayViewForMonthView.xib */; };
+		5CD00D391E54885D0092A352 /* buddha_gold.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD00D371E54885D0092A352 /* buddha_gold.png */; };
+		5CD00D3B1E548E3A0092A352 /* buddha_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD00D3A1E548E3A0092A352 /* buddha_black.png */; };
 		5CEE460B1E3A3832005C8713 /* KalenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEE460A1E3A3832005C8713 /* KalenderVC.swift */; };
 		5CEE460F1E3A391E005C8713 /* MyCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CEE46071E3A3765005C8713 /* MyCalendar.framework */; };
-		5CEE46101E3A391E005C8713 /* MyCalendar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5CEE46071E3A3765005C8713 /* MyCalendar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5CF0B6801E1FB8FD00745BB7 /* MeditationStartenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0B67F1E1FB8FD00745BB7 /* MeditationStartenVC.swift */; };
 		5CF0B6821E226FF800745BB7 /* TimerConfigTimerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0B6811E226FF800745BB7 /* TimerConfigTimerExtension.swift */; };
 		5CF0B6841E23B8C600745BB7 /* BackgroundInfoExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0B6831E23B8C600745BB7 /* BackgroundInfoExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5C7296BA1E5B523000F9B4B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5CEE46021E3A3765005C8713 /* MyCalendar.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C0228C21E3A20B80071ECA2;
+			remoteInfo = MyCalendar;
+		};
 		5CEE46061E3A3765005C8713 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5CEE46021E3A3765005C8713 /* MyCalendar.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 5C0228C31E3A20B80071ECA2;
-			remoteInfo = MyCalendar;
-		};
-		5CEE46111E3A391E005C8713 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5CEE46021E3A3765005C8713 /* MyCalendar.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 5C0228C21E3A20B80071ECA2;
 			remoteInfo = MyCalendar;
 		};
 /* End PBXContainerItemProxy section */
@@ -77,7 +85,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5CEE46101E3A391E005C8713 /* MyCalendar.framework in Embed Frameworks */,
+				5C7296B91E5B523000F9B4B1 /* MyCalendar.framework in Embed Frameworks */,
+				5CCE42B81E5B5942001373D8 /* EndlessScrollView.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,6 +126,7 @@
 		5C70572C1E2CF11500D307EF /* EditMeditationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMeditationVC.swift; sourceTree = "<group>"; };
 		5C70572E1E2D2CF400D307EF /* DesignPatterns.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignPatterns.swift; sourceTree = "<group>"; };
 		5C7057321E325DF800D307EF /* silence.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = silence.mp3; sourceTree = "<group>"; };
+		5C7296BC1E5B523F00F9B4B1 /* EndlessScrollView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EndlessScrollView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CA9A1321E3F9A64000C28F6 /* KursExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KursExtensions.swift; sourceTree = "<group>"; };
 		5CA9A1351E40B84C000C28F6 /* KursTableCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KursTableCellView.xib; sourceTree = "<group>"; };
 		5CA9A1371E40C7F3000C28F6 /* StatistikView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatistikView.swift; sourceTree = "<group>"; };
@@ -125,6 +135,12 @@
 		5CAFE7E81E24FE1E008F740A /* HauptMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HauptMenuVC.swift; sourceTree = "<group>"; };
 		5CAFE7EA1E250327008F740A /* MeditationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeditationExtensions.swift; sourceTree = "<group>"; };
 		5CAFE7EC1E250606008F740A /* DauerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DauerExtensions.swift; sourceTree = "<group>"; };
+		5CD00D291E4B36FF0092A352 /* StatistikUeberblick2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatistikUeberblick2.xib; sourceTree = "<group>"; };
+		5CD00D2B1E4DF8D80092A352 /* Statistiken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statistiken.swift; sourceTree = "<group>"; };
+		5CD00D321E5360C40092A352 /* KalenderMonatHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KalenderMonatHeaderView.xib; sourceTree = "<group>"; };
+		5CD00D341E53640A0092A352 /* DayViewForMonthView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DayViewForMonthView.xib; sourceTree = "<group>"; };
+		5CD00D371E54885D0092A352 /* buddha_gold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buddha_gold.png; sourceTree = "<group>"; };
+		5CD00D3A1E548E3A0092A352 /* buddha_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buddha_black.png; sourceTree = "<group>"; };
 		5CEE46021E3A3765005C8713 /* MyCalendar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MyCalendar.xcodeproj; path = ../MyCalendar/MyCalendar.xcodeproj; sourceTree = "<group>"; };
 		5CEE460A1E3A3832005C8713 /* KalenderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KalenderVC.swift; sourceTree = "<group>"; };
 		5CF0B67F1E1FB8FD00745BB7 /* MeditationStartenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeditationStartenVC.swift; sourceTree = "<group>"; };
@@ -141,6 +157,7 @@
 			files = (
 				5CEE460F1E3A391E005C8713 /* MyCalendar.framework in Frameworks */,
 				4F729124BDB8FC647A780650 /* Pods_VipassanaTimer.framework in Frameworks */,
+				5CCE42B71E5B5942001373D8 /* EndlessScrollView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +167,8 @@
 		14A6926BD097386B939C5B71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5CEE46021E3A3765005C8713 /* MyCalendar.xcodeproj */,
+				5C7296BC1E5B523F00F9B4B1 /* EndlessScrollView.framework */,
 				3DA9F84A927CF18181FB1766 /* Pods_VipassanaTimer.framework */,
 			);
 			name = Frameworks;
@@ -159,7 +178,9 @@
 			isa = PBXGroup;
 			children = (
 				5CEE460A1E3A3832005C8713 /* KalenderVC.swift */,
+				5CD00D341E53640A0092A352 /* DayViewForMonthView.xib */,
 				5C2D03881E3B882800A113FF /* KalenderTitleView.xib */,
+				5CD00D321E5360C40092A352 /* KalenderMonatHeaderView.xib */,
 				5C2D03851E3B6C4500A113FF /* KalenderTagHeader.xib */,
 			);
 			name = Kalender;
@@ -169,7 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				5C342A491E1C03DD007D2305 /* VipassanaTimer */,
-				5CEE46021E3A3765005C8713 /* MyCalendar.xcodeproj */,
 				5C342A481E1C03DD007D2305 /* Products */,
 				E2C6AAE36BBECAB5DAF51DB6 /* Pods */,
 				14A6926BD097386B939C5B71 /* Frameworks */,
@@ -231,6 +251,8 @@
 		5C5502021E1E5B37004C700D /* supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				5CD00D371E54885D0092A352 /* buddha_gold.png */,
+				5CD00D3A1E548E3A0092A352 /* buddha_black.png */,
 				5C342A4A1E1C03DD007D2305 /* AppDelegate.swift */,
 				5C342A541E1C03DD007D2305 /* Assets.xcassets */,
 				5C342A561E1C03DD007D2305 /* LaunchScreen.storyboard */,
@@ -277,11 +299,13 @@
 		5CA9A13B1E40D2C1000C28F6 /* Statistik */ = {
 			isa = PBXGroup;
 			children = (
+				5CD00D2B1E4DF8D80092A352 /* Statistiken.swift */,
 				5CA9A1391E40D2B9000C28F6 /* StatistikVC.swift */,
 				5CA9A1371E40C7F3000C28F6 /* StatistikView.swift */,
 				5C61C45E1E44B9A8005B744D /* StatistikUeberblick.swift */,
 				5C1A6D561E48CF800032A0F3 /* SetAnfangsDatumStatistikVC.swift */,
 				5C61C45C1E44AF4D005B744D /* StatistikUeberblick.xib */,
+				5CD00D291E4B36FF0092A352 /* StatistikUeberblick2.xib */,
 			);
 			name = Statistik;
 			sourceTree = "<group>";
@@ -331,7 +355,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				5CEE46121E3A391E005C8713 /* PBXTargetDependency */,
+				5C7296BB1E5B523000F9B4B1 /* PBXTargetDependency */,
 			);
 			name = VipassanaTimer;
 			productName = VipassanaTimer;
@@ -403,16 +427,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C61C45D1E44AF4D005B744D /* StatistikUeberblick.xib in Resources */,
+				5CD00D351E53640A0092A352 /* DayViewForMonthView.xib in Resources */,
 				5C2D03861E3B6C4500A113FF /* KalenderTagHeader.xib in Resources */,
 				5CAFE7E71E24F93A008F740A /* klangschale.wav in Resources */,
 				5C342A581E1C03DD007D2305 /* LaunchScreen.storyboard in Resources */,
 				5C342A551E1C03DD007D2305 /* Assets.xcassets in Resources */,
 				5CA9A1361E40B84C000C28F6 /* KursTableCellView.xib in Resources */,
+				5CD00D2A1E4B36FF0092A352 /* StatistikUeberblick2.xib in Resources */,
 				5C5501FA1E1D0292004C700D /* TimerConfigView.xib in Resources */,
 				5C7057331E325DF800D307EF /* silence.mp3 in Resources */,
+				5CD00D391E54885D0092A352 /* buddha_gold.png in Resources */,
+				5CD00D331E5360C40092A352 /* KalenderMonatHeaderView.xib in Resources */,
 				5C55020F1E1E8D7E004C700D /* Main.storyboard in Resources */,
 				5C2D03891E3B882800A113FF /* KalenderTitleView.xib in Resources */,
 				5C4B5DD01E27AF4300307437 /* WochenUndTagesKalenderVC.xib in Resources */,
+				5CD00D3B1E548E3A0092A352 /* buddha_black.png in Resources */,
 				5C4B5DD31E2A7BF300307437 /* MeditationsKalenderEintrag.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -499,6 +528,7 @@
 				5CA9A1331E3F9A64000C28F6 /* KursExtensions.swift in Sources */,
 				5C2D038D1E3F6F2C00A113FF /* MeditationTemplateExtension.swift in Sources */,
 				5C4B5DCD1E27AB3300307437 /* WochenUndTagesKalenderVC.swift in Sources */,
+				5CD00D2C1E4DF8D80092A352 /* Statistiken.swift in Sources */,
 				5CA9A1381E40C7F3000C28F6 /* StatistikView.swift in Sources */,
 				5C342A4B1E1C03DD007D2305 /* AppDelegate.swift in Sources */,
 			);
@@ -507,10 +537,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5CEE46121E3A391E005C8713 /* PBXTargetDependency */ = {
+		5C7296BB1E5B523000F9B4B1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MyCalendar;
-			targetProxy = 5CEE46111E3A391E005C8713 /* PBXContainerItemProxy */;
+			targetProxy = 5C7296BA1E5B523000F9B4B1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
