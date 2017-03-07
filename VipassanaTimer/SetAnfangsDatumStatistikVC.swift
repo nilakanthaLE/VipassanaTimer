@@ -8,7 +8,23 @@
 
 import UIKit
 
+extension UINavigationController {
+    open override var shouldAutorotate: Bool{
+        return true
+    }
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        if visibleViewController is UIAlertController{
+            return UIInterfaceOrientationMask.allButUpsideDown
+        }
+        return visibleViewController!.supportedInterfaceOrientations
+    }
+}
+
 class SetAnfangsDatumStatistikVC: UIViewController {
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+
     @IBOutlet weak var anfangsDatumLabel: UILabel!{
         didSet{
             let appConfig = AppConfig.get()
@@ -21,6 +37,7 @@ class SetAnfangsDatumStatistikVC: UIViewController {
                     anfangsDatumLabel.text  = Date().string("dd.MM.yyyy")
                 }
             }
+            
         }
     }
     @IBOutlet weak var datePicker: UIDatePicker!{
@@ -69,5 +86,9 @@ class SetAnfangsDatumStatistikVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         datePicker.setValue(DesignPatterns.mocha, forKey: "textColor")
+        let appConfig = AppConfig.get()
+        if let date = appConfig?.startDatumStatistik{
+            datePicker?.setDate(date as Date, animated: true)
+        }
     }
 }

@@ -1,0 +1,45 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "3N8-ga-ISe"; */
+"3N8-ga-ISe.text" = "Label";
+
+/* Class = "UILabel"; text = "∑ ohne Kurse"; ObjectID = "9zw-Wp-DYg"; */
+"9zw-Wp-DYg.text" = "∑ without courses";
+
+/* Class = "UILabel"; text = "Kurstage"; ObjectID = "Fo3-zZ-Ay7"; */
+"Fo3-zZ-Ay7.text" = "days on a course";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "HDf-95-UmF"; */
+"HDf-95-UmF.text" = "Label";
+
+/* Class = "UILabel"; text = "115:25"; ObjectID = "HTf-HX-MEY"; */
+"HTf-HX-MEY.text" = "115:25";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "MtF-Ir-TBi"; */
+"MtF-Ir-TBi.text" = "Label";
+
+/* Class = "UILabel"; text = "• bisher: "; ObjectID = "O4B-Ue-NdG"; */
+"O4B-Ue-NdG.text" = "• till today: ";
+
+/* Class = "UILabel"; text = "• längster Zeitraum:"; ObjectID = "QZT-Q3-HcX"; */
+"QZT-Q3-HcX.text" = "• longest period:";
+
+/* Class = "UILabel"; text = "mind. zweimal am Tag 1h"; ObjectID = "bdL-Oj-FzP"; */
+"bdL-Oj-FzP.text" = "at least 2 times a day 1 h";
+
+/* Class = "UILabel"; text = "• bis heute: "; ObjectID = "cZR-fc-U0M"; */
+"cZR-fc-U0M.text" = "• till today: ";
+
+/* Class = "UILabel"; text = "mind.einmal am Tag"; ObjectID = "db5-ik-1bC"; */
+"db5-ik-1bC.text" = "at least one time a day";
+
+/* Class = "UILabel"; text = "• längster Zeitraum:"; ObjectID = "fIK-mL-ahR"; */
+"fIK-mL-ahR.text" = "• longest period:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "gaq-YN-jB7"; */
+"gaq-YN-jB7.text" = "Label";
+
+/* Class = "UILabel"; text = "• bis heute: "; ObjectID = "qAO-Du-FWB"; */
+"qAO-Du-FWB.text" = "• till today: ";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "qVu-in-IIs"; */
+"qVu-in-IIs.text" = "Label";

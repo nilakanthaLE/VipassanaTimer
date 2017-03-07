@@ -70,8 +70,8 @@ class EditMeditationVC: UIViewController,TimerConfigViewDelegateControlTapped {
             let dauerGesamt                 = timerConfig.dauerAnapana + timerConfig.dauerVipassana + timerConfig.dauerMetta
             meditation!.ende                = start.addingTimeInterval(TimeInterval(dauerGesamt)) as NSDate?
         }
-        
-        
+        HealthManager().saveMeditationIfNeeded(meditation: meditation!)
+        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
         performSegue(withIdentifier: "reloadKalender", sender: nil)
     }
 
@@ -89,4 +89,7 @@ class EditMeditationVC: UIViewController,TimerConfigViewDelegateControlTapped {
     func controlTapped() {
         performSegue(withIdentifier: "goToMeineTimer", sender: nil)
     }
+    
+    
+
 }

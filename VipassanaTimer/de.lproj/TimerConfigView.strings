@@ -1,0 +1,24 @@
+
+/* Class = "UIButton"; normalTitle = "beenden"; ObjectID = "3Hb-uR-Hhd"; */
+"3Hb-uR-Hhd.normalTitle" = "beenden";
+
+/* Class = "UILabel"; text = "Bitte hier tippen, um einen Timer zu wählen oder neu zu kofigurieren."; ObjectID = "7n3-ng-ash"; */
+"7n3-ng-ash.text" = "Bitte hier tippen, um einen Timer zu wählen oder neu zu kofigurieren.";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "A29-PJ-jfn"; */
+"A29-PJ-jfn.text" = "Name";
+
+/* Class = "UIButton"; normalTitle = "starten"; ObjectID = "OBZ-8p-37M"; */
+"OBZ-8p-37M.normalTitle" = "starten";
+
+/* Class = "UILabel"; text = "5"; ObjectID = "Q8g-hN-8gj"; */
+"Q8g-hN-8gj.text" = "5";
+
+/* Class = "UILabel"; text = "23:59:59"; ObjectID = "aW5-kh-o3x"; */
+"aW5-kh-o3x.text" = "23:59:59";
+
+/* Class = "UILabel"; text = "5"; ObjectID = "avA-qd-zHE"; */
+"avA-qd-zHE.text" = "5";
+
+/* Class = "UILabel"; text = "50"; ObjectID = "boa-HO-rb0"; */
+"boa-HO-rb0.text" = "50";

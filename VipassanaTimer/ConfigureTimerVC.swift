@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ConfigureTimerVC: UIViewController,TimerConfigViewDelegate,UITextFieldDelegate {
 
@@ -86,7 +87,7 @@ class ConfigureTimerVC: UIViewController,TimerConfigViewDelegate,UITextFieldDele
         paragraphStyle.alignment    = .justified
         let messageText = NSMutableAttributedString(
         
-            string: "\n1) mit dem Picker im unteren Teil die Dauer der Meditation festlegen.\n\n2) einen Namen für den Timer vergeben (optional).\n\n3 den Schieberegler anpassen. Der erste Teil ist Anapana, der mittlere Teil ist Vipassana und der dritte Teil bestimmt die Dauer von Metta. (Minuten)\n\n4) wird ",
+            string: NSLocalizedString("AnleitungTimerConfig1", comment: "AnleitungTimerConfig1"),
             attributes: [
                 NSParagraphStyleAttributeName: paragraphStyle,
                 NSFontAttributeName : UIFont.preferredFont(forTextStyle: UIFontTextStyle.body),
@@ -97,7 +98,7 @@ class ConfigureTimerVC: UIViewController,TimerConfigViewDelegate,UITextFieldDele
         let font = UIFont.boldSystemFont(ofSize: size)
         let messageText2 = NSMutableAttributedString(
             
-            string: "Metta ohne zeitliche Begrenzung",
+            string: NSLocalizedString("AnleitungTimerConfig2", comment: "AnleitungTimerConfig2"),
             attributes: [
                 NSParagraphStyleAttributeName: paragraphStyle,
                 NSFontAttributeName : font,
@@ -107,7 +108,7 @@ class ConfigureTimerVC: UIViewController,TimerConfigViewDelegate,UITextFieldDele
         messageText.append(messageText2)
         let messageText3 = NSMutableAttributedString(
             
-            string: " gesetzt, dann läuft der Timer solange weiter, bis er manuell gestoppt wird.",
+            string: NSLocalizedString("AnleitungTimerConfig3", comment: "AnleitungTimerConfig3"),
             attributes: [
                 NSParagraphStyleAttributeName: paragraphStyle,
                 NSFontAttributeName : UIFont.preferredFont(forTextStyle: UIFontTextStyle.body),
@@ -116,11 +117,11 @@ class ConfigureTimerVC: UIViewController,TimerConfigViewDelegate,UITextFieldDele
         )
         messageText.append(messageText3)
         
-        let alertVC = UIAlertController(title: "Anleitung", message: "", preferredStyle: .alert)
+        let alertVC = UIAlertController(title: NSLocalizedString("AnleitungTimerConfigTitle", comment: "AnleitungTimerConfigTitle"), message: "", preferredStyle: .alert)
         alertVC.setValue(messageText, forKey: "attributedMessage")
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         
-        let action = UIAlertAction(title: "🔊 Lautstärke testen", style: .default, handler: { (_) in
+        let action = UIAlertAction(title: NSLocalizedString("AnleitungTimerConfigTestSound", comment: "AnleitungTimerConfigTitle"), style: .default, handler: { (_) in
             _ = (UIApplication.shared.delegate as? AppDelegate)?.playSound()})
         alertVC.addAction(action)
         
@@ -138,4 +139,7 @@ class ConfigureTimerVC: UIViewController,TimerConfigViewDelegate,UITextFieldDele
         super.viewWillAppear(animated)
         countDownTimePicker.setValue(DesignPatterns.mocha, forKey: "textColor")
     }
+    
+    
+
 }

@@ -38,6 +38,26 @@ extension Meditation:EintragInKalender{
             pausen?.adding(pause)
         }
     }
+    class func get(start:Date,ende:Date)->Meditation?{
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let request             = NSFetchRequest<Meditation>(entityName: "Meditation")
+        request.predicate       = NSCompoundPredicate(andPredicateWithSubpredicates:
+            [NSPredicate(format: "start == %@",start.firstSecondOfDay! as CVarArg),
+             NSPredicate(format: "start == %@", ende.lastSecondOfDay! as CVarArg)])
+        if let meditationen = (try? context.fetch(request)){
+            return meditationen.first
+        }
+        return nil
+    }
+    class func getNotInHealthKit()->[Meditation]{
+        let context             = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let request             = NSFetchRequest<Meditation>(entityName: "Meditation")
+        request.predicate       = NSPredicate(format: "inHealthKit ==  false || inHealthKit == nil")
+        if let meditationen = (try? context.fetch(request)){
+            return meditationen
+        }
+        return [Meditation]()
+    }
     class func getAll()->[Meditation]{
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
@@ -136,6 +156,7 @@ extension Meditation:EintragInKalender{
         return ende as! Date
     }
     func delete(){
+        HealthManager().deleteMeditation(meditation: self)
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         context.delete(self)
     }

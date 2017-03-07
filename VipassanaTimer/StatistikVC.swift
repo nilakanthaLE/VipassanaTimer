@@ -9,9 +9,9 @@
 import UIKit
 
 enum GraphTypen:String{
-    case GesamtdauerProWoche    = "Gesamtdauer pro Woche"
-    case GesamtdauerProMonat    = "Gesamtdauer pro Monat"
-    case GesamtdauerProTag      = "Gesamtdauer pro Tag"
+    case GesamtdauerProWoche    = "StatistikGesamtdauerProWoche"
+    case GesamtdauerProMonat    = "StatistikGesamtdauerProMonat"
+    case GesamtdauerProTag      = "StatistikGesamtdauerProTag"
 }
 
 class StatistikVC: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
@@ -36,7 +36,7 @@ class StatistikVC: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate 
     override func viewDidAppear(_ animated: Bool) {
         statistikView.primaereTeiler        = [3600,1800,900,600]
         statistikView.farben                = [UIColor.orange,UIColor.green]
-        statistikView.achsenBeschriftung    = (xAchse:"Wochen",yAchse:"Stunden")
+        statistikView.achsenBeschriftung    = (xAchse:"Wochen",yAchse:"h")
         statistikView.yAchseLabelsText      = {(wert:Double) in return wert.hhmmString}
         drawGraph()
     }
@@ -104,7 +104,8 @@ class StatistikVC: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate 
         drawGraph()
     }
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let attributedString = NSAttributedString(string: typen[row].rawValue, attributes: [NSForegroundColorAttributeName : DesignPatterns.mocha])
+        let string              = NSLocalizedString(typen[row].rawValue, comment: typen[row].rawValue)
+        let attributedString    = NSAttributedString(string: string, attributes: [NSForegroundColorAttributeName : DesignPatterns.mocha])
         return attributedString
     }
     

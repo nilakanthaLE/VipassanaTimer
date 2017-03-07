@@ -10,8 +10,30 @@ import Foundation
 import UIKit
 
 
+infix operator ~>
+
+private let queue = DispatchQueue(label: "serial-worker")
+func ~> <R> (
+    backgroundClosure: @escaping () -> R,
+    mainClosure:       @escaping (_ result: R) -> ())
+{
+    queue.async () {
+        let result = backgroundClosure()
+        DispatchQueue.main.async(execute: {
+            mainClosure(result)
+        })
+    }
+}
 
 
+extension String {
+    func localized(lang:String) ->String {
+        
+        let path    = Bundle.main.path(forResource: lang, ofType: "lproj")
+        let bundle  = Bundle(path: path!)
+        
+        return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")
+    }}
 
 extension UIViewController{
     var contentViewController:UIViewController {
@@ -74,7 +96,7 @@ extension Date{
     func string(_ format:String)->String{
         let formatter           = DateFormatter()
         formatter.dateFormat    = format
-        formatter.locale        = Locale(identifier: "de")
+        formatter.locale        = Locale(identifier: Locale.current.languageCode == "de" ? "de" : "en") // Locale(identifier: "de")
         return formatter.string(from: self)
     }
     var firstSecondOfDay:Date?{

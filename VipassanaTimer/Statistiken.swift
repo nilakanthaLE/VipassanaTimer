@@ -50,17 +50,17 @@ struct Statistik {
         return numberOfDays == 0 ? 0 : Double(anzahlMeditationen) / Double(numberOfDays)
     }
     var tagDauerLabelText:String{
-        return "∑ \(gesamtDauer.hhmmString)h | ø \(timePerMeditation.hhmmString)h pro M."
+        return "∑ \(gesamtDauer.hhmmString)h | ø \(timePerMeditation.hhmmString)h " + NSLocalizedString("PerM", comment: "PerM")
     }
     var wocheDauerLabelText:String{
-        return "∑ \(gesamtDauer.hhmmString)h | ø \(timePerDay.hhmmString)h pro Tag"
+        return "∑ \(gesamtDauer.hhmmString)h | ø \(timePerDay.hhmmString)h " + NSLocalizedString("PerDay", comment: "PerDay")
     }
     
     var tagAnzahlLabelText:String{
-        return "∑ \(anzahlMeditationen) | ø \(timePerMeditation.hhmmString)h pro M."
+        return "∑ \(anzahlMeditationen) | ø \(timePerMeditation.hhmmString)h " + NSLocalizedString("PerM", comment: "PerM")
     }
     var wocheAnzahlLabelText:String{
-        return "∑ \(anzahlMeditationen) | ø \(timesPerDay.zweiKommaStellenString) pro Tag"
+        return "∑ \(anzahlMeditationen) | ø \(timesPerDay.zweiKommaStellenString) " + NSLocalizedString("PerDay", comment: "PerDay")
     }
     
     

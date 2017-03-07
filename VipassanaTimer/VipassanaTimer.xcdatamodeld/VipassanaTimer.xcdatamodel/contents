@@ -34,6 +34,7 @@
         <attribute name="dauerMetta" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="dauerVipassana" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="ende" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="inHealthKit" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="mettaOpenEnd" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="start" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -66,7 +67,7 @@
         <element name="Dauer" positionX="-218" positionY="227" width="128" height="88"/>
         <element name="Kurs" positionX="-621" positionY="135" width="128" height="120"/>
         <element name="KursTemplate" positionX="-830" positionY="243" width="128" height="105"/>
-        <element name="Meditation" positionX="-423" positionY="45" width="128" height="193"/>
+        <element name="Meditation" positionX="-423" positionY="45" width="128" height="210"/>
         <element name="MeditationTemplate" positionX="-621" positionY="296" width="128" height="163"/>
         <element name="TimerConfig" positionX="-432" positionY="-153" width="128" height="148"/>
     </elements>

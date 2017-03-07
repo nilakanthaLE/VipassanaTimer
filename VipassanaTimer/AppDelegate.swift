@@ -56,38 +56,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ = playSound()
         print("zeitraumBeendet")
     }
-    func scheduleBackgroundTimers(){
-        let backgroundInfo  = BackgroundInfo.getInfo()
-        
-        if let anapanaEnde = backgroundInfo?.anapanaEnde{
-            if anapanaEnde.isGreaterThanDate(dateToCompare: Date()){
-                scheduleNotification(at: anapanaEnde as Date, typ: "anapana")
-            }
-        }
-        if let vipassanaEnde = backgroundInfo?.vipassanaEnde, let ende = backgroundInfo?.meditationsEnde{
-            if vipassanaEnde == ende{
-                if vipassanaEnde.isGreaterThanDate(dateToCompare: Date()){
-                    scheduleNotification(at: vipassanaEnde as Date, typ: "ende")
-                }
-            }else{
-                if vipassanaEnde.isGreaterThanDate(dateToCompare: Date()){
-                    scheduleNotification(at: vipassanaEnde as Date, typ: "vipassana")
-                }
-                if ende.isGreaterThanDate(dateToCompare: Date()){
-                    scheduleNotification(at: ende as Date, typ: "ende")
-                }
-            }
-        }
-    }
-    var player: AVAudioPlayer?
+
     
+    var player: AVAudioPlayer?
     func playSound()->Bool{
-        let url = Bundle.main.url(forResource: "klangschale", withExtension: "wav")!
         //Preparation to play
         do{
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             try AVAudioSession.sharedInstance().setActive(true)
-            
+            let url = Bundle.main.url(forResource: "klangschale", withExtension: "wav")!
+
             player = try AVAudioPlayer(contentsOf: url)
             
             guard let player = player else { return false}
@@ -102,38 +80,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    func scheduleNotification(at date: Date,typ:String) {
-        let calendar = Calendar(identifier: .gregorian)
-        let components = calendar.dateComponents(in: .current, from: date)
-        let newComponents = DateComponents(calendar: calendar, timeZone: .current, month: components.month, day: components.day, hour: components.hour, minute: components.minute)
-        
-        let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
-        
-        let content = UNMutableNotificationContent()
-        content.title   = "Tutorial Reminder"
-        content.body    = "\(typ) fertig"
-        content.sound   = UNNotificationSound.init(named: "klangschale.wav")//default()
-   
-        let request = UNNotificationRequest(identifier: "textNotification\(typ)", content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request) {(error) in
-            if let error = error {
-                print("Uh oh! We had an error: \(error)")
-            }
-        }
-    }
+    
     func removeBackgroundNotification(){
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-//        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(accepted, error) in
-//            if !accepted {
-//                print("Notification access denied.")
-//            }
-//        }
-        
         // Override point for customization after application launch.
         return true
     }
@@ -161,8 +113,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-//        removeBackgroundNotification()
-//        scheduleForegroundTimers()
         print("applicationDidBecomeActive")
     }
 
@@ -172,7 +122,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("applicationWillTerminate")
         self.saveContext()
     }
-
+    
+    static func url(for file: String, fileExtension: String? = nil) -> URL? {
+        return Bundle.main.url(forResource: file, withExtension: fileExtension)
+    }
+    
     // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentContainer = {

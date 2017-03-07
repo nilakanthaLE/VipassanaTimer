@@ -12,6 +12,16 @@ import YSRangeSlider
 
 @IBDesignable
 class TimerConfigView: NibLoadingView,YSRangeSliderDelegate {
+    let startString     = NSLocalizedString("TimerConfigViewStart", comment: "TimerConfigViewStart")
+    let stopString      = NSLocalizedString("TimerConfigViewStop", comment: "TimerConfigViewStop")
+    let pauseString     = NSLocalizedString("TimerConfigViewPause", comment: "TimerConfigViewPause")
+    let finishString    = NSLocalizedString("TimerConfigViewFinish", comment: "TimerConfigViewFinish")
+    let continueString  = NSLocalizedString("TimerConfigViewContinue", comment: "TimerConfigViewContinue")
+    
+    
+    
+    
+    
     //publics
     var zeigeSteuerungsPanel = false{
         didSet{
@@ -144,17 +154,17 @@ class TimerConfigView: NibLoadingView,YSRangeSliderDelegate {
     @IBOutlet weak var startenButton: UIButton!
     @IBOutlet weak var beendenButton: UIButton!
     @IBAction func startenButtonPressed(_ sender: UIButton) {
-        if sender.currentTitle == "starten"{
+        if sender.currentTitle == startString{
             starteTimer()
-            sender.setTitle("pausieren", for:.normal)
+            sender.setTitle(pauseString, for:.normal)
             beendenButton.isHidden  = false
-        }else if sender.currentTitle == "pausieren"{
+        }else if sender.currentTitle == pauseString{
             pauseTimer()
-            sender.setTitle("fortsetzen", for:.normal)
-        }else if sender.currentTitle == "fortsetzen"{
+            sender.setTitle(continueString, for:.normal)
+        }else if sender.currentTitle == continueString{
             restartTimer()
-            sender.setTitle("pausieren", for:.normal)
-        }else if sender.currentTitle == "fertig"{
+            sender.setTitle(pauseString, for:.normal)
+        }else if sender.currentTitle == finishString{
             endWithMettaOpenEnd()
             resetTimer()
         }
@@ -171,13 +181,13 @@ class TimerConfigView: NibLoadingView,YSRangeSliderDelegate {
     }
     @IBAction func beendenButtonPressed(_ sender: UIButton) {
         sender.isHidden                 = true
-        if startenButton.currentTitle == "fertig"{
+        if startenButton.currentTitle == finishString{
             endWithMettaOpenEnd()
         }else{
             BackgroundInfo.getInfo()?.meditation?.earlyEnd(date:Date())
         }
         startenButton.isHidden  = false
-        startenButton.setTitle("starten", for:.normal)
+        startenButton.setTitle(startString, for:.normal)
         resetTimer()
     }
     @IBOutlet weak var hoeheSteuerungPanel: NSLayoutConstraint!{ didSet{ hoeheSteuerungPanel?.constant = zeigeSteuerungsPanel ? 40 : 0 } }
@@ -242,7 +252,6 @@ class TimerConfigView: NibLoadingView,YSRangeSliderDelegate {
         delegate?.scheduleForegroundTimers()
         delegate?.saveContext()
         
-        guard let backgroundInfos = backgroundInfo else{return}
     }
     
     func resetTimer(){
@@ -251,7 +260,7 @@ class TimerConfigView: NibLoadingView,YSRangeSliderDelegate {
         
         sekundenTimer?.invalidate()
         beendenButton.isHidden              = true
-        startenButton.setTitle("starten", for: .normal)
+        startenButton.setTitle(startString, for: .normal)
         
         startTime                           = nil
         startPauseTime                      = nil
@@ -284,12 +293,12 @@ class TimerConfigView: NibLoadingView,YSRangeSliderDelegate {
                 
                 //zurücksetzen
                 if mettaOpenEnd{
-                    startenButton.setTitle("fertig", for:.normal)
+                    startenButton.setTitle(finishString, for:.normal)
                     startenButton.isHidden = true
                 }else{
                     sekundenTimer?.invalidate()
                     beendenButton.isHidden                 = true
-                    startenButton.setTitle("starten", for:.normal)
+                    startenButton.setTitle(startString, for:.normal)
                     //resetTimer()
                 }
             }
