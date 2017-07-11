@@ -52,7 +52,7 @@ class KursErstellenVC: UIViewController,UIPickerViewDataSource,UIPickerViewDeleg
     }
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let title = row == 0 ? "--------" : kursTemplates[row - 1].name ?? "Fehler - Name fehlt"
-        let attributedString = NSAttributedString(string: title, attributes: [NSForegroundColorAttributeName : DesignPatterns.mocha])
+        let attributedString = NSAttributedString(string: title, attributes: [NSAttributedStringKey.foregroundColor : DesignPatterns.mocha])
         return attributedString
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

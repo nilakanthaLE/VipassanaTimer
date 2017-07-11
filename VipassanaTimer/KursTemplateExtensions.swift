@@ -49,7 +49,7 @@ extension KursTemplate{
     
     var sortedMeditations:[MeditationTemplate]{
         guard let meditations = meditationsTemplates as? Set<MeditationTemplate> else{return [MeditationTemplate]()}
-        return meditations.sorted(by: {$0.start?.compare($1.start as! Date) == .orderedAscending })
+        return meditations.sorted(by: {$0.start?.compare($1.start! as Date) == .orderedAscending })
     }
     
     class func createKursTemplates(){

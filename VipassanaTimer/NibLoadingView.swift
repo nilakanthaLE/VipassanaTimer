@@ -1,8 +1,8 @@
 //
 //  NibLoadingView.swift
-//  VipassanaTimer
+//  YogaStudio
 //
-//  Created by Matthias Pochmann on 05.01.17.
+//  Created by Matthias Pochmann on 12.06.17.
 //  Copyright © 2017 Matthias Pochmann. All rights reserved.
 //
 

@@ -59,7 +59,7 @@ class SetAnfangsDatumStatistikVC: UIViewController {
     @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
         anfangsDatumLabel?.text         = sender.date.string("dd.MM.yyyy")
         let appConfig                   = AppConfig.get()
-        appConfig?.startDatumStatistik  = sender.date as NSDate?
+        appConfig?.startDatumStatistik  = sender.date
         zurueckSetzenButton.isHidden    = false
     }
     

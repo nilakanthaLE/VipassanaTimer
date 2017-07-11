@@ -35,6 +35,24 @@ TimerConfigViewPause            = "pause";
 TimerConfigViewFinish           = "finish";
 TimerConfigViewContinue         = "continue";
 
+NicknameErlaubt                 = " is free and was saved";
+NicknameVergeben                = " is already in use. Please choose another nickname";
+FreundeStatistikErlaubt1        = "Friends are allowed to see my statistics ";
+FreundeStatistikErlaubt2        = "(average per day, total time)";
+FreundeStatistikErlaubt3        = "";
+
+Freundesanfragen                = "Friend Requests";
+meineFreunde                    = "My Friends";
+meineAnfragen                   = "My Requests";
+zurueckGewieseneAnfragen        = "Rejected Requests";
+freundesAnfrageSenden1          = "send a friend request to ";
+freundesAnfrageSenden2          = "";
+
+freundesAnfrageAbweisen         = "reject";
+freundschaftBeenden             = "end friendship";
+
+
+
 TenDayCourse        = "10-day course";
 TenDayCourse0       = "day zero";
 

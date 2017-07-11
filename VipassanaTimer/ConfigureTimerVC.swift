@@ -23,6 +23,7 @@ class ConfigureTimerVC: UIViewController,TimerConfigViewDelegate,UITextFieldDele
             countDownTimePicker?.countDownDuration = TimeInterval.init(gesamtDauer)
             mettaOpenEndSwitch?.isOn = timerConfig?.mettaOpenEnd ?? false
             nameTextField?.text = timerConfig?.name
+            
         }
     }
     
@@ -49,9 +50,8 @@ class ConfigureTimerVC: UIViewController,TimerConfigViewDelegate,UITextFieldDele
             mettaOpenEndSwitch?.isOn = timerConfig?.mettaOpenEnd ?? false
         }
     }
-    @IBOutlet private weak var timerConfigControl: TimerConfigView!{
+    @IBOutlet private weak var timerConfigControl: TimerControlConfig!{
         didSet{
-            timerConfigControl.isEnabled    = true
             timerConfigControl.timerConfig  = timerConfig
             timerConfigControl.delegate     = self
         }
@@ -79,7 +79,7 @@ class ConfigureTimerVC: UIViewController,TimerConfigViewDelegate,UITextFieldDele
     }
     
     @IBAction private func countDownTimePickerValueChanged(_ sender: UIDatePicker) {
-        timerConfigControl.gesamtDauer = Int32(sender.countDownDuration)
+        timerConfigControl.gesamtDauer = sender.countDownDuration
     }
     @IBAction private func infoButtonPressed(_ sender: UIButton) {
         
@@ -89,9 +89,9 @@ class ConfigureTimerVC: UIViewController,TimerConfigViewDelegate,UITextFieldDele
         
             string: NSLocalizedString("AnleitungTimerConfig1", comment: "AnleitungTimerConfig1"),
             attributes: [
-                NSParagraphStyleAttributeName: paragraphStyle,
-                NSFontAttributeName : UIFont.preferredFont(forTextStyle: UIFontTextStyle.body),
-                NSForegroundColorAttributeName : UIColor.black
+                NSAttributedStringKey.paragraphStyle: paragraphStyle,
+                NSAttributedStringKey.font : UIFont.preferredFont(forTextStyle: UIFontTextStyle.body),
+                NSAttributedStringKey.foregroundColor : UIColor.black
             ]
         )
         let size = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body).pointSize
@@ -100,9 +100,9 @@ class ConfigureTimerVC: UIViewController,TimerConfigViewDelegate,UITextFieldDele
             
             string: NSLocalizedString("AnleitungTimerConfig2", comment: "AnleitungTimerConfig2"),
             attributes: [
-                NSParagraphStyleAttributeName: paragraphStyle,
-                NSFontAttributeName : font,
-                NSForegroundColorAttributeName : UIColor.black
+                NSAttributedStringKey.paragraphStyle: paragraphStyle,
+                NSAttributedStringKey.font : font,
+                NSAttributedStringKey.foregroundColor : UIColor.black
             ]
         )
         messageText.append(messageText2)
@@ -110,9 +110,9 @@ class ConfigureTimerVC: UIViewController,TimerConfigViewDelegate,UITextFieldDele
             
             string: NSLocalizedString("AnleitungTimerConfig3", comment: "AnleitungTimerConfig3"),
             attributes: [
-                NSParagraphStyleAttributeName: paragraphStyle,
-                NSFontAttributeName : UIFont.preferredFont(forTextStyle: UIFontTextStyle.body),
-                NSForegroundColorAttributeName : UIColor.black
+                NSAttributedStringKey.paragraphStyle: paragraphStyle,
+                NSAttributedStringKey.font : UIFont.preferredFont(forTextStyle: UIFontTextStyle.body),
+                NSAttributedStringKey.foregroundColor : UIColor.black
             ]
         )
         messageText.append(messageText3)

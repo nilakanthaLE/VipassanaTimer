@@ -39,9 +39,9 @@ class KalenderVC: UIViewController,KalenderViewDelegate {
             
                 string: NSLocalizedString("AnleitungKalender", comment: "AnleitungKalender"),
                 attributes: [
-                    NSParagraphStyleAttributeName: paragraphStyle,
-                    NSFontAttributeName : UIFont.systemFont(ofSize: 14),
-                    NSForegroundColorAttributeName : UIColor.black
+                    NSAttributedStringKey.paragraphStyle: paragraphStyle,
+                    NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14),
+                    NSAttributedStringKey.foregroundColor : UIColor.black
                 ]
             )
             
@@ -123,13 +123,13 @@ class KalenderTagHeader:NibLoadingView{
         createViewAsync()
     }
     private func createViewAsync(){
-        {} ~>  {
+    {} ~>  {_ in 
             weak var weakSelf   = self
             
             let tagString       = weakSelf?.datum.string("EEE") ?? ""
-            let myAttrString1   = NSMutableAttributedString(string: tagString , attributes: [ NSFontAttributeName: UIFont.systemFont(ofSize: 17)])
+        let myAttrString1   = NSMutableAttributedString(string: tagString , attributes: [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)])
             let datumString     = weakSelf?.datum.string(" dd.MM.") ?? ""
-            let myAttrString2   = NSMutableAttributedString(string: datumString , attributes: [ NSFontAttributeName: UIFont.systemFont(ofSize: 12)])
+        let myAttrString2   = NSMutableAttributedString(string: datumString , attributes: [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)])
             let combination     = NSMutableAttributedString()
             combination.append(myAttrString1)
             combination.append(myAttrString2)
@@ -237,11 +237,12 @@ class KalenderMonatHeaderView:NibLoadingView{
 class DayViewForMonthView:NibLoadingView{
     private var day:Date
     private var month:Date
-    private var status:Int = 0
+//    private var status:Int = 0
     
     
     @IBOutlet weak var dayLabel: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var buddhaGoldImageView: UIImageView!
+    @IBOutlet weak var buddhaBlackImageView: UIImageView!
     
     init(day _day:Date,month  _month:Date){
         day     = _day
@@ -257,34 +258,27 @@ class DayViewForMonthView:NibLoadingView{
         let dayIsWithinMonth        = month.startOfMonth.firstSecondOfDay?.isGreaterThanDate(dateToCompare: day) == false && day.isGreaterThanDate(dateToCompare: month.endOfMonth.lastSecondOfDay!) == false
         dayLabel.textColor      = dayIsWithinMonth ? UIColor.darkText : UIColor(white: 0, alpha: 0.1)
         
-        createViewAsync(dayIsWithinMonth:dayIsWithinMonth)
+        craeteView(dayIsWithinMonth:dayIsWithinMonth)
     }
-    
-    private func createViewAsync(dayIsWithinMonth:Bool){
-        {} ~>  {
+    private func craeteView(dayIsWithinMonth:Bool){
+    {} ~>  {_ in 
+            var status:Int = 0
             weak var weakSelf = self
-            
             if dayIsWithinMonth{
                 let statistik       = Meditation.getStatistics(von: weakSelf!.day, bis: weakSelf!.day)
                 if statistik.timesPerDay > 0{
                     if statistik.timePerDay >= 120*60 && statistik.timesPerDay >= 2
-                    { weakSelf?.status = 2}
-                    else{ weakSelf?.status = 1 }
+                    { status = 2}
+                    else{ status = 1 }
                 }
             }
-            
-            weakSelf?.imageView.isHidden  = false
-            weakSelf?.imageView.image     = nil
-            switch weakSelf?.status ?? 0{
-                case 1 :    weakSelf?.imageView.image     = #imageLiteral(resourceName: "buddha_black.png")
-                case 2 :    weakSelf?.imageView.image     = #imageLiteral(resourceName: "buddha_gold.png")
-                default:    weakSelf?.imageView.isHidden  = true
-                }
-            weakSelf?.imageView.sizeToFit()
+            switch status{
+            case 1 :weakSelf?.buddhaBlackImageView.isHidden   = false
+            case 2 :weakSelf?.buddhaGoldImageView.isHidden   = false
+            default: break
+            }
         }
     }
-    
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -153,7 +153,7 @@ class StatistikUeberblick2:NibLoadingView{
     @IBAction func viewTapped(_ sender: UITapGestureRecognizer) {
         delegate?.viewTapped()
     }
-    @IBOutlet weak var statistikView: UIView!{
+    @IBOutlet weak var statistikView: UIView! {
         didSet{
             statistikView.layer.cornerRadius    = 5.0
             statistikView.layer.borderColor     = DesignPatterns.mocha.cgColor

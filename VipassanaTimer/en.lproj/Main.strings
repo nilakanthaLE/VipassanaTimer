@@ -54,7 +54,7 @@
 "Pht-67-KFI.text" = "till:";
 
 /* Class = "UILabel"; text = "Kurstyp wählen"; ObjectID = "QcR-pl-Uxq"; */
-"QcR-pl-Uxq.text" = "choose type of course";
+"QcR-pl-Uxq.text" = "Choose type of course";
 
 /* Class = "UINavigationItem"; title = "Anfangsdatum für Durchschnitte"; ObjectID = "UAf-zE-Htz"; */
 "UAf-zE-Htz.title" = "Start Date For Average";
@@ -90,7 +90,7 @@
 "hXn-Wk-Nr2.normalTitle" = "01.01.2017";
 
 /* Class = "UIButton"; normalTitle = "Kurse"; ObjectID = "hXr-mK-oaU"; */
-"hXr-mK-oaU.normalTitle" = "Courses";
+"hXr-mK-oaU.normalTitle" = "...";
 
 /* Class = "UILabel"; text = "vom:"; ObjectID = "nBf-7J-M6Y"; */
 "nBf-7J-M6Y.text" = "from:";
@@ -106,3 +106,105 @@
 
 /* Class = "UIButton"; normalTitle = " eintragen "; ObjectID = "uGf-3e-YxJ"; */
 "uGf-3e-YxJ.normalTitle" = " add ";
+
+
+//new
+//Meditationsinfo
+/* Class = "UINavigationItem"; title = "Information"; ObjectID = "TYM-bf-no6"; */
+"TYM-bf-no6.title" = "Information";
+
+/* Class = "UILabel"; text = "Meditation"; ObjectID = "kx7-gK-tHa"; */
+"kx7-gK-tHa.text" = "Meditation";
+
+/* Class = "UILabel"; text = "Datum"; ObjectID = "459-hU-GqI"; */
+"459-hU-GqI.text" = "Date:";
+
+/* Class = "UILabel"; text = "Start:"; ObjectID = "3to-Zc-xND"; */
+"3to-Zc-xND.text" = "Start:";
+
+/* Class = "UILabel"; text = "Dauer:"; ObjectID = "vZx-8c-Sfq"; */
+"vZx-8c-Sfq.text" = "Duration:";
+
+/* Class = "UILabel"; text = "Ende:"; ObjectID = "0X0-8o-WaV"; */
+"0X0-8o-WaV.text" = "End:";
+
+/* Class = "UILabel"; text = "Meditierender"; ObjectID = "ek5-z3-i5O"; */
+"ek5-z3-i5O.text" = "Meditator";
+
+/* Class = "UILabel"; text = "Spitzname:"; ObjectID = "5T0-BH-fht"; */
+"5T0-BH-fht.text" = "Nickname:";
+
+/* Class = "UILabel"; text = "Ø pro Tag"; ObjectID = "nbr-iN-YQW"; */
+"nbr-iN-YQW.text" = "Ø per Day:";
+
+/* Class = "UILabel"; text = "Gesamtdauer"; ObjectID = "tpr-Dk-uEg"; */
+"tpr-Dk-uEg.text" = "Total Time:";
+
+//Hauptmenu
+/* Class = "UIButton"; normalTitle = "Meditation starten"; ObjectID = "3WK-7L-aoh"; */
+"3WK-7L-aoh.normalTitle" = "Start Meditation";
+
+/* Class = "UIButton"; normalTitle = "Kalender"; ObjectID = "sPV-FH-kCn"; */
+"sPV-FH-kCn.normalTitle" = "Calendar";
+
+/* Class = "UIButton"; normalTitle = "Statistiken"; ObjectID = "dPj-Yp-57x"; */
+"dPj-Yp-57x.normalTitle" = "Statistics";
+
+/* Class = "UILabel"; text = "Mein Profil"; ObjectID = "GtS-QR-2Zw"; */
+"GtS-QR-2Zw.text" = "My Profile";
+
+/* Class = "UILabel"; text = "Freunde"; ObjectID = "gX3-7n-X9u"; */
+"gX3-7n-X9u.text" = "Friends";
+
+/* Class = "UILabel"; text = "Kurse"; ObjectID = "8AH-qQ-VKD"; */
+"8AH-qQ-VKD.text" = "Courses";
+
+
+//My Profile
+/* Class = "UINavigationItem"; title = "mein Profil"; ObjectID = "63H-YN-3Tc"; */
+"63H-YN-3Tc.title" = "My Profile";
+
+/* Class = "UIButton"; normalTitle = "prüfen"; ObjectID = "MPL-zA-UqR"; */
+"MPL-zA-UqR.normalTitle" = "try";
+
+/* Class = "UILabel"; text = "Andere Meditierende dürfen meinen Spitznamen sehen."; ObjectID = "2qa-A0-yCO"; */
+"2qa-A0-yCO.text" = "Other meditators can see my nickname.";
+
+//Freunde ...
+/* Class = "UINavigationItem"; title = "Freunde"; ObjectID = "lH9-t4-mAx"; */
+"lH9-t4-mAx.title" = "Friends";
+
+/* Class = "UIBarButtonItem"; title = "meine Anfragen"; ObjectID = "Xs1-Ap-Rbs"; */
+"Xs1-Ap-Rbs.title" = "My Requests";
+
+/* Class = "UINavigationItem"; title = "Meine Anfragen"; ObjectID = "Xjd-u5-ptQ"; */
+"Xjd-u5-ptQ.title" = "My Requests";
+
+/* Class = "UINavigationItem"; title = "Neue Anfrage"; ObjectID = "aCy-Ts-fDh"; */
+"aCy-Ts-fDh.title" = "New Request";
+
+
+//zurück
+/* Class = "UIBarButtonItem"; title = "zurück"; ObjectID = "7aQ-jD-PTw"; */
+"7aQ-jD-PTw.title" = "back";
+
+/* Class = "UIBarButtonItem"; title = "zurück"; ObjectID = "CpM-Eq-Cev"; */
+"CpM-Eq-Cev.title" = "back";
+
+/* Class = "UIBarButtonItem"; title = "zurück"; ObjectID = "RLL-Ca-0B7"; */
+"RLL-Ca-0B7.title" = "back";
+
+/* Class = "UIBarButtonItem"; title = "zurück"; ObjectID = "Sac-Po-vPK"; */
+"Sac-Po-vPK.title" = "back";
+
+/* Class = "UILabel"; text = "Im Augenblick meditieren:"; ObjectID = "8eI-kx-uI1"; */
+"8eI-kx-uI1.text" = "Now meditating:";
+//bis hier
+
+//MeditationsInfo 
+/* Class = "UILabel"; text = "Spitzname:"; ObjectID = "aru-8N-EZt"; */
+"aru-8N-EZt.text" = "Nickname:";
+
+/* Class = "UILabel"; text = "Kurstage"; ObjectID = "IiO-wl-VZx"; */
+"IiO-wl-VZx.text" = "Days on a course:";
+

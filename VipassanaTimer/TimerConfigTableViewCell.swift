@@ -21,5 +21,5 @@ class TimerConfigTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    @IBOutlet weak var timerConfigView: TimerConfigView!
+    @IBOutlet weak var timerConfigView: TimerControlConfig!
 }

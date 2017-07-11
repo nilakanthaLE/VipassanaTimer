@@ -16,13 +16,13 @@ extension Dauer{
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         if let dauer = NSEntityDescription.insertNewObject(forEntityName: "Dauer", into: context) as? Dauer{
-            dauer.start            = start as NSDate?
-            dauer.ende             = ende as NSDate?
+            dauer.start            = start
+            dauer.ende             = ende
             return dauer
         }
         return nil
     }
     var asTimeInterval:TimeInterval{
-        return ende!.timeIntervalSince(start as! Date)
+        return ende!.timeIntervalSince(start! as Date)
     }
 }

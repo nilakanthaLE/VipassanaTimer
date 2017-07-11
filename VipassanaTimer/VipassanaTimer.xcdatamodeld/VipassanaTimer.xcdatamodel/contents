@@ -16,6 +16,16 @@
         <attribute name="start" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="meditation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Meditation" inverseName="pausen" inverseEntity="Meditation" syncable="YES"/>
     </entity>
+    <entity name="Freund" representedClassName="Freund" syncable="YES" codeGenerationType="class">
+        <attribute name="cloudNeedsUpdate" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="deletionUserID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="freundID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="freundNick" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="freundStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isMeineAnfrage" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="meinStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="recordID" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Kurs" representedClassName="Kurs" syncable="YES" codeGenerationType="class">
         <attribute name="kursTage" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -30,11 +40,12 @@
         <relationship name="meditationsTemplates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MeditationTemplate" inverseName="kursTemplate" inverseEntity="MeditationTemplate" syncable="YES"/>
     </entity>
     <entity name="Meditation" representedClassName="Meditation" syncable="YES" codeGenerationType="class">
+        <attribute name="cloudNeedsUpdate" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="dauerAnapana" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="dauerMetta" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="dauerVipassana" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="ende" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="inHealthKit" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="meditationsID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mettaOpenEnd" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="start" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -52,6 +63,13 @@
         <attribute name="start" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="kursTemplate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KursTemplate" inverseName="meditationsTemplates" inverseEntity="KursTemplate" syncable="YES"/>
     </entity>
+    <entity name="Meditierender" representedClassName="Meditierender" syncable="YES" codeGenerationType="class">
+        <attribute name="cloudNeedsUpdate" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="nickName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nickNameSichtbarkeit" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="statistikSichtbarkeit" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="TimerConfig" representedClassName="TimerConfig" syncable="YES" codeGenerationType="class">
         <attribute name="dauerAnapana" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="dauerMetta" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -65,10 +83,12 @@
         <element name="AppConfig" positionX="-621" positionY="0" width="128" height="75"/>
         <element name="BackgroundInfo" positionX="-225" positionY="-9" width="128" height="118"/>
         <element name="Dauer" positionX="-218" positionY="227" width="128" height="88"/>
+        <element name="Freund" positionX="-621" positionY="0" width="128" height="165"/>
         <element name="Kurs" positionX="-621" positionY="135" width="128" height="120"/>
         <element name="KursTemplate" positionX="-830" positionY="243" width="128" height="105"/>
-        <element name="Meditation" positionX="-423" positionY="45" width="128" height="210"/>
+        <element name="Meditation" positionX="-423" positionY="45" width="128" height="225"/>
         <element name="MeditationTemplate" positionX="-621" positionY="296" width="128" height="163"/>
+        <element name="Meditierender" positionX="-621" positionY="0" width="128" height="120"/>
         <element name="TimerConfig" positionX="-432" positionY="-153" width="128" height="148"/>
     </elements>
 </model>

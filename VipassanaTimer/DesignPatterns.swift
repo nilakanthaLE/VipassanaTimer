@@ -11,11 +11,11 @@ import UIKit
 
 struct DesignPatterns{
     private static let font     = UIFont.systemFont(ofSize: 12)
-    
+    static let brown = UIColor(red: 102.0/255.0, green: 51.0/255.0, blue: 0.0, alpha: 1)
     static let gelb     = UIColor(red: 255.0/255.0, green: 204.0/255.0, blue: 51.0/255.0, alpha: 1)
     static let darkBlue = UIColor(red: 0.0, green: 0.0, blue: 1.0, alpha: 1)
     static let mocha    = UIColor(red: 128.0/255.0, green: 64.0/255.0, blue: 0.0, alpha: 1)
-    
+    static let backgroundcolor = UIColor(red: 204.0/255.0, green: 153.0/255.0, blue: 102.0/255.0, alpha: 1)
     
     static let tageView     = Design(font: UIFont.systemFont(ofSize: 18), textAlignment: .center, textColor: gelb)
     static let stundenLabel = Design(font: UIFont.systemFont(ofSize: 12), textAlignment: .right, textColor: gelb)
@@ -39,7 +39,8 @@ extension UILabel{
         font            = design.font
     }
 }
-extension UIButton{
+
+extension UIView{
     func set(layerDesign:LayerDesign){
         layer.borderColor   = layerDesign.borderColor.cgColor
         layer.borderWidth   = layerDesign.borderWidth

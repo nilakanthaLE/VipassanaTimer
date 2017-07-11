@@ -45,8 +45,7 @@ class HealthManager{
         let predicate           = NSPredicate(format: "startDate == %@ && endDate == %@", start as CVarArg, ende as CVarArg)
         let query               = HKSampleQuery(sampleType: mindfulType, predicate: predicate, limit: 10, sortDescriptors: nil)
         { (query, results, error) in
-            if let results = results as? [HKCategorySample], let result = results.first {
-                print("meditation \(result.startDate.string("dd.MM.yy hh:mm")) vorhanden")
+            if let results = results as? [HKCategorySample], let _ = results.first {
                 meditation.inHealthKit = true
             }
             else{ HealthManager.saveMeditation(start: start as Date, ende: ende as Date,meditation: meditation) }
@@ -72,7 +71,7 @@ class HealthManager{
     }
     private static func deleteMeditation(meditation:HKCategorySample){
         HealthManager.healthKitStore.delete(meditation) {(success, error) -> Void in
-            if(error != nil) { print("Error deleting sample: \(error?.localizedDescription)")}
+            if(error != nil) { print("Error deleting sample: \(String(describing: error?.localizedDescription))")}
             else{print("meditation \(meditation.startDate.string("dd.MM.yy hh:mm")) gelöscht")}
         }
     }

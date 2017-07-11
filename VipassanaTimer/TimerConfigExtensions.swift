@@ -26,6 +26,8 @@ extension TimerConfig {
         return nil
     }
     
+    
+    
     class func getAll()->[TimerConfig]{
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
@@ -46,6 +48,10 @@ extension TimerConfig {
         }
         isActive = true
     }
+    var gesamtDauer:TimeInterval{
+        return TimeInterval(dauerAnapana + dauerVipassana + dauerMetta)
+    }
+    
     //holt den aktiven Timer oder erstellt neuen aktiven Timer
     class func getActive()->TimerConfig?{
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -55,16 +61,6 @@ extension TimerConfig {
         if let timerConfig = (try? context.fetch(request))?.first{
             return timerConfig
         }
-//        if TimerConfig.getAll().count > 0{
-//            let first   = TimerConfig.getAll().first
-//            first?.setActive()
-//            return first
-//        }
-//        if let timerConfig      = TimerConfig.new(dauerAnapana: 5 * 60, dauerVipassana: 50 * 60, dauerMetta: 5 * 60, mettaOpenEnd: false){
-//            timerConfig.setActive()
-//            timerConfig.name    = "meine erste Meditation"
-//            return timerConfig
-//        }
         return nil
     }
     class private func get(dauerAnapana:Int32,dauerVipassana:Int32,dauerMetta:Int32,mettaOpenEnd:Bool,name:String?)->TimerConfig?{
@@ -89,10 +85,11 @@ extension TimerConfig {
     }
     class func get(with meditation:Meditation) ->TimerConfig?{
         let anzahlVorher = getAll().count
-        let timerConfig = TimerConfig.get(dauerAnapana: meditation.dauerAnapana, dauerVipassana: meditation.dauerVipassana, dauerMetta: meditation.dauerMetta, mettaOpenEnd: meditation.mettaOpenEnd, name: meditation.name)
+        guard let timerConfig = TimerConfig.get(dauerAnapana: meditation.dauerAnapana, dauerVipassana: meditation.dauerVipassana, dauerMetta: meditation.dauerMetta, mettaOpenEnd: meditation.mettaOpenEnd, name: meditation.name) else {return nil}
         //wenn Timer neu erstellt wird
         if anzahlVorher < getAll().count{
-            timerConfig?.toDelete = true
+            timerConfig.toDelete    = true
+            timerConfig.name        = (timerConfig.name ?? "") + "*"
         }
         return timerConfig
     }

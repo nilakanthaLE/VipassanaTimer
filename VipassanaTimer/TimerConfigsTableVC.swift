@@ -23,7 +23,8 @@ class TimerConfigsTableVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TimerConfigTableViewCell
-        cell.timerConfigView.timerConfig = timerConfigs[indexPath.row]
+        cell.timerConfigView.timerConfig            = timerConfigs[indexPath.row]
+        cell.timerConfigView.rangeSlider.isEnabled  = false
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -40,13 +41,11 @@ class TimerConfigsTableVC: UITableViewController {
         if let mediStart = navigationController?.viewControllers[0] as? MeditationStartenVC{
             timerConfigs[indexPath.row].setActive()
             mediStart.timerConfig                   = timerConfigs[indexPath.row]
-            _ = navigationController?.popViewController(animated: true)
         }
         else if let mediAnpassen = navigationController?.viewControllers[(navigationController?.viewControllers.count ?? 0) - 2] as? EditMeditationVC{
-            timerConfigs[indexPath.row].setActive()
             mediAnpassen.timerConfig                = timerConfigs[indexPath.row]
-            _ = navigationController?.popViewController(animated: true)
         }
+        _ = navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Navigation

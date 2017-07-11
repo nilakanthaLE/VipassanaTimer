@@ -32,7 +32,7 @@ class EditMeditationVC: UIViewController,TimerConfigViewDelegateControlTapped {
             guard let meditation        = meditation else{return}
             TimerConfig.deleteToDelete()
             timerConfig                 = TimerConfig.get(with: meditation)
-            startZeitPicker?.date       = meditation.start as! Date
+            startZeitPicker?.date       = meditation.start! as Date
             loeschenButton?.isHidden    = false
         }
     }
@@ -41,10 +41,10 @@ class EditMeditationVC: UIViewController,TimerConfigViewDelegateControlTapped {
             timerConfigView?.timerConfig    = timerConfig
         }
     }
-    @IBOutlet weak var timerConfigView: TimerConfigView!{
+    @IBOutlet weak var timerConfigView: TimerControlConfig!{
         didSet{
             timerConfigView.timerConfig                         = timerConfig
-            timerConfigView.zeigeSteuerungsPanel                = false
+            timerConfigView.rangeSlider.isEnabled               = false
             timerConfigView.tapGestureRecognizer.isEnabled      = true
             timerConfigView.controlTappedDelegate               = self
         }
@@ -58,17 +58,13 @@ class EditMeditationVC: UIViewController,TimerConfigViewDelegateControlTapped {
                 meditation.dauerAnapana     = timerConfig.dauerAnapana
                 meditation.dauerVipassana   = timerConfig.dauerVipassana
                 meditation.dauerMetta       = timerConfig.dauerMetta
-                let dauerGesamt = timerConfig.dauerAnapana + timerConfig.dauerVipassana + timerConfig.dauerMetta
-                meditation.ende             = start.addingTimeInterval(TimeInterval(dauerGesamt)) as NSDate?
                 self.meditation             = meditation
             }
         }else{
-            meditation!.start               = start as NSDate?
+            meditation!.start               = start
             meditation!.dauerAnapana        = timerConfig.dauerAnapana
             meditation!.dauerVipassana      = timerConfig.dauerVipassana
             meditation!.dauerMetta          = timerConfig.dauerMetta
-            let dauerGesamt                 = timerConfig.dauerAnapana + timerConfig.dauerVipassana + timerConfig.dauerMetta
-            meditation!.ende                = start.addingTimeInterval(TimeInterval(dauerGesamt)) as NSDate?
         }
         HealthManager().saveMeditationIfNeeded(meditation: meditation!)
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
@@ -79,7 +75,7 @@ class EditMeditationVC: UIViewController,TimerConfigViewDelegateControlTapped {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         guard let meditation        = meditation else{return}
-        startZeitPicker.setDate(meditation.start as! Date, animated: true)
+        startZeitPicker.setDate(meditation.start! as Date, animated: true)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -89,7 +85,4 @@ class EditMeditationVC: UIViewController,TimerConfigViewDelegateControlTapped {
     func controlTapped() {
         performSegue(withIdentifier: "goToMeineTimer", sender: nil)
     }
-    
-    
-
 }

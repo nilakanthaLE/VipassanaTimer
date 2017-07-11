@@ -17,15 +17,15 @@ extension BackgroundInfo{
         let request             = NSFetchRequest<BackgroundInfo>(entityName: "BackgroundInfo")
         
         if let backgroundInfo = (try? context.fetch(request))?.first{
-            backgroundInfo.anapanaEnde      = anapana as NSDate?
-            backgroundInfo.vipassanaEnde    = vipassana as NSDate?
-            backgroundInfo.meditationsEnde  = ende as NSDate?
+            backgroundInfo.anapanaEnde      = anapana
+            backgroundInfo.vipassanaEnde    = vipassana
+            backgroundInfo.meditationsEnde  = ende
             return backgroundInfo
         }
         if let backgroundInfo = NSEntityDescription.insertNewObject(forEntityName: "BackgroundInfo", into: context) as? BackgroundInfo{
-            backgroundInfo.anapanaEnde      = anapana as NSDate?
-            backgroundInfo.vipassanaEnde    = vipassana as NSDate?
-            backgroundInfo.meditationsEnde  = ende as NSDate?
+            backgroundInfo.anapanaEnde      = anapana
+            backgroundInfo.vipassanaEnde    = vipassana
+            backgroundInfo.meditationsEnde  = ende
             return backgroundInfo
         }
         return nil

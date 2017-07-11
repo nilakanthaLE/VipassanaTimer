@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import UserNotifications
 import AVFoundation
+import CloudKit
 
 import AudioToolbox
 
@@ -17,46 +18,7 @@ import AudioToolbox
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    //MARK: TIMER
-    var foregroundTimers = [Timer]()
-    func invalidateForegroundTimers(){
-        for subTimer in foregroundTimers{
-            subTimer.invalidate()
-        }
-        foregroundTimers = [Timer]()
-    }
-    func scheduleForegroundTimers(){
-        let backgroundInfo  = BackgroundInfo.getInfo()
-        if let anapanaEnde = backgroundInfo?.anapanaEnde{
-            if anapanaEnde.isGreaterThanDate(dateToCompare: Date()){
-                starteSubTimer(fireAt: anapanaEnde as Date, typ: "anapana")
-            }
-        }
-        if let vipassanaEnde = backgroundInfo?.vipassanaEnde, let ende = backgroundInfo?.meditationsEnde{
-            if vipassanaEnde == ende{
-                if vipassanaEnde.isGreaterThanDate(dateToCompare: Date()){
-                    starteSubTimer(fireAt: vipassanaEnde as Date, typ: "ende")
-                }
-            }else{
-                if vipassanaEnde.isGreaterThanDate(dateToCompare: Date()){
-                    starteSubTimer(fireAt: vipassanaEnde as Date, typ: "vipassana")
-                }
-                if ende.isGreaterThanDate(dateToCompare: Date()){
-                    starteSubTimer(fireAt: ende as Date, typ: "ende")
-                }
-            }
-        }
-    }
-    private func starteSubTimer(fireAt:Date,typ:String){
-        let timer           = Timer(fireAt: fireAt, interval: 0, target: self, selector: #selector(zeitraumBeendet(_:)), userInfo: ["typ":typ], repeats: false)
-        foregroundTimers.append(timer)
-        RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
-    }
-    @objc private func zeitraumBeendet(_ sender:Timer){
-        _ = playSound()
-        print("zeitraumBeendet")
-    }
-
+    
     
     var player: AVAudioPlayer?
     func playSound()->Bool{
@@ -64,12 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do{
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             try AVAudioSession.sharedInstance().setActive(true)
-            let url = Bundle.main.url(forResource: "klangschale", withExtension: "wav")!
-
-            player = try AVAudioPlayer(contentsOf: url)
-            
+            if let klangSchaleURL = Bundle.main.url(forResource: "tibetan-bell", withExtension: "wav")
+            {
+                player = try AVAudioPlayer(contentsOf: klangSchaleURL)
+            }
             guard let player = player else { return false}
-            player.setVolume(0.4, fadeDuration: TimeInterval(5))
+            player.setVolume(0.3, fadeDuration: TimeInterval(0))
             player.prepareToPlay()
             player.play()
             return true
@@ -79,20 +41,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
     }
-
     
-    func removeBackgroundNotification(){
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-    }
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // Register for push notifications
+
+        UNUserNotificationCenter.current().requestAuthorization(options:[]) { granted, error in
+            if let error = error {
+                print("oh: \(error.localizedDescription)")
+            } else if granted {
+                DispatchQueue.main.async { application.registerForRemoteNotifications() }
+            }
+        }
         return true
     }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print(error.localizedDescription)
+    }
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        let notification    = CKQueryNotification(fromRemoteNotificationDictionary: userInfo as! [String:NSObject])
+//        if notification.category == "ActiveMeditation"{
+//            guard let recordID  = notification.recordID else {return}
+//            _ = Singleton.sharedInstance
+//            Singleton.sharedInstance.cloudKitActiveMeditationsUpdater?.updateListOfActiveMeditations(recordID: recordID, reason: notification.queryNotificationReason)
+//        }else
+        
+        if notification.category == "Freunde"{
+            guard let recordID  = notification.recordID else {return}
+            _ = Singleton.sharedInstance
+            MyCloudKit.updateListOfFriends(recordID:recordID,reason:notification.queryNotificationReason)
+        }
+    }
+    
 
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        Singleton.sharedInstance.myCloudKit?.updateNow()
+        Singleton.sharedInstance.myCloudKit?.cleanMyActiveMeditations()
         self.saveContext()
         print("applicationWillResignActive")
     }
@@ -100,9 +89,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-//        invalidateForegroundTimers()
-//        scheduleBackgroundTimers()
-
+        Singleton.sharedInstance.myCloudKit?.updateNow()
+        Singleton.sharedInstance.myCloudKit?.cleanMyActiveMeditations()
         print("applicationDidEnterBackground")
     }
     

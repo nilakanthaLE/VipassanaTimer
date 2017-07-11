@@ -90,7 +90,7 @@
 "hXn-Wk-Nr2.normalTitle" = "01.01.2017";
 
 /* Class = "UIButton"; normalTitle = "Kurse"; ObjectID = "hXr-mK-oaU"; */
-"hXr-mK-oaU.normalTitle" = "Kurse";
+"hXr-mK-oaU.normalTitle" = "...";
 
 /* Class = "UILabel"; text = "vom:"; ObjectID = "nBf-7J-M6Y"; */
 "nBf-7J-M6Y.text" = "vom:";
@@ -106,3 +106,117 @@
 
 /* Class = "UIButton"; normalTitle = " eintragen "; ObjectID = "uGf-3e-YxJ"; */
 "uGf-3e-YxJ.normalTitle" = " eintragen ";
+
+
+//new
+//Meditationsinfo
+/* Class = "UINavigationItem"; title = "Information"; ObjectID = "TYM-bf-no6"; */
+"TYM-bf-no6.title" = "Information";
+
+/* Class = "UILabel"; text = "Meditation"; ObjectID = "kx7-gK-tHa"; */
+"kx7-gK-tHa.text" = "Meditation";
+
+/* Class = "UILabel"; text = "Datum"; ObjectID = "459-hU-GqI"; */
+"459-hU-GqI.text" = "Datum:";
+
+/* Class = "UILabel"; text = "Start:"; ObjectID = "3to-Zc-xND"; */
+"3to-Zc-xND.text" = "Start:";
+
+/* Class = "UILabel"; text = "Dauer:"; ObjectID = "vZx-8c-Sfq"; */
+"vZx-8c-Sfq.text" = "Dauer:";
+
+/* Class = "UILabel"; text = "Ende:"; ObjectID = "0X0-8o-WaV"; */
+"0X0-8o-WaV.text" = "Ende:";
+
+/* Class = "UILabel"; text = "Meditierender"; ObjectID = "ek5-z3-i5O"; */
+"ek5-z3-i5O.text" = "Meditierender";
+
+/* Class = "UILabel"; text = "Spitzname:"; ObjectID = "5T0-BH-fht"; */
+"5T0-BH-fht.text" = "Spitzname:";
+
+/* Class = "UILabel"; text = "Ø pro Tag"; ObjectID = "nbr-iN-YQW"; */
+"nbr-iN-YQW.text" = "Ø pro Tag:";
+
+/* Class = "UILabel"; text = "Gesamtdauer"; ObjectID = "tpr-Dk-uEg"; */
+"tpr-Dk-uEg.text" = "Gesamtdauer:";
+
+//Hauptmenu
+/* Class = "UIButton"; normalTitle = "Meditation starten"; ObjectID = "3WK-7L-aoh"; */
+"3WK-7L-aoh.normalTitle" = "Meditation starten";
+
+/* Class = "UIButton"; normalTitle = "Kalender"; ObjectID = "sPV-FH-kCn"; */
+"sPV-FH-kCn.normalTitle" = "Kalender";
+
+/* Class = "UIButton"; normalTitle = "Statistiken"; ObjectID = "dPj-Yp-57x"; */
+"dPj-Yp-57x.normalTitle" = "Statistiken";
+
+/* Class = "UILabel"; text = "Mein Profil"; ObjectID = "GtS-QR-2Zw"; */
+"GtS-QR-2Zw.text" = "Mein Profil";
+
+/* Class = "UILabel"; text = "Freunde"; ObjectID = "gX3-7n-X9u"; */
+"gX3-7n-X9u.text" = "Freunde";
+
+/* Class = "UILabel"; text = "Kurse"; ObjectID = "8AH-qQ-VKD"; */
+"8AH-qQ-VKD.text" = "Kurse";
+
+//My Profile
+/* Class = "UINavigationItem"; title = "mein Profil"; ObjectID = "63H-YN-3Tc"; */
+"63H-YN-3Tc.title" = "Mein Profil";
+
+/* Class = "UIButton"; normalTitle = "prüfen"; ObjectID = "MPL-zA-UqR"; */
+"MPL-zA-UqR.normalTitle" = "prüfen";
+
+/* Class = "UILabel"; text = "Andere Meditierende dürfen meinen Spitznamen sehen."; ObjectID = "2qa-A0-yCO"; */
+"2qa-A0-yCO.text" = "Andere Meditierende dürfen meinen Spitznamen sehen.";
+
+
+//Freunde ...
+/* Class = "UINavigationItem"; title = "Freunde"; ObjectID = "lH9-t4-mAx"; */
+"lH9-t4-mAx.title" = "Freunde";
+
+/* Class = "UIBarButtonItem"; title = "meine Anfragen"; ObjectID = "Xs1-Ap-Rbs"; */
+"Xs1-Ap-Rbs.title" = "meine Anfragen";
+
+/* Class = "UINavigationItem"; title = "Meine Anfragen"; ObjectID = "Xjd-u5-ptQ"; */
+"Xjd-u5-ptQ.title" = "Meine Anfragen";
+
+/* Class = "UINavigationItem"; title = "Neue Anfrage"; ObjectID = "aCy-Ts-fDh"; */
+"aCy-Ts-fDh.title" = "Neue Anfrage";
+
+
+
+//zurück
+/* Class = "UIBarButtonItem"; title = "zurück"; ObjectID = "7aQ-jD-PTw"; */
+"7aQ-jD-PTw.title" = "zurück";
+
+/* Class = "UIBarButtonItem"; title = "zurück"; ObjectID = "CpM-Eq-Cev"; */
+"CpM-Eq-Cev.title" = "zurück";
+
+/* Class = "UIBarButtonItem"; title = "zurück"; ObjectID = "RLL-Ca-0B7"; */
+"RLL-Ca-0B7.title" = "zurück";
+
+/* Class = "UIBarButtonItem"; title = "zurück"; ObjectID = "Sac-Po-vPK"; */
+"Sac-Po-vPK.title" = "zurück";
+
+
+/* Class = "UILabel"; text = "Im Augenblick meditieren:"; ObjectID = "8eI-kx-uI1"; */
+"8eI-kx-uI1.text" = "Im Augenblick meditieren:";
+
+
+//MeditationsInfo
+/* Class = "UILabel"; text = "Spitzname:"; ObjectID = "aru-8N-EZt"; */
+"aru-8N-EZt.text" = "Spitzname:";
+
+/* Class = "UILabel"; text = "Kurstage"; ObjectID = "IiO-wl-VZx"; */
+"IiO-wl-VZx.text" = "Kurstage:";
+//bis hier
+
+
+//???
+/* Class = "UINavigationItem"; title = "meine Kurse"; ObjectID = "goF-IV-fqF"; */
+"goF-IV-fqF.title" = "meine Kurse";
+
+//Meditation starten
+/* Class = "UINavigationItem"; title = "Meditation starten"; ObjectID = "AbK-Or-GiE"; */
+"AbK-Or-GiE.title" = "Meditation starten";
+

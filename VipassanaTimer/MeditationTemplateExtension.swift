@@ -16,7 +16,7 @@ extension MeditationTemplate{
         
         if let meditation = NSEntityDescription.insertNewObject(forEntityName: "MeditationTemplate", into: context) as? MeditationTemplate{
             meditation.mettaOpenEnd     = false
-            meditation.start            = start as NSDate?
+            meditation.start            = start
             meditation.name             = name
             meditation.dauerAnapana     = dauerAnapana
             meditation.dauerVipassana   = dauerVipassana

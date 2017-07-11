@@ -12,34 +12,74 @@ import UIKit
 import MyCalendar
 
 extension Meditation:EintragInKalender{
+    static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     class func new(template:MeditationTemplate,start:Date)->Meditation?{
         guard let meditation = new(start: start, mettaOpenEnd: false, name: template.name) else{return nil}
         meditation.dauerAnapana         = template.dauerAnapana
         meditation.dauerVipassana       = template.dauerVipassana
         meditation.dauerMetta           = template.dauerMetta
-        meditation.ende                 = start.addingTimeInterval(meditation.gesamtDauer) as NSDate?
         return meditation
     }
     class func new(start:Date,mettaOpenEnd:Bool,name:String?)->Meditation?{
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         if let meditation = NSEntityDescription.insertNewObject(forEntityName: "Meditation", into: context) as? Meditation{
             
-            meditation.start            = start as NSDate?
+            meditation.meditationsID    = UUID().uuidString
+            meditation.start            = start
             meditation.mettaOpenEnd     = mettaOpenEnd
             meditation.name             = name
+            meditation.cloudNeedsUpdate = true
             return meditation
         }
         return nil
     }
+    class func new(start:Date,timerConfig:TimerConfig) -> Meditation?{
+        
+        if let meditation = NSEntityDescription.insertNewObject(forEntityName: "Meditation", into: context) as? Meditation{
+            
+            meditation.meditationsID    = UUID().uuidString
+            meditation.start            = start
+            meditation.dauerAnapana     = timerConfig.dauerAnapana
+            meditation.dauerVipassana   = timerConfig.dauerVipassana
+            meditation.dauerMetta       = timerConfig.dauerMetta
+            meditation.mettaOpenEnd     = timerConfig.mettaOpenEnd
+            meditation.name             = timerConfig.name
+            meditation.cloudNeedsUpdate = true
+            
+            return meditation
+        }
+        return nil
+    }
+    class func startNewActive(timerConfig:TimerConfig) -> Meditation?{
+        let meditation          = new(start: Date(), timerConfig: timerConfig)
+        Singleton.sharedInstance.myCloudKit?.newActiveMeditation = meditation
+        return meditation
+    }
+    
     
     func addPause(start:Date,ende:Date){
         if let pause = Dauer.new(start: start, ende: ende){
             pausen?.adding(pause)
         }
     }
+    
+    var ende:Date{
+        let _start = start! as Date
+        return _start + TimeInterval(dauerAnapana) + TimeInterval(dauerVipassana) + TimeInterval(dauerMetta) + gesamtPausenDauer
+    }
+    
+
+    
+    class func getNeedCloudUpdate() -> [Meditation]{
+        
+        let request             = NSFetchRequest<Meditation>(entityName: "Meditation")
+        request.predicate       = NSPredicate(format: "cloudNeedsUpdate == true")
+        if let meditationen = (try? context.fetch(request)){
+            return meditationen
+        }
+        return [Meditation]()
+    }
     class func get(start:Date,ende:Date)->Meditation?{
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let request             = NSFetchRequest<Meditation>(entityName: "Meditation")
         request.predicate       = NSCompoundPredicate(andPredicateWithSubpredicates:
             [NSPredicate(format: "start == %@",start.firstSecondOfDay! as CVarArg),
@@ -50,7 +90,6 @@ extension Meditation:EintragInKalender{
         return nil
     }
     class func getNotInHealthKit()->[Meditation]{
-        let context             = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let request             = NSFetchRequest<Meditation>(entityName: "Meditation")
         request.predicate       = NSPredicate(format: "inHealthKit ==  false || inHealthKit == nil")
         if let meditationen = (try? context.fetch(request)){
@@ -59,7 +98,6 @@ extension Meditation:EintragInKalender{
         return [Meditation]()
     }
     class func getAll()->[Meditation]{
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         let request             = NSFetchRequest<Meditation>(entityName: "Meditation")
         request.sortDescriptors = [NSSortDescriptor(key: "start", ascending: true)]
@@ -69,7 +107,6 @@ extension Meditation:EintragInKalender{
         return [Meditation]()
     }
     class func getAllTillToday()->[Meditation]{
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         let request             = NSFetchRequest<Meditation>(entityName: "Meditation")
         request.predicate       = NSPredicate(format: "start <= %@", Date() as CVarArg)
@@ -80,7 +117,6 @@ extension Meditation:EintragInKalender{
         return [Meditation]()
     }
     class func getAllOhneKurse()->[Meditation]{
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         let request             = NSFetchRequest<Meditation>(entityName: "Meditation")
         request.predicate       = NSPredicate(format: "kurs = nil")
@@ -99,7 +135,6 @@ extension Meditation:EintragInKalender{
         return meditationen
     }
     class func getDays(start:Date,ende:Date)->[Meditation]{
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let request             = NSFetchRequest<Meditation>(entityName: "Meditation")
         request.predicate       = NSCompoundPredicate(andPredicateWithSubpredicates:
             [NSPredicate(format: "start >= %@",start.firstSecondOfDay! as CVarArg),
@@ -111,7 +146,6 @@ extension Meditation:EintragInKalender{
         return [Meditation]()
     }
     private class func getDay(day:Date)->[Meditation]{
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let request             = NSFetchRequest<Meditation>(entityName: "Meditation")
         request.predicate       = NSCompoundPredicate(andPredicateWithSubpredicates:
             [NSPredicate(format: "start >= %@",day.firstSecondOfDay! as CVarArg),
@@ -122,8 +156,11 @@ extension Meditation:EintragInKalender{
         }
         return [Meditation]()
     }
-    func earlyEnd(date:Date){
-        let verstrichenOhnePause           = Int32(date.timeIntervalSince(start as! Date) - gesamtPausenDauer)
+    
+    
+    
+    func beendet(_ date:Date){
+        let verstrichenOhnePause           = Int32(date.timeIntervalSince(start! as Date) - gesamtPausenDauer)
         if verstrichenOhnePause <= dauerAnapana{
             dauerAnapana    = verstrichenOhnePause
             dauerVipassana  = 0
@@ -131,10 +168,11 @@ extension Meditation:EintragInKalender{
         }else if  verstrichenOhnePause <= (dauerAnapana + dauerVipassana){
             dauerVipassana  = verstrichenOhnePause - dauerAnapana
             dauerMetta      = 0
-        }else if verstrichenOhnePause <= (dauerAnapana + dauerVipassana + dauerMetta){
+        }else {
             dauerMetta      = verstrichenOhnePause - dauerAnapana - dauerVipassana
         }
-        ende = date as NSDate?
+        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+        Singleton.sharedInstance.myCloudKit?.newActiveMeditation = nil
     }
     var gesamtPausenDauer:TimeInterval{
         var ergebnis = TimeInterval(0)
@@ -150,10 +188,10 @@ extension Meditation:EintragInKalender{
         return eintrag
     }
     var eintragStart:Date{
-        return start as! Date
+        return start! as Date
     }
     var eintragEnde:Date{
-        return ende as! Date
+        return ende as Date
     }
     func delete(){
         HealthManager().deleteMeditation(meditation: self)
@@ -224,16 +262,15 @@ extension Meditation:EintragInKalender{
         return meditationen.map{$0.gesamtDauer}.reduce(0){$0+$1}
     }
     class func sorted(meditationen:[Meditation]) -> [Meditation]{
-        return meditationen.sorted(by: {$0.start?.compare($1.start as! Date) == .orderedAscending })
+        return meditationen.sorted(by: {$0.start?.compare($1.start! as Date) == .orderedAscending })
     }
 }
 
 class MeditationsKalenderEintrag: NibLoadingView{
     var meditation:Meditation!{
         didSet{
-            let gesamt                  = CGFloat(meditation!.dauerMetta + meditation!.dauerAnapana + meditation!.dauerVipassana)
-            let multiplierAnapana       = CGFloat(meditation!.dauerAnapana ) / gesamt
-            let multiplierVipassana     = CGFloat(meditation!.dauerVipassana) / gesamt
+            let multiplierAnapana       = CGFloat(meditation!.dauerAnapana ) / CGFloat(meditation.gesamtDauer)
+            let multiplierVipassana     = CGFloat(meditation!.dauerVipassana) / CGFloat(meditation.gesamtDauer)
             
             anapanaView.superview?.removeConstraints([anteilAnapanaConstraint,anteilVipassanaConstraint])
             anteilAnapanaConstraint     = NSLayoutConstraint(item: anapanaView, attribute: .width, relatedBy: .equal, toItem: anapanaView.superview, attribute: .width, multiplier: multiplierAnapana, constant: 0)
@@ -247,8 +284,6 @@ class MeditationsKalenderEintrag: NibLoadingView{
     @IBOutlet weak var vipassanaView: UIView!
     
     @IBAction func viewTapped(_ sender: UITapGestureRecognizer) {
-        print("meditation tapped\(meditation)")
-        
         NotificationCenter.default.post(name: Notification.Name.MyNames.meditationsKalenderEintragPressed, object: nil, userInfo: ["meditation":meditation])
     }
 
