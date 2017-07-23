@@ -1,0 +1,150 @@
+/* 
+  Localizable.strings
+  VipassanaTimer
+
+  Created by Matthias Pochmann on 02.03.17.
+  Copyright © 2017 Matthias Pochmann. All rights reserved.
+*/
+
+AnleitungKalender = "1) Der Monatskalender zeigt die verdienten Abzeichen eines Tages. Wurde an einem Tag meditiert, erhält man einen silbernen Buddha. Wurde mindestens zwei Mal für mindestens eine Stunde meditiert, erhält man einen goldenen Buddha.\n\n2) Mit dem Knopf in der linken oberen Ecke wechselt man zwischen der Tages- bzw. Wochenansicht und der Monatsansicht.\n\n3) Beim Drehen des Gerätes in der Tages- und Wochenansicht, wechselt der Kalender zwischen der Ansicht von einem bzw. vier Tagen hin und her.";
+AnleitungTitle = "Anleitung";
+AnleitungDontShowAgain = "nicht noch einmal zeigen";
+
+AnleitungTimerConfig1 = "\n1) Mit dem Picker im unteren Teil die Dauer der Meditation festlegen.\n\n2) Einen Namen für den Timer vergeben. (optional)\n\n3) Den Schieberegler anpassen. Der erste Teil ist Anapana, der mittlere Teil ist Vipassana und der dritte Teil bestimmt die Dauer von Metta. (Minuten)\n\n4) wird ";
+AnleitungTimerConfig2 = "Metta ohne zeitliche Begrenzung";
+AnleitungTimerConfig3 = " gesetzt, dann läuft der Timer solange weiter, bis er manuell gestoppt wird.";
+AnleitungTimerConfigTitle = "Anleitung";
+AnleitungTimerConfigTestSound = "🔊 test volume";
+
+StatistikGesamtdauerProWoche    = "Gesamtdauer pro Woche";
+StatistikGesamtdauerProMonat    = "Gesamtdauer pro Monat";
+StatistikGesamtdauerProTag      = "Gesamtdauer pro Tag";
+
+MonatKalenderTitleViewTimes     = "mal";
+MonatKalenderTitleViewPerDay    = " h pro Tag";
+
+FirstMeditation = "eine Stunde mit Anapana und Metta";
+
+TimerConfigViewStart            = "starten";
+TimerConfigViewStop             = "stoppen";
+TimerConfigViewPause            = "pausieren";
+TimerConfigViewFinish           = "fertig";
+TimerConfigViewContinue         = "fortsetzen";
+
+NicknameErlaubt                 = " ist noch frei und wurde gespeichert";
+NicknameVergeben                = " ist leider bereits vergeben, bitte wählen Sie einen anderen Spitznamen";
+FreundeStatistikErlaubt1        = "Freunde dürfen statistische Daten";
+FreundeStatistikErlaubt2        = "(Durchschnittsdauer pro Tag, Gesamtmeditationsdauer)";
+FreundeStatistikErlaubt3        = "sehen";
+
+Freundesanfragen                = "Freundesanfragen";
+meineFreunde                    = "Meine Freunde";
+meineAnfragen                   = "Meine Anfragen";
+zurueckGewieseneAnfragen        = "zurückgewiesene Anfragen";
+freundesAnfrageSenden1          = "";
+freundesAnfrageSenden2          = " eine Freundesanfrage senden";
+
+freundesAnfrageAbweisen         = "abweisen";
+freundschaftBeenden             = "Freundschaft beenden";
+
+freundschaftsanfrageButton      = "Freundesanfrage senden";
+
+Week = "woche";
+PerDay  = "pro Tag";
+PerM    = "pro M.";
+
+TenDayCourse = "10-Tage Kurs";
+TenDayCourse0       = "nullter Tag";
+
+TenDayCourse1_1     = "erster Tag I";
+TenDayCourse1_2     = "erster Tag II";
+TenDayCourse1_3     = "erster Tag III";
+TenDayCourse1_4     = "erster Tag IV";
+TenDayCourse1_5     = "erster Tag V";
+TenDayCourse1_6     = "erster Tag VI";
+TenDayCourse1_7     = "erster Tag VII";
+TenDayCourse1_8     = "erster Tag VIII";
+
+TenDayCourse2_1     = "zweiter Tag I";
+TenDayCourse2_2     = "zweiter Tag II";
+TenDayCourse2_3     = "zweiter Tag III";
+TenDayCourse2_4     = "zweiter Tag IV";
+TenDayCourse2_5     = "zweiter Tag V";
+TenDayCourse2_6     = "zweiter Tag VI";
+TenDayCourse2_7     = "zweiter Tag VII";
+TenDayCourse2_8     = "zweiter Tag VIII";
+
+TenDayCourse3_1     = "dritter Tag I";
+TenDayCourse3_2     = "dritter Tag II";
+TenDayCourse3_3     = "dritter Tag III";
+TenDayCourse3_4     = "dritter Tag IV";
+TenDayCourse3_5     = "dritter Tag V";
+TenDayCourse3_6     = "dritter Tag VI";
+TenDayCourse3_7     = "dritter Tag VII";
+TenDayCourse3_8     = "dritter Tag VIII";
+
+TenDayCourse4_1     = "vierter Tag I";
+TenDayCourse4_2     = "vierter Tag II";
+TenDayCourse4_3     = "vierter Tag III";
+TenDayCourse4_4     = "vierter Tag IV";
+TenDayCourse4_5     = "vierter Tag V";
+TenDayCourse4_6     = "vierter Tag VI";
+TenDayCourse4_7     = "vierter Tag VII";
+TenDayCourse4_8     = "vierter Tag VIII";
+
+TenDayCourse5_1     = "fünfter Tag I";
+TenDayCourse5_2     = "fünfter Tag II";
+TenDayCourse5_3     = "fünfter Tag III";
+TenDayCourse5_4     = "fünfter Tag IV";
+TenDayCourse5_5     = "fünfter Tag V";
+TenDayCourse5_6     = "fünfter Tag VI";
+TenDayCourse5_7     = "fünfter Tag VII";
+TenDayCourse5_8     = "fünfter Tag VIII";
+
+TenDayCourse6_1     = "sechster Tag I";
+TenDayCourse6_2     = "sechster Tag II";
+TenDayCourse6_3     = "sechster Tag III";
+TenDayCourse6_4     = "sechster Tag IV";
+TenDayCourse6_5     = "sechster Tag V";
+TenDayCourse6_6     = "sechster Tag VI";
+TenDayCourse6_7     = "sechster Tag VII";
+TenDayCourse6_8     = "sechster Tag VIII";
+
+TenDayCourse7_1     = "siebenter Tag I";
+TenDayCourse7_2     = "siebenter Tag II";
+TenDayCourse7_3     = "siebenter Tag III";
+TenDayCourse7_4     = "siebenter Tag IV";
+TenDayCourse7_5     = "siebenter Tag V";
+TenDayCourse7_6     = "siebenter Tag VI";
+TenDayCourse7_7     = "siebenter Tag VII";
+TenDayCourse7_8     = "siebenter Tag VIII";
+
+
+TenDayCourse8_1     = "achter Tag I";
+TenDayCourse8_2     = "achter Tag II";
+TenDayCourse8_3     = "achter Tag III";
+TenDayCourse8_4     = "achter Tag IV";
+TenDayCourse8_5     = "achter Tag V";
+TenDayCourse8_6     = "achter Tag VI";
+TenDayCourse8_7     = "achter Tag VII";
+TenDayCourse8_8     = "achter Tag VIII";
+
+TenDayCourse9_1     = "neunter Tag I";
+TenDayCourse9_2     = "neunter Tag II";
+TenDayCourse9_3     = "neunter Tag III";
+TenDayCourse9_4     = "neunter Tag IV";
+TenDayCourse9_5     = "neunter Tag V";
+TenDayCourse9_6     = "neunter Tag VI";
+TenDayCourse9_7     = "neunter Tag VII";
+TenDayCourse9_8     = "neunter Tag VIII";
+
+TenDayCourse10_1     = "zehnter Tag I";
+TenDayCourse10_2     = "zehnter Tag II";
+TenDayCourse10_3     = "zehnter Tag III";
+TenDayCourse10_4     = "zehnter Tag IV";
+TenDayCourse10_5     = "zehnter Tag V";
+TenDayCourse10_6     = "zehnter Tag VI";
+TenDayCourse10_7     = "zehnter Tag VII";
+TenDayCourse10_8     = "zehnter Tag VIII";
+
+TenDayCourse11      = "elfter Tag";

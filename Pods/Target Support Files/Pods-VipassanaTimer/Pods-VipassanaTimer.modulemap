@@ -1,0 +1,6 @@
+framework module Pods_VipassanaTimer {
+  umbrella header "Pods-VipassanaTimer-umbrella.h"
+
+  export *
+  module * { export * }
+}

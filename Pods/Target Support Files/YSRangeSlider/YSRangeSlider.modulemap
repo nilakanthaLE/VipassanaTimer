@@ -1,0 +1,6 @@
+framework module YSRangeSlider {
+  umbrella header "YSRangeSlider-umbrella.h"
+
+  export *
+  module * { export * }
+}
