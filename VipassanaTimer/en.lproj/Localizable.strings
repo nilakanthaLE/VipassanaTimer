@@ -51,7 +51,7 @@ freundesAnfrageSenden2          = "";
 freundesAnfrageAbweisen         = "reject";
 freundschaftBeenden             = "end friendship";
 
-
+freundschaftsanfrageButton      = "ask for friendship";
 
 TenDayCourse        = "10-day course";
 TenDayCourse0       = "day zero";

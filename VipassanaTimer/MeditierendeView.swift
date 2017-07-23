@@ -9,50 +9,16 @@
 import Foundation
 import UIKit
 class MeditierendeView:NibLoadingView,UICollectionViewDataSource,UICollectionViewDelegate{
-    var showUserMeditationInfo:((_ activeMeditation:CKActiveMeditation)->())?
-   
-    
-    
-    private var meditationen = [CKActiveMeditation](){ didSet{
-        meditationen = meditationen.sorted(by: {$0.start.compare($1.start) == .orderedAscending })
+    var showUserMeditationInfo:((_ activeMeditation:ActiveMeditationInFB)->())?
+
+    private var meditationen = [ActiveMeditationInFB](){ didSet{
+        meditationen = meditationen.sorted(by: {($0.start ?? Date()).compare($1.start ?? Date()) == .orderedAscending })
         collectionView.reloadData() }
     }
-    //MARK: List (get,addNewObject,RemoveObject)
-    @objc private func addOrRemoveToList(notification:Notification){
-        print("addOrRemoveToList")
-        guard let activeMeditation = notification.userInfo?["meditation"] as? CKActiveMeditation else { return }
-        
-        if activeMeditation.isActive{
-            print("addToList")
-            meditationen.append(activeMeditation)
-        }
-        else {
-            print("RemoveFromList")
-            var index : Int?{
-                var i = 0
-                for meditation in meditationen{
-                    if meditation.userID == activeMeditation.userID {return i}
-                    i += 1
-                }
-                return nil
-            }
-            guard index != nil else {return}
-            meditationen.remove(at: index!)
-        }
-    }
-    private func remove(at pos:Int){
-        var toAdd = 0
-        if let myPos = posOfMyActiveMeditation,myPos <= pos{
-            toAdd = 1
-        }
-        meditationen.remove(at: pos + toAdd)
-    }
-    
     var myActiveMeditation:Meditation?{
         willSet{
             if let newValue = newValue  {
-                guard let activeMeditation = CKActiveMeditation(newValue) else{return}
-                meditationen.append(activeMeditation)
+                meditationen.append(ActiveMeditationInFB(meditation:newValue))
             }else{
                 guard posOfMyActiveMeditation != nil else {return}
                 meditationen.remove(at: posOfMyActiveMeditation!)
@@ -63,9 +29,9 @@ class MeditierendeView:NibLoadingView,UICollectionViewDataSource,UICollectionVie
         guard let myActiveMeditation = myActiveMeditation else {return nil}
         
         var i = 0
-        let myActiveCKMeditation = CKActiveMeditation(myActiveMeditation)
+        let myActiveFBMeditation = ActiveMeditationInFB(meditation:myActiveMeditation)
         for meditation in meditationen{
-            if meditation.userID == myActiveCKMeditation?.userID{ return i }
+            if meditation.userID == myActiveFBMeditation.userID{ return i }
             i += 1
         }
         return nil
@@ -75,17 +41,19 @@ class MeditierendeView:NibLoadingView,UICollectionViewDataSource,UICollectionVie
     @IBOutlet private weak var collectionView: UICollectionView!{
         didSet{
             collectionView.register(MeditierenderCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-            registerObserver()
-//            Singleton.sharedInstance.observeActiveMeditations = true
+            Singleton.sharedInstance.listOfActiveMeditationHasChanged = listOfActiveMeditationHasChanged
             setLayout()
         }
     }
+    private func listOfActiveMeditationHasChanged(){
+        var newlist = Singleton.sharedInstance.filteredAndSortedListOfActiveMeditation
+        if let myActiveMeditation = myActiveMeditation { newlist.append(ActiveMeditationInFB(meditation:myActiveMeditation)) }
+        meditationen = newlist
+    }
     private func setLayout(){
-        layer.borderColor  = UIColor.white.cgColor
-        layer.borderWidth  = 0.25
-        layer.cornerRadius = 5
-        clipsToBounds      = true
-        collectionView.backgroundColor = collectionView.backgroundColor?.withAlphaComponent(0.5)
+        setControlDesignPatterns()
+        collectionView.backgroundColor = UIColor.clear
+        backgroundColor     = DesignPatterns.controlBackground
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -103,22 +71,12 @@ class MeditierendeView:NibLoadingView,UICollectionViewDataSource,UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         showUserMeditationInfo?(meditationen[indexPath.row])
     }
-    
-    //MARK: init
-    private func registerObserver(){
-        //Liste der aktiven Meditationen
-        NotificationCenter.default.addObserver(self, selector: #selector(addOrRemoveToList(notification:)), name:
-            NSNotification.Name.MyNames.addOrRemoveActiveMeditationToList, object: nil)
-    }
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-//        Singleton.sharedInstance.observeActiveMeditations = false
-        print("deinit MeditierendeView")
-    }
+
+    deinit { print("deinit MeditierendeView") }
 }
 
 class MeditierenderCollectionViewCell:UICollectionViewCell{
-    var activeMeditation:CKActiveMeditation?{
+    var activeMeditation:ActiveMeditationInFB?{
         didSet{
             guard let activeMeditation = activeMeditation else{return}
             backgroundView = MedititierenderCollectionViewCellView(activeMeditation)
@@ -130,9 +88,11 @@ class MedititierenderCollectionViewCellView:NibLoadingView{
     @IBOutlet weak var meditationsKissenView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
 
-    convenience init (_ activeMeditation:CKActiveMeditation){
+    convenience init (_ activeMeditation:ActiveMeditationInFB){
         self.init(frame: CGRect.zero)
-        nameLabel.text = String(activeMeditation.spitznameString.characters.prefix(3))
+        nameLabel.text = String(activeMeditation.spitznameString.characters.prefix(4))
+//        nameLabel.sizeToFit()
+        nameLabel.baselineAdjustment = .alignCenters
     }
 
     

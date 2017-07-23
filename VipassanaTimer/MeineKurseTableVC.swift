@@ -25,7 +25,7 @@ class MeineKurseTableVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let kurs = kurse[indexPath.row]
-        
+        cell.backgroundColor = DesignPatterns.controlBackground
         if let _view = cell.contentView.subviews[0] as? KursTableCellView{
             _view.kurs = kurs
         }
@@ -44,12 +44,16 @@ class MeineKurseTableVC: UITableViewController {
         return true
     }
     
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor        = DesignPatterns.mainBackground
+        navigationController?.navigationBar.setDesignPattern()
+    }
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            kurse[indexPath.row].delete()
+            kurse[indexPath.row].delete(inFirebaseToo: true)
             kurse.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
@@ -68,6 +72,7 @@ class KursTableCellView:NibLoadingView{
     
     var kurs:Kurs?{
         didSet{
+//            backgroundColor = DesignPatterns.controlBackground
             kursTitleLabel.text     = kurs?.name ?? "Fehler - name fehlt"
             let sortedMeditations   = kurs?.sortedMeditations
             if let last = sortedMeditations?.last?.start, let first = sortedMeditations?.first?.start{

@@ -44,10 +44,7 @@ class TimerView:NibLoadingView,YSRangeSliderDelegate{
     @IBOutlet weak var blurView: UIVisualEffectView!{
         didSet{
             //abgerudnete Ecken (init ... irgendwo)
-            layer.borderColor       = DesignPatterns.mocha.cgColor
-            layer.borderWidth       = 0.5
-            layer.cornerRadius      = 10.0
-            clipsToBounds           = true
+            setControlDesignPatterns()
         }
     }
     

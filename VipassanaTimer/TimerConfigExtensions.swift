@@ -26,7 +26,12 @@ extension TimerConfig {
         return nil
     }
     
-    
+    static func createFirstTimer(){
+        if TimerConfig.getAll().count == 0{
+            let new     = TimerConfig.new(dauerAnapana: 5*60, dauerVipassana: 50*60, dauerMetta: 5*60, mettaOpenEnd: false)
+            new?.name   = NSLocalizedString("FirstMeditation", comment: "FirstMeditation")
+        }
+    }
     
     class func getAll()->[TimerConfig]{
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext

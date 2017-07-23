@@ -20,12 +20,16 @@ class StatistikVC: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate 
     private var bisDatum:Date?
     private var selectedGraphenTyp:GraphTypen? = .GesamtdauerProTag
     
-    @IBOutlet weak var statistikView: StatistikView!{
-        didSet{
-            statistikView.layer.cornerRadius    = 10.0
-            statistikView.layer.borderColor     = DesignPatterns.mocha.cgColor
-            statistikView.layer.borderWidth     = 0.5
-            statistikView.clipsToBounds         = true
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = DesignPatterns.mainBackground
+        navigationController?.navigationBar.setDesignPattern()
+    }
+    
+    @IBOutlet weak var statistikView: StatistikView!
+    @IBOutlet weak var overlayView: UIView!{
+        didSet {
+            overlayView.setControlDesignPatterns()
         }
     }
     
@@ -44,6 +48,15 @@ class StatistikVC: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate 
         didSet{
             constraintHeightDatePicker.constant = 0.0
         }
+    }
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 15.0)
+        let string              = NSLocalizedString(typen[row].rawValue, comment: typen[row].rawValue)
+        let attributedString    = NSAttributedString(string: string, attributes: [NSAttributedStringKey.foregroundColor : DesignPatterns.mocha])
+        label.attributedText = attributedString
+        label.sizeToFit()
+        return label
     }
     @IBOutlet weak var graphTypPicker: UIPickerView!{
         didSet{

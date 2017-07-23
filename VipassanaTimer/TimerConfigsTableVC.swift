@@ -25,6 +25,7 @@ class TimerConfigsTableVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TimerConfigTableViewCell
         cell.timerConfigView.timerConfig            = timerConfigs[indexPath.row]
         cell.timerConfigView.rangeSlider.isEnabled  = false
+        cell.backgroundColor                        = UIColor.clear
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -33,6 +34,10 @@ class TimerConfigsTableVC: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         timerConfigs = TimerConfig.getAll()
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = DesignPatterns.mainBackground
     }
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         performSegue(withIdentifier: "editTimer", sender: timerConfigs[indexPath.row])

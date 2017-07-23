@@ -26,7 +26,7 @@ extension Meditierender {
     }
     class func setNickName(_ nickName:String){
         Meditierender.get()?.nickName = nickName
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+        saveContext()
     }
     class func getNeedCloudUpdate() -> Meditierender?{
         let request             = NSFetchRequest<Meditierender>(entityName: "Meditierender")
@@ -35,5 +35,11 @@ extension Meditierender {
             return meditierender
         }
         return nil
+    }
+    
+    func update(withDict dict:NSDictionary?){
+        nickName                = dict?["spitzname"] as? String
+        nickNameSichtbarkeit    = dict?["spitzname_sichtbarkeit"] as? Int16 ?? 0
+        statistikSichtbarkeit   = dict?["statistikSichtbarkeit"] as? Int16 ?? 0
     }
 }

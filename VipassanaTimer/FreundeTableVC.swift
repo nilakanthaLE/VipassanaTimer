@@ -20,10 +20,10 @@ class FreundeTableVC: UITableViewController {
         let cell                = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text    = freundeUndAnfragen[indexPath.section][indexPath.row].freundNick
         cell.textLabel?.textColor = DesignPatterns.mocha
-        
+        cell.backgroundColor = DesignPatterns.controlBackground
         if indexPath.section == 0{
             let button              = UIButton()
-            button.backgroundColor  = UIColor.green
+            button.backgroundColor  = DesignPatterns.gruen
             button.tag              = indexPath.row
             button.setTitle(" bestätigen ", for: .normal)
             button.addTarget(self, action: #selector(confirmButtonPressed(_:)), for: .touchUpInside)
@@ -40,47 +40,43 @@ class FreundeTableVC: UITableViewController {
         return [NSLocalizedString("Freundesanfragen", comment: "Freundesanfragen"),NSLocalizedString("meineFreunde", comment: "meineFreunde")][section]
     }
     @objc private func confirmButtonPressed(_ button:UIButton){
-        freundeUndAnfragen[0][button.tag].confirmFriendShip()
+        
+        FirUserConnections.setFreundschaftsstatus(withUserID: freundeUndAnfragen[0][button.tag].freundID, userStatus:FreundesStatus.granted, meinStatus: FreundesStatus.granted)
     }
     
     override func viewDidLoad() {
-        NotificationCenter.default.addObserver(self, selector: #selector(updateFreundeUndFreundesAnfragenList), name: NSNotification.Name.MyNames.updateFreundesUndFreundesAnfragenListe, object: nil)
-        MyCloudKit.updateFreundeUndFreundesAnfragen()
+        Singleton.sharedInstance.freundEreignis = updateFreundeUndFreundesAnfragenList
+        view.backgroundColor = DesignPatterns.mainBackground
+        navigationController?.navigationBar.setDesignPattern()
     }
-    @objc private func updateFreundeUndFreundesAnfragenList(){
-        freundeUndAnfragen = [Freund.getFreundesAnfragen(),Freund.getFreunde()]
-    }
-    deinit { NotificationCenter.default.removeObserver(self) }
     
-
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+    private func updateFreundeUndFreundesAnfragenList(){
+        let when = DispatchTime.now() + 1
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            weak var weakSelf   = self
+            weakSelf?.freundeUndAnfragen = [Freund.getFreundesAnfragen(),Freund.getFreunde()] }
     }
+    
+    deinit { print("deinit FreundeTableVC") }
+    
+    // Override to support conditional editing of the table view.
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool { return true }
 
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            let freund = freundeUndAnfragen[indexPath.section][indexPath.row]
-            freund.meinStatus   = FreundesStatus.rejected
-            freund.cloudNeedsUpdate = true
-            Singleton.sharedInstance.myCloudKit?.updateNow()
-            freundeUndAnfragen = [Freund.getFreundesAnfragen(),Freund.getFreunde()]
+            FirUserConnections.setFreundschaftsstatus(withUserID: freundeUndAnfragen[indexPath.section][indexPath.row].freundID, userStatus: FreundesStatus.granted, meinStatus: FreundesStatus.rejected)
         }
     }
 
 
     override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-        if indexPath.section == 0{
-            return NSLocalizedString("freundesAnfrageAbweisen", comment: "freundesAnfrageAbweisen")
-        }else{
-            return NSLocalizedString("freundschaftBeenden", comment: "freundschaftBeenden")
-        }
+        if indexPath.section == 0{ return NSLocalizedString("freundesAnfrageAbweisen", comment: "freundesAnfrageAbweisen") }
+        else{ return NSLocalizedString("freundschaftBeenden", comment: "freundschaftBeenden") }
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
-        view.tintColor = DesignPatterns.backgroundcolor
+        view.tintColor = DesignPatterns.headerBackground
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = DesignPatterns.mocha
     }

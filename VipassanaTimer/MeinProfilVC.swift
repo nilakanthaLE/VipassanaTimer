@@ -25,19 +25,8 @@ class MeinProfilVC: UIViewController {
     @IBOutlet weak var sichtbarkeitGlobalSwitch: UISwitch!
         { didSet{sichtbarkeitGlobalSwitch.isOn = meditierender?.nickNameSichtbarkeit == 2 }}
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        guard !(meditierender?.nickName?.isEmpty ?? true) else {return}
-        if meditierender?.nickNameSichtbarkeit != (sichtbarkeitGlobalSwitch.isOn ? 2 : 0){
-            meditierender?.nickNameSichtbarkeit     = sichtbarkeitGlobalSwitch.isOn ? 2 : 0
-        }
-        if meditierender?.statistikSichtbarkeit != (statistikSichtbarkeitSwitch.isOn ? 1 : 0){
-            meditierender?.statistikSichtbarkeit = statistikSichtbarkeitSwitch.isOn ? 1 : 0
-            
-            meditierender?.cloudNeedsUpdate = true
-            Singleton.sharedInstance.myCloudKit?.updateNow()
-        }
-    }
+    @IBOutlet weak var overlayView: UIView! { didSet { overlayView.setControlDesignPatterns() } }
+    
     
     @IBOutlet weak var FreundeStatistikErlaubnisText: UILabel!{
         didSet{
@@ -72,38 +61,68 @@ class MeinProfilVC: UIViewController {
     @IBOutlet weak var pruefenButton: UIButton!
     @IBAction func pruefenButtonPressed() {
         guard spitzNameTextField.text?.isEmpty == false else {return}
-        MyCloudKit.fetchUser(spitzNameTextField.text!)
+        
+        FirUser.getUser(byNickname: spitzNameTextField.text!)
     }
     
     @IBAction func textFieldEditing(_ sender: UITextField) {
         nickNamePruefungsErgebnisLabel.isHidden = true
         pruefenButton.isHidden  = sender.text?.isEmpty ?? true
     }
-    @IBOutlet weak var nickNamePruefungsErgebnisLabel: UILabel!
     
-    @objc private func userSearchErgebnis(_ notification:Notification){
-        nickNamePruefungsErgebnisLabel.isHidden = false
-        let user = notification.userInfo?["ckMeditierender"] as? CKMeditierender
-        if  filter(user) != nil{
-            nickNamePruefungsErgebnisLabel.text = "'\(spitzNameTextField.text ?? "???")'" + NSLocalizedString("NicknameVergeben", comment: "NicknameVergeben")
-        }else{
-            meditierender?.nickName                 = spitzNameTextField.text
-            meditierender?.cloudNeedsUpdate         = true
-            Singleton.sharedInstance.myCloudKit?.updateNow()
-            nickNamePruefungsErgebnisLabel.text = "'\(spitzNameTextField.text ?? "???")'" + NSLocalizedString("NicknameErlaubt", comment: "NicknameErlaubt")
-            title = spitzNameTextField.text
-        }
-    }
-    private func filter(_ gefundenerUser:CKMeditierender?) -> CKMeditierender?{
-        if gefundenerUser == nil || Meditierender.get()?.userID == gefundenerUser?.userRef.recordID.recordName {
-            return nil
-        }
-        return gefundenerUser
-    }
+    
+//    @objc private func userSearchErgebnis(_ notification:Notification){
+//        nickNamePruefungsErgebnisLabel.isHidden = false
+////        let user = notification.userInfo?["ckMeditierender"] as? CKMeditierender
+//
+//        if  filter(user) != nil{
+//            nickNamePruefungsErgebnisLabel.text = "'\(spitzNameTextField.text ?? "???")'" + NSLocalizedString("NicknameVergeben", comment: "NicknameVergeben")
+//        }else{
+//            meditierender?.nickName                 = spitzNameTextField.text
+//            meditierender?.cloudNeedsUpdate         = true
+////            Singleton.sharedInstance.myCloudKit?.updateNow()
+//            nickNamePruefungsErgebnisLabel.text = "'\(spitzNameTextField.text ?? "???")'" + NSLocalizedString("NicknameErlaubt", comment: "NicknameErlaubt")
+//            title = spitzNameTextField.text
+//        }
+//    }
+//    private func filter(_ gefundenerUser:CKMeditierender?) -> CKMeditierender?{
+//        if gefundenerUser == nil || Meditierender.get()?.userID == gefundenerUser?.userRef.recordID.recordName {
+//            return nil
+//        }
+//        return gefundenerUser
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         nickNamePruefungsErgebnisLabel.isHidden = true
-        NotificationCenter.default.addObserver(self, selector: #selector(userSearchErgebnis(_:)), name: NSNotification.Name.MyNames.gefundenerUser, object: nil)
+        
+        Singleton.sharedInstance.userWurdeGefunden = userWurdeGefunden
+        view.backgroundColor = DesignPatterns.mainBackground
+        navigationController?.navigationBar.setDesignPattern()
+    }
+    
+    @IBOutlet weak var nickNamePruefungsErgebnisLabel: UILabel!
+    private func userWurdeGefunden(){
+        print(Singleton.sharedInstance.gefundenerUser)
+        nickNamePruefungsErgebnisLabel.isHidden = false
+        if Singleton.sharedInstance.gefundenerUser != nil {
+            nickNamePruefungsErgebnisLabel.text = "'\(spitzNameTextField.text ?? "???")'" + NSLocalizedString("NicknameVergeben", comment: "NicknameVergeben")
+        }else{
+            meditierender?.nickName                 = spitzNameTextField.text
+            
+            nickNamePruefungsErgebnisLabel.text     = "'\(spitzNameTextField.text ?? "???")'" + NSLocalizedString("NicknameErlaubt", comment: "NicknameErlaubt")
+            title = spitzNameTextField.text
+            
+            FirUser.updateUserEintrag()
+            saveContext()
+        }
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        guard meditierender?.nickName?.isEmpty == false else {return}
+        
+        meditierender?.nickNameSichtbarkeit     = sichtbarkeitGlobalSwitch.isOn ? 2 : 0
+        meditierender?.statistikSichtbarkeit    = statistikSichtbarkeitSwitch.isOn ? 1 : 0
+        FirUser.updateUserEintrag()
     }
 }

@@ -24,17 +24,38 @@ class KursErstellenVC: UIViewController,UIPickerViewDataSource,UIPickerViewDeleg
         }
     }
     
+    @IBOutlet weak var overlayView: UIView!{
+        didSet{
+            overlayView.setControlDesignPatterns()
+        }
+    }
+    
+    @IBOutlet weak var ueberschriftLabel: UILabel!
     @IBOutlet weak var erstellenButton: UIButton!{
         didSet{
             erstellenButton.isHidden = true
+            
         }
     }
     @IBOutlet weak var kursTemplatePicker: UIPickerView!
-    @IBOutlet weak var startDatePicker: UIDatePicker!{didSet{startDatePicker.isHidden = true}}
+    @IBOutlet weak var startDatePicker: UIDatePicker!{
+        didSet{
+            startDatePicker.isHidden = true
+        }
+        
+    }
     @IBOutlet weak var startDateLabel: UILabel!
     @IBOutlet weak var endeDateLabel: UILabel!
-    @IBOutlet weak var vonDatumStack: UIStackView!{didSet{vonDatumStack.isHidden = true}}
-    @IBOutlet weak var bisDatumStack: UIStackView!{didSet{bisDatumStack.isHidden = true}}
+    @IBOutlet weak var vonDatumStack: UIStackView!{
+        didSet{
+            vonDatumStack.isHidden = true
+        }
+    }
+    @IBOutlet weak var bisDatumStack: UIStackView!{
+        didSet{
+            bisDatumStack.isHidden = true
+        }
+    }
     
     
     @IBAction func erstellenButtonPressed(_ sender: UIButton) {
@@ -79,6 +100,7 @@ class KursErstellenVC: UIViewController,UIPickerViewDataSource,UIPickerViewDeleg
         super.viewWillAppear(animated)
         kursTemplatePicker.setValue(DesignPatterns.mocha, forKey: "textColor")
         startDatePicker.setValue(DesignPatterns.mocha, forKey: "textColor")
+        view.backgroundColor = DesignPatterns.mainBackground
     }
     deinit {
         print("deinit KursErstellenVC")

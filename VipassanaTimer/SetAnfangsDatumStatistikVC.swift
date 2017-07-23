@@ -20,6 +20,8 @@ extension UINavigationController {
     }
 }
 
+
+
 class SetAnfangsDatumStatistikVC: UIViewController {
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.portrait
@@ -38,6 +40,15 @@ class SetAnfangsDatumStatistikVC: UIViewController {
                 }
             }
             
+        }
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = DesignPatterns.mainBackground
+    }
+    @IBOutlet weak var overlayView: UIView!{
+        didSet{
+            overlayView.setControlDesignPatterns()
         }
     }
     @IBOutlet weak var datePicker: UIDatePicker!{
@@ -61,6 +72,7 @@ class SetAnfangsDatumStatistikVC: UIViewController {
         let appConfig                   = AppConfig.get()
         appConfig?.startDatumStatistik  = sender.date
         zurueckSetzenButton.isHidden    = false
+        FirUser.updateUserEintrag()
     }
     
     

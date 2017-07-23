@@ -29,6 +29,9 @@ class TimerControl:TimerView{
         //Meditation
         meditation              = Meditation.startNewActive(timerConfig: timerConfig!)
         meditationGestartetOderBeendet?(meditation!)
+        FirMeditations.update(meditation: meditation)
+        FirActiveMeditations.createActiveMeditation(meditation: meditation)
+        saveContext()
         
         //Buttons
         startenButton.setTitle(pauseString, for:.normal)
@@ -39,6 +42,8 @@ class TimerControl:TimerView{
         sekundenTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(sekundenTicker(_:)), userInfo: nil, repeats: true)
         sekundenTimer?.fire()
         gongTimer   = GongTimer(gongDates)
+        
+        
     }
     private func pauseStartTimer(){
         startenButton.setTitle(continueString, for:.normal)
@@ -55,12 +60,18 @@ class TimerControl:TimerView{
     }
     private func endTimer(){
         meditation?.beendet(Date())
+        FirMeditations.update(meditation: meditation)
         meditationGestartetOderBeendet?(nil)
         meditation = nil
+        saveContext()
+        
         setLabels()
         sekundenTimer?.invalidate()
         gongTimer?.invalidateTimers()
         rangeSlider.resetAblaufTimer()
+        
+        
+        FirActiveMeditations.deleteActiveMeditation()
     }
     @objc private func sekundenTicker(_ sender:Timer){
         guard let timerStartZeit    = timerStartZeit else {return}
@@ -164,7 +175,9 @@ private class GongTimer {
         for subTimer in timers{ subTimer.invalidate() }
         timers = [Timer]()
     }
-    init(_ gongDates: [Date]) { setGongDates(gongDates) }
+    init(_ gongDates: [Date]) {
+        playSound()
+        setGongDates(gongDates) }
     
     func setGongDates(_ gongDates: [Date]){
         invalidateTimers()

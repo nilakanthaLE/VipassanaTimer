@@ -27,6 +27,11 @@ class ConfigureTimerVC: UIViewController,TimerConfigViewDelegate,UITextFieldDele
         }
     }
     
+    @IBOutlet weak var overlayView: UIView!{
+        didSet{
+            overlayView.setControlDesignPatterns()
+        }
+    }
     
     @IBAction func mettaOpenEndSwitchValueChanged(_ sender: UISwitch) {
         timerConfigControl.mettaOpenEnd = sender.isOn
@@ -85,23 +90,24 @@ class ConfigureTimerVC: UIViewController,TimerConfigViewDelegate,UITextFieldDele
         
         let paragraphStyle          = NSMutableParagraphStyle()
         paragraphStyle.alignment    = .justified
+        let font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body).withSize(14)
         let messageText = NSMutableAttributedString(
         
             string: NSLocalizedString("AnleitungTimerConfig1", comment: "AnleitungTimerConfig1"),
             attributes: [
                 NSAttributedStringKey.paragraphStyle: paragraphStyle,
-                NSAttributedStringKey.font : UIFont.preferredFont(forTextStyle: UIFontTextStyle.body),
+                NSAttributedStringKey.font : font,
                 NSAttributedStringKey.foregroundColor : UIColor.black
             ]
         )
-        let size = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body).pointSize
-        let font = UIFont.boldSystemFont(ofSize: size)
+        
+        let fontBold = UIFont.boldSystemFont(ofSize: 14.0)
         let messageText2 = NSMutableAttributedString(
             
             string: NSLocalizedString("AnleitungTimerConfig2", comment: "AnleitungTimerConfig2"),
             attributes: [
                 NSAttributedStringKey.paragraphStyle: paragraphStyle,
-                NSAttributedStringKey.font : font,
+                NSAttributedStringKey.font : fontBold,
                 NSAttributedStringKey.foregroundColor : UIColor.black
             ]
         )
@@ -111,7 +117,7 @@ class ConfigureTimerVC: UIViewController,TimerConfigViewDelegate,UITextFieldDele
             string: NSLocalizedString("AnleitungTimerConfig3", comment: "AnleitungTimerConfig3"),
             attributes: [
                 NSAttributedStringKey.paragraphStyle: paragraphStyle,
-                NSAttributedStringKey.font : UIFont.preferredFont(forTextStyle: UIFontTextStyle.body),
+                NSAttributedStringKey.font : font,
                 NSAttributedStringKey.foregroundColor : UIColor.black
             ]
         )
@@ -133,13 +139,16 @@ class ConfigureTimerVC: UIViewController,TimerConfigViewDelegate,UITextFieldDele
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        saveContext()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         countDownTimePicker.setValue(DesignPatterns.mocha, forKey: "textColor")
     }
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = DesignPatterns.mainBackground
+    }
     
 
 }

@@ -11,8 +11,9 @@ import UIKit
 import CoreData
 
 extension AppConfig{
+    
     class func get()->AppConfig?{
-        let context             = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
         let request             = NSFetchRequest<AppConfig>(entityName: "AppConfig")
         
         if let appConfig = (try? context.fetch(request))?.first{

@@ -19,6 +19,12 @@ extension Notification.Name {
 
 class KalenderVC: UIViewController,KalenderViewDelegate {
     //MARK: ViewController Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = DesignPatterns.mainBackground
+        navigationController?.navigationBar.setDesignPattern()
+    }
+    
     var firstAppear = true
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -50,7 +56,7 @@ class KalenderVC: UIViewController,KalenderViewDelegate {
             alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             alertVC.addAction(UIAlertAction(title: NSLocalizedString("AnleitungDontShowAgain", comment: "AnleitungDontShowAgain"), style: .default, handler: { (action) in
                 appConfig?.kalenderErstesErscheinen = true
-                (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+                saveContext()
             }))
             present(alertVC, animated: true, completion: nil)
         }
@@ -184,6 +190,7 @@ class WochenKalenderTitleView:NibLoadingView{
         }
         titleLabel.font = UIFont.systemFont(ofSize: 14)
         titleLabel.text = labelText
+        titleLabel.textColor    = DesignPatterns.mocha
         titleLabel.sizeToFit()
         titleLabel.backgroundColor     = UIColor.clear
         frame = CGRect(origin: CGPoint.zero, size: titleLabel.frame.size)
@@ -205,6 +212,7 @@ class MonatKalenderTitleView:NibLoadingView{
         
         titleLabel.text = statistik.gesamtDauer.hhmmString + " h" + " | " + "\(statistik.anzahlMeditationen) " + NSLocalizedString("MonatKalenderTitleViewTimes", comment: "MonatKalenderTitleViewTimes") + " | " + statistik.timePerDay.hhmmString + NSLocalizedString("MonatKalenderTitleViewPerDay", comment: "MonatKalenderTitleViewPerDay")
         titleLabel.font = UIFont.systemFont(ofSize: 14)
+        titleLabel.textColor    = DesignPatterns.mocha
         titleLabel.sizeToFit()
         titleLabel.backgroundColor = UIColor.clear
         frame = CGRect(origin: CGPoint.zero, size: titleLabel.frame.size)

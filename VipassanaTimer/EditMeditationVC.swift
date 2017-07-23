@@ -18,7 +18,9 @@ class EditMeditationVC: UIViewController,TimerConfigViewDelegateControlTapped {
         }
     }
     @IBAction func loeschenButtonPressed(_ sender: UIButton) {
-        meditation?.delete()
+        FirMeditations.deleteMeditation(meditation:meditation)
+        meditation?.delete(inFirebaseToo: true)
+        
         performSegue(withIdentifier: "reloadKalender", sender: nil)
     }
     @IBOutlet weak var loeschenButton: UIButton!{
@@ -67,7 +69,8 @@ class EditMeditationVC: UIViewController,TimerConfigViewDelegateControlTapped {
             meditation!.dauerMetta          = timerConfig.dauerMetta
         }
         HealthManager().saveMeditationIfNeeded(meditation: meditation!)
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+        FirMeditations.update(meditation: meditation!)
+        saveContext()
         performSegue(withIdentifier: "reloadKalender", sender: nil)
     }
 

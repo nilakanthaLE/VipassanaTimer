@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13196.5" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AppConfig" representedClassName="AppConfig" syncable="YES" codeGenerationType="class">
+        <attribute name="firKursLastSync" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="firMedLastSync" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="kalenderErstesErscheinen" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="startDatumStatistik" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
+    <entity name="AppUser" representedClassName="AppUser" syncable="YES" codeGenerationType="class">
+        <attribute name="firebaseID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userDatenInitialSync" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <entity name="BackgroundInfo" representedClassName="BackgroundInfo" syncable="YES" codeGenerationType="class">
         <attribute name="anapanaEnde" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -27,6 +33,8 @@
         <attribute name="recordID" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Kurs" representedClassName="Kurs" syncable="YES" codeGenerationType="class">
+        <attribute name="inFirebase" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="kursID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="kursTage" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="start" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -44,6 +52,7 @@
         <attribute name="dauerAnapana" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="dauerMetta" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="dauerVipassana" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="inFirebase" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="inHealthKit" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="meditationsID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mettaOpenEnd" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -70,6 +79,27 @@
         <attribute name="statistikSichtbarkeit" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Statistics" representedClassName="Statistics" syncable="YES" codeGenerationType="class">
+        <attribute name="durchschnittMonat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="durchschnittTag" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="durchschnittVorherigMonat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="durchschnittVorherigTag" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="durchschnittVorherigWoche" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="durchschnittWoche" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="gesamtAktuellMonat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="gesamtAktuellTag" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="gesamtAktuellWoche" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="gesamtDauer" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="gesamtDauerOhneKurse" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="gesamtVorherigMonat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="gesamtVorherigTag" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="gesamtVorherigWoche" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="kursTage" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="regelmaessigEinmalAmTag" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="regelmaessigEinmalAmTagMax" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="regelmaessigZweiMalAmTag" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="regelmaessigZweimalAmTagMax" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <entity name="TimerConfig" representedClassName="TimerConfig" syncable="YES" codeGenerationType="class">
         <attribute name="dauerAnapana" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="dauerMetta" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -80,15 +110,17 @@
         <attribute name="toDelete" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="AppConfig" positionX="-621" positionY="0" width="128" height="75"/>
+        <element name="AppConfig" positionX="-621" positionY="0" width="128" height="105"/>
+        <element name="AppUser" positionX="-621" positionY="0" width="128" height="75"/>
         <element name="BackgroundInfo" positionX="-225" positionY="-9" width="128" height="118"/>
         <element name="Dauer" positionX="-218" positionY="227" width="128" height="88"/>
         <element name="Freund" positionX="-621" positionY="0" width="128" height="165"/>
-        <element name="Kurs" positionX="-621" positionY="135" width="128" height="120"/>
+        <element name="Kurs" positionX="-621" positionY="135" width="128" height="150"/>
         <element name="KursTemplate" positionX="-830" positionY="243" width="128" height="105"/>
-        <element name="Meditation" positionX="-423" positionY="45" width="128" height="225"/>
+        <element name="Meditation" positionX="-423" positionY="45" width="128" height="240"/>
         <element name="MeditationTemplate" positionX="-621" positionY="296" width="128" height="163"/>
         <element name="Meditierender" positionX="-621" positionY="0" width="128" height="120"/>
         <element name="TimerConfig" positionX="-432" positionY="-153" width="128" height="148"/>
+        <element name="Statistics" positionX="-621" positionY="0" width="128" height="330"/>
     </elements>
 </model>

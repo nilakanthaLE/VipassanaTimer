@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 import MyCalendar
+import Firebase
 
 extension Meditation:EintragInKalender{
     static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -52,11 +53,67 @@ extension Meditation:EintragInKalender{
     }
     class func startNewActive(timerConfig:TimerConfig) -> Meditation?{
         let meditation          = new(start: Date(), timerConfig: timerConfig)
-        Singleton.sharedInstance.myCloudKit?.newActiveMeditation = meditation
         return meditation
     }
     
     
+    
+    var firebaseData:[String:Any]?{
+        guard let start = start else {return nil}
+        var dict:[String:Any]        =      ["name"             : name ?? "_fehlt",
+                                             "start"            : start.timeIntervalSinceReferenceDate,
+                                             "dauerAnapana"     : dauerAnapana,
+                                             "dauerVipassana"   : dauerVipassana,
+                                             "dauerMetta"       : dauerMetta,
+                                             "lastSync"         : Date().timeIntervalSinceReferenceDate ]
+        if let kursID = kurs?.kursID { dict["kursID" ] = kursID }
+        return dict
+    }
+    static func createOrUpdateMeditation(withChild snapshot:DataSnapshot?){
+        print("Meditation createOrUpdateMeditation")
+        guard let snapshot = snapshot else {return}
+
+        guard let meditation = getOrCreate(withID: snapshot.key) else {return}
+        guard snapshot.valueAsDict?["deleted"] as? Bool != true else {
+            print("delete ...")
+            meditation.delete(inFirebaseToo: false); return
+        }
+        
+        
+        meditation.name             = snapshot.valueAsDict?["name"] as? String
+        meditation.start            = Date(timeIntervalSinceReferenceDate: snapshot.valueAsDict?["start"] as? TimeInterval ?? 0)
+        meditation.dauerAnapana     = snapshot.valueAsDict?["dauerAnapana"] as? Int32 ?? 0
+        meditation.dauerVipassana   = snapshot.valueAsDict?["dauerVipassana"] as? Int32 ?? 0
+        meditation.dauerMetta       = snapshot.valueAsDict?["dauerMetta"] as? Int32 ?? 0
+        meditation.inFirebase       = true
+        if let kursID = snapshot.valueAsDict?["kursID"] as? String{
+            meditation.kurs             = Kurs.getOrCreateEmpty(withID: kursID)
+        }
+        saveContext()
+    }
+    
+    static private func getOrCreate(withID medID:String)->Meditation?{
+        let request             = NSFetchRequest<Meditation>(entityName: "Meditation")
+        request.predicate       = NSPredicate(format: "meditationsID = %@", medID)
+        if let meditation = (try? context.fetch(request))?.first{
+            return meditation
+        }
+        if let meditation = NSEntityDescription.insertNewObject(forEntityName: "Meditation", into: context) as? Meditation{
+            meditation.meditationsID    = medID
+            return meditation
+        }
+        else {return nil}
+    }
+    
+    static func getNotInFirebase()->[Meditation]{
+        let request             = NSFetchRequest<Meditation>(entityName: "Meditation")
+        request.predicate       = NSPredicate(format: "inFirebase ==  false || inFirebase == nil")
+        if let meditationen = (try? context.fetch(request)){
+            return meditationen
+        }
+        return [Meditation]()
+    }
+
     func addPause(start:Date,ende:Date){
         if let pause = Dauer.new(start: start, ende: ende){
             pausen?.adding(pause)
@@ -68,6 +125,14 @@ extension Meditation:EintragInKalender{
         return _start + TimeInterval(dauerAnapana) + TimeInterval(dauerVipassana) + TimeInterval(dauerMetta) + gesamtPausenDauer
     }
     
+    static func cleanShortMeditations(){
+        for meditation in Meditation.getAll(){
+            if meditation.gesamtDauer < 5 * 60{
+                meditation.delete(inFirebaseToo: true)
+                print("deleted")
+            }
+        }
+    }
 
     
     class func getNeedCloudUpdate() -> [Meditation]{
@@ -117,9 +182,9 @@ extension Meditation:EintragInKalender{
         return [Meditation]()
     }
     class func getAllOhneKurse()->[Meditation]{
-        
+        print("getAllOhneKurse")
         let request             = NSFetchRequest<Meditation>(entityName: "Meditation")
-        request.predicate       = NSPredicate(format: "kurs = nil")
+        request.predicate       = NSPredicate(format: "kurs == nil")
         request.sortDescriptors = [NSSortDescriptor(key: "start", ascending: true)]
         if let meditationen = (try? context.fetch(request)){
             return meditationen
@@ -171,8 +236,7 @@ extension Meditation:EintragInKalender{
         }else {
             dauerMetta      = verstrichenOhnePause - dauerAnapana - dauerVipassana
         }
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
-        Singleton.sharedInstance.myCloudKit?.newActiveMeditation = nil
+        
     }
     var gesamtPausenDauer:TimeInterval{
         var ergebnis = TimeInterval(0)
@@ -187,21 +251,18 @@ extension Meditation:EintragInKalender{
         eintrag.meditation  = self
         return eintrag
     }
-    var eintragStart:Date{
-        return start! as Date
-    }
-    var eintragEnde:Date{
-        return ende as Date
-    }
-    func delete(){
+    var eintragStart:Date{ return start! as Date }
+    var eintragEnde:Date{ return ende as Date }
+    func delete(inFirebaseToo:Bool){
         HealthManager().deleteMeditation(meditation: self)
+        if inFirebaseToo{ FirMeditations.deleteMeditation(meditation:self) }
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         context.delete(self)
+        saveContext()
     }
-    var gesamtDauer:TimeInterval{
-        return TimeInterval(dauerMetta + dauerAnapana + dauerVipassana)
-    }
+    
     //Statistiken
+    var gesamtDauer:TimeInterval{ return TimeInterval(dauerMetta + dauerAnapana + dauerVipassana) }
     class func getStatistics(von start:Date,bis ende:Date) -> Statistik{
         let meditations = Meditation.getDays(start: start, ende: ende)
         return Statistik.init(meditationen: meditations, start: start, ende: ende)

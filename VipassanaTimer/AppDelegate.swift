@@ -11,8 +11,10 @@ import CoreData
 import UserNotifications
 import AVFoundation
 import CloudKit
-
+import Firebase
 import AudioToolbox
+
+let database    = Database.database()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -42,46 +44,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        // Register for push notifications
-
-        UNUserNotificationCenter.current().requestAuthorization(options:[]) { granted, error in
-            if let error = error {
-                print("oh: \(error.localizedDescription)")
-            } else if granted {
-                DispatchQueue.main.async { application.registerForRemoteNotifications() }
+    private func firebaseStart(){
+        let when = DispatchTime.now() + 1
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            //logOut, wenn noch keine firebaseID gesetzt ist (erster Start der App nach löschung)
+            if  AppUser.get()?.firebaseID == nil{
+                do { try Auth.auth().signOut() }
+                catch let signOutError as NSError { print ("Error signing out: %@", signOutError) }
             }
+            FirebaseStart.start()
         }
-        return true
     }
     
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print(error.localizedDescription)
-    }
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    
+    //clean CloudKit Version
+    func cleanCloudKitVersion() {
+        //Kurse
+        //ID setzen, falls keine ID gesetzt
+        for kurs in Kurs.getAll()               { if kurs.kursID == nil{ kurs.kursID = UUID().uuidString} }
         
-        let notification    = CKQueryNotification(fromRemoteNotificationDictionary: userInfo as! [String:NSObject])
-//        if notification.category == "ActiveMeditation"{
-//            guard let recordID  = notification.recordID else {return}
-//            _ = Singleton.sharedInstance
-//            Singleton.sharedInstance.cloudKitActiveMeditationsUpdater?.updateListOfActiveMeditations(recordID: recordID, reason: notification.queryNotificationReason)
-//        }else
+        //Meditationen
+        //ID setzen, falls keine ID gesetzt
+        for meditation in Meditation.getAll()   { if meditation.meditationsID == nil  { meditation.meditationsID    = UUID().uuidString } }
         
-        if notification.category == "Freunde"{
-            guard let recordID  = notification.recordID else {return}
-            _ = Singleton.sharedInstance
-            MyCloudKit.updateListOfFriends(recordID:recordID,reason:notification.queryNotificationReason)
-        }
+        //Freunde
+        for freund in Freund.getAll()           { if freund.recordID != nil {freund.delete()} }
+        saveContext()
     }
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        print("application DidFinishLaunchingWithOptions")
+        _ = Singleton.sharedInstance
+        _ = Meditierender.get()
+        
+        cleanCloudKitVersion()
+        
+        // Firebase
+        FirebaseApp.configure()
+        database.isPersistenceEnabled = true
+        FirActiveMeditations.deleteActiveMeditation()
+        
+        //erzeugt Kurstemplates (erster Start)
+        KursTemplate.createKursTemplates()
+        
+        //erstellt ersten TimerConfig (wenn kein Timer existiert)
+        TimerConfig.createFirstTimer()
+        
+        return true
+    }
+
     
 
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-        Singleton.sharedInstance.myCloudKit?.updateNow()
-        Singleton.sharedInstance.myCloudKit?.cleanMyActiveMeditations()
         self.saveContext()
         print("applicationWillResignActive")
     }
@@ -89,8 +106,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        Singleton.sharedInstance.myCloudKit?.updateNow()
-        Singleton.sharedInstance.myCloudKit?.cleanMyActiveMeditations()
+        FirActiveMeditations.deleteActiveMeditation()
         print("applicationDidEnterBackground")
     }
     
@@ -101,6 +117,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        //löscht alle Meditationen kürzer als 5 min
+        Meditation.cleanShortMeditations()
+        
+        //für übergang zu CloudKIT Production
+//        AppUser.get()?.firebaseID = nil
+//        for meditation in Meditation.getAll()   { meditation.inFirebase = false }
+//        for kurs in Kurs.getAll()               { kurs.inFirebase = false }
+//        saveContext()
+        
+        //Firebase Login/Sync ...
+        firebaseStart()
+
+        //authoriziert HealthKit
+        HealthManager().authorizeHealthKit{ (authorized,  error) -> Void in
+            if authorized {  print("HealthKit authorization received.") }
+            else { print("HealthKit authorization denied!")
+                if error != nil { print("\(String(describing: error))") } } }
+        
         print("applicationDidBecomeActive")
     }
 
@@ -108,6 +143,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         print("applicationWillTerminate")
+        FirActiveMeditations.deleteActiveMeditation()
         self.saveContext()
     }
     

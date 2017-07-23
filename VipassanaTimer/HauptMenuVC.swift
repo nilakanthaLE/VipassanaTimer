@@ -11,20 +11,26 @@ import HealthKit
 import CloudKit
 import MIBadgeButton_Swift
 
-class HauptMenuVC: UIViewController,StatistikUeberblickDelegate,UIPopoverPresentationControllerDelegate {
-    let healthManager = HealthManager()
-    @IBAction func unwindToHauptmenu(segue: UIStoryboardSegue){
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+extension UIView{
+    func setControlDesignPatterns(){
+        backgroundColor         = DesignPatterns.controlBackground
+        layer.cornerRadius      = 5.0
+        layer.borderColor       = DesignPatterns.mocha.cgColor
+        layer.borderWidth       = 0.5
+        layer.shadowOffset      = CGSize(width: 2, height: 2)
+        layer.shadowColor       = UIColor.white.cgColor
+        clipsToBounds           = true
     }
+}
+
+class HauptMenuVC: UIViewController,StatistikUeberblickDelegate,UIPopoverPresentationControllerDelegate {
+    @IBAction func unwindToHauptmenu(segue: UIStoryboardSegue){ saveContext() }
     
     @IBOutlet weak var statistikUeberblick2View: StatistikUeberblick2!{ didSet{statistikUeberblick2View.delegate = self} }
     @IBOutlet weak var statistikUeberblickView: StatistikUeberblick!{ didSet{statistikUeberblickView.delegate = self} }
     @IBOutlet weak var meditationStartenButton: UIButton!{didSet{meditationStartenButton.set(layerDesign: DesignPatterns.standardButton)}}
     @IBOutlet weak var kalenderButton: UIButton!{didSet{kalenderButton.set(layerDesign: DesignPatterns.standardButton)}}
-    
     @IBOutlet weak var subMenuBadgeButton: MIBadgeButton! {didSet{subMenuBadgeButton.set(layerDesign: DesignPatterns.standardButton)}}
-        
-        
     @IBOutlet weak var statistikButton: UIButton!{didSet{statistikButton.set(layerDesign: DesignPatterns.standardButton)}}
     
     //MARK: Delegates
@@ -40,72 +46,33 @@ class HauptMenuVC: UIViewController,StatistikUeberblickDelegate,UIPopoverPresent
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        _ = Singleton.sharedInstance
         
-        //erstellt eventuell Meditierenden neu
-        //holt Userdaten (ID+Nick) aus CloudKit
-        _ = Meditierender.get()
-        Singleton.sharedInstance.myCloudKit?.updateNow()
-        
-        //löscht alle Meditationen kürzer als 5 min
-        for meditation in Meditation.getAll(){
-            if meditation.gesamtDauer < 5 * 60{
-                meditation.delete()
-                print("deleted")
-            }
-        }
-        KursTemplate.createKursTemplates()
-        
-        //erstellt ersten TimerConfig (wenn kein Timer existiert)
-        if TimerConfig.getAll().count == 0{
-            let new     = TimerConfig.new(dauerAnapana: 5*60, dauerVipassana: 50*60, dauerMetta: 5*60, mettaOpenEnd: false)
-            new?.name   = NSLocalizedString("FirstMeditation", comment: "FirstMeditation")
-        }
-        
-        //authoriziert HealthKit
-        healthManager.authorizeHealthKit{ (authorized,  error) -> Void in
-            if authorized {  print("HealthKit authorization received.") }
-            else { print("HealthKit authorization denied!")
-                if error != nil { print("\(String(describing: error))") } } }
-        
-
-        
+        view.backgroundColor = DesignPatterns.mainBackground
         
     }
     
     
     
     
-    @IBOutlet weak var backgroundViewFuerStatistik: UIView!{
-        didSet{
-            backgroundViewFuerStatistik.layer.cornerRadius    = 5.0
-            backgroundViewFuerStatistik.layer.borderColor     = DesignPatterns.mocha.cgColor
-            backgroundViewFuerStatistik.layer.borderWidth     = 0.5
-            backgroundViewFuerStatistik.layer.shadowOffset    = CGSize(width: 2, height: 2)
-            backgroundViewFuerStatistik.layer.shadowColor       = UIColor.white.cgColor
-        }
-        
-    }
-    
+    @IBOutlet weak var backgroundViewFuerStatistik: UIView!     { didSet{ backgroundViewFuerStatistik.setControlDesignPatterns() } }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         TimerConfig.deleteToDelete()
-        statistikUeberblickView.daten   = StatistikUeberblickDaten()
-        statistikUeberblick2View.daten  = StatistikUeberblickDaten()
+        StatistikUeberblickDaten.setCoreDataStatisticsAsync {
+            //update
+            weak var weakSelf = self
+            weakSelf?.statistikUeberblickView?.daten    = Statistics.get()
+            weakSelf?.statistikUeberblick2View?.daten   = Statistics.get()
+        }
         
         let freundesAnfragen = Freund.getFreundesAnfragen()
-        subMenuBadgeButton.badgeString  = freundesAnfragen.count > 0 ? "\(freundesAnfragen.count)" : nil
-        subMenuBadgeButton.badgeEdgeInsets = UIEdgeInsetsMake(15, 0, 0, 0)
+        subMenuBadgeButton.badgeString      = freundesAnfragen.count > 0 ? "\(freundesAnfragen.count)" : nil
+        subMenuBadgeButton.badgeEdgeInsets  = UIEdgeInsetsMake(15, 0, 0, 0)
         
-        
+        HealthManager().updateHealthKit()
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        healthManager.updateHealthKit()
-    }
-    
-    
+
     //popover Hamburger Menue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "popoverSegue" {
@@ -119,6 +86,7 @@ class HauptMenuVC: UIViewController,StatistikUeberblickDelegate,UIPopoverPresent
             popoverViewController.popoverPresentationController!.delegate = self
             popoverViewController.cellSelected = {[unowned self] (_ indexPath:IndexPath) in
                 self.cellSelected(indexPath) }
+            popoverPresentationController.backgroundColor = UIColor.clear
         }
     }
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
@@ -152,7 +120,15 @@ class HauptMenuVC: UIViewController,StatistikUeberblickDelegate,UIPopoverPresent
     }
 }
 
+
+
 class SubMenuTableVC:UITableViewController{
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor.clear
+//        view.isOpaque   = false
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         cellSelected?(indexPath)
@@ -165,7 +141,7 @@ class SubMenuTableVC:UITableViewController{
     
     
     private func setCellLabel(_ cell:UITableViewCell){
-        cell.backgroundColor = DesignPatterns.backgroundcolor
+        cell.backgroundColor = UIColor.clear //DesignPatterns.backgroundcolor
         cell.textLabel?.backgroundColor = UIColor.clear
         cell.textLabel?.layer.backgroundColor =  DesignPatterns.gelb.cgColor
         cell.textLabel?.set(layerDesign: DesignPatterns.standardButton)
@@ -174,12 +150,17 @@ class SubMenuTableVC:UITableViewController{
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
-        view.backgroundColor = DesignPatterns.backgroundcolor
+        view.backgroundColor = UIColor.clear
         return view
     }
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let view = UIView()
-        view.backgroundColor = DesignPatterns.backgroundcolor
+        
+
+        
+        
+        view.backgroundColor = UIColor.clear
+    
         return view
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -187,5 +168,18 @@ class SubMenuTableVC:UITableViewController{
     }
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 6
+    }
+}
+
+
+
+extension UIView{
+    func setBackgroundImage(image:UIImage){
+        let imageView = UIImageView(image: image)
+        addConstraint(NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: imageView, attribute: .leading, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: imageView, attribute: .trailing, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: imageView, attribute: .top, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: imageView, attribute: .bottom, multiplier: 1, constant: 0))
+        addSubview(  imageView )
     }
 }

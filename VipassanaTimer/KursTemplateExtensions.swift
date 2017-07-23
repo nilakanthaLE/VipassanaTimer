@@ -574,7 +574,7 @@ extension KursTemplate{
             if let meditation       = MeditationTemplate.new(start: start, name: name, dauerAnapana: 0, dauerVipassana: 7200, dauerMetta: 0){
                 kursTemplate?.addToMeditationsTemplates([meditation])
             }
-            (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+            saveContext()
         }
     } 
 }

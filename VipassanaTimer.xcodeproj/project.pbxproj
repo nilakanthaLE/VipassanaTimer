@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4F729124BDB8FC647A780650 /* Pods_VipassanaTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA9F84A927CF18181FB1766 /* Pods_VipassanaTimer.framework */; };
+		5C0A45581F1627640056FCED /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0A45571F1627640056FCED /* Singleton.swift */; };
 		5C142CA11E7C14D70085191B /* MedititierenderCollectionViewCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C142CA01E7C14D70085191B /* MedititierenderCollectionViewCellView.xib */; };
 		5C142CA31E7D97530085191B /* FreundExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C142CA21E7D97530085191B /* FreundExtension.swift */; };
-		5C142CA51E7DA56F0085191B /* MyCKRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C142CA41E7DA56F0085191B /* MyCKRecords.swift */; };
 		5C142CA81E8007580085191B /* UserMeditationInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C142CA71E8007580085191B /* UserMeditationInfoVC.swift */; };
 		5C142CAB1E803E9B0085191B /* FreundeFindenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C142CAA1E803E9B0085191B /* FreundeFindenVC.swift */; };
 		5C142CAD1E828BA80085191B /* MeineFreundesAnfragenTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C142CAC1E828BA80085191B /* MeineFreundesAnfragenTableVC.swift */; };
@@ -50,10 +50,14 @@
 		5C55020B1E1E73DD004C700D /* ConfigureTimerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C55020A1E1E73DD004C700D /* ConfigureTimerVC.swift */; };
 		5C55020D1E1E899C004C700D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C55020C1E1E899C004C700D /* Extensions.swift */; };
 		5C5502111E1EA94C004C700D /* NibLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5502101E1EA94C004C700D /* NibLoadingView.swift */; };
+		5C5C33E21F23862E009ACFB3 /* old-scratched-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C5C33E11F23862E009ACFB3 /* old-scratched-background.jpg */; };
+		5C5C33E41F23877D009ACFB3 /* stationery-2099970_960_720.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5C33E31F23877D009ACFB3 /* stationery-2099970_960_720.png */; };
+		5C5F270A1F1CD1950080A12F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C5F27091F1CD1950080A12F /* GoogleService-Info.plist */; };
 		5C61C45F1E44B9A8005B744D /* StatistikUeberblick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C61C45E1E44B9A8005B744D /* StatistikUeberblick.swift */; };
 		5C70572D1E2CF11500D307EF /* EditMeditationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70572C1E2CF11500D307EF /* EditMeditationVC.swift */; };
 		5C70572F1E2D2CF400D307EF /* DesignPatterns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70572E1E2D2CF400D307EF /* DesignPatterns.swift */; };
 		5C7296B91E5B523000F9B4B1 /* MyCalendar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5CEE46071E3A3765005C8713 /* MyCalendar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5C94DDF41F23676500BEA142 /* StatisticsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C94DDF31F23676500BEA142 /* StatisticsExtensions.swift */; };
 		5CA9A1331E3F9A64000C28F6 /* KursExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9A1321E3F9A64000C28F6 /* KursExtensions.swift */; };
 		5CA9A1361E40B84C000C28F6 /* KursTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CA9A1351E40B84C000C28F6 /* KursTableCellView.xib */; };
 		5CA9A1381E40C7F3000C28F6 /* StatistikView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9A1371E40C7F3000C28F6 /* StatistikView.swift */; };
@@ -70,6 +74,7 @@
 		5CB25C831E76C75400E37EAF /* TimerControlConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB25C821E76C75400E37EAF /* TimerControlConfig.swift */; };
 		5CB25C851E7945CD00E37EAF /* MeditierendeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CB25C841E7945CC00E37EAF /* MeditierendeView.xib */; };
 		5CB25C871E7946D700E37EAF /* MeditierendeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB25C861E7946D700E37EAF /* MeditierendeView.swift */; };
+		5CBB48311F1F4C99003750C7 /* AppUserExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBB48301F1F4C99003750C7 /* AppUserExtensions.swift */; };
 		5CCE42B71E5B5942001373D8 /* EndlessScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7296BC1E5B523F00F9B4B1 /* EndlessScrollView.framework */; };
 		5CCE42B81E5B5942001373D8 /* EndlessScrollView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7296BC1E5B523F00F9B4B1 /* EndlessScrollView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5CD00D2C1E4DF8D80092A352 /* Statistiken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD00D2B1E4DF8D80092A352 /* Statistiken.swift */; };
@@ -117,9 +122,9 @@
 
 /* Begin PBXFileReference section */
 		3DA9F84A927CF18181FB1766 /* Pods_VipassanaTimer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VipassanaTimer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C0A45571F1627640056FCED /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		5C142CA01E7C14D70085191B /* MedititierenderCollectionViewCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MedititierenderCollectionViewCellView.xib; sourceTree = "<group>"; };
 		5C142CA21E7D97530085191B /* FreundExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreundExtension.swift; sourceTree = "<group>"; };
-		5C142CA41E7DA56F0085191B /* MyCKRecords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCKRecords.swift; sourceTree = "<group>"; };
 		5C142CA71E8007580085191B /* UserMeditationInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMeditationInfoVC.swift; sourceTree = "<group>"; };
 		5C142CAA1E803E9B0085191B /* FreundeFindenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreundeFindenVC.swift; sourceTree = "<group>"; };
 		5C142CAC1E828BA80085191B /* MeineFreundesAnfragenTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeineFreundesAnfragenTableVC.swift; sourceTree = "<group>"; };
@@ -169,10 +174,14 @@
 		5C55020A1E1E73DD004C700D /* ConfigureTimerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureTimerVC.swift; sourceTree = "<group>"; };
 		5C55020C1E1E899C004C700D /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5C5502101E1EA94C004C700D /* NibLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoadingView.swift; sourceTree = "<group>"; };
+		5C5C33E11F23862E009ACFB3 /* old-scratched-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "old-scratched-background.jpg"; path = "../../../../Desktop/old-scratched-background.jpg"; sourceTree = "<group>"; };
+		5C5C33E31F23877D009ACFB3 /* stationery-2099970_960_720.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "stationery-2099970_960_720.png"; path = "../../../../Desktop/stationery-2099970_960_720.png"; sourceTree = "<group>"; };
+		5C5F27091F1CD1950080A12F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5C61C45E1E44B9A8005B744D /* StatistikUeberblick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatistikUeberblick.swift; sourceTree = "<group>"; };
 		5C70572C1E2CF11500D307EF /* EditMeditationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMeditationVC.swift; sourceTree = "<group>"; };
 		5C70572E1E2D2CF400D307EF /* DesignPatterns.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignPatterns.swift; sourceTree = "<group>"; };
 		5C7296BC1E5B523F00F9B4B1 /* EndlessScrollView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EndlessScrollView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C94DDF31F23676500BEA142 /* StatisticsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsExtensions.swift; sourceTree = "<group>"; };
 		5CA9A1321E3F9A64000C28F6 /* KursExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KursExtensions.swift; sourceTree = "<group>"; };
 		5CA9A1351E40B84C000C28F6 /* KursTableCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KursTableCellView.xib; sourceTree = "<group>"; };
 		5CA9A1371E40C7F3000C28F6 /* StatistikView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatistikView.swift; sourceTree = "<group>"; };
@@ -189,6 +198,7 @@
 		5CB25C821E76C75400E37EAF /* TimerControlConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerControlConfig.swift; sourceTree = "<group>"; };
 		5CB25C841E7945CC00E37EAF /* MeditierendeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeditierendeView.xib; sourceTree = "<group>"; };
 		5CB25C861E7946D700E37EAF /* MeditierendeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeditierendeView.swift; sourceTree = "<group>"; };
+		5CBB48301F1F4C99003750C7 /* AppUserExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUserExtensions.swift; sourceTree = "<group>"; };
 		5CD00D2B1E4DF8D80092A352 /* Statistiken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statistiken.swift; sourceTree = "<group>"; };
 		5CD00D321E5360C40092A352 /* KalenderMonatHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KalenderMonatHeaderView.xib; sourceTree = "<group>"; };
 		5CD00D341E53640A0092A352 /* DayViewForMonthView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DayViewForMonthView.xib; sourceTree = "<group>"; };
@@ -238,7 +248,6 @@
 				5C142CB41E83DCAE0085191B /* CKActiveMeditation.swift */,
 				5C142CB21E83DC560085191B /* CKMeditation.swift */,
 				5C142CB01E83DBC90085191B /* CKFreund.swift */,
-				5C142CA41E7DA56F0085191B /* MyCKRecords.swift */,
 				5C15D0661E83DD7E0027D768 /* CKMeditierender.swift */,
 			);
 			name = CloudKit;
@@ -287,11 +296,11 @@
 		5C342A491E1C03DD007D2305 /* VipassanaTimer */ = {
 			isa = PBXGroup;
 			children = (
+				5CF0D0321E5F2542002EA9DA /* VipassanaTimer.entitlements */,
 				5C4DE6091E66F6DB00715F83 /* Main.storyboard */,
 				5CB25C751E71B88400E37EAF /* MeinProfilVC.swift */,
-				5CF0D0321E5F2542002EA9DA /* VipassanaTimer.entitlements */,
-				5CAFE7E81E24FE1E008F740A /* HauptMenuVC.swift */,
 				5C2A72101E5F268D00D19E22 /* HealthManager.swift */,
+				5CAFE7E81E24FE1E008F740A /* HauptMenuVC.swift */,
 				5CF0B67F1E1FB8FD00745BB7 /* MeditationStartenVC.swift */,
 				5C142CA91E803E6D0085191B /* Freunde */,
 				5CB25C881E79523E00E37EAF /* MeditierendeView */,
@@ -319,12 +328,15 @@
 		5C5502011E1E5B0F004C700D /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				5CB25C771E72BCA800E37EAF /* CoreDataObserver.swift */,
 				5C342A511E1C03DD007D2305 /* VipassanaTimer.xcdatamodeld */,
-				5C142CA21E7D97530085191B /* FreundExtension.swift */,
-				5CB25C731E71984500E37EAF /* MeditierenderExtensions.swift */,
-				5C1A6D541E48CEAA0032A0F3 /* AppConfigExtensions.swift */,
+				5CBB48301F1F4C99003750C7 /* AppUserExtensions.swift */,
+				5C94DDF31F23676500BEA142 /* StatisticsExtensions.swift */,
 				5CD978BF1F152AB200A8B60B /* Firebase.swift */,
+				5C0A45571F1627640056FCED /* Singleton.swift */,
+				5CB25C731E71984500E37EAF /* MeditierenderExtensions.swift */,
+				5CB25C771E72BCA800E37EAF /* CoreDataObserver.swift */,
+				5C142CA21E7D97530085191B /* FreundExtension.swift */,
+				5C1A6D541E48CEAA0032A0F3 /* AppConfigExtensions.swift */,
 				5C2D038E1E3F6FD900A113FF /* KursTemplateExtensions.swift */,
 				5CA9A1321E3F9A64000C28F6 /* KursExtensions.swift */,
 				5CAFE7EA1E250327008F740A /* MeditationExtensions.swift */,
@@ -340,10 +352,13 @@
 		5C5502021E1E5B37004C700D /* supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				5C5C33E11F23862E009ACFB3 /* old-scratched-background.jpg */,
+				5C5C33E31F23877D009ACFB3 /* stationery-2099970_960_720.png */,
+				5C342A4A1E1C03DD007D2305 /* AppDelegate.swift */,
+				5C5F27091F1CD1950080A12F /* GoogleService-Info.plist */,
 				5C4DE62C1E68581600715F83 /* Localizable.strings */,
 				5C2A721A1E66EBBE00D19E22 /* buddha_black.png */,
 				5C2A721B1E66EBBE00D19E22 /* buddha_gold.png */,
-				5C342A4A1E1C03DD007D2305 /* AppDelegate.swift */,
 				5C342A541E1C03DD007D2305 /* Assets.xcassets */,
 				5C342A561E1C03DD007D2305 /* LaunchScreen.storyboard */,
 				5C342A591E1C03DD007D2305 /* Info.plist */,
@@ -555,11 +570,14 @@
 				5CA9A1361E40B84C000C28F6 /* KursTableCellView.xib in Resources */,
 				5C4DE62E1E685D7B00715F83 /* StatistikUeberblick2.xib in Resources */,
 				5CB25C7C1E72EDBF00E37EAF /* TimerView.xib in Resources */,
+				5C5C33E21F23862E009ACFB3 /* old-scratched-background.jpg in Resources */,
 				5C2A721C1E66EBBE00D19E22 /* buddha_black.png in Resources */,
+				5C5C33E41F23877D009ACFB3 /* stationery-2099970_960_720.png in Resources */,
 				5C4DE62A1E68581600715F83 /* Localizable.strings in Resources */,
 				5CD00D331E5360C40092A352 /* KalenderMonatHeaderView.xib in Resources */,
 				5CB25C851E7945CD00E37EAF /* MeditierendeView.xib in Resources */,
 				5C2D03891E3B882800A113FF /* KalenderTitleView.xib in Resources */,
+				5C5F270A1F1CD1950080A12F /* GoogleService-Info.plist in Resources */,
 				5C4B5DD01E27AF4300307437 /* WochenUndTagesKalenderVC.xib in Resources */,
 				5C4B5DD31E2A7BF300307437 /* MeditationsKalenderEintrag.xib in Resources */,
 			);
@@ -622,7 +640,6 @@
 			files = (
 				5CF0B6801E1FB8FD00745BB7 /* MeditationStartenVC.swift in Sources */,
 				5CEE460B1E3A3832005C8713 /* KalenderVC.swift in Sources */,
-				5C142CA51E7DA56F0085191B /* MyCKRecords.swift in Sources */,
 				5CB25C741E71984500E37EAF /* MeditierenderExtensions.swift in Sources */,
 				5C142CA31E7D97530085191B /* FreundExtension.swift in Sources */,
 				5C1A6D551E48CEAA0032A0F3 /* AppConfigExtensions.swift in Sources */,
@@ -633,6 +650,7 @@
 				5C2D03931E3F7EB000A113FF /* KursErstellenVC.swift in Sources */,
 				5C142CB11E83DBC90085191B /* CKFreund.swift in Sources */,
 				5C55020B1E1E73DD004C700D /* ConfigureTimerVC.swift in Sources */,
+				5C94DDF41F23676500BEA142 /* StatisticsExtensions.swift in Sources */,
 				5C1A6D571E48CF800032A0F3 /* SetAnfangsDatumStatistikVC.swift in Sources */,
 				5C142CAF1E8295630085191B /* FreundeTableVC.swift in Sources */,
 				5C142CB51E83DCAE0085191B /* CKActiveMeditation.swift in Sources */,
@@ -643,9 +661,11 @@
 				5C5502111E1EA94C004C700D /* NibLoadingView.swift in Sources */,
 				5CB25C781E72BCA800E37EAF /* CoreDataObserver.swift in Sources */,
 				5C70572F1E2D2CF400D307EF /* DesignPatterns.swift in Sources */,
+				5C0A45581F1627640056FCED /* Singleton.swift in Sources */,
 				5CB25C7E1E72EE1600E37EAF /* TimerView.swift in Sources */,
 				5CB25C831E76C75400E37EAF /* TimerControlConfig.swift in Sources */,
 				5C4DE63F1E6EFB1E00715F83 /* MyCloudKit.swift in Sources */,
+				5CBB48311F1F4C99003750C7 /* AppUserExtensions.swift in Sources */,
 				5CAFE7EB1E250327008F740A /* MeditationExtensions.swift in Sources */,
 				5C142CA81E8007580085191B /* UserMeditationInfoVC.swift in Sources */,
 				5C55020D1E1E899C004C700D /* Extensions.swift in Sources */,
@@ -846,13 +866,13 @@
 				CODE_SIGN_ENTITLEMENTS = VipassanaTimer/VipassanaTimer.entitlements;
 				DEVELOPMENT_TEAM = XAD3F7PHKG;
 				INFOPLIST_FILE = VipassanaTimer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = DNS.VipassanaTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -865,13 +885,13 @@
 				CODE_SIGN_ENTITLEMENTS = VipassanaTimer/VipassanaTimer.entitlements;
 				DEVELOPMENT_TEAM = XAD3F7PHKG;
 				INFOPLIST_FILE = VipassanaTimer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = DNS.VipassanaTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

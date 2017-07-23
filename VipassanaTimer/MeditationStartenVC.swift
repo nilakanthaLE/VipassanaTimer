@@ -8,6 +8,14 @@
 
 import UIKit
 
+extension UINavigationBar{
+    func setDesignPattern(){
+        barTintColor    = DesignPatterns.headerBackground
+        tintColor       = DesignPatterns.mocha
+        titleTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: DesignPatterns.mocha]
+    }
+}
+
 class MeditationStartenVC: UIViewController,TimerConfigViewDelegateControlTapped {
 
     var timerConfig:TimerConfig? = TimerConfig.getActive()
@@ -18,44 +26,46 @@ class MeditationStartenVC: UIViewController,TimerConfigViewDelegateControlTapped
             timerConfigView.timerConfig             = timerConfig
             timerConfigView.zeigeSteuerungsPanel    = true
             timerConfigView.controlTappedDelegate   = self
-            timerConfigView.meditationGestartetOderBeendet     = {[unowned self](_ meditation:Meditation?) in
-                self.meditierendeView.myActiveMeditation = meditation}
+            timerConfigView.meditationGestartetOderBeendet     = {[unowned self](_ meditation:Meditation?) in self.meditierendeView.myActiveMeditation = meditation}
         }
     }
     func controlTapped()
         { performSegue(withIdentifier: "goToMeineTimer", sender: nil) }
     
     //MARK: lässt APP im Vordergrund
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        FirActiveMeditations.setObserver()
         UIApplication.shared.isIdleTimerDisabled = true
-        Singleton.sharedInstance.cloudKitActiveMeditationsUpdater?.isON = true
+        view.backgroundColor    = DesignPatterns.mainBackground
+        
+        navigationController?.navigationBar.setDesignPattern()
+        navigationController?.view.backgroundColor           = UIColor.black
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        UIApplication.shared.isIdleTimerDisabled = false
-    }
-    
-    
     deinit {
         timerConfigView.invalidateTimers()
         timerConfigView.controlTappedDelegate = nil
-        Singleton.sharedInstance.cloudKitActiveMeditationsUpdater?.isON = false
+        
+        UIApplication.shared.isIdleTimerDisabled = false
+        FirActiveMeditations.removeObserver()
+        FirActiveMeditations.deleteActiveMeditation()
         print("deinit MeditationStartenVC")
     }
     
     
     @IBOutlet weak var meditierendeView: MeditierendeView!{
         didSet{
-            meditierendeView.showUserMeditationInfo = {[unowned self](_ activeMeditation:CKActiveMeditation) in
+            meditierendeView.showUserMeditationInfo = {[unowned self](_ activeMeditation:ActiveMeditationInFB) in
                 self.performSegue(withIdentifier: "showUserInfo", sender: activeMeditation)}
+            meditierendeView.backgroundColor = DesignPatterns.controlBackground
+            
         }
     }
     
     //MARK: segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "showUserInfo",
-            let activeMeditation = sender as? CKActiveMeditation,
+            let activeMeditation = sender as? ActiveMeditationInFB,
             let userMeditationInfoVC = segue.destination.contentViewController as? UserMeditationInfoVC  else {return}
         userMeditationInfoVC.activeMeditation   = activeMeditation
     }

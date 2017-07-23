@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13156.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13137.5"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="ArialRoundedMTBold.ttf">
+            <string>ArialRoundedMTBold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TimerView">
             <connections>
@@ -153,7 +158,7 @@
                         <constraint firstItem="A29-PJ-jfn" firstAttribute="leading" secondItem="rdh-jS-BRl" secondAttribute="leadingMargin" id="Tpo-IR-LRp"/>
                         <constraint firstItem="boa-HO-rb0" firstAttribute="centerX" secondItem="vdU-L1-Oe8" secondAttribute="centerX" id="UYT-tR-QiL"/>
                         <constraint firstItem="avA-qd-zHE" firstAttribute="trailing" secondItem="vdU-L1-Oe8" secondAttribute="trailing" id="aTg-am-Vcm"/>
-                        <constraint firstAttribute="bottom" secondItem="Q8g-hN-8gj" secondAttribute="bottom" id="jEk-Io-hL7"/>
+                        <constraint firstAttribute="bottom" secondItem="Q8g-hN-8gj" secondAttribute="bottom" constant="3" id="jEk-Io-hL7"/>
                         <constraint firstItem="boa-HO-rb0" firstAttribute="top" secondItem="vdU-L1-Oe8" secondAttribute="bottom" constant="8" symbolic="YES" id="k6z-uI-D3i"/>
                         <constraint firstItem="Q8g-hN-8gj" firstAttribute="baseline" secondItem="avA-qd-zHE" secondAttribute="baseline" id="kIl-9p-kb5"/>
                         <constraint firstItem="vdU-L1-Oe8" firstAttribute="top" secondItem="A29-PJ-jfn" secondAttribute="bottom" constant="8" symbolic="YES" id="sfD-Fy-rh9"/>
@@ -177,7 +182,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitte hier tippen, um einen Timer zu wählen oder neu zu kofigurieren." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7n3-ng-ash">
-                                            <rect key="frame" x="51.5" y="42" width="334.5" height="41"/>
+                                            <rect key="frame" x="50.5" y="42" width="336.5" height="41"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -209,7 +214,6 @@
                     </connections>
                 </visualEffectView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="HLK-Fp-WQN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="1qk-QS-1Tr"/>
                 <constraint firstAttribute="trailing" secondItem="2Bm-Jj-QaZ" secondAttribute="trailing" id="2dC-8E-I2r"/>

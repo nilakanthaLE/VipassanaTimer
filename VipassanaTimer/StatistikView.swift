@@ -158,7 +158,7 @@ class StatistikView: UIView {
         let label = UILabel()
         label.text = achsenBeschriftung?.yAchse ?? "?"
         label.sizeToFit()
-        label.frame.origin = CGPoint(x: 2.0, y: 0.0)
+        label.frame.origin = CGPoint(x: 4.0, y: 5.0)
         label.font = UIFont.systemFont(ofSize: 12)
         addSubview(label)
         

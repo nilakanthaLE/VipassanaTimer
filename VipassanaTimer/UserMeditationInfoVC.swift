@@ -10,15 +10,17 @@ import UIKit
 
 class UserMeditationInfoVC: UIViewController {
     var userIsFriend = false
-    var activeMeditation:CKActiveMeditation?{
+    var activeMeditation:ActiveMeditationInFB?{
         didSet{
             guard let activeMeditation = activeMeditation else {return}
-            meditationsDatumLabel?.text         = activeMeditation.start.string("dd.MM.yyyy")
+            meditationsDatumLabel?.text         = activeMeditation.start?.string("dd.MM.yyyy")
             meditationStartLabel?.text          = startString
             meditationsDauerLabel?.text         = dauerString
             meditationsEndeLabel?.text          = endeString
             meditierenderSpitznameLabel?.text   = activeMeditation.spitznameString
-            userIsFriend = Freund.isUserFriend(activeMeditation.userID)
+            
+            userIsFriend = activeMeditation.freundesStatus == .granted
+            
             if let statisticTag = activeMeditation.durchSchnittProTag,
                 let statisticGesamtDauer = activeMeditation.gesamtDauerStatistik,
                 let kursTage = activeMeditation.kursTage,
@@ -42,12 +44,32 @@ class UserMeditationInfoVC: UIViewController {
                 kursTageTextLabel?.isHidden                 = true
             }
             
+            freundschaftsanfrageButton?.isHidden = activeMeditation.canAskForFriendShip == false
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = DesignPatterns.mainBackground
+    }
+    @IBOutlet weak var overlayView: UIView!{
+        didSet{
+            overlayView.setControlDesignPatterns()
+        }
+    }
+    @IBOutlet weak var freundschaftsanfrageButton: UIButton!{
+        didSet{
+            let title = NSLocalizedString("freundschaftsanfrageButton", comment: "freundschaftsanfrageButton")
+            freundschaftsanfrageButton.setTitle(title, for: .normal)
+            freundschaftsanfrageButton?.isHidden = activeMeditation?.canAskForFriendShip != true
+        }
+    }
+    @IBAction func freundschaftsanfrageButtonPressed(_ sender: UIButton) {
+        freundschaftsanfrageButton.isHidden = activeMeditation?.askForFriendship() == true
+    }
     
     @IBOutlet weak var meditationsDatumLabel: UILabel!
-        {didSet{meditationsDatumLabel.text = activeMeditation?.start.string("dd.MM.yyyy")}}
+        {didSet{meditationsDatumLabel.text = activeMeditation?.start?.string("dd.MM.yyyy")}}
     @IBOutlet weak var meditationStartLabel: UILabel!
         {didSet{meditationStartLabel.text  = startString}}
     @IBOutlet weak var meditationsDauerLabel: UILabel!
@@ -63,11 +85,11 @@ class UserMeditationInfoVC: UIViewController {
     }
     var startString:String{
         guard let start = activeMeditation?.start else {return ""}
-        return start.string("hh:mm")
+        return start.string("HH:mm")
     }
     var endeString:String{
         guard let ende = activeMeditation?.ende else {return ""}
-        return ende.string("hh:mm") + mettaOpenEndString
+        return ende.string("HH:mm") + mettaOpenEndString
     }
     var mettaOpenEndString:String{
         guard activeMeditation?.mettaOpenEnd == true else {return ""}

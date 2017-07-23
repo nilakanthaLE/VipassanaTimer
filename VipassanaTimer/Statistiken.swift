@@ -66,37 +66,81 @@ struct Statistik {
     
 }
 
+extension Int{
+    var asInt16:Int16   {return Int16(self)}
+}
+
 struct StatistikUeberblickDaten{
-    //Zeitraum = erster Eintrag / letzter Eintrag
-    var gesamtAktuellTag:TimeInterval{
-        let meditationen    = Meditation.getDays(start: Date(), ende: Date())
-        return Meditation.gesamtDauer(meditationen: meditationen)
-    }
-    var gesamtAktuellWoche:TimeInterval{
-        let meditationen    = Meditation.getDays(start: Date().mondayOfWeek, ende: Date().sundayOfWeek)
-        return Meditation.gesamtDauer(meditationen: meditationen)
-    }
-    var gesamtAktuellMonat:TimeInterval{
-        let meditationen    = Meditation.getDays(start: Date().startOfMonth, ende: Date().endOfMonth)
-        return Meditation.gesamtDauer(meditationen: meditationen)
-    }
     
-    var gesamtVorherigTag:TimeInterval{
-        let meditationen    = Meditation.getDays(start: Date().addDays(-1), ende: Date().addDays(-1))
-        return Meditation.gesamtDauer(meditationen: meditationen)
+    static func setCoreDataStatisticsAsync(update:@escaping ()->Void){
+        // Move to a background thread to do some long running work
+        DispatchQueue.global(qos: .userInitiated).async {
+            let data        = StatistikUeberblickDaten()
+            
+            
+            let regelmaessigZweimalAmTagMax     = data.regelmaessigEinmalAmTagBisHeute.anzahlZweiMalAmTagMax.asInt16
+            let regelmaessigZweiMalAmTag        = data.regelmaessigEinmalAmTagBisHeute.anzahlZweiMalAmTagBisHeute.asInt16
+            let regelmaessigEinmalAmTagMax      = data.regelmaessigEinmalAmTagBisHeute.anzahlMax.asInt16
+            let regelmaessigEinmalAmTag         = data.regelmaessigEinmalAmTagBisHeute.anzahlBisHeute.asInt16
+            let kursTage                        = data.kursTage.asInt16
+            let gesamtVorherigWoche             = data.gesamtVorherigWoche
+            let gesamtVorherigTag               = data.gesamtVorherigTag
+            let gesamtVorherigMonat             = data.gesamtVorherigMonat
+            let gesamtDauerOhneKurse            = data.gesamtOhneKurse
+            let gesamtDauer                     = data.gesamt
+            let gesamtAktuellWoche              = data.gesamtAktuellWoche
+            let gesamtAktuellTag                = data.gesamtAktuellTag
+            let gesamtAktuellMonat              = data.gesamtAktuellMonat
+            let durchschnittWoche               = data.durchSchnittWoche
+            let durchschnittVorherigWoche       = data.gesamtVorherigWoche
+            let durchschnittVorherigTag         = data.gesamtVorherigTag
+            let durchschnittVorherigMonat       = data.gesamtVorherigMonat
+            let durchschnittTag                 = data.durchschnittTag
+            let durchschnittMonat               = data.durchSchnittMonat
+            
+            
+            // Bounce back to the main thread to update the UI
+            DispatchQueue.main.async {
+                print("start:\(Date().string("HH:mm:ss.SSSS"))")
+                let statistics  = Statistics.get()
+                
+                
+                statistics?.regelmaessigZweimalAmTagMax     = regelmaessigZweimalAmTagMax
+                statistics?.regelmaessigZweiMalAmTag        = regelmaessigZweiMalAmTag
+                statistics?.regelmaessigEinmalAmTagMax      = regelmaessigEinmalAmTagMax
+                statistics?.regelmaessigEinmalAmTag         = regelmaessigEinmalAmTag
+                statistics?.kursTage                        = kursTage
+                statistics?.gesamtVorherigWoche             = gesamtVorherigWoche
+                statistics?.gesamtVorherigTag               = gesamtVorherigTag
+                statistics?.gesamtVorherigMonat             = gesamtVorherigMonat
+                statistics?.gesamtDauerOhneKurse            = gesamtDauerOhneKurse
+                statistics?.gesamtDauer                     = gesamtDauer
+                statistics?.gesamtAktuellWoche              = gesamtAktuellWoche
+                statistics?.gesamtAktuellTag                = gesamtAktuellTag
+                statistics?.gesamtAktuellMonat              = gesamtAktuellMonat
+                statistics?.durchschnittWoche               = durchschnittWoche
+                statistics?.durchschnittVorherigWoche       = durchschnittVorherigWoche
+                statistics?.durchschnittVorherigTag         = durchschnittVorherigTag
+                statistics?.durchschnittVorherigMonat       = durchschnittVorherigMonat
+                statistics?.durchschnittTag                 = durchschnittTag
+                statistics?.durchschnittMonat               = durchschnittMonat
+                saveContext()
+                
+                update()
+                print("ende:\(Date().string("HH:mm:ss.SSSS"))")
+            }
+        }
+        
+        
+        
     }
-    var gesamtVorherigWoche:TimeInterval{
-        let vorwoche        = Date().mondayOfWeek.addDays(-1)
-        let meditationen    = Meditation.getDays(start: vorwoche.mondayOfWeek, ende: vorwoche.sundayOfWeek)
-        return Meditation.gesamtDauer(meditationen: meditationen)
-    }
-    var gesamtVorherigMonat:TimeInterval{
-        let vormonat        = Date().startOfMonth.addDays(-1)
-        let meditationen    = Meditation.getDays(start: vormonat.startOfMonth, ende: vormonat.endOfMonth)
-        return Meditation.gesamtDauer(meditationen: meditationen)
-    }
+    //Strings
     
-    var gesamtAenderungTag:(text:String,farbe:UIColor){
+    static var gesamtAenderungTag:(text:String,farbe:UIColor){
+        let statistics          = Statistics.get()
+        let gesamtAktuellTag    = statistics?.gesamtAktuellTag ?? 0
+        let gesamtVorherigTag   = statistics?.gesamtVorherigTag ?? 0
+        
         let aenderung   = gesamtAktuellTag - gesamtVorherigTag
         let farbe       = getFarbe(aenderung:aenderung)
         let dreieck     = getZeichen(aenderung: aenderung)
@@ -105,7 +149,11 @@ struct StatistikUeberblickDaten{
         return (text:string,farbe:farbe)
     }
     
-    var gesamtAenderungWoche:(text:String,farbe:UIColor){
+    static var gesamtAenderungWoche:(text:String,farbe:UIColor){
+        let statistics              = Statistics.get()
+        let gesamtAktuellWoche      = statistics?.gesamtAktuellWoche ?? 0
+        let gesamtVorherigWoche     = statistics?.gesamtVorherigWoche ?? 0
+        
         let aenderung   = gesamtAktuellWoche - gesamtVorherigWoche
         let farbe       = getFarbe(aenderung:aenderung)
         let dreieck     = getZeichen(aenderung: aenderung)
@@ -114,7 +162,11 @@ struct StatistikUeberblickDaten{
         return (text:string,farbe:farbe)
     }
     
-    var gesamtAenderungMonat:(text:String,farbe:UIColor){
+    static var gesamtAenderungMonat:(text:String,farbe:UIColor){
+        let statistics              = Statistics.get()
+        let gesamtAktuellMonat      = statistics?.gesamtAktuellMonat ?? 0
+        let gesamtVorherigMonat     = statistics?.gesamtVorherigMonat ?? 0
+        
         let aenderung   = gesamtAktuellMonat - gesamtVorherigMonat
         let farbe       = getFarbe(aenderung:aenderung)
         let dreieck     = getZeichen(aenderung: aenderung)
@@ -122,8 +174,11 @@ struct StatistikUeberblickDaten{
         let string      = dreieck + " " + abs(aenderung).hhmmString + " (" +  "\(Int(abs(prozent)))%" + ")"
         return (text:string,farbe:farbe)
     }
-    
-    var durchschnittAenderungTag:(text:String,farbe:UIColor){
+    static var durchschnittAenderungTag:(text:String,farbe:UIColor){
+        let statistics              = Statistics.get()
+        let gesamtVorherigTag       = statistics?.gesamtVorherigTag ?? 0
+        let durchschnittTag         = statistics?.durchschnittTag ?? 0
+        
         let aenderung   = gesamtVorherigTag - durchschnittTag
         let farbe       = getFarbe(aenderung:aenderung)
         let dreieck     = getZeichen(aenderung: aenderung)
@@ -131,7 +186,11 @@ struct StatistikUeberblickDaten{
         let string      = dreieck + " " + abs(aenderung).hhmmString + " (" +  "\(Int(abs(prozent)))%" + ")"
         return (text:string,farbe:farbe)
     }
-    var durchschnittAenderungWoche:(text:String,farbe:UIColor){
+    static var durchschnittAenderungWoche:(text:String,farbe:UIColor){
+        let statistics              = Statistics.get()
+        let gesamtVorherigWoche     = statistics?.gesamtVorherigWoche ?? 0
+        let durchSchnittWoche       = statistics?.durchschnittWoche ?? 0
+        
         let aenderung   = gesamtVorherigWoche - durchSchnittWoche
         let farbe       = getFarbe(aenderung:aenderung)
         let dreieck     = getZeichen(aenderung: aenderung)
@@ -139,7 +198,11 @@ struct StatistikUeberblickDaten{
         let string      = dreieck + " " + abs(aenderung).hhmmString + " (" +  "\(Int(abs(prozent)))%" + ")"
         return (text:string,farbe:farbe)
     }
-    var durchschnittAenderungMonat:(text:String,farbe:UIColor){
+    static var durchschnittAenderungMonat:(text:String,farbe:UIColor){
+        let statistics              = Statistics.get()
+        let gesamtVorherigMonat     = statistics?.gesamtVorherigMonat ?? 0
+        let durchSchnittMonat       = statistics?.durchschnittMonat ?? 0
+        
         let aenderung   = gesamtVorherigMonat - durchSchnittMonat
         let farbe       = getFarbe(aenderung:aenderung)
         let dreieck     = getZeichen(aenderung: aenderung)
@@ -147,8 +210,44 @@ struct StatistikUeberblickDaten{
         let string      = dreieck + " " + abs(aenderung).hhmmString + " (" +  "\(Int(abs(prozent)))%" + ")"
         return (text:string,farbe:farbe)
     }
+    //helper
+    private static func getZeichen(aenderung:TimeInterval) -> String{
+        return aenderung > 0 ? "▲" : aenderung == 0 ? "=" : "▼"
+    }
+    private static func getFarbe(aenderung:TimeInterval) -> UIColor{
+        return aenderung > 0 ? UIColor.init(red: 51.0/255.0, green: 102.0/255.0, blue: 0.0/255.0, alpha: 1.0) : aenderung == 0 ? UIColor.black : UIColor.red
+    }
     
-    var startDateFuerDurchschnitt:Date? {
+    
+    //Zeitraum = erster Eintrag / letzter Eintrag
+    private var gesamtAktuellTag:TimeInterval{
+        let meditationen    = Meditation.getDays(start: Date(), ende: Date())
+        return Meditation.gesamtDauer(meditationen: meditationen)
+    }
+    private var gesamtAktuellWoche:TimeInterval{
+        let meditationen    = Meditation.getDays(start: Date().mondayOfWeek, ende: Date().sundayOfWeek)
+        return Meditation.gesamtDauer(meditationen: meditationen)
+    }
+    private var gesamtAktuellMonat:TimeInterval{
+        let meditationen    = Meditation.getDays(start: Date().startOfMonth, ende: Date().endOfMonth)
+        return Meditation.gesamtDauer(meditationen: meditationen)
+    }
+    
+    private var gesamtVorherigTag:TimeInterval{
+        let meditationen    = Meditation.getDays(start: Date().addDays(-1), ende: Date().addDays(-1))
+        return Meditation.gesamtDauer(meditationen: meditationen)
+    }
+    private var gesamtVorherigWoche:TimeInterval{
+        let vorwoche        = Date().mondayOfWeek.addDays(-1)
+        let meditationen    = Meditation.getDays(start: vorwoche.mondayOfWeek, ende: vorwoche.sundayOfWeek)
+        return Meditation.gesamtDauer(meditationen: meditationen)
+    }
+    private var gesamtVorherigMonat:TimeInterval{
+        let vormonat        = Date().startOfMonth.addDays(-1)
+        let meditationen    = Meditation.getDays(start: vormonat.startOfMonth, ende: vormonat.endOfMonth)
+        return Meditation.gesamtDauer(meditationen: meditationen)
+    }
+    static var startDateFuerDurchschnitt:Date? {
         let appConfig = AppConfig.get()
         if let datum = appConfig?.startDatumStatistik{
             return datum as Date
@@ -156,43 +255,38 @@ struct StatistikUeberblickDaten{
             return Meditation.getAll().first?.start as Date?
         }
     }
-    var endeDateFuerDurchschnitt:Date? = Date()
-    var durchschnittTag:TimeInterval{
-        guard let start     = startDateFuerDurchschnitt, let ende = endeDateFuerDurchschnitt else{return 0}
+    static var endeDateFuerDurchschnitt:Date? = Date()
+    private var durchschnittTag:TimeInterval{
+        guard let start     = StatistikUeberblickDaten.startDateFuerDurchschnitt, let ende = StatistikUeberblickDaten.endeDateFuerDurchschnitt else{return 0}
         let meditationen    = Meditation.getDays(start: start, ende: ende)
         let statistik       = Statistik(meditationen: meditationen, start: start, ende: ende)
         return statistik.timePerDay
     }
-    var durchSchnittWoche:TimeInterval{
-        guard let start = startDateFuerDurchschnitt, let ende = endeDateFuerDurchschnitt else{return 0}
+    private var durchSchnittWoche:TimeInterval{
+        guard let start = StatistikUeberblickDaten.startDateFuerDurchschnitt, let ende = StatistikUeberblickDaten.endeDateFuerDurchschnitt else{return 0}
         let meditationen    = Meditation.getDays(start: start, ende: ende)
         let statistik       = Statistik(meditationen: meditationen, start: start, ende: ende)
         return statistik.timePerWeek
     }
-    var durchSchnittMonat:TimeInterval{
-        guard let start = startDateFuerDurchschnitt, let ende = endeDateFuerDurchschnitt else{return 0}
+    private var durchSchnittMonat:TimeInterval{
+        guard let start = StatistikUeberblickDaten.startDateFuerDurchschnitt, let ende = StatistikUeberblickDaten.endeDateFuerDurchschnitt else{return 0}
         let meditationen    = Meditation.getDays(start: start, ende: ende)
         let statistik       = Statistik(meditationen: meditationen, start: start, ende: ende)
         return statistik.timePerMonth
     }
     
-    var gesamt:TimeInterval{
+    private var gesamt:TimeInterval{
         return Meditation.gesamtDauer(meditationen: Meditation.getAllTillToday())
     }
-    //helper
-    private func getZeichen(aenderung:TimeInterval) -> String{
-        return aenderung > 0 ? "▲" : aenderung == 0 ? "=" : "▼"
-    }
-    private func getFarbe(aenderung:TimeInterval) -> UIColor{
-        return aenderung > 0 ? UIColor.init(red: 51.0/255.0, green: 102.0/255.0, blue: 0.0/255.0, alpha: 1.0) : aenderung == 0 ? UIColor.black : UIColor.red
-    }
-    var gesamtOhneKurse:TimeInterval{
+    
+    
+    private var gesamtOhneKurse:TimeInterval{
         return Meditation.gesamtDauer(meditationen: Meditation.getAllOhneKurse())
     }
-    var kursTage:Int{
+    private var kursTage:Int{
         return Kurs.getAllTillToday().map{Int($0.kursTage)}.reduce(0){$0+$1}
     }
-    var regelmaessigEinmalAmTagBisHeute:(anzahlBisHeute:Int,anzahlMax:Int,anzahlZweiMalAmTagBisHeute:Int,anzahlZweiMalAmTagMax:Int){
+    private var regelmaessigEinmalAmTagBisHeute:(anzahlBisHeute:Int,anzahlMax:Int,anzahlZweiMalAmTagBisHeute:Int,anzahlZweiMalAmTagMax:Int){
         let meditationen = Meditation.getAllTillToday().reversed()
         
         var lastMeditation = meditationen.first
