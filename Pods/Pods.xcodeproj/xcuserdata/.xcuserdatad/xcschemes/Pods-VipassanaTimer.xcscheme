@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '17CAB4F0E482D6C3F18917C4A1EDAB66'
+               BlueprintIdentifier = '9AC605230F7C6DAE166DF33AC976FDF3'
                BlueprintName = 'Pods-VipassanaTimer'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods-VipassanaTimer.framework'>

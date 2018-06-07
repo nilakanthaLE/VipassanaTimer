@@ -52,9 +52,7 @@ class FreundeTableVC: UITableViewController {
     
     private func updateFreundeUndFreundesAnfragenList(){
         let when = DispatchTime.now() + 1
-        DispatchQueue.main.asyncAfter(deadline: when) {
-            weak var weakSelf   = self
-            weakSelf?.freundeUndAnfragen = [Freund.getFreundesAnfragen(),Freund.getFreunde()] }
+        DispatchQueue.main.asyncAfter(deadline: when) { [weak self] in self?.freundeUndAnfragen = [Freund.getFreundesAnfragen(),Freund.getFreunde()] }
     }
     
     deinit { print("deinit FreundeTableVC") }

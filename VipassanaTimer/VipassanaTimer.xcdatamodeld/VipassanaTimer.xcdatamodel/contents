@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13196.5" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17F77" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AppConfig" representedClassName="AppConfig" syncable="YES" codeGenerationType="class">
         <attribute name="firKursLastSync" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="firMedLastSync" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -74,10 +74,22 @@
     </entity>
     <entity name="Meditierender" representedClassName="Meditierender" syncable="YES" codeGenerationType="class">
         <attribute name="cloudNeedsUpdate" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="flagge" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flaggeIstSichtbar" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="meditationsPlatzTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nickName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nickNameSichtbarkeit" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="statistikSichtbarkeit" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="SoundFileDataCD" representedClassName="SoundFileDataCD" syncable="YES" codeGenerationType="class">
+        <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="fireBaseTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="localURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mettaDuration" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="timerConfigs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimerConfig" inverseName="soundFileDataCD" inverseEntity="TimerConfig" syncable="YES"/>
     </entity>
     <entity name="Statistics" representedClassName="Statistics" syncable="YES" codeGenerationType="class">
         <attribute name="durchschnittMonat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -102,25 +114,28 @@
     </entity>
     <entity name="TimerConfig" representedClassName="TimerConfig" syncable="YES" codeGenerationType="class">
         <attribute name="dauerAnapana" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="dauerGesamt" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="dauerMetta" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="dauerVipassana" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="mettaOpenEnd" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="toDelete" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="soundFileDataCD" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SoundFileDataCD" inverseName="timerConfigs" inverseEntity="SoundFileDataCD" syncable="YES"/>
     </entity>
     <elements>
-        <element name="AppConfig" positionX="-621" positionY="0" width="128" height="105"/>
-        <element name="AppUser" positionX="-621" positionY="0" width="128" height="75"/>
+        <element name="AppConfig" positionX="-1215" positionY="135" width="128" height="105"/>
+        <element name="AppUser" positionX="-1224" positionY="-36" width="128" height="75"/>
         <element name="BackgroundInfo" positionX="-225" positionY="-9" width="128" height="118"/>
         <element name="Dauer" positionX="-218" positionY="227" width="128" height="88"/>
-        <element name="Freund" positionX="-621" positionY="0" width="128" height="165"/>
+        <element name="Freund" positionX="-848" positionY="-9" width="128" height="165"/>
         <element name="Kurs" positionX="-621" positionY="135" width="128" height="150"/>
         <element name="KursTemplate" positionX="-830" positionY="243" width="128" height="105"/>
         <element name="Meditation" positionX="-423" positionY="45" width="128" height="240"/>
         <element name="MeditationTemplate" positionX="-621" positionY="296" width="128" height="163"/>
-        <element name="Meditierender" positionX="-621" positionY="0" width="128" height="120"/>
-        <element name="TimerConfig" positionX="-432" positionY="-153" width="128" height="148"/>
-        <element name="Statistics" positionX="-621" positionY="0" width="128" height="330"/>
+        <element name="Meditierender" positionX="-1044" positionY="63" width="128" height="180"/>
+        <element name="SoundFileDataCD" positionX="-153" positionY="425" width="128" height="133"/>
+        <element name="Statistics" positionX="-1010" positionY="381" width="128" height="330"/>
+        <element name="TimerConfig" positionX="-360" positionY="380" width="128" height="178"/>
     </elements>
 </model>

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-@IBDesignable
+//@IBDesignable
 open class NibLoadingView:UIView,NibDefinable{
     @IBOutlet weak var view: UIView!
     var nibName: String {

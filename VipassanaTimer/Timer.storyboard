@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WW4-DP-hKo">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Meine Timer-->
+        <scene sceneID="1xR-ML-GlR">
+            <objects>
+                <tableViewController id="APk-Ux-r74" customClass="TimerTableVC" customModule="VipassanaTimer" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fW4-2y-yW5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="cell" rowHeight="96" id="w02-kj-Sq2">
+                                <rect key="frame" x="0.0" y="28" width="320" height="96"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="w02-kj-Sq2" id="nRp-tN-sqC">
+                                    <rect key="frame" x="0.0" y="0.0" width="252" height="96"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="rhZ-k5-cgw" customClass="TimerAnzeigeView" customModule="VipassanaTimer" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="8" width="236" height="80"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="rhZ-k5-cgw" secondAttribute="trailing" constant="8" id="0Mv-T5-SRz"/>
+                                        <constraint firstItem="rhZ-k5-cgw" firstAttribute="top" secondItem="nRp-tN-sqC" secondAttribute="top" constant="8" id="LjI-NT-4L2"/>
+                                        <constraint firstAttribute="bottom" secondItem="rhZ-k5-cgw" secondAttribute="bottom" constant="8" id="gLa-GG-Lgn"/>
+                                        <constraint firstItem="rhZ-k5-cgw" firstAttribute="leading" secondItem="nRp-tN-sqC" secondAttribute="leading" constant="8" id="rdT-ki-1qc"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.41274607390000001" green="0.32337761599999998" blue="0.18693663939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="configure" trigger="accessoryAction" id="Oyr-N7-R0g"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="APk-Ux-r74" id="Igh-eC-Mth"/>
+                            <outlet property="delegate" destination="APk-Ux-r74" id="07a-2r-sck"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Meine Timer" id="yPP-vY-M6h">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="bNF-rh-FAd">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" identifier="new" id="w7d-rX-lnU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y90-uX-ng5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1710" y="358"/>
+        </scene>
+        <!--Konfigurieren-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="TimerSettingsVC" customModule="VipassanaTimer" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZPH-ah-hcd" customClass="TimerSettingsView" customModule="VipassanaTimer">
+                                <rect key="frame" x="8" y="64" width="304" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZPH-ah-hcd" secondAttribute="trailing" constant="8" id="1ur-FZ-tva"/>
+                            <constraint firstItem="ZPH-ah-hcd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="2SH-7n-4uX"/>
+                            <constraint firstItem="ZPH-ah-hcd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="D8b-LC-UfU"/>
+                            <constraint firstItem="ZPH-ah-hcd" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="TBX-mY-KQ0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ZPH-ah-hcd" secondAttribute="bottom" id="nSm-5y-5C2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Konfigurieren" id="XtQ-NS-MSm"/>
+                    <connections>
+                        <outlet property="timerSettingsView" destination="ZPH-ah-hcd" id="8I1-eF-Tga"/>
+                        <segue destination="ObJ-1v-pdB" kind="show" identifier="go2sound" id="kBV-F3-11d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2566" y="355"/>
+        </scene>
+        <!--Sound Files TableVC-->
+        <scene sceneID="UZb-HJ-6yk">
+            <objects>
+                <tableViewController id="ObJ-1v-pdB" customClass="SoundFilesTableVC" customModule="VipassanaTimer" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="p9U-Zw-Vlg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="130" id="Jy7-N8-Vhe">
+                                <rect key="frame" x="0.0" y="28" width="320" height="130"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jy7-N8-Vhe" id="5Fb-b7-ZsT">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="LHq-HM-SSS" customClass="SoundFileView" customModule="VipassanaTimer" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="8" width="304" height="114"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="LHq-HM-SSS" secondAttribute="trailing" constant="8" id="8Wj-4G-UPR"/>
+                                        <constraint firstItem="LHq-HM-SSS" firstAttribute="leading" secondItem="5Fb-b7-ZsT" secondAttribute="leading" constant="8" id="WeJ-aq-QEc"/>
+                                        <constraint firstItem="LHq-HM-SSS" firstAttribute="top" secondItem="5Fb-b7-ZsT" secondAttribute="top" constant="8" id="hsN-62-m92"/>
+                                        <constraint firstAttribute="bottom" secondItem="LHq-HM-SSS" secondAttribute="bottom" constant="8" id="wEd-tf-shu"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoSoundFileCell" rowHeight="38" id="gPJ-Lz-2SK">
+                                <rect key="frame" x="0.0" y="158" width="320" height="38"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gPJ-Lz-2SK" id="QnH-rB-Z20">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="38"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kein Soundfile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXw-AZ-dDE">
+                                            <rect key="frame" x="8" y="8" width="304" height="30"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="0.79580073920000005" alpha="0.66315282529999997" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="TwZ-h1-fof"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.41274607390000001" green="0.32337761599999998" blue="0.18693663939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="bXw-AZ-dDE" secondAttribute="trailing" constant="8" id="Ah5-sF-l0h"/>
+                                        <constraint firstItem="bXw-AZ-dDE" firstAttribute="top" secondItem="QnH-rB-Z20" secondAttribute="top" constant="8" id="Cnp-wZ-oyj"/>
+                                        <constraint firstAttribute="bottom" secondItem="bXw-AZ-dDE" secondAttribute="bottom" id="n9r-X7-0KV"/>
+                                        <constraint firstItem="bXw-AZ-dDE" firstAttribute="leading" secondItem="QnH-rB-Z20" secondAttribute="leading" constant="8" id="nej-Qz-gSf"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ObJ-1v-pdB" id="tHf-wv-I57"/>
+                            <outlet property="delegate" destination="ObJ-1v-pdB" id="qRi-Fv-YOZ"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F45-db-Prx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3370" y="362"/>
+        </scene>
+        <!--Meditieren-->
+        <scene sceneID="Mvx-4g-nhm">
+            <objects>
+                <viewController id="oPu-78-EZq" customClass="MeditationsTimerVC" customModule="VipassanaTimer" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TXC-9o-Dkq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="z0U-Z4-qih" customClass="TimerAsTimerView" customModule="VipassanaTimer" customModuleProvider="target">
+                                <rect key="frame" x="16" y="106.5" width="288" height="110"/>
+                                <color key="backgroundColor" red="0.88310993019999995" green="0.6523199287" blue="0.3234300323" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faR-Lc-575">
+                                <rect key="frame" x="6" y="238" width="308" height="324"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <segue destination="bbI-Fb-WkM" kind="embed" id="tIy-e9-G8M"/>
+                                </connections>
+                            </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Im Augenblick meditieren" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkd-8w-1ZW">
+                                <rect key="frame" x="16" y="224.5" width="139" height="13.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
+                                <color key="textColor" red="0.41274607390000001" green="0.32337761599999998" blue="0.18693663939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Damit die Hinweistöne erklingen können, darf die App während der Meditation nicht geschlossen werden." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OxH-Yd-nyW">
+                                <rect key="frame" x="16" y="72" width="288" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="0.41274607390000001" green="0.32337761599999998" blue="0.18693663939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="OxH-Yd-nyW" firstAttribute="top" secondItem="iHk-lx-BtN" secondAttribute="top" constant="8" id="Dy5-4L-cTh"/>
+                            <constraint firstItem="iHk-lx-BtN" firstAttribute="bottom" secondItem="faR-Lc-575" secondAttribute="bottom" constant="6" id="PuW-aQ-xQh"/>
+                            <constraint firstItem="iHk-lx-BtN" firstAttribute="trailing" secondItem="faR-Lc-575" secondAttribute="trailing" constant="6" id="YXH-WI-Kq3"/>
+                            <constraint firstItem="OxH-Yd-nyW" firstAttribute="trailing" secondItem="z0U-Z4-qih" secondAttribute="trailing" id="bB0-sT-Nx5"/>
+                            <constraint firstItem="pkd-8w-1ZW" firstAttribute="top" secondItem="z0U-Z4-qih" secondAttribute="bottom" constant="8" symbolic="YES" id="bBX-8X-nyb"/>
+                            <constraint firstItem="z0U-Z4-qih" firstAttribute="trailing" secondItem="TXC-9o-Dkq" secondAttribute="trailingMargin" id="bQw-Or-jyG"/>
+                            <constraint firstItem="faR-Lc-575" firstAttribute="leading" secondItem="iHk-lx-BtN" secondAttribute="leading" constant="6" id="cys-p7-178"/>
+                            <constraint firstItem="faR-Lc-575" firstAttribute="top" secondItem="pkd-8w-1ZW" secondAttribute="bottom" id="f0o-Jg-CMB"/>
+                            <constraint firstItem="OxH-Yd-nyW" firstAttribute="leading" secondItem="z0U-Z4-qih" secondAttribute="leading" id="mzl-ei-HgG"/>
+                            <constraint firstItem="pkd-8w-1ZW" firstAttribute="leading" secondItem="faR-Lc-575" secondAttribute="leading" constant="10" id="pCn-Bx-pg2"/>
+                            <constraint firstItem="z0U-Z4-qih" firstAttribute="top" secondItem="OxH-Yd-nyW" secondAttribute="bottom" constant="8" symbolic="YES" id="sE7-4O-nBY"/>
+                            <constraint firstItem="z0U-Z4-qih" firstAttribute="leading" secondItem="TXC-9o-Dkq" secondAttribute="leadingMargin" id="uYR-ZY-LkH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="iHk-lx-BtN"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Meditieren" id="QNA-9K-qGH">
+                        <barButtonItem key="leftBarButtonItem" title="zurück" id="oTg-su-FUg">
+                            <connections>
+                                <segue destination="OmI-JF-ycI" kind="unwind" unwindAction="unwindToHauptmenuWithSegue:" id="ntH-40-UQd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="timerView" destination="z0U-Z4-qih" id="U25-mF-Bcq"/>
+                        <segue destination="APk-Ux-r74" kind="show" identifier="nextVC" id="N8j-nj-Kq6"/>
+                        <segue destination="Yy5-zA-5rG" kind="presentation" identifier="showUserInfo" modalTransitionStyle="flipHorizontal" id="ISd-PQ-NmM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZGZ-ig-zgz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="OmI-JF-ycI" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="784.79999999999995" y="648.12593703148434"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="HF4-hh-XTD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WW4-DP-hKo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="o3G-Pe-Jnf">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="oPu-78-EZq" kind="relationship" relationship="rootViewController" id="iij-cx-4bH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3QT-Ow-iIi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-154.40000000000001" y="648.12593703148434"/>
+        </scene>
+        <!--Gerade Meditiert View-->
+        <scene sceneID="GPx-i0-BPU">
+            <objects>
+                <collectionViewController id="bbI-Fb-WkM" customClass="GeradeMeditiertView" customModule="VipassanaTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Awr-Vy-3dz">
+                        <rect key="frame" x="0.0" y="0.0" width="308" height="324"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="pVS-HS-NrE">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" id="viM-hc-BAh">
+                                <rect key="frame" x="10" y="10" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="bbI-Fb-WkM" id="kin-4n-D5B"/>
+                            <outlet property="delegate" destination="bbI-Fb-WkM" id="iYu-FK-UAJ"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UPh-Rx-PLA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="780" y="1336"/>
+        </scene>
+        <!--Name-->
+        <scene sceneID="YDp-Me-dlX">
+            <objects>
+                <viewController id="nZx-Hz-dHf" customClass="PublicMeditationInfoVC" customModule="VipassanaTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FHm-Q8-lr8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5fF-WE-ccz" customClass="PublicMeditationInfoView" customModule="VipassanaTimer" customModuleProvider="target">
+                                <rect key="frame" x="16" y="72" width="288" height="476"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="5fF-WE-ccz" secondAttribute="bottom" constant="20" symbolic="YES" id="ZFx-yF-FMh"/>
+                            <constraint firstItem="5fF-WE-ccz" firstAttribute="trailing" secondItem="FHm-Q8-lr8" secondAttribute="trailingMargin" id="lFO-Ji-UN1"/>
+                            <constraint firstItem="5fF-WE-ccz" firstAttribute="leading" secondItem="FHm-Q8-lr8" secondAttribute="leadingMargin" id="mQ3-03-zQA"/>
+                            <constraint firstItem="5fF-WE-ccz" firstAttribute="top" secondItem="iWy-iH-uXa" secondAttribute="top" constant="8" id="tTR-xw-1Kz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="iWy-iH-uXa"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Name" id="qLw-8P-xAC">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="8sa-xR-Xw0">
+                            <connections>
+                                <action selector="zurueckButtonPressed:" destination="nZx-Hz-dHf" id="yj5-Z1-sd4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="publicMeditationInfoView" destination="5fF-WE-ccz" id="x1K-v7-oKh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DGv-6U-AsC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2565" y="1045"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0aD-Th-V8z">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yy5-zA-5rG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NSm-IL-kS0">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nZx-Hz-dHf" kind="relationship" relationship="rootViewController" id="rlg-wf-Zry"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uNc-4h-E8X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1680.8" y="1045.7271364317842"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="w7d-rX-lnU"/>
+    </inferredMetricsTieBreakers>
+</document>

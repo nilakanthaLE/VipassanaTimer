@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 import UIKit
 import CloudKit
+import ReactiveSwift
 
 //global
 
@@ -17,9 +18,9 @@ func saveContext()                              { DispatchQueue.main.async { (UI
 var AppUserFBID : String?                       { return AppUser.get()?.firebaseID  }
 
 extension DataSnapshot{
-    var valueAsDict:NSDictionary?        { return (value as? NSDictionary) }
-    var firstValue:NSDictionary?    { return (value as? NSDictionary)?.allValues.first as? NSDictionary }
-    var firstKey:String?            { return (value as? NSDictionary)?.allKeys.first as? String }
+    var valueAsDict:NSDictionary?       { return (value as? NSDictionary) }
+    var firstValue:NSDictionary?        { return (value as? NSDictionary)?.allValues.first as? NSDictionary }
+    var firstKey:String?                { return (value as? NSDictionary)?.allKeys.first as? String }
 }
 
 class FirSync{
@@ -77,7 +78,7 @@ class FirKurse{
         return AppConfig.get()?.firMedLastSync?.timeIntervalSinceReferenceDate ?? Date(timeIntervalSince1970: 0).timeIntervalSinceReferenceDate
     }
     static func sync(){
-        print("FirKurse sync \(ref)")
+        print("FirKurse sync \(String(describing: ref))")
         ref?.removeAllObservers()
         ref?.queryOrdered(byChild: "lastSync").queryStarting(atValue: appSync).observe(.childAdded) { (snapshot) in
             createOrUpdate(snapshot: snapshot)
@@ -135,7 +136,7 @@ class FirMeditations{
     }
 
     static private func createOrUpdate(snap:DataSnapshot?){
-        print("FirMeditations createOrUpdate \(snap)")
+        print("FirMeditations createOrUpdate \(String(describing: snap))")
         Meditation.createOrUpdateMeditation(withChild: snap)
         let lastSync    = snap?.valueAsDict?["lastSync"] as? TimeInterval ?? 0
         if lastSync > appSync{
@@ -156,29 +157,29 @@ class FirUserConnections{
         ref.removeAllObservers()
         
         //Add
-        ref.observe(.childAdded) { (snapshot) in
+        ref.observe(.childAdded, with: { (snapshot) in
             //meine Anfragen
             print("userConnection.childAdded:\(snapshot)")
             _ = Freund.createOrUpdateFreund(with: snapshot)
             Singleton.sharedInstance.freundesAnfragenEreignis?()
             Singleton.sharedInstance.freundEreignis?()
-        }
+        })
         //Changed
-        ref.observe(.childChanged) { (snapshot) in
+        ref.observe(.childChanged, with: { (snapshot) in
             //meine Anfragen
             print("userConnection.childChanged:\(snapshot)")
             _ = Freund.createOrUpdateFreund(with: snapshot)
             Singleton.sharedInstance.freundesAnfragenEreignis?()
             Singleton.sharedInstance.freundEreignis?()
-        }
+        })
         //Removed
-        ref.observe(.childRemoved) { (snapshot) in
+        ref.observe(.childRemoved, with: { (snapshot) in
             //meine Anfragen
             print("userConnection.childRemoved:\(snapshot)")
             _ = Freund.deleteFreund(with: snapshot)
             Singleton.sharedInstance.freundesAnfragenEreignis?()
             Singleton.sharedInstance.freundEreignis?()
-        }
+        })
     }
     
     static func setFreundschaftsstatus(withUserID userID:String?,userStatus:Int16?,meinStatus:Int16?){
@@ -187,7 +188,7 @@ class FirUserConnections{
         
         //mein Eintrag
         let ref1                = database.reference(withPath: "userConnections").child(appUserID).child(userID)
-        ref1.observeSingleEvent(of: .value) { (snapshot) in if snapshot.exists()    {
+        ref1.observeSingleEvent(of: .value, with: { (snapshot) in if snapshot.exists()    {
             var update:[String:Any]{
                 var _value = [String:Any]()
                 if let userStatus = userStatus {_value["statusUser"] = userStatus}
@@ -197,10 +198,10 @@ class FirUserConnections{
             }
             ref1.updateChildValues(update)
             }
-        }
+        })
         //eintrag des Freundes
         let ref2                = database.reference(withPath: "userConnections").child(userID).child(appUserID)
-        ref2.observeSingleEvent(of: .value) { (snapshot) in if snapshot.exists()    {
+        ref2.observeSingleEvent(of: .value, with: { (snapshot) in if snapshot.exists()    {
             var update:[String:Any]{
                 var _value = [String:Any]()
                 if let userStatus = userStatus {_value["statusSelf"] = userStatus}
@@ -208,9 +209,13 @@ class FirUserConnections{
                 return _value
             }
             ref2.updateChildValues(update) }
-        }
+        })
     }
     
+    
+    
+    //Fehler!!!!
+    //
     static func createFreundesanfrage(withUserDict userDict:NSDictionary?){
         print("FirUserConnections createFreundesanfrage")
         //Freundschaftsanfrage
@@ -219,23 +224,19 @@ class FirUserConnections{
             let freundNick = userDict?["spitzname"] else {return}
         
         var userConnectionMe:[String:Any]{
-            return [appUserID:[
-                userID: [   "statusSelf":FreundesStatus.granted,
-                            "statusUser":FreundesStatus.requested,
-                            "freundNick": freundNick    ]
-                ]]
+            return [ userID: [   "statusSelf":FreundesStatus.granted,
+                                 "statusUser":FreundesStatus.requested,
+                                 "freundNick": freundNick    ] ]
         }
         var userConnectionFreund:[String:Any]{
-            return [userID:[
-                appUserID:[ "statusSelf":FreundesStatus.requested,
-                            "statusUser":FreundesStatus.granted,
-                            "freundNick":Meditierender.get()?.nickName ?? "_fehlt_"
-                ]]]
+            return [  appUserID:[   "statusSelf":FreundesStatus.requested,
+                                    "statusUser":FreundesStatus.granted,
+                                    "freundNick":Meditierender.get()?.nickName ?? "_fehlt_" ] ]
         }
         
         let ref             = database.reference(withPath: "userConnections")
-        ref.updateChildValues(userConnectionMe)
-        ref.updateChildValues(userConnectionFreund)
+        ref.child(appUserID).updateChildValues(userConnectionMe)
+        ref.child(userID).updateChildValues(userConnectionFreund)
     }
     
     static func deleteUserConnection(withUserID userID:String?){
@@ -264,28 +265,46 @@ class FirUserConnections{
 class FirActiveMeditations{
     static func setObserver(){
         let ref         = database.reference(withPath: "activeMeditations")
-        Singleton.sharedInstance.listOfActiveMeditation.removeAll()
-        ref.observe(.childAdded) { (snapshot) in
-            print("add: \(snapshot)")
-            Singleton.sharedInstance.listOfActiveMeditation.append(ActiveMeditationInFB(snapshot: snapshot))
-        }
-        ref.observe(.childRemoved) { (snapshot) in
-            print("remove: \(snapshot)")
-            let activeMeditation = ActiveMeditationInFB(snapshot: snapshot)
-            if let index = Singleton.sharedInstance.listOfActiveMeditation.index(of: activeMeditation){
-                Singleton.sharedInstance.listOfActiveMeditation.remove(at: index)
-            }
-        }
+        fireBaseModel.aktuelleMeditationen.value = [PublicMeditation]()
+        
+        ref.observe(.childAdded, with: { (snapshot) in
+            fireBaseModel.addMeditation(snapshot: snapshot)
+        })
+        ref.observe(.childRemoved, with: { (snapshot) in
+            fireBaseModel.removeMeditation(snapshot: snapshot)
+        })
+        ref.observe(.childChanged, with: { (snapshot) in
+            fireBaseModel.updateMeditation(snapshot: snapshot)
+        })
     }
+    
+    
     static func removeObserver(){
         let ref         = database.reference(withPath: "activeMeditations")
         ref.removeAllObservers()
     }
     
+    
+    static func cleaningActiveMeditations(){
+        print("cleaningActiveMeditations ....")
+        //löscht alle aktiven Meditationen, die bereits länger als 5h existieren
+        
+        let timestamp   = String(Date().timeIntervalSinceReferenceDate - 5*60*60)
+        let ref         = database.reference(withPath: "activeMeditations")
+        ref.queryOrdered(byChild: "start").queryEnding(atValue: timestamp ).observeSingleEvent(of: .value){ snapshot in
+            guard let ids = (snapshot.valueAsDict?.allKeys as? Array<String> ) else {return}
+            for id in ids{
+                print("is string:\(id)")
+                ref.child(id).removeValue()
+            }
+        }
+    }
+    
+    
+    
     static func createActiveMeditation(meditation:Meditation?) {
         guard let userID    = AppUser.get()?.firebaseID , let meditation = meditation  else {return}
-        let firebaseData    = ActiveMeditationInFB(meditation: meditation).firebaseData
-        
+        let firebaseData    = meditation.firebasePublicMeditation
         let ref             = database.reference(withPath: "activeMeditations")
         ref.child(userID).setValue(firebaseData)
     }
@@ -294,25 +313,47 @@ class FirActiveMeditations{
         guard let userID    = AppUser.get()?.firebaseID   else {return}
         let ref             = database.reference(withPath: "activeMeditations").child(userID)
         ref.removeValue()
-        print("deleteActiveMeditation ...2")
     }
 }
 
 
 class ActiveMeditationInFB:Hashable{
+    var meditationID:   String?
+    var start:          Date?
+    var gesamtDauer:    TimeInterval
+    var mettaOpenEnd:   Bool
+    
+    
+    var userID:String?
+    var meditierenderSpitzname:String?
+    var nickNameSichtbarkeit:Int16
+    var statistikSichtbarkeit:Int16
+    var durchSchnittProTag:String?
+    var gesamtDauerStatistik:String?
+    var kursTage:String?
+    
+    //new
+    var anapanaDauer:TimeInterval
+    var vipassanaDauer:TimeInterval
+    var mettaDauer:TimeInterval
+    
+    
+    
     var hashValue: Int{
         return "\(String(describing: meditationID)),\(String(describing: start)),\(gesamtDauer),\(mettaOpenEnd),\(String(describing: meditierenderSpitzname)),\(String(describing: durchSchnittProTag)),\(String(describing: gesamtDauerStatistik)),\(String(describing: kursTage)),\(String(describing: ende)),\(spitznameString)ActiveMeditationInFB".hash
     }
     static func == (lhs: ActiveMeditationInFB, rhs: ActiveMeditationInFB) -> Bool { return lhs.hashValue == rhs.hashValue }
     
-    var meditationID:String?
-    var start:Date?
-    var gesamtDauer:TimeInterval
-    var mettaOpenEnd:Bool
+    
+    
+    
+    
+    
+    
     
     
     var canAskForFriendShip:Bool{
-        print("freundesStatus \(freundesStatus)")
+        print("freundesStatus \(String(describing: freundesStatus))")
         return nickNameSichtbarkeit == 2 && freundesStatus == nil && !isMyOwnMeditation && Meditierender.get()?.nickName != nil
     }
     var freundesStatus:FreundStatus?{
@@ -329,15 +370,11 @@ class ActiveMeditationInFB:Hashable{
         return true
     }
     
+//    var itsMySelf:Bool{ return appUser.name == meditierenderSpitzname }
     
     
-    var userID:String?
-    var meditierenderSpitzname:String?
-    var nickNameSichtbarkeit:Int16
-    var statistikSichtbarkeit:Int16
-    var durchSchnittProTag:String?
-    var gesamtDauerStatistik:String?
-    var kursTage:String?
+    
+    
     var ende:Date?               { return start == nil ? nil : start!.addingTimeInterval(gesamtDauer) }
     var spitznameString:String{
         guard let nickName = meditierenderSpitzname, !nickName.isEmpty else {return "?"}
@@ -345,22 +382,30 @@ class ActiveMeditationInFB:Hashable{
     }
     
     init(meditation:Meditation){
-        start                       = meditation.start
+        start                       = meditation.start! as Date
         meditationID                = meditation.meditationsID
         gesamtDauer                 = meditation.gesamtDauer
-        mettaOpenEnd                 = meditation.mettaOpenEnd
+        mettaOpenEnd                = meditation.mettaOpenEnd
         
         let meditierender           = Meditierender.get()
         let statistics              = Statistics.get()
         
         meditierenderSpitzname      = meditierender?.nickName
-        durchSchnittProTag          = statistics?.durchschnittTag.hhmmString
-        gesamtDauerStatistik        = statistics?.gesamtDauer.hhmmString
-        kursTage                    = "\(statistics?.kursTage ?? 0)"
+        durchSchnittProTag          = statistics.durchschnittTag.hhmmString
+        gesamtDauerStatistik        = statistics.gesamtDauer.hhmmString
+        kursTage                    = "\(statistics.kursTage ?? 0)"
         nickNameSichtbarkeit        = meditierender?.nickNameSichtbarkeit ?? 0
         statistikSichtbarkeit       = meditierender?.statistikSichtbarkeit ?? 0
         userID                      = AppUser.get()?.firebaseID
+        
+        
+        anapanaDauer                = TimeInterval(meditation.dauerAnapana)
+        vipassanaDauer              = TimeInterval(meditation.dauerVipassana)
+        mettaDauer                  = TimeInterval(meditation.dauerMetta)
+        
     }
+    
+    
     
     init(snapshot:DataSnapshot){
         let value = snapshot.value as? NSDictionary
@@ -379,24 +424,30 @@ class ActiveMeditationInFB:Hashable{
             gesamtDauerStatistik        = value?["gesamtDauerStatistik"] as? String
             kursTage                    = value?["kursTage"] as? String
         }
+        
+        anapanaDauer                = 0//TimeInterval(meditation.dauerAnapana)
+        vipassanaDauer              = gesamtDauer//TimeInterval(meditation.dauerVipassana)
+        mettaDauer                  = 0//TimeInterval(meditation.dauerMetta)
     }
     
     
     
     
     
-    var firebaseData:[String:Any] {
-        return ["start":String(start?.timeIntervalSinceReferenceDate ?? 0),
-                "meditationsID" : meditationID ?? "",
-                "gesamtDauer" : gesamtDauer,
-                "mettaOpenEnd" : mettaOpenEnd,
-                "meditierenderSpitzname" : meditierenderSpitzname ?? "",
-                "durchSchnittProTag" : durchSchnittProTag ?? "0",
-                "gesamtDauerStatistik" : gesamtDauerStatistik ?? "0",
-                "kursTage" : kursTage ?? "0",
-                "nickNameSichtbarkeit":nickNameSichtbarkeit,
-                "statistikSichtbarkeit":statistikSichtbarkeit]
-    }
+//    var firebaseData:[String:Any] {
+//        return ["start": String(start?.timeIntervalSinceReferenceDate ?? 0),
+//                "meditationsID" : meditationID ?? "",
+//                "gesamtDauer" : gesamtDauer,
+//                "anapanaDauer" : anapanaDauer,
+//                "mettaDauer" : mettaDauer,
+//                "mettaOpenEnd" : mettaOpenEnd,
+//                "meditierenderSpitzname" : meditierenderSpitzname ?? "",
+//                "durchSchnittProTag" : durchSchnittProTag ?? "0",
+//                "gesamtDauerStatistik" : gesamtDauerStatistik ?? "0",
+//                "kursTage" : kursTage ?? "0",
+//                "nickNameSichtbarkeit":nickNameSichtbarkeit,
+//                "statistikSichtbarkeit":statistikSichtbarkeit]
+//    }
 }
 
 class FirUser{
@@ -406,6 +457,12 @@ class FirUser{
         guard let appUser = AppUser.get(), let userID    = AppUser.get()?.firebaseID  else {return}
         let userRef         = database.reference(withPath: "users")
         userRef.child(userID).setValue(appUser.firebaseData)
+        
+        
+        //erstellt neue Usereinträge (mit uid als key)
+        guard let authUID = Auth.auth().currentUser?.uid else {return}
+        let userNewVersionRef   =  database.reference(withPath: "usersNewVersion").child(authUID)
+        userNewVersionRef.setValue(true)
     }
     
     static func getUser(byUserID userID:String){
@@ -416,6 +473,7 @@ class FirUser{
         {error in print(error.localizedDescription) }
     }
     
+    //old
     static func getUser(byNickname nickname:String){
         print("getUser")
         let userRef         = database.reference(withPath: "users")
@@ -437,6 +495,33 @@ class FirUser{
         })
         {error in print(error.localizedDescription) }
     }
+    //new
+    static func getUser(byNickname nickname:String,userSuchErgebnis:MutableProperty<UserSuchErgebnis>?){
+        print("getUser")
+        let userRef         = database.reference(withPath: "users")
+        userRef.queryOrdered(byChild: "querySpitzname").queryEqual(toValue: nickname.lowercased()).observeSingleEvent(of: .value, with: { (snapshot) in
+            var filteredSnapshot:DataSnapshot?{
+                //filter self
+                let key = snapshot.firstKey
+                if key == AppUser.get()?.firebaseID  {return nil}
+                //filter Freunde
+                for freund in Freund.getAll(){
+                    if let value = snapshot.firstValue,
+                        freund.freundID == value["ID"] as? String || freund.freundID == value["ID"] as? String{
+                        return nil
+                    }
+                }
+                return snapshot
+            }
+            userSuchErgebnis?.value = filteredSnapshot?.firstValue == nil ? UserSuchErgebnis.nichtGefunden : UserSuchErgebnis.gefunden
+        })
+        {error in
+            print(error.localizedDescription)
+            userSuchErgebnis?.value = UserSuchErgebnis.Fehler
+        }
+    }
+    
+    
     
     static func observeMyUserData(){
         print("observeMyUserData")
@@ -512,7 +597,6 @@ class FirebaseStart{
     // ja:      --> 3)
     static private func authToFirebase(){
         print("authToFirebase")
-        
         // ist Auth.email == firbaseID ?
         guard Auth.auth().currentUser?.email != email
             // ja (Auth.email == firbaseID):      --> 3)

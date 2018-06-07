@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MeditationsPlatzView" customModule="Vipassana" customModuleProvider="target">
+            <connections>
+                <outlet property="backGroundView" destination="lCp-jS-wdA" id="AAG-E7-RW9"/>
+                <outlet property="userNameLabel" destination="AhF-2n-gta" id="fbr-Rm-v1f"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="106" height="109"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lCp-jS-wdA">
+                    <rect key="frame" x="0.0" y="0.0" width="106" height="109"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🧘‍♂️" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="1" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AhF-2n-gta">
+                            <rect key="frame" x="5" y="5" width="96" height="99"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="200"/>
+                            <color key="textColor" red="0.41274607390000001" green="0.32337761599999998" blue="0.18693663939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="0.79580073920000005" alpha="0.66315282529999997" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="AhF-2n-gta" firstAttribute="leading" secondItem="lCp-jS-wdA" secondAttribute="leading" constant="5" id="9ll-JS-rAK"/>
+                        <constraint firstItem="AhF-2n-gta" firstAttribute="top" secondItem="lCp-jS-wdA" secondAttribute="top" constant="5" id="D4m-X3-Eyj"/>
+                        <constraint firstAttribute="trailing" secondItem="AhF-2n-gta" secondAttribute="trailing" constant="5" id="ILO-f5-zeN"/>
+                        <constraint firstAttribute="bottom" secondItem="AhF-2n-gta" secondAttribute="bottom" constant="5" id="m0O-7V-TrT"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="lCp-jS-wdA" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="9qF-cw-h2y"/>
+                <constraint firstItem="lCp-jS-wdA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="DHO-0E-8aX"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="lCp-jS-wdA" secondAttribute="trailing" id="Xq6-9Y-CuJ"/>
+                <constraint firstItem="lCp-jS-wdA" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="mbP-Rk-oRq"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-101" y="-225.5"/>
+        </view>
+    </objects>
+</document>

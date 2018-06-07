@@ -7,142 +7,202 @@
 //
 
 import UIKit
+import ReactiveSwift
+import ReactiveCocoa
+
+
+
+
+class StatistikModel{
+    //Überschrift
+    let gesamt                      = MutableProperty<TimeInterval>(0)
+    
+    //1. Block - Gesamt
+    let gesamtAktuellTag            = MutableProperty<TimeInterval>(0)
+    let gesamtAktuellWoche          = MutableProperty<TimeInterval>(0)
+    let gesamtAktuellMonat          = MutableProperty<TimeInterval>(0)
+    let gesamtVorherigTag           = MutableProperty<TimeInterval>(0)
+    let gesamtVorherigWoche         = MutableProperty<TimeInterval>(0)
+    let gesamtVorherigMonat         = MutableProperty<TimeInterval>(0)
+    let gesamtAenderungTag          = MutableProperty<TimeInterval>(0)
+    let gesamtAenderungWoche        = MutableProperty<TimeInterval>(0)
+    let gesamtAenderungMonat        = MutableProperty<TimeInterval>(0)
+    
+    
+    //2. Block - Durchschnitt
+    let durchschnittTag             = MutableProperty<TimeInterval>(0)
+    let durchSchnittWoche           = MutableProperty<TimeInterval>(0)
+    let durchSchnittMonat           = MutableProperty<TimeInterval>(0)
+    let durchschnittVorherigTag     = MutableProperty<TimeInterval>(0)
+    let durchschnittVorherigWoche   = MutableProperty<TimeInterval>(0)
+    let durchschnittVorherigMonat   = MutableProperty<TimeInterval>(0)
+    let durchschnittAenderungTag    = MutableProperty<TimeInterval>(0)
+    let durchschnittAenderungWoche  = MutableProperty<TimeInterval>(0)
+    let durchschnittAenderungMonat  = MutableProperty<TimeInterval>(0)
+    
+    
+    init() {
+        let statistics              = MutableProperty<Statistics>(Statistics.get())
+        gesamt                          <~ statistics.producer.map{$0.gesamtDauer}
+        
+        //1. Block - Gesamt
+        gesamtAktuellTag                <~ statistics.producer.map{$0.gesamtAktuellTag}
+        gesamtAktuellWoche              <~ statistics.producer.map{$0.gesamtAktuellWoche}
+        gesamtAktuellMonat              <~ statistics.producer.map{$0.gesamtAktuellMonat}
+        gesamtVorherigTag               <~ statistics.producer.map{$0.gesamtVorherigTag}
+        gesamtVorherigWoche             <~ statistics.producer.map{$0.gesamtVorherigWoche}
+        gesamtVorherigMonat             <~ statistics.producer.map{$0.gesamtVorherigMonat}
+        
+        //2. Block - Durchschnitt
+        durchschnittTag                 <~ statistics.producer.map{$0.durchschnittTag}
+        durchSchnittWoche               <~ statistics.producer.map{$0.durchschnittWoche}
+        durchSchnittMonat               <~ statistics.producer.map{$0.durchschnittMonat}
+        durchschnittVorherigTag         <~ statistics.producer.map{$0.durchschnittVorherigTag}
+        durchschnittVorherigWoche       <~ statistics.producer.map{$0.durchschnittVorherigWoche}
+        durchschnittVorherigMonat       <~ statistics.producer.map{$0.durchschnittVorherigMonat}
+        
+    }
+}
+
+class StatistikUeberblickViewModel{
+    
+    
+    //Überschrift
+    let gesamt                      = MutableProperty<String?>(nil)
+    
+    //1. Block - Gesamt
+    let gesamtAktuellTag            = MutableProperty<String?>(nil)
+    let gesamtAktuellWoche          = MutableProperty<String?>(nil)
+    let gesamtAktuellMonat          = MutableProperty<String?>(nil)
+    let gesamtVorherigTag           = MutableProperty<String?>(nil)
+    let gesamtVorherigWoche         = MutableProperty<String?>(nil)
+    let gesamtVorherigMonat         = MutableProperty<String?>(nil)
+    let gesamtAenderungTag          = MutableProperty<String?>(nil)
+    let gesamtAenderungWoche        = MutableProperty<String?>(nil)
+    let gesamtAenderungMonat        = MutableProperty<String?>(nil)
+    let gesamtAenderungTagFarbe     = MutableProperty<UIColor>(.black)
+    let gesamtAenderungWocheFarbe   = MutableProperty<UIColor>(.black)
+    let gesamtAenderungMonatFarbe   = MutableProperty<UIColor>(.black)
+    
+    
+    //2. Block - Durchschnitt
+    let durchschnittTag             = MutableProperty<String?>(nil)
+    let durchSchnittWoche           = MutableProperty<String?>(nil)
+    let durchSchnittMonat           = MutableProperty<String?>(nil)
+    let durchschnittVorherigTag     = MutableProperty<String?>(nil)
+    let durchschnittVorherigWoche   = MutableProperty<String?>(nil)
+    let durchschnittVorherigMonat   = MutableProperty<String?>(nil)
+    let durchschnittAenderungTag    = MutableProperty<String?>(nil)
+    let durchschnittAenderungWoche  = MutableProperty<String?>(nil)
+    let durchschnittAenderungMonat  = MutableProperty<String?>(nil)
+    let durchschnittAenderungTagFarbe   = MutableProperty<UIColor>(.black)
+    let durchschnittAenderungWocheFarbe = MutableProperty<UIColor>(.black)
+    let durchschnittAenderungMonatFarbe = MutableProperty<UIColor>(.black)
+    
+    
+    init(model:StatistikModel){
+        //Überschrift
+        gesamt                      <~ model.gesamt.producer.map{$0.hhmmString}
+        //1. Block - Gesamt
+        gesamtAktuellTag            <~ model.gesamtAktuellTag.producer.map{$0.hhmmString}
+        gesamtAktuellWoche          <~ model.gesamtAktuellWoche.producer.map{$0.hhmmString}
+        gesamtAktuellMonat          <~ model.gesamtAktuellMonat.producer.map{$0.hhmmString}
+        gesamtVorherigTag           <~ model.gesamtVorherigTag.producer.map{$0.hhmmString}
+        gesamtVorherigWoche         <~ model.gesamtVorherigWoche.producer.map{$0.hhmmString}
+        gesamtVorherigMonat         <~ model.gesamtVorherigMonat.producer.map{$0.hhmmString}
+        gesamtAenderungTag          <~ model.gesamtAenderungTag.producer.map{$0.hhmmString}
+        gesamtAenderungWoche        <~ model.gesamtAenderungWoche.producer.map{$0.hhmmString}
+        gesamtAenderungMonat        <~ model.gesamtAenderungMonat.producer.map{$0.hhmmString}
+        gesamtAenderungTagFarbe     <~ model.gesamtAenderungTag.producer.map{$0.aenderungsfarbe}
+        gesamtAenderungWocheFarbe   <~ model.gesamtAenderungWoche.producer.map{$0.aenderungsfarbe}
+        gesamtAenderungMonatFarbe   <~ model.gesamtAenderungMonat.producer.map{$0.aenderungsfarbe}
+        
+        //2. Block - Durchschnitt
+        durchschnittTag                 <~ model.durchschnittTag.producer.map{$0.hhmmString}
+        durchSchnittWoche               <~ model.durchSchnittWoche.producer.map{$0.hhmmString}
+        durchSchnittMonat               <~ model.durchSchnittMonat.producer.map{$0.hhmmString}
+        durchschnittVorherigTag         <~ model.durchschnittVorherigTag.producer.map{$0.hhmmString}
+        durchschnittVorherigWoche       <~ model.durchschnittVorherigWoche.producer.map{$0.hhmmString}
+        durchschnittVorherigMonat       <~ model.durchschnittVorherigMonat.producer.map{$0.hhmmString}
+        durchschnittAenderungTag        <~ model.durchschnittAenderungTag.producer.map{$0.hhmmString}
+        durchschnittAenderungWoche      <~ model.durchschnittAenderungWoche.producer.map{$0.hhmmString}
+        durchschnittAenderungMonat      <~ model.durchschnittAenderungMonat.producer.map{$0.hhmmString}
+        durchschnittAenderungTagFarbe   <~ model.durchschnittAenderungTag.producer.map{$0.aenderungsfarbe}
+        durchschnittAenderungWocheFarbe <~ model.durchschnittAenderungWoche.producer.map{$0.aenderungsfarbe}
+        durchschnittAenderungMonatFarbe <~ model.durchschnittAenderungMonat.producer.map{$0.aenderungsfarbe}
+    }
+}
 
 class StatistikUeberblick: NibLoadingView {
+    var viewModel:StatistikUeberblickViewModel!{
+        didSet{
+            //Überschrift
+            gesamt.reactive.text                    <~ viewModel.gesamt.producer
+            
+            //1. Block - Gesamt
+            gesamtAktuellTag.reactive.text          <~ viewModel.gesamtAktuellTag.producer
+            gesamtAktuellWoche.reactive.text        <~ viewModel.gesamtAktuellWoche.producer
+            gesamtAktuellMonat.reactive.text        <~ viewModel.gesamtAktuellMonat.producer
+            gesamtVorherigTag.reactive.text         <~ viewModel.gesamtVorherigTag.producer
+            gesamtVorherigWoche.reactive.text       <~ viewModel.gesamtVorherigWoche.producer
+            gesamtVorherigMonat.reactive.text       <~ viewModel.gesamtVorherigMonat.producer
+            gesamtAenderungTag.reactive.text        <~ viewModel.gesamtAenderungTag.producer
+            gesamtAenderungWoche.reactive.text      <~ viewModel.gesamtAenderungWoche.producer
+            gesamtAenderungMonat.reactive.text      <~ viewModel.gesamtAenderungMonat.producer
+            gesamtAenderungTag.reactive.textColor   <~ viewModel.gesamtAenderungTagFarbe.producer
+            gesamtAenderungWoche.reactive.textColor <~ viewModel.gesamtAenderungWocheFarbe.producer
+            gesamtAenderungMonat.reactive.textColor <~ viewModel.gesamtAenderungMonatFarbe.producer
+            
+            //2. Block - Durchschnitt
+            durchschnittTag.reactive.text                   <~ viewModel.durchschnittTag.producer
+            durchSchnittWoche.reactive.text                 <~ viewModel.durchSchnittWoche.producer
+            durchSchnittMonat.reactive.text                 <~ viewModel.durchSchnittMonat.producer
+            durchschnittVorherigTag.reactive.text           <~ viewModel.durchschnittVorherigTag.producer
+            durchschnittVorherigWoche.reactive.text         <~ viewModel.durchschnittVorherigWoche.producer
+            durchschnittVorherigMonat.reactive.text         <~ viewModel.durchschnittVorherigMonat.producer
+            durchschnittAenderungTag.reactive.text          <~ viewModel.durchschnittAenderungTag.producer
+            durchschnittAenderungWoche.reactive.text        <~ viewModel.durchschnittAenderungWoche.producer
+            durchschnittAenderungMonat.reactive.text        <~ viewModel.durchschnittAenderungMonat.producer
+            durchschnittAenderungTag.reactive.textColor     <~ viewModel.durchschnittAenderungTagFarbe.producer
+            durchschnittAenderungWoche.reactive.textColor   <~ viewModel.durchschnittAenderungWocheFarbe.producer
+            durchschnittAenderungMonat.reactive.textColor   <~ viewModel.durchschnittAenderungMonatFarbe.producer
+ 
+        }
+    }
+    
+    //Überschrift
     @IBOutlet weak var gesamt: UILabel!
-        {didSet{gesamt.text = daten?.gesamtDauer.hhmmString}}
+    
+    //1. Block - Gesamt
     @IBOutlet weak var gesamtAktuellTag: UILabel!
-        {didSet{gesamtAktuellTag.text = daten?.gesamtAktuellTag.hhmmString}}
     @IBOutlet weak var gesamtAktuellWoche: UILabel!
-        {didSet{gesamtAktuellWoche.text = daten?.gesamtAktuellWoche.hhmmString}}
     @IBOutlet weak var gesamtAktuellMonat: UILabel!
-        {didSet{gesamtAktuellMonat.text = daten?.gesamtAktuellMonat.hhmmString}}
-
     @IBOutlet weak var gesamtVorherigTag: UILabel!
-        {didSet{gesamtVorherigTag.text = daten?.gesamtVorherigTag.hhmmString}}
     @IBOutlet weak var gesamtVorherigWoche: UILabel!
-        {didSet{gesamtVorherigWoche.text = daten?.gesamtVorherigWoche.hhmmString}}
     @IBOutlet weak var gesamtVorherigMonat: UILabel!
-        {didSet{gesamtVorherigMonat.text = daten?.gesamtVorherigMonat.hhmmString}}
+    @IBOutlet weak var gesamtAenderungTag: UILabel!
+    @IBOutlet weak var gesamtAenderungWoche: UILabel!
+    @IBOutlet weak var gesamtAenderungMonat: UILabel!
     
-    @IBOutlet weak var gesamtAenderungTag: UILabel!{
-        didSet{
-            let tagAenderung = StatistikUeberblickDaten.gesamtAenderungTag
-            gesamtAenderungTag.text             = tagAenderung.text
-            gesamtAenderungTag.textColor        = tagAenderung.farbe
-        }
-    }
-    @IBOutlet weak var gesamtAenderungWoche: UILabel!{
-        didSet{
-            let wocheAenderung = StatistikUeberblickDaten.gesamtAenderungWoche
-            gesamtAenderungWoche.text           = wocheAenderung.text
-            gesamtAenderungWoche.textColor      = wocheAenderung.farbe
-        }
-    }
-    @IBOutlet weak var gesamtAenderungMonat: UILabel!{
-        didSet{
-            let monatAenderung = StatistikUeberblickDaten.gesamtAenderungMonat
-            gesamtAenderungMonat.text           = monatAenderung.text
-            gesamtAenderungMonat.textColor      = monatAenderung.farbe
-        }
-    }
-    
+    //2. Block - Durchschnitt
     @IBOutlet weak var durchschnittTag: UILabel!
-        {didSet{durchschnittTag.text = daten?.durchschnittTag.hhmmString}}
     @IBOutlet weak var durchSchnittWoche: UILabel!
-        {didSet{durchSchnittWoche.text = daten?.durchschnittWoche.hhmmString}}
     @IBOutlet weak var durchSchnittMonat: UILabel!
-        {didSet{durchSchnittMonat.text = daten?.durchschnittMonat.hhmmString}}
-    
     @IBOutlet weak var durchschnittVorherigTag: UILabel!
-        {didSet{durchschnittVorherigTag.text = daten?.gesamtVorherigTag.hhmmString}}
     @IBOutlet weak var durchschnittVorherigWoche: UILabel!
-        {didSet{durchschnittVorherigWoche.text = daten?.gesamtVorherigWoche.hhmmString}}
     @IBOutlet weak var durchschnittVorherigMonat: UILabel!
-        {didSet{durchschnittVorherigMonat.text = daten?.gesamtVorherigMonat.hhmmString}}
-    
-    @IBOutlet weak var durchschnittAenderungTag: UILabel!{
-        didSet{
-            let tagAenderung = StatistikUeberblickDaten.durchschnittAenderungTag
-            durchschnittAenderungTag.text             = tagAenderung.text
-            durchschnittAenderungTag.textColor        = tagAenderung.farbe
-        }
-    }
-    @IBOutlet weak var durchschnittAenderungWoche: UILabel!{
-        didSet{
-            let wocheAenderung = StatistikUeberblickDaten.durchschnittAenderungWoche
-            durchschnittAenderungWoche.text           = wocheAenderung.text
-            durchschnittAenderungWoche.textColor      = wocheAenderung.farbe
-        }
-    }
-    @IBOutlet weak var durchschnittAenderungMonat: UILabel!{
-        didSet{
-            let monatAenderung = StatistikUeberblickDaten.durchschnittAenderungMonat
-            durchschnittAenderungMonat.text           = monatAenderung.text
-            durchschnittAenderungMonat.textColor      = monatAenderung.farbe
-        }
-    }
+    @IBOutlet weak var durchschnittAenderungTag: UILabel!
+    @IBOutlet weak var durchschnittAenderungWoche: UILabel!
+    @IBOutlet weak var durchschnittAenderungMonat: UILabel!
     
     var delegate:StatistikUeberblickDelegate?
-    var daten = Statistics.get(){
-        didSet{
-            guard let daten = daten else{return}
-            gesamt.text                 = daten.gesamtDauer.hhmmString
-            gesamtAktuellTag.text       = daten.gesamtAktuellTag.hhmmString
-            gesamtAktuellWoche.text     = daten.gesamtAktuellWoche.hhmmString
-            gesamtAktuellMonat.text     = daten.gesamtAktuellMonat.hhmmString
-            gesamtVorherigTag.text      = daten.gesamtVorherigTag.hhmmString
-            gesamtVorherigWoche.text    = daten.gesamtVorherigWoche.hhmmString
-            gesamtVorherigMonat.text    = daten.gesamtVorherigMonat.hhmmString
-            
-            
-            let tagAenderung = StatistikUeberblickDaten.gesamtAenderungTag
-            gesamtAenderungTag.text             = tagAenderung.text
-            gesamtAenderungTag.textColor        = tagAenderung.farbe
-            
-            let wocheAenderung = StatistikUeberblickDaten.gesamtAenderungWoche
-            gesamtAenderungWoche.text           = wocheAenderung.text
-            gesamtAenderungWoche.textColor      = wocheAenderung.farbe
-            
-            let monatAenderung = StatistikUeberblickDaten.gesamtAenderungMonat
-            gesamtAenderungMonat.text           = monatAenderung.text
-            gesamtAenderungMonat.textColor      = monatAenderung.farbe
-            
-            durchschnittTag.text            = daten.durchschnittTag.hhmmString
-            durchSchnittWoche.text          = daten.durchschnittWoche.hhmmString
-            durchSchnittMonat.text          = daten.durchschnittMonat.hhmmString
-            durchschnittVorherigTag.text    = daten.gesamtVorherigTag.hhmmString
-            durchschnittVorherigWoche.text  = daten.gesamtVorherigWoche.hhmmString
-            durchschnittVorherigMonat.text  = daten.gesamtVorherigMonat.hhmmString
-            
-            let tagAenderungDurchschnitt = StatistikUeberblickDaten.durchschnittAenderungTag
-            durchschnittAenderungTag.text             = tagAenderungDurchschnitt.text
-            durchschnittAenderungTag.textColor        = tagAenderungDurchschnitt.farbe
-            
-            let wocheAenderungDurchschnitt  = StatistikUeberblickDaten.durchschnittAenderungWoche
-            durchschnittAenderungWoche.text           = wocheAenderungDurchschnitt.text
-            durchschnittAenderungWoche.textColor      = wocheAenderungDurchschnitt.farbe
-            
-            let monatAenderungDurchschnitt = StatistikUeberblickDaten.durchschnittAenderungMonat
-            durchschnittAenderungMonat.text           = monatAenderungDurchschnitt.text
-            durchschnittAenderungMonat.textColor      = monatAenderungDurchschnitt.farbe
-        }
-    }
-    @IBAction func iButtonPressed(_ sender: UIButton) {
-        delegate?.infoButtonPressed()
-    }
-    @IBOutlet weak var statistikView: UIView!{
-        didSet{
-            statistikView.setControlDesignPatterns()
-        }
-    }
-    @IBAction func viewTapped(_ sender: UITapGestureRecognizer) {
-        delegate?.viewTapped()
-    }
-    
-    
-    
+    @IBAction func iButtonPressed(_ sender: UIButton)           { delegate?.infoButtonPressed() }
+    @IBOutlet weak var statistikView: UIView!                   { didSet{ statistikView.setControlDesignPatterns() } }
+    @IBAction func viewTapped(_ sender: UITapGestureRecognizer) { delegate?.viewTapped() }
 }
+
+
+
 protocol StatistikUeberblickDelegate {
     func infoButtonPressed()
     func viewTapped()
@@ -164,20 +224,19 @@ class StatistikUeberblick2:NibLoadingView{
     
     
     @IBOutlet private weak var gesamtZeitOhneKurse: UILabel!
-        {didSet{gesamtZeitOhneKurse.text = "\(daten?.gesamtDauerOhneKurse.hhmmString ?? "")"}}
+        {didSet{gesamtZeitOhneKurse.text = "\(daten.gesamtDauerOhneKurse.hhmmString ?? "")"}}
     @IBOutlet private weak var einmalAmTagBisHeute: UILabel!
-        {didSet{einmalAmTagBisHeute.text = "\(daten?.regelmaessigEinmalAmTag ?? 0)"}}
+        {didSet{einmalAmTagBisHeute.text = "\(daten.regelmaessigEinmalAmTag ?? 0)"}}
     @IBOutlet private weak var einmalAmTagMax: UILabel!
-        {didSet{einmalAmTagMax.text = "\(daten?.regelmaessigEinmalAmTagMax ?? 0)"}}
+        {didSet{einmalAmTagMax.text = "\(daten.regelmaessigEinmalAmTagMax ?? 0)"}}
     @IBOutlet private weak var zweimalAmTagBisHeute: UILabel!
-        {didSet{zweimalAmTagBisHeute.text = "\(daten?.regelmaessigZweiMalAmTag ?? 0)"}}
+        {didSet{zweimalAmTagBisHeute.text = "\(daten.regelmaessigZweiMalAmTag ?? 0)"}}
     @IBOutlet private weak var zweiMalAmTagMax: UILabel!
-        {didSet{zweiMalAmTagMax.text = "\(daten?.regelmaessigZweimalAmTagMax ?? 0)"}}
+        {didSet{zweiMalAmTagMax.text = "\(daten.regelmaessigZweimalAmTagMax ?? 0)"}}
     @IBOutlet private weak var kursTage: UILabel!
-        {didSet{kursTage.text = "\(daten?.kursTage ?? 0)"}}
+        {didSet{kursTage.text = "\(daten.kursTage ?? 0)"}}
     var daten = Statistics.get(){
         didSet{
-            guard let daten = daten else{return}
             gesamtZeitOhneKurse.text    = "\(daten.gesamtDauerOhneKurse.hhmmString)"
             einmalAmTagBisHeute.text    = "\(daten.regelmaessigEinmalAmTag)"
             einmalAmTagMax.text         = "\(daten.regelmaessigEinmalAmTagMax)"

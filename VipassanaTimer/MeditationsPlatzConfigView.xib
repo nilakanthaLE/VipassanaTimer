@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MeditationsPlatzConfigView" customModule="VipassanaTimer">
+            <connections>
+                <outlet property="platzMal3" destination="7Uq-v5-xP6" id="YCr-bh-MrD"/>
+                <outlet property="platzMal4" destination="WaI-vn-PZx" id="pmh-jc-5Hk"/>
+                <outlet property="platzMal5" destination="I37-hO-Pce" id="TOA-CY-iXI"/>
+                <outlet property="textFeld" destination="XmF-J0-XC3" id="p0S-dH-6UY"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Zts-6N-0Ta">
+                    <rect key="frame" x="8" y="40" width="359" height="256"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="gdC-mr-Vqh">
+                            <rect key="frame" x="0.0" y="0.0" width="359" height="125"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Uq-v5-xP6" customClass="MeditationsPlatzView" customModule="VipassanaTimer" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="7Uq-v5-xP6" secondAttribute="height" multiplier="1:1" id="oCI-ul-EAo"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WaI-vn-PZx" customClass="MeditationsPlatzView" customModule="VipassanaTimer" customModuleProvider="target">
+                                    <rect key="frame" x="157.5" y="31" width="94" height="94"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="WaI-vn-PZx" secondAttribute="height" multiplier="1:1" id="Vdj-kf-nUe"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I37-hO-Pce" customClass="MeditationsPlatzView" customModule="VipassanaTimer" customModuleProvider="target">
+                                    <rect key="frame" x="284" y="49.5" width="75" height="75.5"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="I37-hO-Pce" firstAttribute="width" secondItem="I37-hO-Pce" secondAttribute="height" multiplier="1:1" id="gYc-J2-0aB"/>
+                            </constraints>
+                        </stackView>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sitzplatzbeschriftung" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XmF-J0-XC3">
+                            <rect key="frame" x="0.0" y="145" width="359" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textColor" red="0.41176470588235292" green="0.32337761599999998" blue="0.18693663939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hier können Sie die Beschriftung des Sitzplatzes konfigurieren. Dieser kann in drei Größen erscheinen. " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Gk-TQ-SPD">
+                            <rect key="frame" x="0.0" y="195" width="359" height="61"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.41176470588235292" green="0.32337761599999998" blue="0.18693663939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="0.79580073920000005" alpha="0.66315282529999997" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Zts-6N-0Ta" secondAttribute="trailing" constant="8" id="BbR-Op-NrQ"/>
+                <constraint firstItem="Zts-6N-0Ta" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="BbS-GR-g0j"/>
+                <constraint firstItem="I37-hO-Pce" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1:5" id="Dt1-sL-vWU"/>
+                <constraint firstItem="7Uq-v5-xP6" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1:3" id="H0U-nh-UIv"/>
+                <constraint firstItem="WaI-vn-PZx" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1:4" id="gf2-Z7-2X1"/>
+                <constraint firstItem="Zts-6N-0Ta" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="oab-iH-Xfl"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="89.5" y="58.5"/>
+        </view>
+    </objects>
+</document>

@@ -105,25 +105,25 @@ struct StatistikUeberblickDaten{
                 let statistics  = Statistics.get()
                 
                 
-                statistics?.regelmaessigZweimalAmTagMax     = regelmaessigZweimalAmTagMax
-                statistics?.regelmaessigZweiMalAmTag        = regelmaessigZweiMalAmTag
-                statistics?.regelmaessigEinmalAmTagMax      = regelmaessigEinmalAmTagMax
-                statistics?.regelmaessigEinmalAmTag         = regelmaessigEinmalAmTag
-                statistics?.kursTage                        = kursTage
-                statistics?.gesamtVorherigWoche             = gesamtVorherigWoche
-                statistics?.gesamtVorherigTag               = gesamtVorherigTag
-                statistics?.gesamtVorherigMonat             = gesamtVorherigMonat
-                statistics?.gesamtDauerOhneKurse            = gesamtDauerOhneKurse
-                statistics?.gesamtDauer                     = gesamtDauer
-                statistics?.gesamtAktuellWoche              = gesamtAktuellWoche
-                statistics?.gesamtAktuellTag                = gesamtAktuellTag
-                statistics?.gesamtAktuellMonat              = gesamtAktuellMonat
-                statistics?.durchschnittWoche               = durchschnittWoche
-                statistics?.durchschnittVorherigWoche       = durchschnittVorherigWoche
-                statistics?.durchschnittVorherigTag         = durchschnittVorherigTag
-                statistics?.durchschnittVorherigMonat       = durchschnittVorherigMonat
-                statistics?.durchschnittTag                 = durchschnittTag
-                statistics?.durchschnittMonat               = durchschnittMonat
+                statistics.regelmaessigZweimalAmTagMax     = regelmaessigZweimalAmTagMax
+                statistics.regelmaessigZweiMalAmTag        = regelmaessigZweiMalAmTag
+                statistics.regelmaessigEinmalAmTagMax      = regelmaessigEinmalAmTagMax
+                statistics.regelmaessigEinmalAmTag         = regelmaessigEinmalAmTag
+                statistics.kursTage                        = kursTage
+                statistics.gesamtVorherigWoche             = gesamtVorherigWoche
+                statistics.gesamtVorherigTag               = gesamtVorherigTag
+                statistics.gesamtVorherigMonat             = gesamtVorherigMonat
+                statistics.gesamtDauerOhneKurse            = gesamtDauerOhneKurse
+                statistics.gesamtDauer                     = gesamtDauer
+                statistics.gesamtAktuellWoche              = gesamtAktuellWoche
+                statistics.gesamtAktuellTag                = gesamtAktuellTag
+                statistics.gesamtAktuellMonat              = gesamtAktuellMonat
+                statistics.durchschnittWoche               = durchschnittWoche
+                statistics.durchschnittVorherigWoche       = durchschnittVorherigWoche
+                statistics.durchschnittVorherigTag         = durchschnittVorherigTag
+                statistics.durchschnittVorherigMonat       = durchschnittVorherigMonat
+                statistics.durchschnittTag                 = durchschnittTag
+                statistics.durchschnittMonat               = durchschnittMonat
                 saveContext()
                 
                 update()
@@ -138,8 +138,8 @@ struct StatistikUeberblickDaten{
     
     static var gesamtAenderungTag:(text:String,farbe:UIColor){
         let statistics          = Statistics.get()
-        let gesamtAktuellTag    = statistics?.gesamtAktuellTag ?? 0
-        let gesamtVorherigTag   = statistics?.gesamtVorherigTag ?? 0
+        let gesamtAktuellTag    = statistics.gesamtAktuellTag
+        let gesamtVorherigTag   = statistics.gesamtVorherigTag
         
         let aenderung   = gesamtAktuellTag - gesamtVorherigTag
         let farbe       = getFarbe(aenderung:aenderung)
@@ -151,8 +151,8 @@ struct StatistikUeberblickDaten{
     
     static var gesamtAenderungWoche:(text:String,farbe:UIColor){
         let statistics              = Statistics.get()
-        let gesamtAktuellWoche      = statistics?.gesamtAktuellWoche ?? 0
-        let gesamtVorherigWoche     = statistics?.gesamtVorherigWoche ?? 0
+        let gesamtAktuellWoche      = statistics.gesamtAktuellWoche
+        let gesamtVorherigWoche     = statistics.gesamtVorherigWoche
         
         let aenderung   = gesamtAktuellWoche - gesamtVorherigWoche
         let farbe       = getFarbe(aenderung:aenderung)
@@ -164,8 +164,8 @@ struct StatistikUeberblickDaten{
     
     static var gesamtAenderungMonat:(text:String,farbe:UIColor){
         let statistics              = Statistics.get()
-        let gesamtAktuellMonat      = statistics?.gesamtAktuellMonat ?? 0
-        let gesamtVorherigMonat     = statistics?.gesamtVorherigMonat ?? 0
+        let gesamtAktuellMonat      = statistics.gesamtAktuellMonat
+        let gesamtVorherigMonat     = statistics.gesamtVorherigMonat
         
         let aenderung   = gesamtAktuellMonat - gesamtVorherigMonat
         let farbe       = getFarbe(aenderung:aenderung)
@@ -176,8 +176,8 @@ struct StatistikUeberblickDaten{
     }
     static var durchschnittAenderungTag:(text:String,farbe:UIColor){
         let statistics              = Statistics.get()
-        let gesamtVorherigTag       = statistics?.gesamtVorherigTag ?? 0
-        let durchschnittTag         = statistics?.durchschnittTag ?? 0
+        let gesamtVorherigTag       = statistics.gesamtVorherigTag
+        let durchschnittTag         = statistics.durchschnittTag
         
         let aenderung   = gesamtVorherigTag - durchschnittTag
         let farbe       = getFarbe(aenderung:aenderung)
@@ -188,8 +188,8 @@ struct StatistikUeberblickDaten{
     }
     static var durchschnittAenderungWoche:(text:String,farbe:UIColor){
         let statistics              = Statistics.get()
-        let gesamtVorherigWoche     = statistics?.gesamtVorherigWoche ?? 0
-        let durchSchnittWoche       = statistics?.durchschnittWoche ?? 0
+        let gesamtVorherigWoche     = statistics.gesamtVorherigWoche
+        let durchSchnittWoche       = statistics.durchschnittWoche
         
         let aenderung   = gesamtVorherigWoche - durchSchnittWoche
         let farbe       = getFarbe(aenderung:aenderung)
@@ -200,8 +200,8 @@ struct StatistikUeberblickDaten{
     }
     static var durchschnittAenderungMonat:(text:String,farbe:UIColor){
         let statistics              = Statistics.get()
-        let gesamtVorherigMonat     = statistics?.gesamtVorherigMonat ?? 0
-        let durchSchnittMonat       = statistics?.durchschnittMonat ?? 0
+        let gesamtVorherigMonat     = statistics.gesamtVorherigMonat
+        let durchSchnittMonat       = statistics.durchschnittMonat
         
         let aenderung   = gesamtVorherigMonat - durchSchnittMonat
         let farbe       = getFarbe(aenderung:aenderung)

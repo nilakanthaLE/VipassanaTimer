@@ -15,7 +15,7 @@ enum GraphenTyp{
     case BalkenNebeneinander
 }
 
-@IBDesignable
+//@IBDesignable
 class StatistikView: UIView {
     var werte : [[Double]]?{
         didSet{

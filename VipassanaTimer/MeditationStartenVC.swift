@@ -8,13 +8,13 @@
 
 import UIKit
 
-extension UINavigationBar{
-    func setDesignPattern(){
-        barTintColor    = DesignPatterns.headerBackground
-        tintColor       = DesignPatterns.mocha
-        titleTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: DesignPatterns.mocha]
-    }
-}
+//extension UINavigationBar{
+//    func setDesignPattern(){
+//        barTintColor    = DesignPatterns.headerBackground
+//        tintColor       = DesignPatterns.mocha
+//        titleTextAttributes = [NSAttributedStringKey.foregroundColor: DesignPatterns.mocha]
+//    }
+//}
 
 class MeditationStartenVC: UIViewController,TimerConfigViewDelegateControlTapped {
 
@@ -26,7 +26,7 @@ class MeditationStartenVC: UIViewController,TimerConfigViewDelegateControlTapped
             timerConfigView.timerConfig             = timerConfig
             timerConfigView.zeigeSteuerungsPanel    = true
             timerConfigView.controlTappedDelegate   = self
-            timerConfigView.meditationGestartetOderBeendet     = {[unowned self](_ meditation:Meditation?) in self.meditierendeView.myActiveMeditation = meditation}
+            timerConfigView.meditationGestartetOderBeendet     = {[weak self](_ meditation:Meditation?) in self?.meditierendeView.myActiveMeditation = meditation}
         }
     }
     func controlTapped()
@@ -35,6 +35,7 @@ class MeditationStartenVC: UIViewController,TimerConfigViewDelegateControlTapped
     //MARK: lässt APP im Vordergrund
     override func viewDidLoad() {
         super.viewDidLoad()
+        FirActiveMeditations.deleteActiveMeditation()
         FirActiveMeditations.setObserver()
         UIApplication.shared.isIdleTimerDisabled = true
         view.backgroundColor    = DesignPatterns.mainBackground
@@ -55,8 +56,8 @@ class MeditationStartenVC: UIViewController,TimerConfigViewDelegateControlTapped
     
     @IBOutlet weak var meditierendeView: MeditierendeView!{
         didSet{
-            meditierendeView.showUserMeditationInfo = {[unowned self](_ activeMeditation:ActiveMeditationInFB) in
-                self.performSegue(withIdentifier: "showUserInfo", sender: activeMeditation)}
+            meditierendeView.showUserMeditationInfo = {[weak self](_ activeMeditation:ActiveMeditationInFB) in
+                self?.performSegue(withIdentifier: "showUserInfo", sender: activeMeditation)}
             meditierendeView.backgroundColor = DesignPatterns.controlBackground
             
         }

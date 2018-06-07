@@ -41,6 +41,7 @@ extension AppUser{
                 "statistik_sichtbarkeit":user?.statistikSichtbarkeit ?? 0,
                 "iOS_Version":iOSVersion,
                 "App_Version":version ?? "_fehlt_",
+                "isNewVersion":true,
                 "lastUpdate" : String(describing: Date()),
                 "statisticStart" : StatistikUeberblickDaten.startDateFuerDurchschnitt?.timeIntervalSinceReferenceDate ?? 0 ]
     }

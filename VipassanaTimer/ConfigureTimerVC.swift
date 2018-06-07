@@ -95,7 +95,7 @@ class ConfigureTimerVC: UIViewController,TimerConfigViewDelegate,UITextFieldDele
         
             string: NSLocalizedString("AnleitungTimerConfig1", comment: "AnleitungTimerConfig1"),
             attributes: [
-                NSAttributedStringKey.paragraphStyle: paragraphStyle,
+                NSAttributedStringKey.paragraphStyle : paragraphStyle,
                 NSAttributedStringKey.font : font,
                 NSAttributedStringKey.foregroundColor : UIColor.black
             ]
@@ -106,9 +106,10 @@ class ConfigureTimerVC: UIViewController,TimerConfigViewDelegate,UITextFieldDele
             
             string: NSLocalizedString("AnleitungTimerConfig2", comment: "AnleitungTimerConfig2"),
             attributes: [
-                NSAttributedStringKey.paragraphStyle: paragraphStyle,
+                NSAttributedStringKey.paragraphStyle : paragraphStyle,
                 NSAttributedStringKey.font : fontBold,
                 NSAttributedStringKey.foregroundColor : UIColor.black
+                
             ]
         )
         messageText.append(messageText2)
@@ -116,7 +117,7 @@ class ConfigureTimerVC: UIViewController,TimerConfigViewDelegate,UITextFieldDele
             
             string: NSLocalizedString("AnleitungTimerConfig3", comment: "AnleitungTimerConfig3"),
             attributes: [
-                NSAttributedStringKey.paragraphStyle: paragraphStyle,
+                NSAttributedStringKey.paragraphStyle : paragraphStyle,
                 NSAttributedStringKey.font : font,
                 NSAttributedStringKey.foregroundColor : UIColor.black
             ]

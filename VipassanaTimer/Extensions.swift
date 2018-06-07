@@ -35,15 +35,25 @@ extension String {
         return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")
     }}
 
-extension UIViewController{
-    var contentViewController:UIViewController {
-        if let navCon = self as? UINavigationController{
-            return navCon.visibleViewController ?? navCon
-        }else{
-            return self
-        }
+//extension UIViewController{
+//    var contentViewController:UIViewController {
+//        if let navCon = self as? UINavigationController{
+//            return navCon.visibleViewController ?? navCon
+//        }else{
+//            return self
+//        }
+//    }
+//}
+
+extension NSDate {
+    func string(_ format:String)->String{
+        let formatter           = DateFormatter()
+        formatter.dateFormat    = format
+        formatter.locale        = Locale(identifier: Locale.current.languageCode == "de" ? "de" : "en") // Locale(identifier: "de")
+        return formatter.string(from: self as Date)
     }
 }
+
 extension Date{
     static func anzahlMonate(von:Date, bis:Date) -> Int{
         let calendar    = Calendar.current
@@ -93,12 +103,12 @@ extension Date{
         let cal             = Calendar.current
         return (cal as NSCalendar).date(byAdding: .day, value: days, to: self, options: .matchFirst)!
     }
-    func string(_ format:String)->String{
-        let formatter           = DateFormatter()
-        formatter.dateFormat    = format
-        formatter.locale        = Locale(identifier: Locale.current.languageCode == "de" ? "de" : "en") // Locale(identifier: "de")
-        return formatter.string(from: self)
-    }
+//    func string(_ format:String)->String{
+//        let formatter           = DateFormatter()
+//        formatter.dateFormat    = format
+//        formatter.locale        = Locale(identifier: Locale.current.languageCode == "de" ? "de" : "en") // Locale(identifier: "de")
+//        return formatter.string(from: self)
+//    }
     var firstSecondOfDay:Date?{
         let cal             = Calendar.current
         return (cal as NSCalendar).date(bySettingHour: 0, minute: 0, second: 0, of: self, options: .matchFirst)
@@ -250,18 +260,22 @@ extension NSDate {
 }
 
 extension Double{
-    var stunden:Int{
-        return Int(Int(self) / 60 / 60)
-    }
-    var minuten:Int{
-        return Int((Int(self) - (stunden * 3600)) / 60)
-    }
-    var sekunden:Int{
-        return Int(Int(self) - (stunden * 3600) - (minuten * 60))
-    }
+//    var stunden:Int{
+//        return Int(Int(self) / 60 / 60)
+//    }
+//    var minuten:Int{
+//        return Int((Int(self) - (stunden * 3600)) / 60)
+//    }
+//    var sekunden:Int{
+//        return Int(Int(self) - (stunden * 3600) - (minuten * 60))
+//    }
     var hhmmString:String{
         return "\(self.stunden):\(self.minuten.stringMit0)"
     }
+    var aenderungsfarbe:UIColor{
+        return self > 0 ? UIColor.init(red: 51.0/255.0, green: 102.0/255.0, blue: 0.0/255.0, alpha: 1.0) : self == 0 ? UIColor.black : UIColor.red
+    }
+    
     var hhmmssString:String{
         return "\(self.stunden):\(self.minuten.stringMit0):\(self.sekunden.stringMit0)"
     }

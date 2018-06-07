@@ -83,7 +83,8 @@ extension Int{
     }
 }
 
-@IBDesignable open class YSRangeSlider: UIControl {
+//@IBDesignable
+open class YSRangeSlider: UIControl {
     private var schablonenBalken:UIView?
     private var schablonenLeftThumb:UIView?
     private var schablonenRightThumb:UIView?
@@ -405,6 +406,10 @@ extension Int{
         schablonenRightThumb?.frame = rightThumbLayer.frame
         
         ablaufBalken?.frame.size.width         = ablaufBalkenWeiteFaktor * sliderLineLayer.frame.size.width
+        
+
+        
+        print("slider layoutSubviews")
     }
     
     // MARK: - Touch Tracking

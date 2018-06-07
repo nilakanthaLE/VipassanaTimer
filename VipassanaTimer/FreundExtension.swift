@@ -126,7 +126,8 @@ enum FreundStatus{
     case requested
     case granted
     
-    static func getStatus (_ status:Int16) -> FreundStatus?{
+    static func getStatus (_ status:Int16?) -> FreundStatus?{
+        guard let status = status else {return nil}
         switch status{
         case -2     : return .blocked
         case -1     : return .rejected

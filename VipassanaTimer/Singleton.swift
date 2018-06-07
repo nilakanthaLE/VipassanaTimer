@@ -28,18 +28,22 @@ class Singleton {
     
     //MARK: ActiveMeditations
     var listOfActiveMeditationHasChanged:(()->Void)?
-    var listOfActiveMeditation = [ActiveMeditationInFB](){
-        didSet{
-            listOfActiveMeditationHasChanged?()
-            for am in filteredAndSortedListOfActiveMeditation{
-                print(am.firebaseData)
-            }
-        }
-    }
-    var filteredAndSortedListOfActiveMeditation : [ActiveMeditationInFB]{
-        let ergebnis = listOfActiveMeditation.filter{$0.userID != AppUserFBID}
-        return ergebnis.sorted{$0.start?.timeIntervalSinceReferenceDate ?? 0 < $1.start?.timeIntervalSinceReferenceDate ?? 0 }
-    }
+//    var listOfActiveMeditation = [ActiveMeditationInFB](){
+//        didSet{
+//            listOfActiveMeditationHasChanged?()
+//            for am in filteredAndSortedListOfActiveMeditation{
+//                print(am.firebaseData)
+//            }
+//            
+//            
+//            fireBaseModel.updateFromFirebase(newFirebaseList: filteredAndSortedListOfActiveMeditation)
+//            
+//        }
+//    }
+//    var filteredAndSortedListOfActiveMeditation : [ActiveMeditationInFB]{
+//        let ergebnis = listOfActiveMeditation.filter{$0.userID != AppUserFBID}
+//        return ergebnis.sorted{$0.start?.timeIntervalSinceReferenceDate ?? 0 < $1.start?.timeIntervalSinceReferenceDate ?? 0 }
+//    }
     
     deinit {  print("deinit Singleton")  }
 }

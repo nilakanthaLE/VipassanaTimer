@@ -15,6 +15,7 @@ import Firebase
 import AudioToolbox
 
 let database    = Database.database()
+let storage     = Storage.storage()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -90,6 +91,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //erstellt ersten TimerConfig (wenn kein Timer existiert)
         TimerConfig.createFirstTimer()
         
+        //neueVersion mit sitzplatzTitle
+        if Meditierender.get()?.meditationsPlatzTitle == nil{
+            Meditierender.get()?.meditationsPlatzTitle = Meditierender.get()?.nickNameSichtbarkeit == 2 ? Meditierender.get()?.nickName ?? "?" : "?"
+        }
+        
+        
+        FirActiveMeditations.cleaningActiveMeditations()
+
         return true
     }
 
@@ -106,7 +115,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        FirActiveMeditations.deleteActiveMeditation()
         print("applicationDidEnterBackground")
     }
     
@@ -120,6 +128,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //löscht alle Meditationen kürzer als 5 min
         Meditation.cleanShortMeditations()
+        
         
         //für übergang zu CloudKIT Production
 //        AppUser.get()?.firebaseID = nil

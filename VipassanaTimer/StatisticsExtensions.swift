@@ -10,11 +10,10 @@ import Foundation
 import CoreData
 
 extension Statistics{
-    class func get()->Statistics?{
+    class func get()->Statistics{
         let request             = NSFetchRequest<Statistics>(entityName: "Statistics")
-        if let statistics = (try? context.fetch(request))?.first { return statistics }
-        if let statistics = NSEntityDescription.insertNewObject(forEntityName: "Statistics", into: context) as? Statistics  { return statistics }
-        return nil
+        if let statistics       = (try? context.fetch(request))?.first { return statistics }
+        return NSEntityDescription.insertNewObject(forEntityName: "Statistics", into: context) as! Statistics
     }
 }
 

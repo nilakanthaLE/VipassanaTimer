@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 enum GraphTypen:String{
     case GesamtdauerProWoche    = "StatistikGesamtdauerProWoche"
     case GesamtdauerProMonat    = "StatistikGesamtdauerProMonat"
@@ -118,7 +120,7 @@ class StatistikVC: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate 
     }
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let string              = NSLocalizedString(typen[row].rawValue, comment: typen[row].rawValue)
-        let attributedString    = NSAttributedString(string: string, attributes: [NSAttributedStringKey.foregroundColor : DesignPatterns.mocha])
+        let attributedString    = NSAttributedString(string: string, attributes: [NSAttributedStringKey.foregroundColor: DesignPatterns.mocha])
         return attributedString
     }
     

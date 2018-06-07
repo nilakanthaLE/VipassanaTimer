@@ -25,7 +25,7 @@ extension BackgroundInfo{
         if let backgroundInfo = NSEntityDescription.insertNewObject(forEntityName: "BackgroundInfo", into: context) as? BackgroundInfo{
             backgroundInfo.anapanaEnde      = anapana
             backgroundInfo.vipassanaEnde    = vipassana
-            backgroundInfo.meditationsEnde  = ende
+            backgroundInfo.meditationsEnde  = ende 
             return backgroundInfo
         }
         return nil

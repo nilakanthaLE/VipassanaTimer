@@ -11,7 +11,7 @@ import UIKit
 
 struct DesignPatterns{
     private static let font     = UIFont.systemFont(ofSize: 12)
-    static let brown = UIColor(red: 102.0/255.0, green: 51.0/255.0, blue: 0.0, alpha: 1)
+    static let brown    = UIColor(red: 102.0/255.0, green: 51.0/255.0, blue: 0.0, alpha: 1)
     static let gruen     = UIColor(red: 102.0/255.0, green: 153.0/255.0, blue: 51.0/255.0, alpha: 1)
     static let gelb     = UIColor(red: 255.0/255.0, green: 204.0/255.0, blue: 51.0/255.0, alpha: 1)
     static let darkBlue = UIColor(red: 0.0, green: 0.0, blue: 1.0, alpha: 1)

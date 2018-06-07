@@ -46,9 +46,9 @@ class MeditierendeView:NibLoadingView,UICollectionViewDataSource,UICollectionVie
         }
     }
     private func listOfActiveMeditationHasChanged(){
-        var newlist = Singleton.sharedInstance.filteredAndSortedListOfActiveMeditation
-        if let myActiveMeditation = myActiveMeditation { newlist.append(ActiveMeditationInFB(meditation:myActiveMeditation)) }
-        meditationen = newlist
+//        var newlist = Singleton.sharedInstance.filteredAndSortedListOfActiveMeditation
+//        if let myActiveMeditation = myActiveMeditation { newlist.append(ActiveMeditationInFB(meditation:myActiveMeditation)) }
+//        meditationen = newlist
     }
     private func setLayout(){
         setControlDesignPatterns()
@@ -97,4 +97,5 @@ class MedititierenderCollectionViewCellView:NibLoadingView{
 
     
 }
+
 

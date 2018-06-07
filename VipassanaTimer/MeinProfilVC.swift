@@ -43,6 +43,7 @@ class MeinProfilVC: UIViewController {
                 attributes: [
                     NSAttributedStringKey.font : UIFont.systemFont(ofSize: 11),
                     NSAttributedStringKey.foregroundColor : DesignPatterns.mocha
+                    
                 ]
             )
             messageText.append(messageText2)
@@ -50,7 +51,7 @@ class MeinProfilVC: UIViewController {
                 
                 string: NSLocalizedString("FreundeStatistikErlaubt3", comment: "FreundeStatistikErlaubt3"),
                 attributes: [
-                    NSAttributedStringKey.font :  UIFont.systemFont(ofSize: 16),
+                    NSAttributedStringKey.font : UIFont.systemFont(ofSize: 16),
                     NSAttributedStringKey.foregroundColor : DesignPatterns.mocha
                 ]
             )
@@ -71,26 +72,7 @@ class MeinProfilVC: UIViewController {
     }
     
     
-//    @objc private func userSearchErgebnis(_ notification:Notification){
-//        nickNamePruefungsErgebnisLabel.isHidden = false
-////        let user = notification.userInfo?["ckMeditierender"] as? CKMeditierender
-//
-//        if  filter(user) != nil{
-//            nickNamePruefungsErgebnisLabel.text = "'\(spitzNameTextField.text ?? "???")'" + NSLocalizedString("NicknameVergeben", comment: "NicknameVergeben")
-//        }else{
-//            meditierender?.nickName                 = spitzNameTextField.text
-//            meditierender?.cloudNeedsUpdate         = true
-////            Singleton.sharedInstance.myCloudKit?.updateNow()
-//            nickNamePruefungsErgebnisLabel.text = "'\(spitzNameTextField.text ?? "???")'" + NSLocalizedString("NicknameErlaubt", comment: "NicknameErlaubt")
-//            title = spitzNameTextField.text
-//        }
-//    }
-//    private func filter(_ gefundenerUser:CKMeditierender?) -> CKMeditierender?{
-//        if gefundenerUser == nil || Meditierender.get()?.userID == gefundenerUser?.userRef.recordID.recordName {
-//            return nil
-//        }
-//        return gefundenerUser
-//    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,7 +85,7 @@ class MeinProfilVC: UIViewController {
     
     @IBOutlet weak var nickNamePruefungsErgebnisLabel: UILabel!
     private func userWurdeGefunden(){
-        print(Singleton.sharedInstance.gefundenerUser)
+        print(Singleton.sharedInstance.gefundenerUser as Any)
         nickNamePruefungsErgebnisLabel.isHidden = false
         if Singleton.sharedInstance.gefundenerUser != nil {
             nickNamePruefungsErgebnisLabel.text = "'\(spitzNameTextField.text ?? "???")'" + NSLocalizedString("NicknameVergeben", comment: "NicknameVergeben")

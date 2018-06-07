@@ -45,7 +45,7 @@ class KalenderVC: UIViewController,KalenderViewDelegate {
             
                 string: NSLocalizedString("AnleitungKalender", comment: "AnleitungKalender"),
                 attributes: [
-                    NSAttributedStringKey.paragraphStyle: paragraphStyle,
+                    NSAttributedStringKey.paragraphStyle : paragraphStyle,
                     NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14),
                     NSAttributedStringKey.foregroundColor : UIColor.black
                 ]
@@ -129,32 +129,31 @@ class KalenderTagHeader:NibLoadingView{
         createViewAsync()
     }
     private func createViewAsync(){
-    {} ~>  {_ in 
-            weak var weakSelf   = self
+    {} ~>  {[weak self] in
             
-            let tagString       = weakSelf?.datum.string("EEE") ?? ""
+            let tagString       = self?.datum.string("EEE") ?? ""
         let myAttrString1   = NSMutableAttributedString(string: tagString , attributes: [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)])
-            let datumString     = weakSelf?.datum.string(" dd.MM.") ?? ""
+            let datumString     = self?.datum.string(" dd.MM.") ?? ""
         let myAttrString2   = NSMutableAttributedString(string: datumString , attributes: [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)])
             let combination     = NSMutableAttributedString()
             combination.append(myAttrString1)
             combination.append(myAttrString2)
             
-            weakSelf?.datumLabel.attributedText         = combination //weakSelf?.datum.string("EEE dd.MM.yy")
-            let statistik                               = Meditation.getStatistics(von: weakSelf!.datum, bis: weakSelf!.datum)
-            weakSelf?.statistikLabel.text = statistik.timePerDay.hhmmString
-            if statistik.timesPerDay > 0{
-                if statistik.timePerDay >= 120*60 && statistik.timesPerDay >= 2 {
-                    weakSelf?.statusLabel.text = "✅✅"
+            self?.datumLabel.attributedText         = combination
+            let statistik                               = Meditation.getStatistics(von: self?.datum, bis: self?.datum)
+            self?.statistikLabel.text = statistik?.timePerDay.hhmmString
+            if statistik?.timesPerDay ?? 0 > 0{
+                if statistik?.timePerDay ?? 0 >= 120*60 && statistik?.timesPerDay ?? 0 >= 2 {
+                    self?.statusLabel.text = "✅✅"
                 }else{
-                    weakSelf?.statusLabel.text = "☑️✅"
+                    self?.statusLabel.text = "☑️✅"
                 }
             }else{
-                weakSelf?.statusLabel.text = "☑️☑️"
+                self?.statusLabel.text = "☑️☑️"
             }
             
-            if weakSelf!.datum.isSunday {
-                _ = weakSelf?.addBorder(edges: .right, colour: .red, thickness: 0.5)
+            if self!.datum.isSunday {
+                _ = self?.addBorder(edges: .right, colour: .red, thickness: 0.5)
             }
         }
     }
@@ -186,7 +185,7 @@ class WochenKalenderTitleView:NibLoadingView{
             
             
             
-            labelText = wocheText + trenner + statistik.wocheDauerLabelText
+            labelText = wocheText + trenner + (statistik?.wocheDauerLabelText ?? "")
         }
         titleLabel.font = UIFont.systemFont(ofSize: 14)
         titleLabel.text = labelText
@@ -210,7 +209,20 @@ class MonatKalenderTitleView:NibLoadingView{
         backgroundColor     = UIColor.clear
         let statistik       = Meditation.getStatistics(von: monat.startOfMonth.firstSecondOfDay! , bis: monat.endOfMonth.lastSecondOfDay!)
         
-        titleLabel.text = statistik.gesamtDauer.hhmmString + " h" + " | " + "\(statistik.anzahlMeditationen) " + NSLocalizedString("MonatKalenderTitleViewTimes", comment: "MonatKalenderTitleViewTimes") + " | " + statistik.timePerDay.hhmmString + NSLocalizedString("MonatKalenderTitleViewPerDay", comment: "MonatKalenderTitleViewPerDay")
+        let titleLabelText:String = {
+            var ergebnis = String()
+            ergebnis += statistik?.gesamtDauer.hhmmString ?? ""
+            ergebnis += " h | "
+            ergebnis += "\(statistik?.anzahlMeditationen ?? 0) "
+            ergebnis += NSLocalizedString("MonatKalenderTitleViewTimes", comment: "MonatKalenderTitleViewTimes") + " | "
+            ergebnis += statistik?.timePerDay.hhmmString ?? ""
+            ergebnis += NSLocalizedString("MonatKalenderTitleViewPerDay", comment: "MonatKalenderTitleViewPerDay")
+            return ergebnis
+        }()
+        
+        titleLabel.text     = titleLabelText
+        
+        
         titleLabel.font = UIFont.systemFont(ofSize: 14)
         titleLabel.textColor    = DesignPatterns.mocha
         titleLabel.sizeToFit()
@@ -269,20 +281,19 @@ class DayViewForMonthView:NibLoadingView{
         craeteView(dayIsWithinMonth:dayIsWithinMonth)
     }
     private func craeteView(dayIsWithinMonth:Bool){
-    {} ~>  {_ in 
+    {} ~>  {[weak self] in
             var status:Int = 0
-            weak var weakSelf = self
             if dayIsWithinMonth{
-                let statistik       = Meditation.getStatistics(von: weakSelf!.day, bis: weakSelf!.day)
-                if statistik.timesPerDay > 0{
-                    if statistik.timePerDay >= 120*60 && statistik.timesPerDay >= 2
+                let statistik       = Meditation.getStatistics(von: self?.day, bis: self?.day)
+                if statistik?.timesPerDay ?? 0 > 0{
+                    if (statistik?.timePerDay ?? 0) >= 120*60 && (statistik?.timesPerDay ?? 0) >= 2
                     { status = 2}
                     else{ status = 1 }
                 }
             }
             switch status{
-            case 1 :weakSelf?.buddhaBlackImageView.isHidden   = false
-            case 2 :weakSelf?.buddhaGoldImageView.isHidden   = false
+            case 1 :self?.buddhaBlackImageView.isHidden   = false
+            case 2 :self?.buddhaGoldImageView.isHidden   = false
             default: break
             }
         }

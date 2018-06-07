@@ -12,8 +12,65 @@ import UIKit
 import MyCalendar
 import Firebase
 
+
+
+
 extension Meditation:EintragInKalender{
-    static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    //new
+    class func start(myMeditation:PublicMeditation) -> Meditation?{
+        let meditation = NSEntityDescription.insertNewObject(forEntityName: "Meditation", into: context) as? Meditation
+            
+        meditation?.meditationsID    = UUID().uuidString
+        meditation?.start            = myMeditation.startDate
+        meditation?.dauerAnapana     = Int32(myMeditation.anapanaDauer)
+        meditation?.dauerVipassana   = Int32(myMeditation.vipassanaDauer)
+        meditation?.dauerMetta       = Int32(myMeditation.mettaDauer)
+        meditation?.mettaOpenEnd     = myMeditation.mettaEndlos
+        meditation?.name             = myMeditation.meditationTitle
+        meditation?.cloudNeedsUpdate = true
+        
+        return meditation
+    }
+    
+    
+    
+    
+    
+    var firebasePublicMeditation:[String:Any] {
+        let meditierender           = Meditierender.get()
+        let statistics              = Statistics.get()
+        
+        return [
+                //MeditationsDaten
+                "start": String(start?.timeIntervalSinceReferenceDate ?? 0),
+                "meditationsID"                 : meditationsID ?? "",
+                "gesamtDauer"                   : gesamtDauer,
+                "anapanaDauer"                  : dauerAnapana,
+                "mettaDauer"                    : dauerMetta,
+                "mettaOpenEnd"                  : mettaOpenEnd,
+                //Statistik
+                "durchSchnittProTag"            : statistics.durchschnittTag.hhmmString,
+                "gesamtDauerStatistik"          : statistics.gesamtDauer.hhmmString,
+                "kursTage"                      : "\(statistics.kursTage)",
+                //Meditierender
+                "meditierenderSpitzname"        : meditierender?.nickName ?? "",
+                "nickNameSichtbarkeit"          : meditierender?.nickNameSichtbarkeit ?? 0,
+                "statistikSichtbarkeit"         : meditierender?.statistikSichtbarkeit ?? 0,
+                "meditationsPlatzTitle"         : meditierender?.meditationsPlatzTitle ?? "?",
+                "flagge"                        : meditierender?.flagge ?? "",
+                "flaggeIstSichtbar"             : meditierender?.flaggeIstSichtbar ?? false,
+                "message"                       : meditierender?.message ?? ""
+        ]
+    }
+    
+    
+    
+    
+    //old
+    
+    
+    
+    //    static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     class func new(template:MeditationTemplate,start:Date)->Meditation?{
         guard let meditation = new(start: start, mettaOpenEnd: false, name: template.name) else{return nil}
         meditation.dauerAnapana         = template.dauerAnapana
@@ -199,7 +256,8 @@ extension Meditation:EintragInKalender{
 
         return meditationen
     }
-    class func getDays(start:Date,ende:Date)->[Meditation]{
+    class func getDays(start:Date?,ende:Date?)->[Meditation]{
+        guard let start = start, let ende = ende else {return [Meditation]()}
         let request             = NSFetchRequest<Meditation>(entityName: "Meditation")
         request.predicate       = NSCompoundPredicate(andPredicateWithSubpredicates:
             [NSPredicate(format: "start >= %@",start.firstSecondOfDay! as CVarArg),
@@ -263,7 +321,8 @@ extension Meditation:EintragInKalender{
     
     //Statistiken
     var gesamtDauer:TimeInterval{ return TimeInterval(dauerMetta + dauerAnapana + dauerVipassana) }
-    class func getStatistics(von start:Date,bis ende:Date) -> Statistik{
+    class func getStatistics(von start:Date?,bis ende:Date?) -> Statistik?{
+        guard let start = start, let ende = ende else {return nil}
         let meditations = Meditation.getDays(start: start, ende: ende)
         return Statistik.init(meditationen: meditations, start: start, ende: ende)
     }

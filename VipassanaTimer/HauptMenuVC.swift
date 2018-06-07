@@ -11,27 +11,43 @@ import HealthKit
 import CloudKit
 import MIBadgeButton_Swift
 
-extension UIView{
-    func setControlDesignPatterns(){
-        backgroundColor         = DesignPatterns.controlBackground
-        layer.cornerRadius      = 5.0
-        layer.borderColor       = DesignPatterns.mocha.cgColor
-        layer.borderWidth       = 0.5
-        layer.shadowOffset      = CGSize(width: 2, height: 2)
-        layer.shadowColor       = UIColor.white.cgColor
-        clipsToBounds           = true
+
+
+
+class HauptMenuViewModel{
+    func getViewModelForStatistikUeberblickI()->StatistikUeberblickViewModel{
+        return StatistikUeberblickViewModel(model: StatistikModel())
     }
 }
 
+
 class HauptMenuVC: UIViewController,StatistikUeberblickDelegate,UIPopoverPresentationControllerDelegate {
+    var viewModel:HauptMenuViewModel! = HauptMenuViewModel(){
+        didSet{
+            
+        }
+    }
+    
+    
     @IBAction func unwindToHauptmenu(segue: UIStoryboardSegue){ saveContext() }
     
-    @IBOutlet weak var statistikUeberblick2View: StatistikUeberblick2!{ didSet{statistikUeberblick2View.delegate = self} }
-    @IBOutlet weak var statistikUeberblickView: StatistikUeberblick!{ didSet{statistikUeberblickView.delegate = self} }
-    @IBOutlet weak var meditationStartenButton: UIButton!{didSet{meditationStartenButton.set(layerDesign: DesignPatterns.standardButton)}}
-    @IBOutlet weak var kalenderButton: UIButton!{didSet{kalenderButton.set(layerDesign: DesignPatterns.standardButton)}}
-    @IBOutlet weak var subMenuBadgeButton: MIBadgeButton! {didSet{subMenuBadgeButton.set(layerDesign: DesignPatterns.standardButton)}}
-    @IBOutlet weak var statistikButton: UIButton!{didSet{statistikButton.set(layerDesign: DesignPatterns.standardButton)}}
+    @IBOutlet weak var statistikUeberblick2View: StatistikUeberblick2!{
+        didSet{
+            statistikUeberblick2View.delegate = self
+            
+        }
+    }
+    @IBOutlet weak var statistikUeberblickView: StatistikUeberblick!
+        {
+        didSet{
+            statistikUeberblickView.delegate = self
+            statistikUeberblickView.viewModel = viewModel.getViewModelForStatistikUeberblickI()
+        }
+    }
+    @IBOutlet weak var meditationStartenButton: UIButton!       {didSet{meditationStartenButton.set(layerDesign: DesignPatterns.standardButton)}}
+    @IBOutlet weak var kalenderButton:          UIButton!       {didSet{kalenderButton.set(layerDesign: DesignPatterns.standardButton)}}
+    @IBOutlet weak var subMenuBadgeButton:      MIBadgeButton!  {didSet{subMenuBadgeButton.set(layerDesign: DesignPatterns.standardButton)}}
+    @IBOutlet weak var statistikButton:         UIButton!       {didSet{statistikButton.set(layerDesign: DesignPatterns.standardButton)}}
     
     //MARK: Delegates
     func infoButtonPressed(){ performSegue(withIdentifier: "statistikStartDatumInfoSegue", sender: nil) }
@@ -40,15 +56,11 @@ class HauptMenuVC: UIViewController,StatistikUeberblickDelegate,UIPopoverPresent
         statistikUeberblick2View.isHidden   = statistikUeberblick2View.isHidden ? false : true
     }
     
-    let coreDataObserver = CoreDataObserver()
     
     //MARK: VC LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         view.backgroundColor = DesignPatterns.mainBackground
-        
     }
     
     
@@ -61,9 +73,8 @@ class HauptMenuVC: UIViewController,StatistikUeberblickDelegate,UIPopoverPresent
         TimerConfig.deleteToDelete()
         StatistikUeberblickDaten.setCoreDataStatisticsAsync {
             //update
-            weak var weakSelf = self
-            weakSelf?.statistikUeberblickView?.daten    = Statistics.get()
-            weakSelf?.statistikUeberblick2View?.daten   = Statistics.get()
+            [weak self] in
+            self?.statistikUeberblick2View?.daten   = Statistics.get()
         }
         
         let freundesAnfragen = Freund.getFreundesAnfragen()
@@ -84,27 +95,26 @@ class HauptMenuVC: UIViewController,StatistikUeberblickDelegate,UIPopoverPresent
             
             popoverPresentationController.sourceRect = sourceView.bounds
             popoverViewController.popoverPresentationController!.delegate = self
-            popoverViewController.cellSelected = {[unowned self] (_ indexPath:IndexPath) in
-                self.cellSelected(indexPath) }
+            popoverViewController.cellSelected = {[weak self] (_ indexPath:IndexPath) in
+                self?.cellSelected(indexPath) }
             popoverPresentationController.backgroundColor = UIColor.clear
         }
+        
+        (segue.destination.contentViewController as? MeditationsTimerVC)?.viewModel = MeditationsTimerVCModel(model: MeditationsTimerModel())
+        //MeditationsTimerViewControllerModel(model: TimerAsTimerModel())
+        
     }
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .none
-    }
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle { return .none }
         
     private func cellSelected(_ indexPath:IndexPath){
         dismiss(animated: true, completion: nil)
         switch indexPath.row {
-        case 0:
-            performSegue(withIdentifier: "meinProfil", sender: nil)
+        case 0: performSegue(withIdentifier: "meinProfil", sender: nil)
         case 1:
             guard testForNickNameFuerSegueToFreunde() else {return}
             performSegue(withIdentifier: "freunde", sender: nil)
-        case 2:
-            performSegue(withIdentifier: "go2Kurse", sender: nil)
-        default:
-            break
+        case 2: performSegue(withIdentifier: "go2Kurse", sender: nil)
+        default: break
         }
     }
     
@@ -114,9 +124,8 @@ class HauptMenuVC: UIViewController,StatistikUeberblickDelegate,UIPopoverPresent
             alert.addAction(UIAlertAction(title: "OK", style: .cancel){ (action) in })
             present(alert, animated: true, completion: nil)
             return false
-        }else{
-            return true
         }
+        return true
     }
 }
 
@@ -127,7 +136,6 @@ class SubMenuTableVC:UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear
-//        view.isOpaque   = false
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -181,5 +189,14 @@ extension UIView{
         addConstraint(NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: imageView, attribute: .top, multiplier: 1, constant: 0))
         addConstraint(NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: imageView, attribute: .bottom, multiplier: 1, constant: 0))
         addSubview(  imageView )
+    }
+    func setControlDesignPatterns(){
+        backgroundColor         = DesignPatterns.controlBackground
+        layer.cornerRadius      = 5.0
+        layer.borderColor       = DesignPatterns.mocha.cgColor
+        layer.borderWidth       = 0.5
+        layer.shadowOffset      = CGSize(width: 2, height: 2)
+        layer.shadowColor       = UIColor.white.cgColor
+        clipsToBounds           = true
     }
 }

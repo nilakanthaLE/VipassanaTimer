@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4F729124BDB8FC647A780650 /* Pods_VipassanaTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA9F84A927CF18181FB1766 /* Pods_VipassanaTimer.framework */; };
+		5C023F1C209742D400882911 /* Freunde.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C023F1B209742D400882911 /* Freunde.storyboard */; };
+		5C023F1F2097437900882911 /* Meditation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C023F1E2097437900882911 /* Meditation.storyboard */; };
+		5C023F21209743AA00882911 /* Kalender.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C023F20209743AA00882911 /* Kalender.storyboard */; };
+		5C023F232097440600882911 /* Kurse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C023F222097440600882911 /* Kurse.storyboard */; };
 		5C0A45581F1627640056FCED /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0A45571F1627640056FCED /* Singleton.swift */; };
 		5C142CA11E7C14D70085191B /* MedititierenderCollectionViewCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C142CA01E7C14D70085191B /* MedititierenderCollectionViewCellView.xib */; };
 		5C142CA31E7D97530085191B /* FreundExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C142CA21E7D97530085191B /* FreundExtension.swift */; };
@@ -15,10 +19,6 @@
 		5C142CAB1E803E9B0085191B /* FreundeFindenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C142CAA1E803E9B0085191B /* FreundeFindenVC.swift */; };
 		5C142CAD1E828BA80085191B /* MeineFreundesAnfragenTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C142CAC1E828BA80085191B /* MeineFreundesAnfragenTableVC.swift */; };
 		5C142CAF1E8295630085191B /* FreundeTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C142CAE1E8295630085191B /* FreundeTableVC.swift */; };
-		5C142CB11E83DBC90085191B /* CKFreund.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C142CB01E83DBC90085191B /* CKFreund.swift */; };
-		5C142CB31E83DC560085191B /* CKMeditation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C142CB21E83DC560085191B /* CKMeditation.swift */; };
-		5C142CB51E83DCAE0085191B /* CKActiveMeditation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C142CB41E83DCAE0085191B /* CKActiveMeditation.swift */; };
-		5C15D0671E83DD7E0027D768 /* CKMeditierender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15D0661E83DD7E0027D768 /* CKMeditierender.swift */; };
 		5C1A6D551E48CEAA0032A0F3 /* AppConfigExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A6D541E48CEAA0032A0F3 /* AppConfigExtensions.swift */; };
 		5C1A6D571E48CF800032A0F3 /* SetAnfangsDatumStatistikVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A6D561E48CF800032A0F3 /* SetAnfangsDatumStatistikVC.swift */; };
 		5C258E931E8D4E1200B98A49 /* tibetan-bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5C258E921E8D4E1200B98A49 /* tibetan-bell.wav */; };
@@ -31,10 +31,51 @@
 		5C2D038F1E3F6FD900A113FF /* KursTemplateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D038E1E3F6FD900A113FF /* KursTemplateExtensions.swift */; };
 		5C2D03911E3F7E5B00A113FF /* MeineKurseTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D03901E3F7E5B00A113FF /* MeineKurseTableVC.swift */; };
 		5C2D03931E3F7EB000A113FF /* KursErstellenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D03921E3F7EB000A113FF /* KursErstellenVC.swift */; };
+		5C2F2F8720BC4B6E00ECE7A2 /* Timer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C2F2F8620BC4B6D00ECE7A2 /* Timer.storyboard */; };
+		5C2F2F8A20BC4D6100ECE7A2 /* MeditationsTimerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2F8920BC4D6100ECE7A2 /* MeditationsTimerVC.swift */; };
+		5C2F2F8E20BC4D9C00ECE7A2 /* TimerViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2F8D20BC4D9C00ECE7A2 /* TimerViewModels.swift */; };
+		5C2F2F9120BC4E0100ECE7A2 /* TimerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2F9020BC4E0100ECE7A2 /* TimerModels.swift */; };
+		5C2F2FA320BC522D00ECE7A2 /* SoundFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2F9F20BC522C00ECE7A2 /* SoundFileView.swift */; };
+		5C2F2FA420BC522D00ECE7A2 /* GeradeMeditiertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2FA020BC522C00ECE7A2 /* GeradeMeditiertVC.swift */; };
+		5C2F2FA520BC522D00ECE7A2 /* TimerViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2FA120BC522C00ECE7A2 /* TimerViews.swift */; };
+		5C2F2FA620BC522D00ECE7A2 /* MeditationsPlatzViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2FA220BC522D00ECE7A2 /* MeditationsPlatzViews.swift */; };
+		5C2F2FA920BC525000ECE7A2 /* GeradeMeditiertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2FA720BC524F00ECE7A2 /* GeradeMeditiertViewModel.swift */; };
+		5C2F2FAA20BC525000ECE7A2 /* MeditationsPlatzViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2FA820BC525000ECE7A2 /* MeditationsPlatzViewModels.swift */; };
+		5C2F2FAC20BC526200ECE7A2 /* GeradeMeditiertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2FAB20BC526200ECE7A2 /* GeradeMeditiertModel.swift */; };
+		5C2F2FB020BC527500ECE7A2 /* SoundFilesTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2FAD20BC527400ECE7A2 /* SoundFilesTableVC.swift */; };
+		5C2F2FB120BC527500ECE7A2 /* TimerSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2FAE20BC527500ECE7A2 /* TimerSettingsVC.swift */; };
+		5C2F2FB220BC527500ECE7A2 /* TimerTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2FAF20BC527500ECE7A2 /* TimerTableVC.swift */; };
+		5C2F2FBD20BC52BD00ECE7A2 /* SoundFileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2F2FB620BC52BB00ECE7A2 /* SoundFileView.xib */; };
+		5C2F2FBE20BC52BD00ECE7A2 /* TimerAnzeigeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2F2FB720BC52BB00ECE7A2 /* TimerAnzeigeView.xib */; };
+		5C2F2FBF20BC52BD00ECE7A2 /* MeditationsPlatzView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2F2FB820BC52BC00ECE7A2 /* MeditationsPlatzView.xib */; };
+		5C2F2FC020BC52BD00ECE7A2 /* TimerSettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2F2FB920BC52BC00ECE7A2 /* TimerSettingsView.xib */; };
+		5C2F2FC120BC52BD00ECE7A2 /* MeditationsPlatzCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2F2FBA20BC52BC00ECE7A2 /* MeditationsPlatzCell.xib */; };
+		5C2F2FC220BC52BD00ECE7A2 /* TimerAsTimerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2F2FBB20BC52BD00ECE7A2 /* TimerAsTimerView.xib */; };
+		5C2F2FC320BC52BD00ECE7A2 /* SettingsForTimerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2F2FBC20BC52BD00ECE7A2 /* SettingsForTimerView.xib */; };
+		5C2F2FC520BC52CD00ECE7A2 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2FC420BC52CD00ECE7A2 /* AudioPlayer.swift */; };
+		5C2F2FCB20BC52E200ECE7A2 /* MainModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2FC620BC52E100ECE7A2 /* MainModels.swift */; };
+		5C2F2FCC20BC52E200ECE7A2 /* TimerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2FC720BC52E100ECE7A2 /* TimerExtensions.swift */; };
+		5C2F2FCD20BC52E200ECE7A2 /* DatenTypen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2FC820BC52E200ECE7A2 /* DatenTypen.swift */; };
+		5C2F2FCE20BC52E200ECE7A2 /* FireBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2FC920BC52E200ECE7A2 /* FireBaseModel.swift */; };
+		5C2F2FCF20BC52E200ECE7A2 /* TimerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2FCA20BC52E200ECE7A2 /* TimerData.swift */; };
+		5C2F2FD120BC52ED00ECE7A2 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2FD020BC52ED00ECE7A2 /* Design.swift */; };
+		5C2F2FD320BC54E700ECE7A2 /* backGroundImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C2F2FD220BC54E700ECE7A2 /* backGroundImage.png */; };
+		5C2F2FD720BD5E5500ECE7A2 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2FD620BD5E5500ECE7A2 /* CoreDataModel.swift */; };
+		5C31AD5320C7D17700CD367E /* PublicMeditationInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C31AD5220C7D17700CD367E /* PublicMeditationInfoView.xib */; };
+		5C31AD5720C7D27D00CD367E /* PublicMeditationInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C31AD5620C7D27D00CD367E /* PublicMeditationInfoView.swift */; };
+		5C31AD5920C7D4B400CD367E /* PublicMeditationInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C31AD5820C7D4B400CD367E /* PublicMeditationInfoViewModel.swift */; };
+		5C31AD5B20C7DAF200CD367E /* ProfilPublicVorschauVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C31AD5A20C7DAF200CD367E /* ProfilPublicVorschauVC.swift */; };
+		5C31AD5E20C8602B00CD367E /* SoundFileDataCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C31AD5D20C8602B00CD367E /* SoundFileDataCD.swift */; };
 		5C342A4B1E1C03DD007D2305 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C342A4A1E1C03DD007D2305 /* AppDelegate.swift */; };
 		5C342A531E1C03DD007D2305 /* VipassanaTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C342A511E1C03DD007D2305 /* VipassanaTimer.xcdatamodeld */; };
 		5C342A551E1C03DD007D2305 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C342A541E1C03DD007D2305 /* Assets.xcassets */; };
 		5C342A581E1C03DD007D2305 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C342A561E1C03DD007D2305 /* LaunchScreen.storyboard */; };
+		5C380A2C2097680000A78D0A /* ZeitAblaufView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C380A2B2097680000A78D0A /* ZeitAblaufView.swift */; };
+		5C40D03220C4313C0015A1F9 /* PublicMeditationInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C40D03120C4313C0015A1F9 /* PublicMeditationInfoVC.swift */; };
+		5C40D03420C434580015A1F9 /* TimerInPublicMeditationInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C40D03320C434580015A1F9 /* TimerInPublicMeditationInfoView.xib */; };
+		5C40D03620C43B980015A1F9 /* PublicMeditationInfoVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C40D03520C43B980015A1F9 /* PublicMeditationInfoVCViewModel.swift */; };
+		5C40D03820C469990015A1F9 /* PublicStatisticsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C40D03720C469990015A1F9 /* PublicStatisticsView.xib */; };
+		5C40D03A20C46B230015A1F9 /* PublicStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C40D03920C46B230015A1F9 /* PublicStatisticsView.swift */; };
 		5C4B5DCD1E27AB3300307437 /* WochenUndTagesKalenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4B5DCB1E27AB3300307437 /* WochenUndTagesKalenderVC.swift */; };
 		5C4B5DD01E27AF4300307437 /* WochenUndTagesKalenderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C4B5DCF1E27AF4300307437 /* WochenUndTagesKalenderVC.xib */; };
 		5C4B5DD31E2A7BF300307437 /* MeditationsKalenderEintrag.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C4B5DD21E2A7BF300307437 /* MeditationsKalenderEintrag.xib */; };
@@ -43,7 +84,6 @@
 		5C4DE62A1E68581600715F83 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C4DE62C1E68581600715F83 /* Localizable.strings */; };
 		5C4DE62E1E685D7B00715F83 /* StatistikUeberblick2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C4DE6301E685D7B00715F83 /* StatistikUeberblick2.xib */; };
 		5C4DE63D1E6EF3C100715F83 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C4DE63C1E6EF3C100715F83 /* CloudKit.framework */; };
-		5C4DE63F1E6EFB1E00715F83 /* MyCloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DE63E1E6EFB1E00715F83 /* MyCloudKit.swift */; };
 		5C5502041E1E614F004C700D /* TimerConfigExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5502031E1E614F004C700D /* TimerConfigExtensions.swift */; };
 		5C5502071E1E7088004C700D /* TimerConfigsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5502061E1E7088004C700D /* TimerConfigsTableVC.swift */; };
 		5C5502091E1E7216004C700D /* TimerConfigTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5502081E1E7216004C700D /* TimerConfigTableViewCell.swift */; };
@@ -52,6 +92,7 @@
 		5C5502111E1EA94C004C700D /* NibLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5502101E1EA94C004C700D /* NibLoadingView.swift */; };
 		5C5C33E21F23862E009ACFB3 /* old-scratched-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C5C33E11F23862E009ACFB3 /* old-scratched-background.jpg */; };
 		5C5C33E41F23877D009ACFB3 /* stationery-2099970_960_720.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5C33E31F23877D009ACFB3 /* stationery-2099970_960_720.png */; };
+		5C5E92B520C9BB3F00CB15ED /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E92B420C9BB3F00CB15ED /* TestVC.swift */; };
 		5C5F270A1F1CD1950080A12F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C5F27091F1CD1950080A12F /* GoogleService-Info.plist */; };
 		5C61C45F1E44B9A8005B744D /* StatistikUeberblick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C61C45E1E44B9A8005B744D /* StatistikUeberblick.swift */; };
 		5C70572D1E2CF11500D307EF /* EditMeditationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70572C1E2CF11500D307EF /* EditMeditationVC.swift */; };
@@ -75,12 +116,25 @@
 		5CB25C851E7945CD00E37EAF /* MeditierendeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CB25C841E7945CC00E37EAF /* MeditierendeView.xib */; };
 		5CB25C871E7946D700E37EAF /* MeditierendeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB25C861E7946D700E37EAF /* MeditierendeView.swift */; };
 		5CBB48311F1F4C99003750C7 /* AppUserExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBB48301F1F4C99003750C7 /* AppUserExtensions.swift */; };
+		5CBD4BC420C6AC15009CC0D0 /* FlaggeWahlViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBD4BC320C6AC15009CC0D0 /* FlaggeWahlViewModels.swift */; };
+		5CBD4BC620C6B101009CC0D0 /* MeditationsPlatzConfigView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CBD4BC520C6B101009CC0D0 /* MeditationsPlatzConfigView.xib */; };
+		5CBD4BC820C6B10F009CC0D0 /* MeditationsPlatzConfigViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBD4BC720C6B10F009CC0D0 /* MeditationsPlatzConfigViews.swift */; };
+		5CCC695B20C5536500AC022A /* ProfilConfigView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CCC695A20C5536500AC022A /* ProfilConfigView.xib */; };
+		5CCC695D20C5692900AC022A /* ProfilConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCC695C20C5692900AC022A /* ProfilConfigView.swift */; };
+		5CCC696020C56B9500AC022A /* ProfilConfigViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCC695F20C56B9500AC022A /* ProfilConfigViewModel.swift */; };
 		5CCE42B71E5B5942001373D8 /* EndlessScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7296BC1E5B523F00F9B4B1 /* EndlessScrollView.framework */; };
 		5CCE42B81E5B5942001373D8 /* EndlessScrollView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7296BC1E5B523F00F9B4B1 /* EndlessScrollView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5CCFE59920C003B6009925C1 /* MeditationsTimerVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCFE59820C003B6009925C1 /* MeditationsTimerVCModel.swift */; };
+		5CCFE59B20C00741009925C1 /* MeditationsTimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCFE59A20C00741009925C1 /* MeditationsTimerModel.swift */; };
+		5CCFE59D20C0346A009925C1 /* MeineTimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCFE59C20C0346A009925C1 /* MeineTimerModel.swift */; };
 		5CD00D2C1E4DF8D80092A352 /* Statistiken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD00D2B1E4DF8D80092A352 /* Statistiken.swift */; };
 		5CD00D331E5360C40092A352 /* KalenderMonatHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CD00D321E5360C40092A352 /* KalenderMonatHeaderView.xib */; };
 		5CD00D351E53640A0092A352 /* DayViewForMonthView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CD00D341E53640A0092A352 /* DayViewForMonthView.xib */; };
 		5CD978C01F152AB200A8B60B /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD978BF1F152AB200A8B60B /* Firebase.swift */; };
+		5CDF3E9B20C677BE00020260 /* ProfilConfigVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDF3E9A20C677BE00020260 /* ProfilConfigVC.swift */; };
+		5CDF3E9E20C67AF400020260 /* ProfilConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDF3E9D20C67AF400020260 /* ProfilConfigModel.swift */; };
+		5CDF3EA520C6881300020260 /* FlaggeWahlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CDF3EA420C6881300020260 /* FlaggeWahlView.xib */; };
+		5CDF3EA720C689A900020260 /* FlaggeWahlViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDF3EA620C689A900020260 /* FlaggeWahlViews.swift */; };
 		5CEE460B1E3A3832005C8713 /* KalenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEE460A1E3A3832005C8713 /* KalenderVC.swift */; };
 		5CEE460F1E3A391E005C8713 /* MyCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CEE46071E3A3765005C8713 /* MyCalendar.framework */; };
 		5CF0B6801E1FB8FD00745BB7 /* MeditationStartenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0B67F1E1FB8FD00745BB7 /* MeditationStartenVC.swift */; };
@@ -122,6 +176,10 @@
 
 /* Begin PBXFileReference section */
 		3DA9F84A927CF18181FB1766 /* Pods_VipassanaTimer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VipassanaTimer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C023F1B209742D400882911 /* Freunde.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Freunde.storyboard; sourceTree = "<group>"; };
+		5C023F1E2097437900882911 /* Meditation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Meditation.storyboard; sourceTree = "<group>"; };
+		5C023F20209743AA00882911 /* Kalender.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Kalender.storyboard; sourceTree = "<group>"; };
+		5C023F222097440600882911 /* Kurse.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Kurse.storyboard; sourceTree = "<group>"; };
 		5C0A45571F1627640056FCED /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		5C142CA01E7C14D70085191B /* MedititierenderCollectionViewCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MedititierenderCollectionViewCellView.xib; sourceTree = "<group>"; };
 		5C142CA21E7D97530085191B /* FreundExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreundExtension.swift; sourceTree = "<group>"; };
@@ -129,13 +187,11 @@
 		5C142CAA1E803E9B0085191B /* FreundeFindenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreundeFindenVC.swift; sourceTree = "<group>"; };
 		5C142CAC1E828BA80085191B /* MeineFreundesAnfragenTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeineFreundesAnfragenTableVC.swift; sourceTree = "<group>"; };
 		5C142CAE1E8295630085191B /* FreundeTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreundeTableVC.swift; sourceTree = "<group>"; };
-		5C142CB01E83DBC90085191B /* CKFreund.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKFreund.swift; sourceTree = "<group>"; };
-		5C142CB21E83DC560085191B /* CKMeditation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKMeditation.swift; sourceTree = "<group>"; };
-		5C142CB41E83DCAE0085191B /* CKActiveMeditation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKActiveMeditation.swift; sourceTree = "<group>"; };
-		5C15D0661E83DD7E0027D768 /* CKMeditierender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKMeditierender.swift; sourceTree = "<group>"; };
 		5C1A6D541E48CEAA0032A0F3 /* AppConfigExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfigExtensions.swift; sourceTree = "<group>"; };
 		5C1A6D561E48CF800032A0F3 /* SetAnfangsDatumStatistikVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetAnfangsDatumStatistikVC.swift; sourceTree = "<group>"; };
 		5C258E921E8D4E1200B98A49 /* tibetan-bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "tibetan-bell.wav"; sourceTree = "<group>"; };
+		5C29DAC42097473A003B4450 /* ReactiveSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ReactiveSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C29DAC620974743003B4450 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ReactiveCocoa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C2A72101E5F268D00D19E22 /* HealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		5C2A72191E66EA1800D19E22 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5C2A721A1E66EBBE00D19E22 /* buddha_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buddha_black.png; sourceTree = "<group>"; };
@@ -146,12 +202,53 @@
 		5C2D038E1E3F6FD900A113FF /* KursTemplateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KursTemplateExtensions.swift; sourceTree = "<group>"; };
 		5C2D03901E3F7E5B00A113FF /* MeineKurseTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeineKurseTableVC.swift; sourceTree = "<group>"; };
 		5C2D03921E3F7EB000A113FF /* KursErstellenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KursErstellenVC.swift; sourceTree = "<group>"; };
+		5C2F2F8620BC4B6D00ECE7A2 /* Timer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timer.storyboard; sourceTree = "<group>"; };
+		5C2F2F8920BC4D6100ECE7A2 /* MeditationsTimerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeditationsTimerVC.swift; sourceTree = "<group>"; };
+		5C2F2F8D20BC4D9C00ECE7A2 /* TimerViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewModels.swift; sourceTree = "<group>"; };
+		5C2F2F9020BC4E0100ECE7A2 /* TimerModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerModels.swift; sourceTree = "<group>"; };
+		5C2F2F9F20BC522C00ECE7A2 /* SoundFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundFileView.swift; sourceTree = "<group>"; };
+		5C2F2FA020BC522C00ECE7A2 /* GeradeMeditiertVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeradeMeditiertVC.swift; sourceTree = "<group>"; };
+		5C2F2FA120BC522C00ECE7A2 /* TimerViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViews.swift; sourceTree = "<group>"; };
+		5C2F2FA220BC522D00ECE7A2 /* MeditationsPlatzViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeditationsPlatzViews.swift; sourceTree = "<group>"; };
+		5C2F2FA720BC524F00ECE7A2 /* GeradeMeditiertViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeradeMeditiertViewModel.swift; sourceTree = "<group>"; };
+		5C2F2FA820BC525000ECE7A2 /* MeditationsPlatzViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeditationsPlatzViewModels.swift; sourceTree = "<group>"; };
+		5C2F2FAB20BC526200ECE7A2 /* GeradeMeditiertModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeradeMeditiertModel.swift; sourceTree = "<group>"; };
+		5C2F2FAD20BC527400ECE7A2 /* SoundFilesTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundFilesTableVC.swift; sourceTree = "<group>"; };
+		5C2F2FAE20BC527500ECE7A2 /* TimerSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerSettingsVC.swift; sourceTree = "<group>"; };
+		5C2F2FAF20BC527500ECE7A2 /* TimerTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerTableVC.swift; sourceTree = "<group>"; };
+		5C2F2FB620BC52BB00ECE7A2 /* SoundFileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SoundFileView.xib; sourceTree = "<group>"; };
+		5C2F2FB720BC52BB00ECE7A2 /* TimerAnzeigeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimerAnzeigeView.xib; sourceTree = "<group>"; };
+		5C2F2FB820BC52BC00ECE7A2 /* MeditationsPlatzView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeditationsPlatzView.xib; sourceTree = "<group>"; };
+		5C2F2FB920BC52BC00ECE7A2 /* TimerSettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimerSettingsView.xib; sourceTree = "<group>"; };
+		5C2F2FBA20BC52BC00ECE7A2 /* MeditationsPlatzCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeditationsPlatzCell.xib; sourceTree = "<group>"; };
+		5C2F2FBB20BC52BD00ECE7A2 /* TimerAsTimerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimerAsTimerView.xib; sourceTree = "<group>"; };
+		5C2F2FBC20BC52BD00ECE7A2 /* SettingsForTimerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsForTimerView.xib; sourceTree = "<group>"; };
+		5C2F2FC420BC52CD00ECE7A2 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		5C2F2FC620BC52E100ECE7A2 /* MainModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModels.swift; sourceTree = "<group>"; };
+		5C2F2FC720BC52E100ECE7A2 /* TimerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimerExtensions.swift; path = ../../Vipassana/Vipassana/TimerExtensions.swift; sourceTree = "<group>"; };
+		5C2F2FC820BC52E200ECE7A2 /* DatenTypen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatenTypen.swift; sourceTree = "<group>"; };
+		5C2F2FC920BC52E200ECE7A2 /* FireBaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireBaseModel.swift; sourceTree = "<group>"; };
+		5C2F2FCA20BC52E200ECE7A2 /* TimerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerData.swift; sourceTree = "<group>"; };
+		5C2F2FD020BC52ED00ECE7A2 /* Design.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
+		5C2F2FD220BC54E700ECE7A2 /* backGroundImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backGroundImage.png; sourceTree = "<group>"; };
+		5C2F2FD620BD5E5500ECE7A2 /* CoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
+		5C31AD5220C7D17700CD367E /* PublicMeditationInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PublicMeditationInfoView.xib; sourceTree = "<group>"; };
+		5C31AD5620C7D27D00CD367E /* PublicMeditationInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMeditationInfoView.swift; sourceTree = "<group>"; };
+		5C31AD5820C7D4B400CD367E /* PublicMeditationInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMeditationInfoViewModel.swift; sourceTree = "<group>"; };
+		5C31AD5A20C7DAF200CD367E /* ProfilPublicVorschauVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilPublicVorschauVC.swift; sourceTree = "<group>"; };
+		5C31AD5D20C8602B00CD367E /* SoundFileDataCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundFileDataCD.swift; sourceTree = "<group>"; };
 		5C342A471E1C03DD007D2305 /* VipassanaTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VipassanaTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C342A4A1E1C03DD007D2305 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C342A521E1C03DD007D2305 /* VipassanaTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VipassanaTimer.xcdatamodel; sourceTree = "<group>"; };
 		5C342A541E1C03DD007D2305 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C342A571E1C03DD007D2305 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C342A591E1C03DD007D2305 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C380A2B2097680000A78D0A /* ZeitAblaufView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeitAblaufView.swift; sourceTree = "<group>"; };
+		5C40D03120C4313C0015A1F9 /* PublicMeditationInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMeditationInfoVC.swift; sourceTree = "<group>"; };
+		5C40D03320C434580015A1F9 /* TimerInPublicMeditationInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimerInPublicMeditationInfoView.xib; sourceTree = "<group>"; };
+		5C40D03520C43B980015A1F9 /* PublicMeditationInfoVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMeditationInfoVCViewModel.swift; sourceTree = "<group>"; };
+		5C40D03720C469990015A1F9 /* PublicStatisticsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PublicStatisticsView.xib; sourceTree = "<group>"; };
+		5C40D03920C46B230015A1F9 /* PublicStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicStatisticsView.swift; sourceTree = "<group>"; };
 		5C4B5DCB1E27AB3300307437 /* WochenUndTagesKalenderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WochenUndTagesKalenderVC.swift; sourceTree = "<group>"; };
 		5C4B5DCF1E27AF4300307437 /* WochenUndTagesKalenderVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WochenUndTagesKalenderVC.xib; sourceTree = "<group>"; };
 		5C4B5DD21E2A7BF300307437 /* MeditationsKalenderEintrag.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeditationsKalenderEintrag.xib; sourceTree = "<group>"; };
@@ -167,7 +264,6 @@
 		5C4DE6321E685D8000715F83 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/StatistikUeberblick2.strings; sourceTree = "<group>"; };
 		5C4DE6341E685D8300715F83 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/StatistikUeberblick2.strings; sourceTree = "<group>"; };
 		5C4DE63C1E6EF3C100715F83 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		5C4DE63E1E6EFB1E00715F83 /* MyCloudKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyCloudKit.swift; path = ../MyCloudKit.swift; sourceTree = "<group>"; };
 		5C5502031E1E614F004C700D /* TimerConfigExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerConfigExtensions.swift; sourceTree = "<group>"; };
 		5C5502061E1E7088004C700D /* TimerConfigsTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerConfigsTableVC.swift; sourceTree = "<group>"; };
 		5C5502081E1E7216004C700D /* TimerConfigTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerConfigTableViewCell.swift; sourceTree = "<group>"; };
@@ -176,6 +272,7 @@
 		5C5502101E1EA94C004C700D /* NibLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoadingView.swift; sourceTree = "<group>"; };
 		5C5C33E11F23862E009ACFB3 /* old-scratched-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "old-scratched-background.jpg"; path = "../../../../Desktop/old-scratched-background.jpg"; sourceTree = "<group>"; };
 		5C5C33E31F23877D009ACFB3 /* stationery-2099970_960_720.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "stationery-2099970_960_720.png"; path = "../../../../Desktop/stationery-2099970_960_720.png"; sourceTree = "<group>"; };
+		5C5E92B420C9BB3F00CB15ED /* TestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
 		5C5F27091F1CD1950080A12F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5C61C45E1E44B9A8005B744D /* StatistikUeberblick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatistikUeberblick.swift; sourceTree = "<group>"; };
 		5C70572C1E2CF11500D307EF /* EditMeditationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMeditationVC.swift; sourceTree = "<group>"; };
@@ -199,10 +296,23 @@
 		5CB25C841E7945CC00E37EAF /* MeditierendeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeditierendeView.xib; sourceTree = "<group>"; };
 		5CB25C861E7946D700E37EAF /* MeditierendeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeditierendeView.swift; sourceTree = "<group>"; };
 		5CBB48301F1F4C99003750C7 /* AppUserExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUserExtensions.swift; sourceTree = "<group>"; };
+		5CBD4BC320C6AC15009CC0D0 /* FlaggeWahlViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlaggeWahlViewModels.swift; sourceTree = "<group>"; };
+		5CBD4BC520C6B101009CC0D0 /* MeditationsPlatzConfigView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeditationsPlatzConfigView.xib; sourceTree = "<group>"; };
+		5CBD4BC720C6B10F009CC0D0 /* MeditationsPlatzConfigViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationsPlatzConfigViews.swift; sourceTree = "<group>"; };
+		5CCC695A20C5536500AC022A /* ProfilConfigView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfilConfigView.xib; sourceTree = "<group>"; };
+		5CCC695C20C5692900AC022A /* ProfilConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilConfigView.swift; sourceTree = "<group>"; };
+		5CCC695F20C56B9500AC022A /* ProfilConfigViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilConfigViewModel.swift; sourceTree = "<group>"; };
+		5CCFE59820C003B6009925C1 /* MeditationsTimerVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationsTimerVCModel.swift; sourceTree = "<group>"; };
+		5CCFE59A20C00741009925C1 /* MeditationsTimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationsTimerModel.swift; sourceTree = "<group>"; };
+		5CCFE59C20C0346A009925C1 /* MeineTimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeineTimerModel.swift; sourceTree = "<group>"; };
 		5CD00D2B1E4DF8D80092A352 /* Statistiken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statistiken.swift; sourceTree = "<group>"; };
 		5CD00D321E5360C40092A352 /* KalenderMonatHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KalenderMonatHeaderView.xib; sourceTree = "<group>"; };
 		5CD00D341E53640A0092A352 /* DayViewForMonthView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DayViewForMonthView.xib; sourceTree = "<group>"; };
 		5CD978BF1F152AB200A8B60B /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		5CDF3E9A20C677BE00020260 /* ProfilConfigVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilConfigVC.swift; sourceTree = "<group>"; };
+		5CDF3E9D20C67AF400020260 /* ProfilConfigModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilConfigModel.swift; sourceTree = "<group>"; };
+		5CDF3EA420C6881300020260 /* FlaggeWahlView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlaggeWahlView.xib; sourceTree = "<group>"; };
+		5CDF3EA620C689A900020260 /* FlaggeWahlViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlaggeWahlViews.swift; sourceTree = "<group>"; };
 		5CEE46021E3A3765005C8713 /* MyCalendar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MyCalendar.xcodeproj; path = ../MyCalendar/MyCalendar.xcodeproj; sourceTree = "<group>"; };
 		5CEE460A1E3A3832005C8713 /* KalenderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KalenderVC.swift; sourceTree = "<group>"; };
 		5CF0B67F1E1FB8FD00745BB7 /* MeditationStartenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeditationStartenVC.swift; sourceTree = "<group>"; };
@@ -232,6 +342,8 @@
 		14A6926BD097386B939C5B71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5C29DAC620974743003B4450 /* ReactiveCocoa.framework */,
+				5C29DAC42097473A003B4450 /* ReactiveSwift.framework */,
 				5C4DE63C1E6EF3C100715F83 /* CloudKit.framework */,
 				5CF0D0331E5F2543002EA9DA /* HealthKit.framework */,
 				5CEE46021E3A3765005C8713 /* MyCalendar.xcodeproj */,
@@ -241,16 +353,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5C142CA61E7DA59E0085191B /* CloudKit */ = {
+		5C023F19209741F000882911 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5C4DE63E1E6EFB1E00715F83 /* MyCloudKit.swift */,
-				5C142CB41E83DCAE0085191B /* CKActiveMeditation.swift */,
-				5C142CB21E83DC560085191B /* CKMeditation.swift */,
-				5C142CB01E83DBC90085191B /* CKFreund.swift */,
-				5C15D0661E83DD7E0027D768 /* CKMeditierender.swift */,
+				5CCC695C20C5692900AC022A /* ProfilConfigView.swift */,
+				5C40D03920C46B230015A1F9 /* PublicStatisticsView.swift */,
+				5C61C45E1E44B9A8005B744D /* StatistikUeberblick.swift */,
+				5C380A2B2097680000A78D0A /* ZeitAblaufView.swift */,
+				5C31AD5620C7D27D00CD367E /* PublicMeditationInfoView.swift */,
 			);
-			name = CloudKit;
+			name = Views;
+			sourceTree = "<group>";
+		};
+		5C023F1D209742EA00882911 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				5C4DE6091E66F6DB00715F83 /* Main.storyboard */,
+				5C023F222097440600882911 /* Kurse.storyboard */,
+				5C023F20209743AA00882911 /* Kalender.storyboard */,
+				5C023F1B209742D400882911 /* Freunde.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 		5C142CA91E803E6D0085191B /* Freunde */ = {
@@ -275,6 +398,120 @@
 			name = Kalender;
 			sourceTree = "<group>";
 		};
+		5C2F2F8820BC4D3A00ECE7A2 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				5C2F2F8620BC4B6D00ECE7A2 /* Timer.storyboard */,
+				5C2F2FD020BC52ED00ECE7A2 /* Design.swift */,
+				5C2F2FC720BC52E100ECE7A2 /* TimerExtensions.swift */,
+				5C2F2FC420BC52CD00ECE7A2 /* AudioPlayer.swift */,
+				5C2F2FCA20BC52E200ECE7A2 /* TimerData.swift */,
+				5C2F2F8B20BC4D7000ECE7A2 /* VC */,
+				5C2F2F9220BC4E8F00ECE7A2 /* Views */,
+				5C2F2F8C20BC4D8000ECE7A2 /* ViewModels */,
+				5C2F2F8F20BC4DE000ECE7A2 /* Models */,
+				5C2F2FB520BC52A000ECE7A2 /* Xibs */,
+			);
+			name = Timer;
+			sourceTree = "<group>";
+		};
+		5C2F2F8B20BC4D7000ECE7A2 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				5C2F2F8920BC4D6100ECE7A2 /* MeditationsTimerVC.swift */,
+				5C40D03120C4313C0015A1F9 /* PublicMeditationInfoVC.swift */,
+				5C2F2FAD20BC527400ECE7A2 /* SoundFilesTableVC.swift */,
+				5C2F2FAE20BC527500ECE7A2 /* TimerSettingsVC.swift */,
+				5C2F2FAF20BC527500ECE7A2 /* TimerTableVC.swift */,
+				5C2F2FA020BC522C00ECE7A2 /* GeradeMeditiertVC.swift */,
+				5C31AD5A20C7DAF200CD367E /* ProfilPublicVorschauVC.swift */,
+			);
+			name = VC;
+			sourceTree = "<group>";
+		};
+		5C2F2F8C20BC4D8000ECE7A2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5C2F2F8D20BC4D9C00ECE7A2 /* TimerViewModels.swift */,
+				5CCFE59820C003B6009925C1 /* MeditationsTimerVCModel.swift */,
+				5C2F2FA720BC524F00ECE7A2 /* GeradeMeditiertViewModel.swift */,
+				5C2F2FA820BC525000ECE7A2 /* MeditationsPlatzViewModels.swift */,
+				5C40D03520C43B980015A1F9 /* PublicMeditationInfoVCViewModel.swift */,
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		5C2F2F8F20BC4DE000ECE7A2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5CCFE59A20C00741009925C1 /* MeditationsTimerModel.swift */,
+				5CCFE59C20C0346A009925C1 /* MeineTimerModel.swift */,
+				5C2F2F9020BC4E0100ECE7A2 /* TimerModels.swift */,
+				5C2F2FAB20BC526200ECE7A2 /* GeradeMeditiertModel.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		5C2F2F9220BC4E8F00ECE7A2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5C2F2FA220BC522D00ECE7A2 /* MeditationsPlatzViews.swift */,
+				5C2F2F9F20BC522C00ECE7A2 /* SoundFileView.swift */,
+				5C2F2FA120BC522C00ECE7A2 /* TimerViews.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		5C2F2FB520BC52A000ECE7A2 /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				5C2F2FBA20BC52BC00ECE7A2 /* MeditationsPlatzCell.xib */,
+				5C2F2FB820BC52BC00ECE7A2 /* MeditationsPlatzView.xib */,
+				5C2F2FBC20BC52BD00ECE7A2 /* SettingsForTimerView.xib */,
+				5C2F2FB620BC52BB00ECE7A2 /* SoundFileView.xib */,
+				5C2F2FB720BC52BB00ECE7A2 /* TimerAnzeigeView.xib */,
+				5C2F2FBB20BC52BD00ECE7A2 /* TimerAsTimerView.xib */,
+				5C2F2FB920BC52BC00ECE7A2 /* TimerSettingsView.xib */,
+				5C40D03320C434580015A1F9 /* TimerInPublicMeditationInfoView.xib */,
+			);
+			name = Xibs;
+			sourceTree = "<group>";
+		};
+		5C2F2FD420BD5B4000ECE7A2 /* oldStuff */ = {
+			isa = PBXGroup;
+			children = (
+				5CB25C751E71B88400E37EAF /* MeinProfilVC.swift */,
+				5C023F1E2097437900882911 /* Meditation.storyboard */,
+				5CF0B67F1E1FB8FD00745BB7 /* MeditationStartenVC.swift */,
+				5CB25C881E79523E00E37EAF /* MeditierendeView */,
+				5CF0B67E1E1EAA6A00745BB7 /* TimerConfig */,
+			);
+			name = oldStuff;
+			sourceTree = "<group>";
+		};
+		5C2F2FD520BD5DD100ECE7A2 /* MainModels */ = {
+			isa = PBXGroup;
+			children = (
+				5C2F2FC620BC52E100ECE7A2 /* MainModels.swift */,
+				5C2F2FC920BC52E200ECE7A2 /* FireBaseModel.swift */,
+				5C2F2FD620BD5E5500ECE7A2 /* CoreDataModel.swift */,
+				5C2F2FC820BC52E200ECE7A2 /* DatenTypen.swift */,
+			);
+			name = MainModels;
+			sourceTree = "<group>";
+		};
+		5C31AD5C20C7E24400CD367E /* Views und Models */ = {
+			isa = PBXGroup;
+			children = (
+				5CDF3E9920C6777700020260 /* VC */,
+				5CDF3E9C20C67ACE00020260 /* Models */,
+				5CCC695E20C56B7200AC022A /* ViewModels */,
+				5C023F19209741F000882911 /* Views */,
+				5C699CE120975D8100650F30 /* xibs */,
+			);
+			name = "Views und Models";
+			sourceTree = "<group>";
+		};
 		5C342A3E1E1C03DC007D2305 = {
 			isa = PBXGroup;
 			children = (
@@ -296,19 +533,19 @@
 		5C342A491E1C03DD007D2305 /* VipassanaTimer */ = {
 			isa = PBXGroup;
 			children = (
-				5CF0D0321E5F2542002EA9DA /* VipassanaTimer.entitlements */,
-				5C4DE6091E66F6DB00715F83 /* Main.storyboard */,
-				5CB25C751E71B88400E37EAF /* MeinProfilVC.swift */,
+				5C5E92B420C9BB3F00CB15ED /* TestVC.swift */,
+				5C2F2FD520BD5DD100ECE7A2 /* MainModels */,
+				5C023F1D209742EA00882911 /* Storyboards */,
+				5C2F2F8820BC4D3A00ECE7A2 /* Timer */,
+				5C31AD5C20C7E24400CD367E /* Views und Models */,
+				5CDF3EA120C681E900020260 /* SpecialViews */,
 				5C2A72101E5F268D00D19E22 /* HealthManager.swift */,
 				5CAFE7E81E24FE1E008F740A /* HauptMenuVC.swift */,
-				5CF0B67F1E1FB8FD00745BB7 /* MeditationStartenVC.swift */,
 				5C142CA91E803E6D0085191B /* Freunde */,
-				5CB25C881E79523E00E37EAF /* MeditierendeView */,
 				5CA9A13B1E40D2C1000C28F6 /* Statistik */,
 				5CA9A1341E40AC36000C28F6 /* Kurse */,
 				5C2D03871E3B7B1500A113FF /* Kalender */,
-				5CF0B67E1E1EAA6A00745BB7 /* TimerConfig */,
-				5C142CA61E7DA59E0085191B /* CloudKit */,
+				5C2F2FD420BD5B4000ECE7A2 /* oldStuff */,
 				5C5502011E1E5B0F004C700D /* CoreData */,
 				5C5502121E1EA96C004C700D /* helper */,
 				5C5502021E1E5B37004C700D /* supporting files */,
@@ -329,6 +566,9 @@
 			isa = PBXGroup;
 			children = (
 				5C342A511E1C03DD007D2305 /* VipassanaTimer.xcdatamodeld */,
+				5C31AD5D20C8602B00CD367E /* SoundFileDataCD.swift */,
+				5CAFE7EA1E250327008F740A /* MeditationExtensions.swift */,
+				5C5502031E1E614F004C700D /* TimerConfigExtensions.swift */,
 				5CBB48301F1F4C99003750C7 /* AppUserExtensions.swift */,
 				5C94DDF31F23676500BEA142 /* StatisticsExtensions.swift */,
 				5CD978BF1F152AB200A8B60B /* Firebase.swift */,
@@ -339,10 +579,8 @@
 				5C1A6D541E48CEAA0032A0F3 /* AppConfigExtensions.swift */,
 				5C2D038E1E3F6FD900A113FF /* KursTemplateExtensions.swift */,
 				5CA9A1321E3F9A64000C28F6 /* KursExtensions.swift */,
-				5CAFE7EA1E250327008F740A /* MeditationExtensions.swift */,
 				5C2D038C1E3F6F2C00A113FF /* MeditationTemplateExtension.swift */,
 				5CF0B6831E23B8C600745BB7 /* BackgroundInfoExtensions.swift */,
-				5C5502031E1E614F004C700D /* TimerConfigExtensions.swift */,
 				5CAFE7EC1E250606008F740A /* DauerExtensions.swift */,
 				5C4B5DD21E2A7BF300307437 /* MeditationsKalenderEintrag.xib */,
 			);
@@ -352,6 +590,8 @@
 		5C5502021E1E5B37004C700D /* supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				5C2F2FD220BC54E700ECE7A2 /* backGroundImage.png */,
+				5CF0D0321E5F2542002EA9DA /* VipassanaTimer.entitlements */,
 				5C5C33E11F23862E009ACFB3 /* old-scratched-background.jpg */,
 				5C5C33E31F23877D009ACFB3 /* stationery-2099970_960_720.png */,
 				5C342A4A1E1C03DD007D2305 /* AppDelegate.swift */,
@@ -378,6 +618,18 @@
 			name = helper;
 			sourceTree = "<group>";
 		};
+		5C699CE120975D8100650F30 /* xibs */ = {
+			isa = PBXGroup;
+			children = (
+				5C31AD5220C7D17700CD367E /* PublicMeditationInfoView.xib */,
+				5C40D03720C469990015A1F9 /* PublicStatisticsView.xib */,
+				5CCC695A20C5536500AC022A /* ProfilConfigView.xib */,
+				5CBD4BC520C6B101009CC0D0 /* MeditationsPlatzConfigView.xib */,
+				5CDF3EA420C6881300020260 /* FlaggeWahlView.xib */,
+			);
+			name = xibs;
+			sourceTree = "<group>";
+		};
 		5CA9A1341E40AC36000C28F6 /* Kurse */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,7 +646,6 @@
 				5CD00D2B1E4DF8D80092A352 /* Statistiken.swift */,
 				5CA9A1391E40D2B9000C28F6 /* StatistikVC.swift */,
 				5CA9A1371E40C7F3000C28F6 /* StatistikView.swift */,
-				5C61C45E1E44B9A8005B744D /* StatistikUeberblick.swift */,
 				5C1A6D561E48CF800032A0F3 /* SetAnfangsDatumStatistikVC.swift */,
 				5C4DE6111E66F8EB00715F83 /* StatistikUeberblick.xib */,
 				5C4DE6301E685D7B00715F83 /* StatistikUeberblick2.xib */,
@@ -430,6 +681,41 @@
 				5C142CA71E8007580085191B /* UserMeditationInfoVC.swift */,
 			);
 			name = MeditierendeView;
+			sourceTree = "<group>";
+		};
+		5CCC695E20C56B7200AC022A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5CCC695F20C56B9500AC022A /* ProfilConfigViewModel.swift */,
+				5CBD4BC320C6AC15009CC0D0 /* FlaggeWahlViewModels.swift */,
+				5C31AD5820C7D4B400CD367E /* PublicMeditationInfoViewModel.swift */,
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		5CDF3E9920C6777700020260 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				5CDF3E9A20C677BE00020260 /* ProfilConfigVC.swift */,
+				5CBD4BC720C6B10F009CC0D0 /* MeditationsPlatzConfigViews.swift */,
+				5CDF3EA620C689A900020260 /* FlaggeWahlViews.swift */,
+			);
+			name = VC;
+			sourceTree = "<group>";
+		};
+		5CDF3E9C20C67ACE00020260 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5CDF3E9D20C67AF400020260 /* ProfilConfigModel.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		5CDF3EA120C681E900020260 /* SpecialViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SpecialViews;
 			sourceTree = "<group>";
 		};
 		5CEE46031E3A3765005C8713 /* Products */ = {
@@ -473,7 +759,6 @@
 				5C342A441E1C03DC007D2305 /* Frameworks */,
 				5C342A451E1C03DC007D2305 /* Resources */,
 				B0D9E8A6C9A396FFE1BC119B /* [CP] Embed Pods Frameworks */,
-				3A615C8933C1E866E8A43050 /* [CP] Copy Pods Resources */,
 				5CEE46131E3A391E005C8713 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -559,24 +844,43 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C2A721D1E66EBBE00D19E22 /* buddha_gold.png in Resources */,
+				5C023F1C209742D400882911 /* Freunde.storyboard in Resources */,
 				5C4DE60F1E66F8EB00715F83 /* StatistikUeberblick.xib in Resources */,
 				5C142CA11E7C14D70085191B /* MedititierenderCollectionViewCellView.xib in Resources */,
+				5C2F2FC220BC52BD00ECE7A2 /* TimerAsTimerView.xib in Resources */,
+				5C2F2FC020BC52BD00ECE7A2 /* TimerSettingsView.xib in Resources */,
+				5C023F21209743AA00882911 /* Kalender.storyboard in Resources */,
 				5C258E931E8D4E1200B98A49 /* tibetan-bell.wav in Resources */,
+				5C2F2F8720BC4B6E00ECE7A2 /* Timer.storyboard in Resources */,
 				5CD00D351E53640A0092A352 /* DayViewForMonthView.xib in Resources */,
+				5C023F232097440600882911 /* Kurse.storyboard in Resources */,
 				5C2D03861E3B6C4500A113FF /* KalenderTagHeader.xib in Resources */,
 				5C342A581E1C03DD007D2305 /* LaunchScreen.storyboard in Resources */,
+				5C2F2FC320BC52BD00ECE7A2 /* SettingsForTimerView.xib in Resources */,
 				5C4DE60B1E66F6DB00715F83 /* Main.storyboard in Resources */,
 				5C342A551E1C03DD007D2305 /* Assets.xcassets in Resources */,
+				5C40D03420C434580015A1F9 /* TimerInPublicMeditationInfoView.xib in Resources */,
 				5CA9A1361E40B84C000C28F6 /* KursTableCellView.xib in Resources */,
+				5C2F2FD320BC54E700ECE7A2 /* backGroundImage.png in Resources */,
+				5C2F2FBF20BC52BD00ECE7A2 /* MeditationsPlatzView.xib in Resources */,
+				5CBD4BC620C6B101009CC0D0 /* MeditationsPlatzConfigView.xib in Resources */,
 				5C4DE62E1E685D7B00715F83 /* StatistikUeberblick2.xib in Resources */,
 				5CB25C7C1E72EDBF00E37EAF /* TimerView.xib in Resources */,
 				5C5C33E21F23862E009ACFB3 /* old-scratched-background.jpg in Resources */,
+				5C31AD5320C7D17700CD367E /* PublicMeditationInfoView.xib in Resources */,
 				5C2A721C1E66EBBE00D19E22 /* buddha_black.png in Resources */,
+				5C2F2FBE20BC52BD00ECE7A2 /* TimerAnzeigeView.xib in Resources */,
+				5C2F2FC120BC52BD00ECE7A2 /* MeditationsPlatzCell.xib in Resources */,
+				5CCC695B20C5536500AC022A /* ProfilConfigView.xib in Resources */,
+				5C40D03820C469990015A1F9 /* PublicStatisticsView.xib in Resources */,
+				5C2F2FBD20BC52BD00ECE7A2 /* SoundFileView.xib in Resources */,
 				5C5C33E41F23877D009ACFB3 /* stationery-2099970_960_720.png in Resources */,
 				5C4DE62A1E68581600715F83 /* Localizable.strings in Resources */,
 				5CD00D331E5360C40092A352 /* KalenderMonatHeaderView.xib in Resources */,
+				5C023F1F2097437900882911 /* Meditation.storyboard in Resources */,
 				5CB25C851E7945CD00E37EAF /* MeditierendeView.xib in Resources */,
 				5C2D03891E3B882800A113FF /* KalenderTitleView.xib in Resources */,
+				5CDF3EA520C6881300020260 /* FlaggeWahlView.xib in Resources */,
 				5C5F270A1F1CD1950080A12F /* GoogleService-Info.plist in Resources */,
 				5C4B5DD01E27AF4300307437 /* WochenUndTagesKalenderVC.xib in Resources */,
 				5C4B5DD31E2A7BF300307437 /* MeditationsKalenderEintrag.xib in Resources */,
@@ -586,34 +890,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3A615C8933C1E866E8A43050 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VipassanaTimer/Pods-VipassanaTimer-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		94715CF7D9404B88DCF54DDD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VipassanaTimer-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B0D9E8A6C9A396FFE1BC119B /* [CP] Embed Pods Frameworks */ = {
@@ -622,9 +914,28 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-VipassanaTimer/Pods-VipassanaTimer-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/MIBadgeButton-Swift/MIBadgeButton_Swift.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/YSRangeSlider/YSRangeSlider.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MIBadgeButton_Swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YSRangeSlider.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -639,53 +950,88 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CF0B6801E1FB8FD00745BB7 /* MeditationStartenVC.swift in Sources */,
+				5C2F2FA620BC522D00ECE7A2 /* MeditationsPlatzViews.swift in Sources */,
 				5CEE460B1E3A3832005C8713 /* KalenderVC.swift in Sources */,
+				5C31AD5720C7D27D00CD367E /* PublicMeditationInfoView.swift in Sources */,
+				5C2F2FD720BD5E5500ECE7A2 /* CoreDataModel.swift in Sources */,
+				5C2F2FD120BC52ED00ECE7A2 /* Design.swift in Sources */,
+				5C2F2FCF20BC52E200ECE7A2 /* TimerData.swift in Sources */,
+				5C2F2FAA20BC525000ECE7A2 /* MeditationsPlatzViewModels.swift in Sources */,
 				5CB25C741E71984500E37EAF /* MeditierenderExtensions.swift in Sources */,
 				5C142CA31E7D97530085191B /* FreundExtension.swift in Sources */,
+				5C5E92B520C9BB3F00CB15ED /* TestVC.swift in Sources */,
 				5C1A6D551E48CEAA0032A0F3 /* AppConfigExtensions.swift in Sources */,
+				5C2F2FB120BC527500ECE7A2 /* TimerSettingsVC.swift in Sources */,
+				5C2F2FB220BC527500ECE7A2 /* TimerTableVC.swift in Sources */,
 				5C142CAD1E828BA80085191B /* MeineFreundesAnfragenTableVC.swift in Sources */,
 				5C5502071E1E7088004C700D /* TimerConfigsTableVC.swift in Sources */,
 				5C2D038F1E3F6FD900A113FF /* KursTemplateExtensions.swift in Sources */,
 				5C2A72111E5F268D00D19E22 /* HealthManager.swift in Sources */,
+				5C2F2FB020BC527500ECE7A2 /* SoundFilesTableVC.swift in Sources */,
 				5C2D03931E3F7EB000A113FF /* KursErstellenVC.swift in Sources */,
-				5C142CB11E83DBC90085191B /* CKFreund.swift in Sources */,
+				5CDF3E9B20C677BE00020260 /* ProfilConfigVC.swift in Sources */,
 				5C55020B1E1E73DD004C700D /* ConfigureTimerVC.swift in Sources */,
 				5C94DDF41F23676500BEA142 /* StatisticsExtensions.swift in Sources */,
 				5C1A6D571E48CF800032A0F3 /* SetAnfangsDatumStatistikVC.swift in Sources */,
 				5C142CAF1E8295630085191B /* FreundeTableVC.swift in Sources */,
-				5C142CB51E83DCAE0085191B /* CKActiveMeditation.swift in Sources */,
+				5C40D03620C43B980015A1F9 /* PublicMeditationInfoVCViewModel.swift in Sources */,
+				5C2F2FCC20BC52E200ECE7A2 /* TimerExtensions.swift in Sources */,
 				5C5502091E1E7216004C700D /* TimerConfigTableViewCell.swift in Sources */,
+				5CCFE59920C003B6009925C1 /* MeditationsTimerVCModel.swift in Sources */,
 				5C61C45F1E44B9A8005B744D /* StatistikUeberblick.swift in Sources */,
 				5CAFE7ED1E250606008F740A /* DauerExtensions.swift in Sources */,
+				5C2F2FA920BC525000ECE7A2 /* GeradeMeditiertViewModel.swift in Sources */,
 				5CF0B6841E23B8C600745BB7 /* BackgroundInfoExtensions.swift in Sources */,
+				5C2F2FAC20BC526200ECE7A2 /* GeradeMeditiertModel.swift in Sources */,
+				5CBD4BC820C6B10F009CC0D0 /* MeditationsPlatzConfigViews.swift in Sources */,
+				5C2F2F9120BC4E0100ECE7A2 /* TimerModels.swift in Sources */,
 				5C5502111E1EA94C004C700D /* NibLoadingView.swift in Sources */,
+				5CBD4BC420C6AC15009CC0D0 /* FlaggeWahlViewModels.swift in Sources */,
 				5CB25C781E72BCA800E37EAF /* CoreDataObserver.swift in Sources */,
 				5C70572F1E2D2CF400D307EF /* DesignPatterns.swift in Sources */,
 				5C0A45581F1627640056FCED /* Singleton.swift in Sources */,
 				5CB25C7E1E72EE1600E37EAF /* TimerView.swift in Sources */,
+				5C2F2FCE20BC52E200ECE7A2 /* FireBaseModel.swift in Sources */,
 				5CB25C831E76C75400E37EAF /* TimerControlConfig.swift in Sources */,
-				5C4DE63F1E6EFB1E00715F83 /* MyCloudKit.swift in Sources */,
+				5CCC696020C56B9500AC022A /* ProfilConfigViewModel.swift in Sources */,
 				5CBB48311F1F4C99003750C7 /* AppUserExtensions.swift in Sources */,
+				5C2F2FCD20BC52E200ECE7A2 /* DatenTypen.swift in Sources */,
 				5CAFE7EB1E250327008F740A /* MeditationExtensions.swift in Sources */,
 				5C142CA81E8007580085191B /* UserMeditationInfoVC.swift in Sources */,
 				5C55020D1E1E899C004C700D /* Extensions.swift in Sources */,
+				5C2F2FA420BC522D00ECE7A2 /* GeradeMeditiertVC.swift in Sources */,
+				5C2F2FA520BC522D00ECE7A2 /* TimerViews.swift in Sources */,
 				5C2D03911E3F7E5B00A113FF /* MeineKurseTableVC.swift in Sources */,
+				5C2F2FA320BC522D00ECE7A2 /* SoundFileView.swift in Sources */,
+				5C40D03A20C46B230015A1F9 /* PublicStatisticsView.swift in Sources */,
+				5C2F2FCB20BC52E200ECE7A2 /* MainModels.swift in Sources */,
 				5CB25C761E71B88400E37EAF /* MeinProfilVC.swift in Sources */,
 				5CA9A13A1E40D2B9000C28F6 /* StatistikVC.swift in Sources */,
 				5C342A531E1C03DD007D2305 /* VipassanaTimer.xcdatamodeld in Sources */,
+				5C2F2F8E20BC4D9C00ECE7A2 /* TimerViewModels.swift in Sources */,
 				5CAFE7E91E24FE1E008F740A /* HauptMenuVC.swift in Sources */,
-				5C142CB31E83DC560085191B /* CKMeditation.swift in Sources */,
 				5C70572D1E2CF11500D307EF /* EditMeditationVC.swift in Sources */,
+				5CDF3EA720C689A900020260 /* FlaggeWahlViews.swift in Sources */,
+				5CCFE59B20C00741009925C1 /* MeditationsTimerModel.swift in Sources */,
 				5C5502041E1E614F004C700D /* TimerConfigExtensions.swift in Sources */,
+				5C2F2FC520BC52CD00ECE7A2 /* AudioPlayer.swift in Sources */,
 				5C142CAB1E803E9B0085191B /* FreundeFindenVC.swift in Sources */,
 				5CB25C871E7946D700E37EAF /* MeditierendeView.swift in Sources */,
+				5C31AD5920C7D4B400CD367E /* PublicMeditationInfoViewModel.swift in Sources */,
 				5CB25C801E741CE700E37EAF /* TimerControl.swift in Sources */,
 				5CA9A1331E3F9A64000C28F6 /* KursExtensions.swift in Sources */,
+				5C31AD5B20C7DAF200CD367E /* ProfilPublicVorschauVC.swift in Sources */,
+				5CDF3E9E20C67AF400020260 /* ProfilConfigModel.swift in Sources */,
+				5C380A2C2097680000A78D0A /* ZeitAblaufView.swift in Sources */,
+				5C40D03220C4313C0015A1F9 /* PublicMeditationInfoVC.swift in Sources */,
+				5C31AD5E20C8602B00CD367E /* SoundFileDataCD.swift in Sources */,
 				5C2D038D1E3F6F2C00A113FF /* MeditationTemplateExtension.swift in Sources */,
 				5CD978C01F152AB200A8B60B /* Firebase.swift in Sources */,
-				5C15D0671E83DD7E0027D768 /* CKMeditierender.swift in Sources */,
+				5CCFE59D20C0346A009925C1 /* MeineTimerModel.swift in Sources */,
+				5CCC695D20C5692900AC022A /* ProfilConfigView.swift in Sources */,
 				5C4B5DCD1E27AB3300307437 /* WochenUndTagesKalenderVC.swift in Sources */,
 				5CD00D2C1E4DF8D80092A352 /* Statistiken.swift in Sources */,
+				5C2F2F8A20BC4D6100ECE7A2 /* MeditationsTimerVC.swift in Sources */,
 				5CA9A1381E40C7F3000C28F6 /* StatistikView.swift in Sources */,
 				5C342A4B1E1C03DD007D2305 /* AppDelegate.swift in Sources */,
 			);
@@ -872,7 +1218,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = DNS.VipassanaTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -891,7 +1238,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = DNS.VipassanaTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
