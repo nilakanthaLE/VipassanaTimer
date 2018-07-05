@@ -12,7 +12,39 @@ import UIKit
 import Firebase
 
 extension Kurs{
-    static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    
+    class func new(kursData:KursData) -> Kurs?{
+        let kurs = NSEntityDescription.insertNewObject(forEntityName: "Kurs", into: context) as? Kurs
+        kurs?.name              = kursData.title
+        kurs?.kursTage          = Int16(kursData.kursTage)
+        kurs?.start             = kursData.startTag
+        kurs?.kursID            = UUID().uuidString
+        kurs?.teacher           = kursData.lehrer
+        
+        for kursMeditation in kursData.meditationSet{ kurs?.addMeditation(  Meditation.new(kursMeditation: kursMeditation) ) }
+        return kurs
+    }
+    
+    func addMeditation(_ meditation:Meditation?){
+        guard let meditation = meditation else {return}
+        addToMeditations(meditation)
+    }
+    
+    
+    var startDate:Date{ return sortedMeditations.first?.start ?? start ?? Date() }
+    var endDate:Date{ return sortedMeditations.last?.start ?? startDate }
+    var sortedMeditations:[Meditation]{ return (meditations as? Set<Meditation>)?.sorted(by: {$0.start?.compare($1.start! as Date) == .orderedAscending }) ?? [Meditation]()  }
+    
+    func delete(inFirebaseToo:Bool){
+        print("Kurs delete")
+        for case let meditation as Meditation in meditations!{ meditation.delete(inFirebaseToo: true) }
+        if inFirebaseToo{ FirKurse.deleteKurs(kurs: self) }
+        context.delete(self)
+        saveContext()
+    }
+    
+    //old
     class func new(template:KursTemplate,start:Date)->Kurs?{
         
         if let kurs = NSEntityDescription.insertNewObject(forEntityName: "Kurs", into: context) as? Kurs{
@@ -95,17 +127,8 @@ extension Kurs{
         }
         return [Kurs]()
     }
-    func delete(inFirebaseToo:Bool){
-        print("Kurs delete")
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        if inFirebaseToo{ FirKurse.deleteKurs(kurs: self) }
-        context.delete(self)
-        saveContext()
-    }
-    var sortedMeditations:[Meditation]{
-        guard let meditations = meditations as? Set<Meditation> else{return [Meditation]()}
-        return meditations.sorted(by: {$0.start?.compare($1.start! as Date) == .orderedAscending })
-    }
+    
+    
     var gesamtDauerMeditationen:TimeInterval{
         return sortedMeditations.map{$0.gesamtDauer}.reduce(0){$0+$1}
     }

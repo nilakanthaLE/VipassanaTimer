@@ -18,7 +18,7 @@ extension UISearchBar{
     }
 }
 class FreundeFindenVC: UIViewController,UISearchBarDelegate {
-
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return UIInterfaceOrientationMask.portrait  }
     @IBOutlet weak var searchBar: UISearchBar!          { didSet{ searchBar.setTransparent() } }
     @IBOutlet weak var freundesanfrageButton: UIButton! { didSet { freundesanfrageButton.setControlDesignPatterns() } }
     

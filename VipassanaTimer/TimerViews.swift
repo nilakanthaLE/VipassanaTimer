@@ -46,12 +46,11 @@ import UIKit
                 DispatchQueue.main.async { self?.gesamtDauerDatePicker.countDownDuration = dauer }//Apple Bug?
             }
             //SoundFileData
-            mettaSlider.reactive.isEnabled          <~ viewModel.hasSoundFile.producer.map{!$0}
-            anapanaSlider.reactive.isEnabled        <~ viewModel.hasSoundFile.producer.map{!$0}
-            mettaOhneEndeSwitch.reactive.isEnabled  <~ viewModel.hasSoundFile.producer.map{!$0}
-//            klangSchalenStack.reactive.isHidden     <~ viewModel.hasSoundFile.producer.map{!$0}
-            klangSchalenStack.isHidden = true
-            mettaOhneEndeStack.reactive.isHidden    <~ viewModel.hasSoundFile.producer
+            mettaSlider.reactive.isEnabled              <~ viewModel.hasSoundFile.producer.map{!$0}
+            mettaOhneEndeSwitch.reactive.isEnabled      <~ viewModel.hasSoundFile.producer.map{!$0}
+            gesamtDauerDatePicker.reactive.isEnabled    <~ viewModel.hasSoundFile.producer.map{!$0}
+            klangSchalenStack.reactive.isHidden         <~ viewModel.hasSoundFile.producer.map{!$0}
+            mettaOhneEndeStack.reactive.isHidden        <~ viewModel.hasSoundFile.producer
             
             
             //set
@@ -154,6 +153,7 @@ import UIKit
             mettaDauerLabel.reactive.text       <~ viewModel.mettaDauerTitle.producer
             timerTitleLabel.reactive.text       <~ viewModel.timerTitle.producer
             hasSoundFileLabel.reactive.isHidden <~ viewModel.hasSoundFileLabelIsHidden.producer
+            
             
             
             

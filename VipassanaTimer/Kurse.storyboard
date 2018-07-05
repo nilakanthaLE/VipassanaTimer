@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bTq-fa-2io">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--meine Kurse-->
+        <scene sceneID="gsh-X9-0hz">
+            <objects>
+                <tableViewController id="dKC-TO-lnL" customClass="MeineKurseTableVC" customModule="VipassanaTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="pQG-Lp-Mm6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="separatorColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="cell" id="Luk-SM-GJ9">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Luk-SM-GJ9" id="KEb-LX-wPV">
+                                    <rect key="frame" x="0.0" y="0.0" width="327" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XgA-CU-mJc" customClass="KursTableCellView" customModule="VipassanaTimer" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="8" width="311" height="28"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="XgA-CU-mJc" firstAttribute="top" secondItem="KEb-LX-wPV" secondAttribute="top" constant="8" id="JQP-57-K37"/>
+                                        <constraint firstAttribute="bottom" secondItem="XgA-CU-mJc" secondAttribute="bottom" constant="8" id="YJ0-88-uJH"/>
+                                        <constraint firstItem="XgA-CU-mJc" firstAttribute="leading" secondItem="KEb-LX-wPV" secondAttribute="leading" constant="8" id="hDq-F0-LxQ"/>
+                                        <constraint firstAttribute="trailing" secondItem="XgA-CU-mJc" secondAttribute="trailing" constant="8" id="jRX-Ne-iUB"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.41274607390000001" green="0.32337761599999998" blue="0.18693663939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="dKC-TO-lnL" id="ne5-in-vMR"/>
+                            <outlet property="delegate" destination="dKC-TO-lnL" id="fs7-Mu-YC9"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="meine Kurse" id="goF-IV-fqF">
+                        <barButtonItem key="leftBarButtonItem" title="zurück" id="NRu-yX-al3">
+                            <connections>
+                                <segue destination="4eM-Ub-EaI" kind="unwind" unwindAction="unwindToHauptmenuWithSegue:" id="UHd-G8-oYm"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="kVT-4f-W1D">
+                            <connections>
+                                <segue destination="eRq-1K-PJ8" kind="show" id="tZL-m1-5LP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="03z-wn-Sue" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="4eM-Ub-EaI" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="5355" y="-1120"/>
+        </scene>
+        <!--Kurse-->
+        <scene sceneID="OLU-ce-cah">
+            <objects>
+                <viewController id="eRq-1K-PJ8" customClass="KursConfigVC" customModule="VipassanaTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3Ao-Ag-Y2B"/>
+                        <viewControllerLayoutGuide type="bottom" id="Z65-aG-LjO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZXa-lr-u5Z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GPg-Wn-hCr" customClass="KursConfigView" customModule="VipassanaTimer" customModuleProvider="target">
+                                <rect key="frame" x="16" y="72" width="343" height="575"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GPg-Wn-hCr" firstAttribute="leading" secondItem="ZXa-lr-u5Z" secondAttribute="leadingMargin" id="EwD-eF-mpr"/>
+                            <constraint firstItem="GPg-Wn-hCr" firstAttribute="trailing" secondItem="ZXa-lr-u5Z" secondAttribute="trailingMargin" id="Vwe-FC-FXA"/>
+                            <constraint firstItem="GPg-Wn-hCr" firstAttribute="top" secondItem="3Ao-Ag-Y2B" secondAttribute="bottom" constant="8" symbolic="YES" id="gdH-tP-a67"/>
+                            <constraint firstAttribute="bottom" secondItem="GPg-Wn-hCr" secondAttribute="bottom" constant="20" symbolic="YES" id="tvw-pj-Ure"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Kurse" id="DwS-HZ-UTI">
+                        <barButtonItem key="rightBarButtonItem" title="info" id="1Of-Dr-3Tf">
+                            <connections>
+                                <action selector="infoButtonPressed:" destination="eRq-1K-PJ8" id="wmk-eZ-t1F"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="kursConfigView" destination="GPg-Wn-hCr" id="64D-do-cqQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F6C-Tg-xvl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6497" y="-1107"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="N9a-Ia-VYY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bTq-fa-2io" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Ye-a7-hbv">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dKC-TO-lnL" kind="relationship" relationship="rootViewController" id="FpM-7Z-PwZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Tr-FE-t41" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4583" y="-1120"/>
+        </scene>
+    </scenes>
+</document>

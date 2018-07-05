@@ -11,14 +11,12 @@ import ReactiveSwift
 
 //MARK: MainModel
 class MeineTimerModel{
-    //    let timerFuerSetting            = MutableProperty<TimerData>(TimerData())
-    
-    
     let gewaehlterTimerFuerMeditation   = MutableProperty<TimerData>(TimerData())
     init(gewaehlerTimer:MutableProperty<TimerData>)     { gewaehlerTimer <~ gewaehlterTimerFuerMeditation.signal }
     
     let timerDatas                      = MutableProperty<[TimerData]>(TimerConfig.getAll().map{TimerData(timerConfig: $0)})
     func addTimerData() -> TimerData{
+        print("addTimerData")
         let new = TimerData(timerConfig: TimerConfig.create())
         timerDatas.value.append(new)
         return new

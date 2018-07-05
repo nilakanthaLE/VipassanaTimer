@@ -9,13 +9,9 @@
 import UIKit
 
 extension UINavigationController {
-    open override var shouldAutorotate: Bool{
-        return true
-    }
+    open override var shouldAutorotate: Bool{ return true }
     open override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
-        if visibleViewController is UIAlertController{
-            return UIInterfaceOrientationMask.allButUpsideDown
-        }
+        if visibleViewController is UIAlertController{ return UIInterfaceOrientationMask.allButUpsideDown }
         return visibleViewController!.supportedInterfaceOrientations
     }
 }

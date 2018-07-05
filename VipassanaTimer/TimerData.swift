@@ -15,7 +15,7 @@ class TimerData:MeditationConfigProto{
     var mettaDauer:TimeInterval         = 5*60
     var mettaEndlos:Bool                = false
     var soundFileData:SoundFileData?    = nil
-    var soundSchalenAreOn:Bool          = true
+    var soundSchalenAreOn:Bool          = false
     
     let timerConfig:TimerConfig?
     init(){ timerConfig = nil }
@@ -27,6 +27,16 @@ class TimerData:MeditationConfigProto{
         mettaDauer          = timerConfig.mettaDauer
         mettaEndlos         = timerConfig.mettaEndlos
         soundFileData       = timerConfig.soundFileDataCD?.soundFileData
+        soundSchalenAreOn   = timerConfig.soundSchalenAreOn
+    }
+    init?(meditation:Meditation?){
+        guard let meditation = meditation else {return nil}
+        gesamtDauer         = meditation.gesamtDauer
+        anapanaDauer        = TimeInterval(meditation.dauerAnapana)
+        mettaDauer          = TimeInterval(meditation.dauerMetta)
+        mettaEndlos         = meditation.mettaOpenEnd
+        meditationTitle     = meditation.name
+        timerConfig         = nil
     }
     
     //Initialisierung für PublicMeditationInfoView
@@ -38,7 +48,7 @@ class TimerData:MeditationConfigProto{
         mettaEndlos         = publicMeditation.mettaEndlos
         timerConfig         = nil
     }
-    func  setTimerConfig(){
+    func setTimerConfig(){
         print("setTimerConfig")
         timerConfig?.name               = meditationTitle
         timerConfig?.gesamtDauer        = gesamtDauer
@@ -46,6 +56,8 @@ class TimerData:MeditationConfigProto{
         timerConfig?.mettaDauer         = mettaDauer
         timerConfig?.mettaEndlos        = mettaEndlos
         timerConfig?.soundFileDataCD    = SoundFileDataCD.get(soundFileData: soundFileData)
+        timerConfig?.soundSchalenAreOn  = soundSchalenAreOn
+        
         saveContext()
     }
     func deleteTimerConfig()        { timerConfig?.delete() }
@@ -54,11 +66,11 @@ class TimerData:MeditationConfigProto{
         
         switch meditationTyp{
         case .anapana:
+            if (gesamtDauer - newValue) < mettaDauer  { mettaDauer      = gesamtDauer - newValue}
             anapanaDauer    = newValue
-            if gesamtDauer - newValue < mettaDauer  {mettaDauer      = gesamtDauer - newValue}
         case .metta:
+            if (gesamtDauer - newValue) < anapanaDauer  { anapanaDauer    = gesamtDauer - newValue }
             mettaDauer      = newValue
-            if gesamtDauer - newValue < mettaDauer  { anapanaDauer    = gesamtDauer - newValue }
             mettaEndlos     = false
         case .vipassana:
             break
@@ -107,7 +119,6 @@ class TimerData:MeditationConfigProto{
         gesamtDauer         = soundFileData?.duration ?? 60 * 60
         anapanaDauer        = soundFileData != nil ? 0 : 5 * 60
         mettaDauer          = soundFileData?.mettaDuration  ?? 5 * 60
-        soundSchalenAreOn   = soundFileData == nil
         mettaEndlos         = false
         return self
     }

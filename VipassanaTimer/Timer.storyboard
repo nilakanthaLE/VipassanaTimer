@@ -100,7 +100,7 @@
         <!--Sound Files TableVC-->
         <scene sceneID="UZb-HJ-6yk">
             <objects>
-                <tableViewController id="ObJ-1v-pdB" customClass="SoundFilesTableVC" customModule="VipassanaTimer" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SoundFilesTableVC" id="ObJ-1v-pdB" customClass="SoundFilesTableVC" customModule="VipassanaTimer" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="p9U-Zw-Vlg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -165,7 +165,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F45-db-Prx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3370" y="362"/>
+            <point key="canvasLocation" x="3414" y="355"/>
         </scene>
         <!--Meditieren-->
         <scene sceneID="Mvx-4g-nhm">

@@ -72,7 +72,7 @@ class SoundFilesTableVC: UITableViewController {
             viewModel.popViewController.signal.observe{[weak self] _ in self?.navigationController?.popViewController(animated: true)}
         }
     }
-    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return UIInterfaceOrientationMask.portrait  }
     
     override func viewDidLoad() {
         print("SoundFilesTableVC viewDidLoad")

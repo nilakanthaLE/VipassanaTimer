@@ -9,6 +9,10 @@
 import Foundation
 import AVFoundation
 import ReactiveSwift
+import Result
+
+
+
 
 fileprivate var timer:Timer?
 fileprivate var player: AVAudioPlayer?
@@ -40,42 +44,46 @@ class AudioPlayer{
     }
     
     
-//    var timer:Timer?
-    let currentTime = MutableProperty<TimeInterval>(0)
-    func playSound(url:URL?,currentTimeSet:MutableProperty<TimeInterval>) -> (duration:TimeInterval,currentTime:MutableProperty<TimeInterval>)?{
-        guard let url = url else {return nil}
-        
-        timer?.invalidate()
-        timer = nil
-        player?.stop()
-        
-        
-        
-        do{
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-            try AVAudioSession.sharedInstance().setActive(true)
-            
-            player = try AVAudioPlayer(contentsOf: url)
-            player?.setVolume(0.3, fadeDuration: TimeInterval(0))
-            player?.prepareToPlay()
-            player?.play()
-            
-            timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {[weak self] _ in
-                self?.currentTime.value = player?.currentTime ?? 0
-            }
-            
-            currentTimeSet.signal.observeValues{ player?.currentTime = $0 }
-            return (duration:player?.duration ?? 0,currentTime:currentTime)
-        }
-        catch let error as NSError {
-            print(error.description)
-            return nil
-        }
-    }
-    func stopPlaying(){
-        print("stopPlaying")
-        timer?.invalidate()
-        timer = nil
-        player?.stop()
-    }
+//var timer:Timer?
+//    let currentTime = MutableProperty<TimeInterval>(0)
+//    func playSound(url:URL?,currentTimeSet:MutableProperty<TimeInterval>) -> (duration:TimeInterval,currentTime:MutableProperty<TimeInterval>)?{
+//        guard let url = url else {return nil}
+//        
+//        timer?.invalidate()
+//        timer = nil
+//        player?.stop()
+//        
+//        weak var _timer     = timer
+//        weak var _player    = player
+//        do{
+//            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+//            try AVAudioSession.sharedInstance().setActive(true)
+//            
+//            _player = try AVAudioPlayer(contentsOf: url)
+//            _player?.setVolume(0.3, fadeDuration: TimeInterval(0))
+//            _player?.prepareToPlay()
+//            _player?.play()
+//            
+//            _timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {[weak self] _ in
+//                self?.currentTime.value = _player?.currentTime ?? 0
+//            }
+//            
+//            currentTimeSet.signal.observeValues { _player?.currentTime = $0 }
+//            return (duration:player?.duration ?? 0,currentTime:currentTime)
+//        }
+//        catch let error as NSError {
+//            print(error.description)
+//            return nil
+//        }
+//    }
+//    func stopPlaying(){
+//        print("stopPlaying")
+//        timer?.invalidate()
+//        timer = nil
+//        player?.stop()
+//    }
 }
+
+
+
+

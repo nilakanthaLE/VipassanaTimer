@@ -29,17 +29,12 @@ import ReactiveSwift
         mainModel.tappedMeditationsPlatz.signal.observeValues{[weak self] publicMeditation in self?.performSegue(withIdentifier: "showUserInfo", sender: publicMeditation)}
     }
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return UIInterfaceOrientationMask.portrait  }
     
     
     
     
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+ 
     func timerAnzeigeTapped(){ performSegue(withIdentifier: "nextVC", sender: nil) }
     @IBOutlet weak var timerView: TimerAsTimerView!{
         didSet{

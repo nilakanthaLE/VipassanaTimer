@@ -23,4 +23,5 @@ class PublicMeditationInfoVC:UIViewController{
     @IBAction func zurueckButtonPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return UIInterfaceOrientationMask.portrait  }
 }

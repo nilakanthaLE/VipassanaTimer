@@ -15,6 +15,7 @@ class TimerTableVCModel{
     
     
     func selectMeditationsTimer(indexPath:IndexPath){
+        print("selectMeditationsTimer klangschalen: \(model.timerDatas.value[indexPath.row].soundSchalenAreOn)")
         model.gewaehlterTimerFuerMeditation.value   = model.timerDatas.value[indexPath.row]
     }
     func getViewModelForCell(indexPath:IndexPath) -> TimerAnzeigeViewModel{
@@ -26,26 +27,27 @@ class TimerTableVCModel{
     
     let model:MeineTimerModel
     init(model:MeineTimerModel){
+        print("init TimerTableVCModel")
         self.model          = model
         updateTable         <~ model.timerDatas.signal.map{_ in Void()}
     }
     
  
     func getTimerSettingsViewControllerModel(row:Int?) -> TimerSettingsViewControllerModel{
-        var timerData:TimerData{
+        let timerData:TimerData = {
             guard let row = row else {return model.addTimerData()}
             return model.timerDatas.value[row]
-        }
-        
+        }()
+        print("getTimerSettingsViewControllerModel klangschalen: \(timerData.soundSchalenAreOn)")
         return TimerSettingsViewControllerModel(timerData: timerData)
     }
     
-    
+    deinit { print("deinit TimerTableVCModel")  }
 }
 
 class TimerTableVC: UITableViewController {
     var viewModel:TimerTableVCModel!
-    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return UIInterfaceOrientationMask.portrait  }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +67,8 @@ class TimerTableVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         (cell.contentView.subviews.first as? TimerAnzeigeView)?.viewModel = viewModel.getViewModelForCell(indexPath: indexPath)
         cell.selectionStyle = .none
+        cell.contentView.subviews.first?.setNeedsLayout()
+        cell.contentView.subviews.first?.layoutIfNeeded()
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -86,7 +86,14 @@ class MeditationNewVersion:MeditationProto{
         self.mettaDauer     = metta
         self.mettaEndlos    = mettaEndlos
     }
+
+    
 }
+
+
+
+
+
 
 //öffentliche Meditation
 // SitzPlätze!
@@ -248,7 +255,7 @@ class PublicUser:UserProto{
 
 
 
-struct SoundFileData{
+struct SoundFileData:Equatable{
     var title: String
     var duration:TimeInterval
     var mettaDuration:TimeInterval
@@ -287,8 +294,8 @@ struct SoundFileData{
     //Beispiel
     init(){
         self.title          = "Dubai Long English"
-        self.duration       = 3795
-        self.mettaDuration  = 923
+        self.duration       = 3925
+        self.mettaDuration  = 710
         self.fireBaseTitle  = "Dubai_Long-Instr_E_GS"
     }
     
@@ -300,16 +307,28 @@ struct SoundFileData{
                 "fireBaseTitle" : fireBaseTitle
         ]
     }
+}
+
+class FirNotitification{
+    static let ref  = database.reference(withPath: "notifications")
+    static func insertNew(){
+        ref.child("1").setValue("Test! \n Test blubb blubb blubb")
+    }
     
-    
+    static func setObserver(){
+        
+        ref.observe(.childAdded, with: { (snapshot) in
+            
+            
+            AppConfig.setNotification(snapshot: snapshot) })
+    }
 }
 
 
 class FireBaseSoundFiles{
     static let ref  = database.reference(withPath: "soundFiles")
     static func insertNew(soundFileData:SoundFileData){
-        guard let fireBaseTitle = soundFileData.firebaseData["fireBaseTitle"] as? String else {return}
-        ref.child(fireBaseTitle).setValue(soundFileData.firebaseData)
+        ref.child(soundFileData.fireBaseTitle).setValue(soundFileData.firebaseData)
     }
     
     static func getList(soundFileDatas:MutableProperty<[SoundFileData]>) {

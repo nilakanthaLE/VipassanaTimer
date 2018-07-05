@@ -28,6 +28,7 @@ class TimerAnzeigeModel{
     let mettaEndlos     = MutableProperty<Bool>         (false)
     let vipassanaDauer  = MutableProperty<TimeInterval> (5*60)
     let hasSoundFile    = MutableProperty<Bool>         (false)
+    let klangschalenAreOn   = MutableProperty<Bool>         (false)
     
     //Anteile (calc)
     let anapanaAnteil   = MutableProperty<CGFloat>(5/60)
@@ -45,6 +46,7 @@ class TimerAnzeigeModel{
     
     //helper
     private func setValues(for timerData:TimerData?){
+        print("TimerAnzeigeModel setValues \(timerData?.meditationTitle)")
         guard let timerData = timerData else {return}
         //config Values setzen
         verdeckAnteil.value     = 0
@@ -58,6 +60,7 @@ class TimerAnzeigeModel{
         mettaAnteil.value       = CGFloat(timerData.mettaDauer  / timerData.gesamtDauer)
         anzeigeDauer.value      = timerData.gesamtDauer.hhmm
         hasSoundFile.value      = timerData.soundFileData != nil
+        klangschalenAreOn.value = timerData.soundSchalenAreOn
     }
     
     deinit { print("deinit TimerAnzeigeModel") }
@@ -107,10 +110,9 @@ class TimerSettingsModel:TimerAnzeigeModel{
         super.init(timerData: timerData)
         soundFileData.value = timerData.soundFileData
         
-        //self.soundFileData wird gesetzt
-        // --> self.timerData update
         
-        
+        soundSchalenSwitchIsOn.value    = timerData.soundSchalenAreOn
+
         soundFileData.signal.observeValues{[weak self] soundFileData in
             guard let strongSelf = self else {return}
             strongSelf.timerData.value = strongSelf.timerData.value.setSoundFileData(soundFileData)
@@ -149,12 +151,15 @@ class TimerAsTimerModel:TimerAnzeigeModel{
         //  Klangschalen Sound Ereignisse
         let audioPlayer = AudioPlayer()
         now.signal.filter{$0 != nil}.observeValues{[weak self] now in self?.setEndeEreignisse(now: now!) }
-        let observer = Signal<Void,NoError>.Observer{ _ in if timerData.soundSchalenAreOn{ audioPlayer.playKlangSchale() }}
+        let observer = Signal<Void,NoError>.Observer{[weak self] _ in if self?.klangschalenAreOn.value == true { audioPlayer.playKlangSchale()  } }
         anapanaBeendet.signal.observe(observer)
         meditationBeendet.signal.observe(observer)
         vipassanaBeendet.signal.observe(observer)
         meditationGestartet.signal.observe(observer)
 
+        
+        
+        
         //  initial
         resetTimerValues()
     }
@@ -166,7 +171,10 @@ class TimerAsTimerModel:TimerAnzeigeModel{
     private var startZeit:Date?
     private var pauseStartZeit:Date?
     private var pausenDauer:TimeInterval    = 0
-    private func timerStarten() { timer  = Timer.scheduledTimer(timeInterval: 0.5 , target: self, selector: #selector(update), userInfo: nil, repeats: true) }
+    private func timerStarten() {
+        timer  = Timer.scheduledTimer(timeInterval: 0.5 , target: self, selector: #selector(update), userInfo: nil, repeats: true)
+        
+    }
     func timerBeenden()         { timer?.invalidate()  }
     @objc private func update() { now.value = Date() }
     
@@ -214,11 +222,14 @@ class TimerAsTimerModel:TimerAnzeigeModel{
         timerBeenden()
         mainModel.pauseDates.value          = (pauseStartZeit,Date())
         mainModel.myActiveMeditation.value  = nil
+        soundFileAudioPlayer.soundFileData.value = nil
     }
     private func timerControl(lastTimerState:TimerState,newTimerState:TimerState){
+        print("---> timerControl last: \(lastTimerState) new: \(newTimerState)")
         switch newTimerState{
-        case .nichtGestartet:   resetTimerValues()
-        case .laueft:
+        case .nichtGestartet:   //stoppen
+            resetTimerValues()
+        case .laueft:           //starten + starten nach Pause
             //nach Pause gestartet
             if lastTimerState == .pausiert{
                 var dauerNeuePause:TimeInterval{
@@ -228,16 +239,19 @@ class TimerAsTimerModel:TimerAnzeigeModel{
                 mainModel.pauseDates.value = (pauseStartZeit,Date())
                 pausenDauer     += dauerNeuePause
                 pauseStartZeit  = nil
-                
+                soundFileAudioPlayer.startNachPause()
             }
             //neuer start
             else{
                 meditationGestartet.value   = Void()
-                startZeit                   = Date()}
-                timerStarten()
-                mainModel.myActiveMeditation.value = PublicMeditation(meditationConfig: timerData.value)
-        case .pausiert:
+                startZeit                   = Date()
+                mainModel.myActiveMeditation.value          = PublicMeditation(meditationConfig: timerData.value)
+                soundFileAudioPlayer.soundFileData.value    = timerData.value.soundFileData
+            }
+            timerStarten()
+        case .pausiert:         //pausieren
             pauseStartZeit      = Date()
+            soundFileAudioPlayer.pause()
             timerBeenden()
         }
     }

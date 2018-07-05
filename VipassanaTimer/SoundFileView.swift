@@ -18,39 +18,41 @@ class SoundFileViewModel{
     let playSoundButtonAction       = MutableProperty<Void>(Void())
     var audioPlayer : AudioPlayer?
     
-    init(soundFileData:MutableProperty<SoundFileData?> = MutableProperty<SoundFileData?>(nil),
-         downloadProgress: MutableProperty<(tag:Int,progress:Double)>? = nil,
-         tag:Int = 0){
-        
-        if let downloadProgress = downloadProgress {
-            soundFileDownloadVerdeck    <~ downloadProgress.signal.filter{$0.tag == tag}.map{$0.progress}
-        }
+    init(soundFileData:MutableProperty<SoundFileData?> = MutableProperty<SoundFileData?>(nil),  downloadProgress: MutableProperty<(tag:Int,progress:Double)>? = nil, tag:Int = 0){
         self.soundFileData          <~ soundFileData.producer
-        
-        soundFileDownloadVerdeck.signal.observeValues{print($0)}
-        
-        playSoundButtonAction.signal.observe{[weak self] _ in
-            self?.soundIsPlaying.value = !(self?.soundIsPlaying.value ?? true)
-            self?.playSound()
-        }
-        
-        soundIsPlaying.signal.observeValues{[weak self] isPlaying in
-            print(("isPlaying \(isPlaying)"))
-            switch isPlaying{
-                case true:
-                    self?.playSound()
-                case false:
-                    self?.audioPlayer?.stopPlaying()
-                    self?.audioPlayer = nil
-            }
-        }
         
         //initial
         spielZeitText.value = Double(0).hhmmss
         restZeitText.value  = "-" + (soundFileData.value?.duration ?? 0).hhmmss
+        sliderValue.value   = 0
         
-        spielZeitText   <~ currentTimeSetter.map{$0.hhmmss}
-        restZeitText    <~ currentTimeSetter.map{[weak self] current in "-" + (TimeInterval(self?.sliderMax.value ?? 0) - current).hhmmss}
+        //download
+        if let downloadProgress = downloadProgress { soundFileDownloadVerdeck    <~ downloadProgress.signal.filter{$0.tag == tag}.map{$0.progress} }
+        
+
+        //Steuerung Play/Stop per Button
+        playSoundButtonAction.signal.observe{[weak self] _ in
+            let newSoundIsPlaying =  !(self?.soundIsPlaying.value ?? true)
+            self?.soundIsPlaying.value                  = newSoundIsPlaying
+            soundFileAudioPlayer.soundFileData.value    = newSoundIsPlaying ? self?.soundFileData.value : nil
+        }
+        
+        //aktiver Player
+        spielZeitText   <~ soundFileAudioPlayer.currentTimeSignal.signal.filter{[weak self] _ in self?.soundIsPlaying.value == true}.map{$0.hhmmss}
+        restZeitText    <~ soundFileAudioPlayer.restZeit.signal.filter{[weak self] _ in self?.soundIsPlaying.value == true}.map{"-" + $0.hhmmss}
+        sliderValue     <~ soundFileAudioPlayer.currentTimeSignal.signal.filter{[weak self] _ in self?.soundIsPlaying.value == true}.map{Float($0)}
+        sliderMax       <~ soundFileAudioPlayer.dauer.producer.filter{[weak self] _ in self?.soundIsPlaying.value == true}.combinePrevious(0).filter{$0.0 != $0.1}.map{Float($0.1)}
+        soundFileAudioPlayer.currentTimeSet <~ currentTimeSetter.signal.filter{[weak self] _ in self?.soundIsPlaying.value == true}
+        
+        //zurücksetzen
+        soundIsPlaying  <~ soundFileAudioPlayer.soundFileData.signal.filter{$0 != soundFileData.value}.map{_ in false}
+        spielZeitText   <~ soundIsPlaying.signal.filter{!$0}.map{_ in TimeInterval(0).hhmmss}
+        restZeitText    <~ soundIsPlaying.signal.filter{!$0}.map{_ in  "-" + TimeInterval(soundFileData.value?.duration ?? 0).hhmmss}
+        sliderValue     <~ soundIsPlaying.signal.filter{!$0}.map{_ in Float(0)}
+        
+        //von slider gesetzt
+        spielZeitText   <~ currentTimeSetter.signal.map{TimeInterval($0).hhmmss}
+        restZeitText    <~ currentTimeSetter.signal.map{[weak self] currentSet in "-" + (TimeInterval(self?.sliderMax.value ?? 0) - currentSet).hhmmss}
     }
     
     //Player
@@ -61,20 +63,10 @@ class SoundFileViewModel{
     let spielZeitText       = MutableProperty<String>(Double(0).hhmmss)
     let restZeitText        = MutableProperty<String>(Double(0).hhmmss)
     let soundIsPlaying      = MutableProperty<Bool>(false)
-    private func playSound(){
-        if audioPlayer == nil { audioPlayer = AudioPlayer() }
-        let playerValues    = audioPlayer?.playSound(url: soundFileData.value?.loacalSoundfileURL, currentTimeSet: currentTimeSetter)
-        sliderMax.value     = Float(playerValues?.duration ?? 0)
-        playerValues?.currentTime.signal.observeValues{[weak self] currentTime in
-            self?.sliderValue.value = Float(currentTime)
-            print("currentTime: \(currentTime)")
-            
-            self?.spielZeitText.value   = Double(currentTime).hhmmss
-            self?.restZeitText.value    = "-" + Double((playerValues?.duration ?? 0) - currentTime).hhmmss
-        }
+    deinit {
+        soundFileAudioPlayer.soundFileData.value = nil
+        print("deinit SoundFileViewModel")
     }
-    
-    deinit { print("<<<<____>>>> deinit SoundFileViewModel") }
 }
 
 
@@ -87,15 +79,19 @@ class SoundFileView:NibLoadingView{
             titleLabel.reactive.text                <~ viewModel.soundFileData.producer.map{$0?.title}
             durationLabel.reactive.text             <~ viewModel.soundFileData.producer.map{$0?.duration.hhmmss}
             mettaDurationLabel.reactive.text        <~ viewModel.soundFileData.producer.map{$0?.mettaDuration.hhmmss}
-            soundFileDownloadView.reactive.isHidden <~ viewModel.soundFileData.producer.map{$0?.isDownloaded == true}
+            soundFileDownloadView.reactive.isHidden <~ viewModel.soundFileData.producer.map{$0 == nil || $0?.isDownloaded == true}
             
             
             sliderForPlayer.reactive.value          <~ viewModel.sliderValue
-            sliderForPlayer.reactive.maximumValue   <~ viewModel.sliderMax
+            sliderForPlayer.reactive.maximumValue   <~ viewModel.sliderMax.producer
             viewModel.currentTimeSetter             <~ sliderForPlayer.reactive.values.map{TimeInterval($0)}
             spielZeitLabel.reactive.text            <~ viewModel.spielZeitText
             restZeitLabel.reactive.text             <~ viewModel.restZeitText
- 
+            viewModel.playSoundButtonAction <~ playButton.reactive.controlEvents(.touchUpInside).map{_ in Void()}
+            
+            sliderForPlayer.reactive.values.map{TimeInterval($0)}.signal.observeValues{print($0)}
+            
+            
             viewModel.soundFileDownloadVerdeck.signal.observeValues{[weak self] progress in self?.setProgress(progress) }
             
             layer.borderColor   = standardRahmenFarbe.cgColor
@@ -103,7 +99,7 @@ class SoundFileView:NibLoadingView{
             layer.cornerRadius  = standardCornerRadius
             clipsToBounds       = true
             
-            viewModel.playSoundButtonAction <~ playButton.reactive.controlEvents(.touchUpInside).map{_ in Void()}
+            
         }
     }
     func setProgress(_ progress:Double){

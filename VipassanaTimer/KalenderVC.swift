@@ -100,13 +100,11 @@ class KalenderVC: UIViewController,KalenderViewDelegate {
     
     //MARK: Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination.contentViewController as? EditMeditationVC, let meditation = sender as? Meditation {
-            destination.meditation  = meditation
-        }
+        (segue.destination.contentViewController as? EditMeditationVC)?.viewModel   = EditMeditationVCViewModel(meditation: sender as? Meditation)
     }
     @IBAction func reloadKalender(segue:UIStoryboardSegue){
-        print("reloadKalender")
-        guard let editMeditationVC = segue.source as? EditMeditationVC, let start = editMeditationVC.meditation?.start else{return}
+        print("reloadKalender -> \((segue.source.contentViewController as? EditMeditationVC)?.viewModel.meditation?.start)")
+        guard let editMeditationVC = segue.source.contentViewController as? EditMeditationVC, let start = editMeditationVC.viewModel.meditation?.start else{return}
         kalender.reloadKalenderTag(date:start as Date)
     }
     deinit {
@@ -286,7 +284,7 @@ class DayViewForMonthView:NibLoadingView{
             if dayIsWithinMonth{
                 let statistik       = Meditation.getStatistics(von: self?.day, bis: self?.day)
                 if statistik?.timesPerDay ?? 0 > 0{
-                    if (statistik?.timePerDay ?? 0) >= 120*60 && (statistik?.timesPerDay ?? 0) >= 2
+                    if statistik?.timesZweiMalEineStunde ?? 0 >= 2
                     { status = 2}
                     else{ status = 1 }
                 }

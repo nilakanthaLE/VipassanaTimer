@@ -28,7 +28,6 @@ extension Meditation:EintragInKalender{
         meditation?.mettaOpenEnd     = myMeditation.mettaEndlos
         meditation?.name             = myMeditation.meditationTitle
         meditation?.cloudNeedsUpdate = true
-        
         return meditation
     }
     
@@ -48,6 +47,7 @@ extension Meditation:EintragInKalender{
                 "anapanaDauer"                  : dauerAnapana,
                 "mettaDauer"                    : dauerMetta,
                 "mettaOpenEnd"                  : mettaOpenEnd,
+                "soundFileTitle"                : soundFileTitle ?? "none",
                 //Statistik
                 "durchSchnittProTag"            : statistics.durchschnittTag.hhmmString,
                 "gesamtDauerStatistik"          : statistics.gesamtDauer.hhmmString,
@@ -60,16 +60,117 @@ extension Meditation:EintragInKalender{
                 "flagge"                        : meditierender?.flagge ?? "",
                 "flaggeIstSichtbar"             : meditierender?.flaggeIstSichtbar ?? false,
                 "message"                       : meditierender?.message ?? ""
+                
         ]
+    }
+    
+    class func new(timerData:TimerData,start:Date)->Meditation?{
+        let meditation = new(start: start, mettaOpenEnd: false, name: timerData.meditationTitle)
+        meditation?.dauerAnapana            = Int32(timerData.anapanaDauer)
+        meditation?.dauerVipassana          = Int32(timerData.vipassanaDauer)
+        meditation?.dauerMetta              = Int32(timerData.mettaDauer)
+        meditation?.cloudNeedsUpdate        = true
+        return meditation
+    }
+    
+    class func new(kursMeditation:KursMeditation)->Meditation?{
+        guard let meditation = new(start: kursMeditation.startDate, mettaOpenEnd: false, name: kursMeditation.meditationTitle) else{return nil}
+        meditation.dauerAnapana         = Int32(kursMeditation.anapanaDauer)
+        meditation.dauerVipassana       = Int32(kursMeditation.vipassanaDauer)
+        meditation.dauerMetta           = Int32(kursMeditation.mettaDauer)
+        meditation.cloudNeedsUpdate     = true
+        return meditation
+    }
+    
+    func delete(inFirebaseToo:Bool){
+        HealthManager().deleteMeditation(meditation: self)
+        if inFirebaseToo{ FirMeditations.deleteMeditation(meditation:self) }
+        context.delete(self)
+        saveContext()
+    }
+    class func getAllTillToday()->[Meditation]{
+        let request             = NSFetchRequest<Meditation>(entityName: "Meditation")
+        request.predicate       = NSPredicate(format: "start <= %@", Date() as CVarArg)
+        request.sortDescriptors = [NSSortDescriptor(key: "start", ascending: true)]
+        return (try? context.fetch(request)) ?? [Meditation]()
+    }
+    var atLeastOneHour:Bool{ return gesamtDauer >= 60*60 }
+    
+    
+    class func getZeitraum(start:Date?,ende:Date?)->[Meditation]{
+        guard let start = start, let ende = ende else {return [Meditation]()}
+        let request             = NSFetchRequest<Meditation>(entityName: "Meditation")
+        request.predicate       = NSCompoundPredicate(andPredicateWithSubpredicates:
+            [NSPredicate(format: "start >= %@",start.firstSecondOfDay! as CVarArg),
+             NSPredicate(format: "start <= %@", ende.lastSecondOfDay! as CVarArg)])
+        request.sortDescriptors = [NSSortDescriptor(key: "start", ascending: true)]
+        
+        return (try? context.fetch(request)) ?? [Meditation]()
     }
     
     
     
+    class func getGraphValuesFor(graphTyp:GraphTypen,von:Date,bis:Date) -> [GraphValue]{
+        var ergebnis            = [GraphValue]()
+        switch graphTyp {
+        case .GesamtdauerProWoche:
+            guard let start = von.mondayOfWeek.firstSecondOfDay,let ende = bis.sundayOfWeek.lastSecondOfDay else{return [GraphValue]()}
+            var date = start
+            while ende.isGreaterThanDate(dateToCompare: date){
+                guard let startWoche    = date.mondayOfWeek.firstSecondOfDay,let endeWoche = date.sundayOfWeek.lastSecondOfDay else{return [GraphValue]()}
+                let gesamtDauerWoche    = Meditation.getDays(start: startWoche, ende: endeWoche).map{$0.gesamtDauer}.reduce(0){$0+$1}
+                date                    = endeWoche.addDays(1).mondayOfWeek.firstSecondOfDay!
+                let text                = "\(startWoche.string("dd.MM."))"
+                ergebnis.append(GraphValue(xLabelText: text, value: gesamtDauerWoche))
+            }
+        case .GesamtdauerProMonat:
+            guard let start = von.startOfMonth.firstSecondOfDay,let ende = bis.endOfMonth.lastSecondOfDay else{return [GraphValue]()}
+            var date = start
+            while ende.isGreaterThanDate(dateToCompare: date){
+                guard let startMonat    = date.startOfMonth.firstSecondOfDay,let endeMonat = date.endOfMonth.lastSecondOfDay else{return [GraphValue]()}
+                let gesamtDauerMonat    = Meditation.getDays(start: startMonat, ende: endeMonat).map{$0.gesamtDauer}.reduce(0){$0+$1}
+                date                    = endeMonat.addDays(1).startOfMonth.firstSecondOfDay!
+                let text                = startMonat.string("MMM").replacingOccurrences(of: ".", with: "") + "." + "\(startMonat.string("yy"))"
+                ergebnis.append(GraphValue(xLabelText: text, value: gesamtDauerMonat))
+            }
+        case .GesamtdauerProTag:
+            guard let start = von.firstSecondOfDay,let ende = bis.lastSecondOfDay else{return [GraphValue]()}
+            var date = start
+            while ende.isGreaterThanDate(dateToCompare: date){
+                guard let startTag  = date.firstSecondOfDay,let endeTag = date.lastSecondOfDay else{return [GraphValue]()}
+                let gesamtDauerTag  = Meditation.getDays(start: startTag, ende: endeTag).map{$0.gesamtDauer}.reduce(0){$0+$1}
+                date                = endeTag.addDays(1).firstSecondOfDay!
+                let text            = startTag.string("dd.MM.")
+                ergebnis.append(GraphValue(xLabelText: text, value: gesamtDauerTag))
+            }
+        }
+        return ergebnis
+    }
+    
+    static var firstMeditationNotInKurs:Meditation?{
+        return Meditation.getAllOhneKurse().first
+    }
+    class func getAllOhneKurse()->[Meditation]{
+        print("getAllOhneKurse")
+        let request             = NSFetchRequest<Meditation>(entityName: "Meditation")
+        request.predicate       = NSPredicate(format: "kurs == nil")
+        request.sortDescriptors = [NSSortDescriptor(key: "start", ascending: true)]
+        if let meditationen = (try? context.fetch(request)){
+            return meditationen
+        }
+        return [Meditation]()
+    }
+    
+    func update(with timerData:TimerData) -> Meditation{
+        dauerAnapana            = Int32(timerData.anapanaDauer)
+        dauerVipassana          = Int32(timerData.vipassanaDauer)
+        dauerMetta              = Int32(timerData.mettaDauer)
+        cloudNeedsUpdate        = true
+        return self
+    }
+    
     
     //old
-    
-    
-    
     //    static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     class func new(template:MeditationTemplate,start:Date)->Meditation?{
         guard let meditation = new(start: start, mettaOpenEnd: false, name: template.name) else{return nil}
@@ -228,26 +329,8 @@ extension Meditation:EintragInKalender{
         }
         return [Meditation]()
     }
-    class func getAllTillToday()->[Meditation]{
-        
-        let request             = NSFetchRequest<Meditation>(entityName: "Meditation")
-        request.predicate       = NSPredicate(format: "start <= %@", Date() as CVarArg)
-        request.sortDescriptors = [NSSortDescriptor(key: "start", ascending: true)]
-        if let meditationen = (try? context.fetch(request)){
-            return meditationen
-        }
-        return [Meditation]()
-    }
-    class func getAllOhneKurse()->[Meditation]{
-        print("getAllOhneKurse")
-        let request             = NSFetchRequest<Meditation>(entityName: "Meditation")
-        request.predicate       = NSPredicate(format: "kurs == nil")
-        request.sortDescriptors = [NSSortDescriptor(key: "start", ascending: true)]
-        if let meditationen = (try? context.fetch(request)){
-            return meditationen
-        }
-        return [Meditation]()
-    }
+    
+    
     class func get7Days(firstDay:Date) -> [[Meditation]]{
         var meditationen    = [[Meditation]]()
         for i in 0 ..< 7{
@@ -263,6 +346,8 @@ extension Meditation:EintragInKalender{
             [NSPredicate(format: "start >= %@",start.firstSecondOfDay! as CVarArg),
              NSPredicate(format: "start <= %@", ende.lastSecondOfDay! as CVarArg)])
         request.sortDescriptors = [NSSortDescriptor(key: "start", ascending: true)]
+        
+        
         if let meditationen = (try? context.fetch(request)){
             return meditationen
         }
@@ -311,13 +396,7 @@ extension Meditation:EintragInKalender{
     }
     var eintragStart:Date{ return start! as Date }
     var eintragEnde:Date{ return ende as Date }
-    func delete(inFirebaseToo:Bool){
-        HealthManager().deleteMeditation(meditation: self)
-        if inFirebaseToo{ FirMeditations.deleteMeditation(meditation:self) }
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        context.delete(self)
-        saveContext()
-    }
+    
     
     //Statistiken
     var gesamtDauer:TimeInterval{ return TimeInterval(dauerMetta + dauerAnapana + dauerVipassana) }

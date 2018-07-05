@@ -11,7 +11,7 @@ import UIKit
 class FreundeTableVC: UITableViewController {
     private var freundeUndAnfragen = [Freund.getFreundesAnfragen(),Freund.getFreunde()]
         {didSet{tableView.reloadData()}}
-    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return UIInterfaceOrientationMask.portrait  }
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int { return 2 }

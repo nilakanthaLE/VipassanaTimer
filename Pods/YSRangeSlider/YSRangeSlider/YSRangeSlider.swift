@@ -42,6 +42,8 @@ extension Date {
         let cal             = Calendar.current
         return (cal as NSCalendar).date(bySettingHour: 23, minute: 59, second: 59, of: self, options: .matchFirst)
     }
+    
+    
 }
 
 extension NSDate {

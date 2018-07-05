@@ -48,7 +48,7 @@ class TimerConfigsTableVC: UITableViewController {
             mediStart.timerConfig                   = timerConfigs[indexPath.row]
         }
         else if let mediAnpassen = navigationController?.viewControllers[(navigationController?.viewControllers.count ?? 0) - 2] as? EditMeditationVC{
-            mediAnpassen.timerConfig                = timerConfigs[indexPath.row]
+//            mediAnpassen.timerConfig                = timerConfigs[indexPath.row]
         }
         _ = navigationController?.popViewController(animated: true)
     }

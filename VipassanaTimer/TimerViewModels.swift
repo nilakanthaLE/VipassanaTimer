@@ -16,17 +16,12 @@ import ReactiveSwift
 class TimerSettingsViewModel{
     let settingsForTimerViewModel:SettingsForTimerViewModel
     let soundFileViewModel:SoundFileViewModel
+    
     init(model:TimerSettingsModel){
         settingsForTimerViewModel   = SettingsForTimerViewModel(model: model)
         soundFileViewModel          = SoundFileViewModel(soundFileData: model.soundFileData)
-        
-        
-//        model.timerData.value = model.timerData.value.setSoundFileData(<#T##soundFileData: SoundFileData?##SoundFileData?#>)
     }
     
-//    func setSoundFileData(soundFileData:SoundFileData){
-//        model.timerData.value = model.timerData.value.setGesamtDauer(dauer)
-//    }
     deinit {  print("deinit TimerSettingsViewModel") }
 }
 
@@ -47,6 +42,7 @@ class TimerAnzeigeViewModel{
     
     
     let viewWidth           = MutableProperty<CGFloat> (0)
+    
     init(model:TimerAnzeigeModel){
         print("init TimerAnzeigeViewModel")
         
@@ -68,8 +64,6 @@ class TimerAnzeigeViewModel{
         // Timer
         ablaufWidth     <~ model.verdeckAnteil.producer.map{[weak self] value in value * (self?.viewWidth.value ?? 0)}
         ablaufWidth     <~ viewWidth.map{ model.verdeckAnteil.value * $0 }
-        
-        model.vipassanaDauer.producer.startWithValues{print("vipassanaDauer : \($0.hhmmss)")}
     }
     deinit { print("deinit TimerAnzeigeViewModel") }
 }

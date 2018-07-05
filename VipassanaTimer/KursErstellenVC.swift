@@ -31,12 +31,7 @@ class KursErstellenVC: UIViewController,UIPickerViewDataSource,UIPickerViewDeleg
     }
     
     @IBOutlet weak var ueberschriftLabel: UILabel!
-    @IBOutlet weak var erstellenButton: UIButton!{
-        didSet{
-            erstellenButton.isHidden = true
-            
-        }
-    }
+    @IBOutlet weak var erstellenButton: UIButton!{ didSet{ erstellenButton.isHidden = true } }
     @IBOutlet weak var kursTemplatePicker: UIPickerView!
     @IBOutlet weak var startDatePicker: UIDatePicker!{
         didSet{

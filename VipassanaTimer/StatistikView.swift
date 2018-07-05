@@ -55,9 +55,7 @@ class StatistikView: UIView {
     }
     var lastFrame:CGRect?
     override func layoutSubviews() {
-        if lastFrame != frame{
-            setNeedsDisplay()
-        }
+        if lastFrame != frame{ setNeedsDisplay() }
         lastFrame = frame
     }
     

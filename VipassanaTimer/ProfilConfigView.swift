@@ -12,7 +12,7 @@ import ReactiveSwift
 
 
 
-class ProfilConfigView:NibLoadingView{
+@IBDesignable class ProfilConfigView:NibLoadingView{
     var viewModel:ProfilConfigViewModel!{
         didSet{
             spitzNameTextFeld.reactive.text             <~ viewModel.spitzNameText.producer

@@ -15,7 +15,11 @@ class MainModel{
     let myActiveMeditation  = MutableProperty<PublicMeditation?>(nil)
     let pauseDates          = MutableProperty<(start:Date?,ende:Date?)>((nil,nil))
     
+    
     let tappedMeditationsPlatz  = MutableProperty<PublicMeditation?>(nil)
+    
+    let newNotification     = MutableProperty<(key:String,message:String?)>((key:"1",message:nil))
+    
     init(){
         myActiveMeditation.producer.startWithValues{
             fireBaseModel.updateMyMeditation(myMeditation: $0)
@@ -25,6 +29,8 @@ class MainModel{
         pauseDates.producer.startWithValues {
             coreDataModel.addPause(start: $0.start, ende: $0.ende)
         }
+        
+        newNotification.signal.observeValues{print($0)}
     }
     
 }

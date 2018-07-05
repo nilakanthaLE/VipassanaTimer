@@ -16,9 +16,29 @@ import ReactiveSwift
         didSet{
             userNameLabel.reactive.text <~ viewModel.meditationsPlatzTitle.producer
             viewModel.meditationsPlatzTitle.signal.observe{[weak self] _ in self?.setFontSize()}
+            viewModel.mettaEffektHasStarted.producer.filter{$0 == true}.startWithValues(){  [weak self] hasStarted in self?.mettaEffektHasStarted() }
         }
     }
     
+    private func mettaEffektHasStarted(){
+        let pulseAnimationx =  CABasicAnimation(keyPath: "transform.scale.x")
+        pulseAnimationx.duration     = 3
+        pulseAnimationx.fromValue    = 0.8
+        pulseAnimationx.toValue      = 1
+        pulseAnimationx.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        pulseAnimationx.autoreverses = true
+        pulseAnimationx.repeatCount = Float.greatestFiniteMagnitude
+        self.view.layer.add(pulseAnimationx, forKey: nil)
+        
+        let pulseAnimationy =  CABasicAnimation(keyPath: "transform.scale.y")
+        pulseAnimationy.duration     = 3
+        pulseAnimationy.fromValue    = 0.8
+        pulseAnimationy.toValue      = 1
+        pulseAnimationy.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        pulseAnimationy.autoreverses = true
+        pulseAnimationy.repeatCount = Float.greatestFiniteMagnitude
+        self.view.layer.add(pulseAnimationy, forKey: nil)
+    }
     
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var backGroundView: UIView!{

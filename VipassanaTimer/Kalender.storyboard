@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="S2M-uB-MAp">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--KalenderVC-->
+        <scene sceneID="4Bu-UU-WHY">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="28c-Ir-Hl8" customClass="KalenderVC" customModule="VipassanaTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iiy-bU-R0t"/>
+                        <viewControllerLayoutGuide type="bottom" id="nn9-sq-Jxz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xx4-aD-4sF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WWM-hT-CWL" customClass="KalenderView" customModule="MyCalendar">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="WWM-hT-CWL" firstAttribute="leading" secondItem="xx4-aD-4sF" secondAttribute="leading" id="G2b-Nx-G3Y"/>
+                            <constraint firstItem="nn9-sq-Jxz" firstAttribute="top" secondItem="WWM-hT-CWL" secondAttribute="bottom" id="n96-MB-CYJ"/>
+                            <constraint firstItem="WWM-hT-CWL" firstAttribute="top" secondItem="iiy-bU-R0t" secondAttribute="bottom" id="sOq-ux-NfO"/>
+                            <constraint firstAttribute="trailing" secondItem="WWM-hT-CWL" secondAttribute="trailing" id="yJ7-A5-3x1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="YdH-Or-wLq">
+                        <barButtonItem key="leftBarButtonItem" title="zurück" id="cGQ-gd-Jyz">
+                            <connections>
+                                <segue destination="UEt-AQ-A4Z" kind="unwind" unwindAction="unwindToHauptmenuWithSegue:" id="T2y-XM-d23"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="KtE-vv-EWO">
+                            <connections>
+                                <action selector="addMeditationButtonPressed:" destination="28c-Ir-Hl8" id="zg1-Wa-Hmt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="kalender" destination="WWM-hT-CWL" id="WYY-kU-PUX"/>
+                        <segue destination="euQ-5r-CzN" kind="show" identifier="editMeditation" id="nVS-tK-ftT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vWa-PG-CDm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="UEt-AQ-A4Z" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1662" y="1316"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Wqb-PV-ykX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="S2M-uB-MAp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Y4k-xQ-R4H">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="28c-Ir-Hl8" kind="relationship" relationship="rootViewController" id="XMX-6o-il5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tMu-L0-Bcl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="744" y="1318"/>
+        </scene>
+        <!--Meditation anpassen-->
+        <scene sceneID="idk-2M-7DW">
+            <objects>
+                <viewController id="euQ-5r-CzN" customClass="EditMeditationVC" customModule="VipassanaTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1u6-mx-4VS"/>
+                        <viewControllerLayoutGuide type="bottom" id="z85-PM-f36"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tpv-G7-PaD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" verticalHuggingPriority="251" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="80" translatesAutoresizingMaskIntoConstraints="NO" id="6h9-hh-uSY" customClass="TimerAnzeigeView" customModule="VipassanaTimer">
+                                <rect key="frame" x="16" y="72" width="343" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="3zZ-IH-W2v" appends="YES" id="ngN-Dp-ZAI"/>
+                                </connections>
+                            </view>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Xbf-dV-MOS">
+                                <rect key="frame" x="16" y="160" width="343" height="461"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.79580073920000005" alpha="0.66315282529999997" colorSpace="custom" customColorSpace="sRGB"/>
+                                <date key="date" timeIntervalSinceReferenceDate="506260625.72791201">
+                                    <!--2017-01-16 11:57:05 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uGf-3e-YxJ">
+                                <rect key="frame" x="286" y="629" width="73" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="mCQ-38-uT1"/>
+                                </constraints>
+                                <state key="normal" title=" eintragen ">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6M-5f-ORJ">
+                                <rect key="frame" x="16" y="629" width="62" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title=" löschen ">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="6h9-hh-uSY" firstAttribute="leading" secondItem="tpv-G7-PaD" secondAttribute="leadingMargin" id="8Bf-B9-qgB"/>
+                            <constraint firstItem="6h9-hh-uSY" firstAttribute="top" secondItem="1u6-mx-4VS" secondAttribute="bottom" constant="8" symbolic="YES" id="CzP-YB-LCi"/>
+                            <constraint firstItem="uGf-3e-YxJ" firstAttribute="top" secondItem="Xbf-dV-MOS" secondAttribute="bottom" constant="8" symbolic="YES" id="Lju-cW-ZyV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6h9-hh-uSY" secondAttribute="trailing" id="Mkr-FK-LtJ"/>
+                            <constraint firstItem="uGf-3e-YxJ" firstAttribute="trailing" secondItem="tpv-G7-PaD" secondAttribute="trailingMargin" id="VB0-QA-iXv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Xbf-dV-MOS" secondAttribute="trailing" id="a8Q-9s-Bce"/>
+                            <constraint firstItem="z85-PM-f36" firstAttribute="top" secondItem="q6M-5f-ORJ" secondAttribute="bottom" constant="8" symbolic="YES" id="e2O-OY-ffe"/>
+                            <constraint firstItem="Xbf-dV-MOS" firstAttribute="top" secondItem="6h9-hh-uSY" secondAttribute="bottom" constant="8" symbolic="YES" id="e2o-eM-tAK"/>
+                            <constraint firstItem="Xbf-dV-MOS" firstAttribute="leading" secondItem="tpv-G7-PaD" secondAttribute="leadingMargin" id="oE3-hT-Dy4"/>
+                            <constraint firstItem="z85-PM-f36" firstAttribute="top" secondItem="uGf-3e-YxJ" secondAttribute="bottom" constant="8" symbolic="YES" id="pNS-uK-wUV"/>
+                            <constraint firstItem="q6M-5f-ORJ" firstAttribute="leading" secondItem="tpv-G7-PaD" secondAttribute="leadingMargin" id="wo0-c4-RZm"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Meditation anpassen" id="4HH-mb-pbJ"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="eintragenButton" destination="uGf-3e-YxJ" id="8r3-Y0-EAG"/>
+                        <outlet property="loeschenButton" destination="q6M-5f-ORJ" id="8uk-1s-cpc"/>
+                        <outlet property="startZeitPicker" destination="Xbf-dV-MOS" id="Gf2-dd-gbD"/>
+                        <outlet property="timerAnzeigeView" destination="6h9-hh-uSY" id="jEN-dW-m9o"/>
+                        <segue destination="Qzb-YR-Vra" kind="unwind" identifier="reloadKalender" unwindAction="reloadKalenderWithSegue:" id="63M-Gy-6Yi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LXu-Dg-4qy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Qzb-YR-Vra" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="3zZ-IH-W2v">
+                    <connections>
+                        <segue destination="Ssf-Kb-Vsu" kind="show" id="klC-Fg-y36"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2728.8000000000002" y="1315.5922038980511"/>
+        </scene>
+        <!--Kalender Meditation Timer SettingsVC-->
+        <scene sceneID="wHd-Qc-0ih">
+            <objects>
+                <viewController id="Ssf-Kb-Vsu" customClass="KalenderMeditationTimerSettingsVC" customModule="VipassanaTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ibL-Sq-fWe"/>
+                        <viewControllerLayoutGuide type="bottom" id="wFO-zY-He8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TMd-Eu-2wz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sh0-jd-v33" customClass="TimerSettingsView" customModule="VipassanaTimer">
+                                <rect key="frame" x="16" y="72" width="343" height="575"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sh0-jd-v33" firstAttribute="leading" secondItem="TMd-Eu-2wz" secondAttribute="leadingMargin" id="2E8-qP-MKY"/>
+                            <constraint firstItem="sh0-jd-v33" firstAttribute="top" secondItem="ibL-Sq-fWe" secondAttribute="bottom" constant="8" symbolic="YES" id="OyI-Lv-P0E"/>
+                            <constraint firstAttribute="bottom" secondItem="sh0-jd-v33" secondAttribute="bottom" constant="20" symbolic="YES" id="QIn-qd-uKv"/>
+                            <constraint firstItem="sh0-jd-v33" firstAttribute="trailing" secondItem="TMd-Eu-2wz" secondAttribute="trailingMargin" id="oe4-6j-mfp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="timerSettingsView" destination="sh0-jd-v33" id="pVs-Io-BF8"/>
+                        <segue destination="3RH-5S-hlO" kind="show" identifier="go2sound" id="FhN-UG-Qob"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fUo-pT-LYU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3832.8000000000002" y="1316.4917541229386"/>
+        </scene>
+        <!--SoundFilesTableVC-->
+        <scene sceneID="nuy-eW-jsM">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="SoundFilesTableVC" storyboardName="Timer" referencedIdentifier="SoundFilesTableVC" id="3RH-5S-hlO" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SEB-IO-RxU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4532" y="1315"/>
+        </scene>
+    </scenes>
+</document>

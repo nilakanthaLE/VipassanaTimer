@@ -36,7 +36,7 @@ class ProfilConfigVCViewModel{
 class ProfilConfigVC: UIViewController {
     var viewModel:ProfilConfigVCViewModel = ProfilConfigVCViewModel(model: ProfilConfigModel())
     @IBOutlet weak var profilConfigView: ProfilConfigView!{ didSet{  profilConfigView.viewModel = viewModel.getViewModelForProfilConfigView()  }  }
-    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return UIInterfaceOrientationMask.portrait  }
     override func viewDidLoad() {
         print("ProfilConfigVC viewDidLoad")
         super.viewDidLoad()

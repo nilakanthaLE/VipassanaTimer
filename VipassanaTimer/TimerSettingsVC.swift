@@ -27,7 +27,7 @@ class TimerSettingsVC: UIViewController {
         timerSettingsView.soundFileView.tapOnBluerViewGesture.addTarget(self, action: #selector(go2sound))
         view.backgroundColor        = UIColor(patternImage: #imageLiteral(resourceName: "backGroundImage.png"))
     }
-
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return UIInterfaceOrientationMask.portrait  }
     @objc func go2sound(){
         performSegue(withIdentifier: "go2sound", sender: nil)
     }

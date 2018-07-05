@@ -30,7 +30,7 @@ class MeditationsPlatzConfigVC:UIViewController{
     @IBOutlet weak var meditationsPlatzConfigView: MeditationsPlatzConfigView!{
         didSet{ meditationsPlatzConfigView.viewModel = viewModel }
     }
-    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return UIInterfaceOrientationMask.portrait  }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor            = UIColor(patternImage: #imageLiteral(resourceName: "backGroundImage.png"))
@@ -39,7 +39,7 @@ class MeditationsPlatzConfigVC:UIViewController{
     @IBAction func doneAction(_ sender: UIBarButtonItem) { dismiss(animated: true, completion: nil)  }
 }
 
-class MeditationsPlatzConfigView:NibLoadingView{
+@IBDesignable class MeditationsPlatzConfigView:NibLoadingView{
     var viewModel:MeditationsPlatzConfigViewModel!{
         didSet{
             platzMal3.viewModel = viewModel.getViewModelForMeditationsPlatzView()

@@ -9,7 +9,7 @@
 import UIKit
 
 class MeineFreundesAnfragenTableVC: UITableViewController {
-
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return UIInterfaceOrientationMask.portrait  }
     private var meineFreundesAnfragen = [[Freund]]()
         { didSet{tableView.reloadData()} }
     

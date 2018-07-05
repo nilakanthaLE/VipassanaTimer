@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+protocol EintragInKalender {
+    var eintragStart:Date{get}
+    var eintragEnde:Date{get}
+    var eintragView:UIView{get}
+}
 
 infix operator ~>
 
@@ -25,7 +30,25 @@ func ~> <R> (
     }
 }
 
-
+extension UIView{
+    func setBackgroundImage(image:UIImage){
+        let imageView = UIImageView(image: image)
+        addConstraint(NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: imageView, attribute: .leading, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: imageView, attribute: .trailing, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: imageView, attribute: .top, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: imageView, attribute: .bottom, multiplier: 1, constant: 0))
+        addSubview(  imageView )
+    }
+    func setControlDesignPatterns(){
+        backgroundColor         = DesignPatterns.controlBackground
+        layer.cornerRadius      = 5.0
+        layer.borderColor       = DesignPatterns.mocha.cgColor
+        layer.borderWidth       = 0.5
+        layer.shadowOffset      = CGSize(width: 2, height: 2)
+        layer.shadowColor       = UIColor.white.cgColor
+        clipsToBounds           = true
+    }
+}
 extension String {
     func localized(lang:String) ->String {
         
@@ -103,6 +126,16 @@ extension Date{
         let cal             = Calendar.current
         return (cal as NSCalendar).date(byAdding: .day, value: days, to: self, options: .matchFirst)!
     }
+    func addWeeks(_ weeks:Int) -> Date{
+        var ergebnis = self
+        for _ in 0 ..< weeks{ ergebnis = ergebnis.sundayOfWeek.addDays(1) }
+        return ergebnis
+    }
+    func addMonths(_ months:Int) -> Date{
+        var ergebnis = self
+        for _ in 0 ..< months{ ergebnis = ergebnis.endOfMonth.addDays(1) }
+        return ergebnis
+    }
 //    func string(_ format:String)->String{
 //        let formatter           = DateFormatter()
 //        formatter.dateFormat    = format
@@ -127,6 +160,14 @@ extension Date{
         return (cal as NSCalendar).date(bySettingHour: 23, minute: 59, second: 59, of: self, options: .matchFirst)
     }
     
+    var timeIntervalOfDay:TimeInterval{
+        return timeIntervalSince(firstSecondOfDay!)
+    }
+    
+    var weekYearString:String{
+        let weekOfYear = Calendar.current.component(.weekOfYear, from: self)
+        return "\(weekOfYear):\(self.string("yyyy"))"
+    }
 }
 extension Int{
     var stringWithStartingZero:String{
@@ -282,6 +323,13 @@ extension Double{
     var zweiKommaStellenString:String{
         let hundertfach = Int(self*100)
         return "\(Double(hundertfach) / 100.0)"
+    }
+    
+    var dhh:String{
+        let days    = Int(stunden / 24)
+        let hours   = stunden - days * 24
+//        let minutes = Int((self - Double(days * 86400) - Double(hours * 3600)) / 60)
+        return "\(days)d \(hours)h"
     }
 }
 extension Int{

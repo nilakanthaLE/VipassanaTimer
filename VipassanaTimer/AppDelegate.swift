@@ -8,11 +8,16 @@
 
 import UIKit
 import CoreData
-import UserNotifications
-import AVFoundation
+
+
 import CloudKit
 import Firebase
+
+
+import AVFoundation
 import AudioToolbox
+import UserNotifications
+
 
 let database    = Database.database()
 let storage     = Storage.storage()
@@ -96,9 +101,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Meditierender.get()?.meditationsPlatzTitle = Meditierender.get()?.nickNameSichtbarkeit == 2 ? Meditierender.get()?.nickName ?? "?" : "?"
         }
         
-        
         FirActiveMeditations.cleaningActiveMeditations()
+        AppConfig.get()?.starts += 1
+        FirNotitification.setObserver()
 
+        //test
+        DanaProducts.store.requestProducts { _,_  in }
+        
         return true
     }
 

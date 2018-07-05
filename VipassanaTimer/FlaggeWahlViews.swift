@@ -16,7 +16,7 @@ class FlaggeWahlVC:UIViewController{
     @IBAction func doneButtonAction(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
-    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return UIInterfaceOrientationMask.portrait  }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor            = UIColor(patternImage: #imageLiteral(resourceName: "backGroundImage.png"))
@@ -24,7 +24,7 @@ class FlaggeWahlVC:UIViewController{
     }
 }
 
-class FlaggeWahlView:NibLoadingView,UIPickerViewDataSource,UIPickerViewDelegate{
+@IBDesignable class FlaggeWahlView:NibLoadingView,UIPickerViewDataSource,UIPickerViewDelegate{
     var viewModel:FlaggeWahlViewModel!{
         didSet{
             picker.reactive.selectedRow(inComponent: 0) <~ viewModel.suchRow

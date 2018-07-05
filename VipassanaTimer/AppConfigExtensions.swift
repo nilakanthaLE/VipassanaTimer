@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
+import Firebase
 
 extension AppConfig{
     
@@ -23,5 +24,10 @@ extension AppConfig{
             return appConfig
         }
         return nil
+    }
+    
+    static func setNotification(snapshot:DataSnapshot){
+        guard get()?.firLastNotification != snapshot.key else {return}
+        mainModel.newNotification.value = (key:snapshot.key,message:snapshot.value as? String)
     }
 }

@@ -3,7 +3,7 @@
 "3N8-ga-ISe.text" = "Label";
 
 /* Class = "UILabel"; text = "∑ ohne Kurse"; ObjectID = "9zw-Wp-DYg"; */
-"9zw-Wp-DYg.text" = "∑ without courses";
+"9zw-Wp-DYg.text" = "Sum";
 
 /* Class = "UILabel"; text = "Kurstage"; ObjectID = "Fo3-zZ-Ay7"; */
 "Fo3-zZ-Ay7.text" = "days on a course";

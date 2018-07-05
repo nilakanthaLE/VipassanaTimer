@@ -31,9 +31,7 @@ class HealthManager{
         let status = HealthManager.healthKitStore.authorizationStatus(for: HKObjectType.categoryType(forIdentifier: .mindfulSession)!)
         if status == .sharingAuthorized{
             let meditationen    = Meditation.getNotInHealthKit()
-            for meditation in meditationen{
-                saveMeditationIfNeeded(meditation: meditation)
-            }
+            for meditation in meditationen{ saveMeditationIfNeeded(meditation: meditation) }
         }
         
     }
