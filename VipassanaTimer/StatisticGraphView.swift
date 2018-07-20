@@ -9,57 +9,21 @@
 import UIKit
 import ReactiveSwift
 
-class StatisticGraphViewModel{
-    private let vonDate             = MutableProperty<Date>(Date())
-    private let bisDate             = MutableProperty<Date>(Date())
-    private let selectedGraphTypen  = MutableProperty<GraphTypen>(.GesamtdauerProWoche)
-    
-    let redraw                  = MutableProperty<Void>(Void())
-    let minY                    = MutableProperty<Double>(0)
-//    let maxY                    = MutableProperty<Double>(0)
-    let values                  = MutableProperty<[GraphValue]>([GraphValue]())
-    
-    
-    var maxY:Double{ return values.value.map{$0.value}.max() ?? 0 }
-    init(von:MutableProperty<Date>,bis:MutableProperty<Date>,selectedGraphTypen:MutableProperty<GraphTypen>){
-        print("init StatisticGraphViewModel")
-        self.selectedGraphTypen <~ selectedGraphTypen.producer
-        vonDate                 <~ von.producer
-        bisDate                 <~ bis.producer
-
-        
-        
-        values                  <~ selectedGraphTypen.producer.map{[weak self] _ in self?.getGraphValues() ?? [GraphValue]()}
-        values                  <~ vonDate.producer.map{[weak self] _ in self?.getGraphValues() ?? [GraphValue]()}
-        values                  <~ bisDate.producer.map{[weak self] _ in self?.getGraphValues() ?? [GraphValue]()}
-
-        
-        
-        redraw                  <~ values.map{_ in Void()}
-    }
-    
-    //helper
-    private func getGraphValues() -> [GraphValue] { return Meditation.getGraphValuesFor(graphTyp: selectedGraphTypen.value, von: vonDate.value, bis: bisDate.value)}
-}
-
-
+//✅
 class StatisticGraphView:UIView{
-    var viewModel:StatisticGraphViewModel!{
-        didSet{
-            viewModel.redraw.producer.start(){[weak self] _ in self?.setNeedsDisplay()}
-        }
-    }
+    var viewModel:StatisticGraphViewModel!      { didSet{ viewModel.redraw.producer.start(){[weak self] _ in self?.setNeedsDisplay()} } }
     
-    
+    //draw
     override func draw(_ rect: CGRect) {
-        print("draw")
+        //clean
         for subView in subviews {subView.removeFromSuperview()}
         
+        // values
         let width       = rect.size.width - 2 * rand
         let height      = rect.size.height - 2 * rand
         let schritte    = schritteYAchse(maxY: viewModel.maxY)
 
-        
+        //draw action
         drawXAchse(width: width,height: height)
         drawYAchse(height: height)
         drawXAchsenBeschriftung(graphValues: viewModel.values.value, width: width, height:height)
@@ -67,6 +31,7 @@ class StatisticGraphView:UIView{
         drawGraph(graphValues: viewModel.values.value, width: width, height: height, schritte: schritte)
     }
     
+    //helper
     let rand:CGFloat  = 25.0
     private func drawXAchse(width:CGFloat,height:CGFloat){
         //x-Achse
@@ -155,15 +120,11 @@ class StatisticGraphView:UIView{
                            schritte:(schritt:Double,anzahlSchritte:Int)){
         let schrittWeite    = width / CGFloat(graphValues.count)
         let multiplikator   = Double(height) / (schritte.schritt * Double(schritte.anzahlSchritte))
-
-        print("for graphValue \(graphValues.count)")
-        let linie       = UIBezierPath()
-        linie.lineWidth = 1.0
-        let y           = height + rand - CGFloat((graphValues.first?.value ?? 0) * multiplikator)
+        let linie           = UIBezierPath()
+        linie.lineWidth     = 1.0
+        let y               = height + rand - CGFloat((graphValues.first?.value ?? 0) * multiplikator)
         linie.move(to: CGPoint(x: rand, y: y))
         for graphValue in graphValues.map({$0.value}).enumerated(){
-            
-            
             let x = CGFloat(graphValue.offset) * schrittWeite + rand
             let y = height + rand - CGFloat(graphValue.element * multiplikator)
             linie.addLine(to: CGPoint(x: x, y: y))
@@ -172,10 +133,7 @@ class StatisticGraphView:UIView{
         UIColor.orange.setStroke()
         linie.stroke()
     }
-    
-    //helper
     private func schritteYAchse(maxY:Double)->(schritt:Double,anzahlSchritte:Int){
-        print("schritteYAchse maxY:\(maxY)")
         let start = Date()
         defer{ print("schritteYAchse dauer: \(Date().timeIntervalSince(start)) s") }
         
@@ -196,13 +154,11 @@ class StatisticGraphView:UIView{
         var multiplier:Double = 1.0
         if zehntel < 1{
             while schritt < 1 || schritt > 10{
-                print("while 1")
                 schritt *= 10
                 multiplier /= 10
             }
         }else{
             while schritt < 1 || schritt > 10{
-                print("while 2")
                 schritt /= 10
                 multiplier *= 10
             }
@@ -219,7 +175,6 @@ class StatisticGraphView:UIView{
         lastFrame = frame
     }
 }
-
 
 struct GraphValue{
     let xLabelText:String?

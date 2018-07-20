@@ -1,0 +1,9 @@
+
+/* Class = "UILabel"; text = "01.01.2017"; ObjectID = "CAc-bM-jff"; */
+"CAc-bM-jff.text" = "01.01.2017";
+
+/* Class = "UIButton"; normalTitle = "zurücksetzen"; ObjectID = "Vod-P7-gcA"; */
+"Vod-P7-gcA.normalTitle" = "zurücksetzen";
+
+/* Class = "UILabel"; text = "Ohne Angabe eines Datums wird der Durchschnitt basierend auf dem Datum der ersten eingetragenen Meditation berechnet. Sollten Sie bereits länger zurückliegende Kurse nachgetragen haben, so kann das die Durchschnittswerte verfälschen. Geben Sie in diesem Fall bitte hier das Datum ein, seit dem die app regelmäßig zum Einsatz kommt.\n"; ObjectID = "r3H-57-ri4"; */
+"r3H-57-ri4.text" = "Ohne Angabe eines Datums wird der Durchschnitt basierend auf dem Datum der ersten eingetragenen Meditation berechnet. Sollten Sie bereits länger zurückliegende Kurse nachgetragen haben, so kann das die Durchschnittswerte verfälschen. Geben Sie in diesem Fall bitte hier das Datum ein, seit dem die app regelmäßig zum Einsatz kommt.\n";

@@ -9,21 +9,24 @@
 import UIKit
 import ReactiveSwift
 
-
-class FlaggeWahlVC:UIViewController{
-    var viewModel:FlaggeWahlVCViewModel!
-    @IBOutlet weak var flaggWahlView: FlaggeWahlView!{didSet{ flaggWahlView.viewModel =  viewModel.getViewModelForFlaggeWahlView()}}
-    @IBAction func doneButtonAction(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
-    }
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return UIInterfaceOrientationMask.portrait  }
+//✅
+class FlaggeWahlVC:DesignViewControllerPortrait{
+    var viewModel:FlaggeWahlViewModel!//FlaggeWahlVCViewModel!
+    
+    //IBOutlet
+    @IBOutlet weak var flaggWahlView: FlaggeWahlView!
+    
+    //IBAction
+    @IBAction func doneButtonAction(_ sender: UIBarButtonItem) { dismiss(animated: true, completion: nil) }
+    
+    //VC LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor            = UIColor(patternImage: #imageLiteral(resourceName: "backGroundImage.png"))
-        navigationController?.navigationBar.setDesignPattern()
+        flaggWahlView.viewModel =  viewModel//.getViewModelForFlaggeWahlView()
     }
 }
 
+//✅
 @IBDesignable class FlaggeWahlView:NibLoadingView,UIPickerViewDataSource,UIPickerViewDelegate{
     var viewModel:FlaggeWahlViewModel!{
         didSet{
@@ -31,17 +34,14 @@ class FlaggeWahlVC:UIViewController{
             viewModel.suchString                        <~ suchFeld.reactive.continuousTextValues
             viewModel.userSelection                     <~ picker.reactive.selections.map{$0.row}
             
-            layer.borderColor   = standardRahmenFarbe.cgColor
-            layer.borderWidth   = standardBorderWidth
-            layer.cornerRadius  = standardCornerRadius
-            clipsToBounds       = true
+            self.setStandardDesign()
         }
     }
     
     //PickerView
-    func numberOfComponents(in pickerView: UIPickerView) -> Int { return 1 }
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int { return viewModel.pickerValues.count }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{ return viewModel.pickerValues[row] }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int                                                 { return 1 }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int                  { return viewModel.pickerValues.count }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?   { return viewModel.pickerValues[row] }
     
     //IBOutlets
     @IBOutlet weak var suchFeld: UITextField!

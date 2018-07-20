@@ -21,6 +21,8 @@ import UserNotifications
 
 let database    = Database.database()
 let storage     = Storage.storage()
+func saveContext()  { DispatchQueue.main.async { (UIApplication.shared.delegate as? AppDelegate)?.saveContext() } }
+let context     = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -80,21 +82,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         print("application DidFinishLaunchingWithOptions")
-        _ = Singleton.sharedInstance
         _ = Meditierender.get()
         
         cleanCloudKitVersion()
-        
+
         // Firebase
         FirebaseApp.configure()
         database.isPersistenceEnabled = true
         FirActiveMeditations.deleteActiveMeditation()
         
-        //erzeugt Kurstemplates (erster Start)
-        KursTemplate.createKursTemplates()
-        
         //erstellt ersten TimerConfig (wenn kein Timer existiert)
-        TimerConfig.createFirstTimer()
+//        TimerConfig.createFirstTimer()
         
         //neueVersion mit sitzplatzTitle
         if Meditierender.get()?.meditationsPlatzTitle == nil{
@@ -106,7 +104,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirNotitification.setObserver()
 
         //test
-        DanaProducts.store.requestProducts { _,_  in }
         
         return true
     }

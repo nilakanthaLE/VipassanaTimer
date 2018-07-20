@@ -9,78 +9,60 @@
 import UIKit
 import ReactiveSwift
 
-
-
-
-
-
-
-@IBDesignable class GeradeMeditiertView: UICollectionViewController,UICollectionViewDelegateFlowLayout {
+//✅
+class GeradeMeditiertView: UICollectionViewController,UICollectionViewDelegateFlowLayout {
     let freiraumZwischenCellen:CGFloat  = 5.0
     let sectionenRaender:CGFloat        = 10
     
-    
-    
-    var viewModel:GeradeMeditiertViewModel!{
-        didSet{
-            print("GeradeMeditiertView viewModel didSet")
-            viewModel.aktuelleMeditationen.producer.start(){[weak self] _ in
-                self?.collectionView?.reloadData()
-            }
-        }
-    }
-    
-    let reuseIdentifier = "cell"
-    
-    
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.numberOfItems
-    }
+    //ViewModel
+    var viewModel:GeradeMeditiertViewModel!{ didSet{ viewModel.aktuelleMeditationen.producer.start(){[weak self] _ in self?.reloadTable()}  } }
+
+    //CollectionView DataSource & delegates
+    var timer = [Timer]()
+    override func numberOfSections(in collectionView: UICollectionView) -> Int { return 1 }
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { return viewModel.numberOfItems  }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell        = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MeditationsPlatzCell
-        cell.viewModel  = viewModel.getViewModelForCell(indexPath: indexPath)
-        
+        let cell                            = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MeditationsPlatzCell
+        cell.meditationsPlatzView.viewModel = viewModel.getViewModelForCell(indexPath: indexPath)
+        if let _timer = cell.meditationsPlatzView.viewModel.timer {timer.append(_timer)}
         return cell
     }
-
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.sitzPlatzTapped(at: indexPath)
-    }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) { viewModel.sitzPlatzTapped(at: indexPath) }
     
+    //Size und Abstände
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize { return sizeForItem }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat{
+        return freiraumZwischenCellen }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return freiraumZwischenCellen }
     
+    //ViewController LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("GeradeMeditiertView viewDidLoad")
-        collectionView?.register(UINib(nibName: "MeditationsPlatzCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView?.register(UINib(nibName: "MeditationsPlatzCell", bundle: nil), forCellWithReuseIdentifier: "cell")
         collectionView?.dataSource = self
-        collectionView?.reloadData()
-        
-        
     }
     
-    var sizeForItem:CGSize{
-        
+    var _size = CGSize.zero
+    override func viewWillLayoutSubviews() {
+        if _size != collectionView!.contentSize { reloadTable() }
+        _size = collectionView!.contentSize
+    }
+    
+    //helper
+    private var sizeForItem:CGSize{
         let anzahlProZeile:CGFloat      = viewModel.anzahlProZeile
         let zwischenRaumSumme:CGFloat   = (anzahlProZeile - 1) * freiraumZwischenCellen
         let raender:CGFloat             = sectionenRaender * 2
         let breite                      = (collectionView!.contentSize.width - zwischenRaumSumme - raender) / anzahlProZeile
         return CGSize(width: breite, height: breite)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return sizeForItem
+    private func reloadTable(){
+        for _timer in timer {_timer.invalidate()}
+        timer.removeAll()
+        collectionView?.reloadData()
     }
-    
-    //Abstände
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return freiraumZwischenCellen
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return freiraumZwischenCellen
-    }
+    deinit { print("deinit GeradeMeditiertVC") }
 }
 
 

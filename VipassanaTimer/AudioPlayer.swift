@@ -6,84 +6,101 @@
 //  Copyright © 2018 Matthias Pochmann. All rights reserved.
 //
 
-import Foundation
 import AVFoundation
 import ReactiveSwift
 import Result
 
-
-
-
-fileprivate var timer:Timer?
-fileprivate var player: AVAudioPlayer?
+//✅
+// Klangschalen Player
 class AudioPlayer{
-    
+    var player: AVAudioPlayer?
     func playKlangSchale(){
-        
         //Preparation to play
         do{
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             try AVAudioSession.sharedInstance().setActive(true)
-            
             if let klangSchaleURL = Bundle.main.url(forResource: "tibetan-bell", withExtension: "wav")  { player = try AVAudioPlayer(contentsOf: klangSchaleURL) }
             guard let player = player else { return }
             player.setVolume(0.3, fadeDuration: TimeInterval(0))
             player.prepareToPlay()
             player.play()
         }
-        catch let error as NSError {
-            print(error.description)
-        }
+        catch let error as NSError { print(error.description) }
     }
-    init(){ print("init AudioPlayer")}
-    deinit {
-        timer?.invalidate()
-        timer = nil
-        player = nil
-        print("deinit AudioPlayer")
-    }
-    
-    
-//var timer:Timer?
-//    let currentTime = MutableProperty<TimeInterval>(0)
-//    func playSound(url:URL?,currentTimeSet:MutableProperty<TimeInterval>) -> (duration:TimeInterval,currentTime:MutableProperty<TimeInterval>)?{
-//        guard let url = url else {return nil}
-//        
-//        timer?.invalidate()
-//        timer = nil
-//        player?.stop()
-//        
-//        weak var _timer     = timer
-//        weak var _player    = player
-//        do{
-//            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-//            try AVAudioSession.sharedInstance().setActive(true)
-//            
-//            _player = try AVAudioPlayer(contentsOf: url)
-//            _player?.setVolume(0.3, fadeDuration: TimeInterval(0))
-//            _player?.prepareToPlay()
-//            _player?.play()
-//            
-//            _timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {[weak self] _ in
-//                self?.currentTime.value = _player?.currentTime ?? 0
-//            }
-//            
-//            currentTimeSet.signal.observeValues { _player?.currentTime = $0 }
-//            return (duration:player?.duration ?? 0,currentTime:currentTime)
-//        }
-//        catch let error as NSError {
-//            print(error.description)
-//            return nil
-//        }
-//    }
-//    func stopPlaying(){
-//        print("stopPlaying")
-//        timer?.invalidate()
-//        timer = nil
-//        player?.stop()
-//    }
+    deinit  { player = nil }
 }
 
-
-
-
+//✅
+//Sound File Player
+let soundFileAudioPlayer = SoundFileAudioPlayer()
+class SoundFileAudioPlayer{
+    let soundFileData       = MutableProperty<SoundFileData?>(nil)  //wird on außen gesetzt
+    let currentTimeSignal   = MutableProperty<TimeInterval>(0)      //sendet Werte
+    let currentTimeSet      = MutableProperty<TimeInterval>(0)
+    let dauer               = MutableProperty<TimeInterval>(0)
+    let restZeit            = MutableProperty<TimeInterval>(0)
+    let anteilAnGesamt      = MutableProperty<Double>(0)
+    
+    //init
+    private let ticker = SignalProducer.timer(interval: DispatchTimeInterval.seconds(1), on: QueueScheduler.main)
+    fileprivate init(){
+        //SoundFile setzen -> Player starten oder stoppen
+        soundFileData.signal.observeValues(){[weak self] soundFile in self?.startStopPlayer(soundFile: soundFile) }
+        
+        //Ticker
+        ticker.start()
+        dauer               <~ ticker.map{[weak self] _ in self?.player?.duration}.filterMap{$0}
+        currentTimeSignal   <~ ticker.map{[weak self] _ in self?.player?.currentTime}.filterMap{$0}
+        restZeit            <~ ticker.map{[weak self] _ in self?._restZeit}.filterMap{$0}
+        anteilAnGesamt      <~ ticker.map{[weak self] _ in self?._anteilAnGesamt}.filterMap{$0}
+        
+        //current Time setzen
+        currentTimeSet.signal.observeValues{ [weak self] timeSet in self?.player?.currentTime = timeSet }
+    }
+    
+    //player
+    private var player:AVAudioPlayer?
+    private var pauseCurrentTime:TimeInterval = 0
+    
+    //Pause + wieder starten
+    func pause(){
+        pauseCurrentTime = player?.currentTime ?? 0
+        player?.stop()
+    }
+    func startNachPause(){
+        startStopPlayer(soundFile: soundFileData.value, at: pauseCurrentTime)
+        pauseCurrentTime = 0
+    }
+    
+    //den Player an einer bestimmten Stelle starten
+    // falls kein SoundFileData übergeben wird, Player stoppen
+    private func startStopPlayer(soundFile:SoundFileData?,at position:TimeInterval = 0){
+        player?.stop()
+        player = nil
+        
+        guard let soundFileURL = soundFile?.loacalSoundfileURL else { return }  //nur stop
+        do{
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            player = try AVAudioPlayer(contentsOf: soundFileURL)
+            player?.setVolume(1, fadeDuration: TimeInterval(0))
+            player?.prepareToPlay()
+            player?.currentTime = position
+            player?.play()
+        }
+        catch let error as NSError {
+            print(error.description)
+            return
+        }
+    }
+    
+    //helper
+    private var _anteilAnGesamt:Double{
+        guard dauer.value != 0 else {return 0}
+        return (player?.currentTime ?? 0) / dauer.value
+    }
+    private var _restZeit:TimeInterval{
+        return dauer.value - (player?.currentTime ?? 0)
+    }
+}

@@ -6,28 +6,26 @@
 //  Copyright © 2017 Matthias Pochmann. All rights reserved.
 //
 
-import Foundation
-import UIKit
 import CoreData
 import Firebase
+import ReactiveSwift
 
+//Benachrichtigung über Firebase
+let newNotification             = MutableProperty<(key:String,message:String?)>((key:"1",message:nil))
+
+//✅
+//AppConfig
+// sichert App relevante Informationen
 extension AppConfig{
-    
+    // AppConfig holen oder neu erstellen
     class func get()->AppConfig?{
-        
         let request             = NSFetchRequest<AppConfig>(entityName: "AppConfig")
-        
-        if let appConfig = (try? context.fetch(request))?.first{
-            return appConfig
-        }
-        if let appConfig = NSEntityDescription.insertNewObject(forEntityName: "AppConfig", into: context) as? AppConfig{
-            return appConfig
-        }
-        return nil
+        if let appConfig = (try? context.fetch(request))?.first{ return appConfig }
+        return NSEntityDescription.insertNewObject(forEntityName: "AppConfig", into: context) as? AppConfig
     }
-    
+    // Benachichtigung anzeigebn, falls neu
     static func setNotification(snapshot:DataSnapshot){
         guard get()?.firLastNotification != snapshot.key else {return}
-        mainModel.newNotification.value = (key:snapshot.key,message:snapshot.value as? String)
+        newNotification.value = (key:snapshot.key,message:snapshot.value as? String)
     }
 }

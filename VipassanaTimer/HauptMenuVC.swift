@@ -5,29 +5,62 @@
 //  Created by Matthias Pochmann on 10.01.17.
 //  Copyright © 2017 Matthias Pochmann. All rights reserved.
 //
-
 import UIKit
 import HealthKit
 import CloudKit
-import MIBadgeButton_Swift
-
 import ReactiveSwift
 
-
-
-class HauptMenuViewModel{ }
-
-
-class HauptMenuVC: UIViewController,UIPopoverPresentationControllerDelegate {
-    var viewModel:HauptMenuViewModel! = HauptMenuViewModel()
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return UIInterfaceOrientationMask.portrait  }
+//✅
+class HauptMenuViewModel{
+    private let badgeCount          = MutableProperty<Int>(0)
+    private let statistics          = MutableProperty<Statistics>(Statistics.get())
     
-    @IBAction func unwindToHauptmenu(segue: UIStoryboardSegue){ saveContext() }
-
+    let infoButtonAction            = MutableProperty<Void>(Void())
+    let aufklappButtonPressed       = MutableProperty<SubmenuButtonTyp>(.freunde)
+    func updateBadgCount()  { badgeCount.value    = Freund.getFreundesAnfragen().count }
+    func updateStatistics() { statistics.value    = Statistics.get() }
     
-    
+    //ViewModels
+    func getViewModelForStatistik() -> HauptMenuStatistikenViewModel                                { return HauptMenuStatistikenViewModel(statistics: statistics, infoButtonAction: infoButtonAction) }
+    func getViewModelForAufKlappButton(buttonHeight:CGFloat) -> AufklappHauptMenuButtonViewModel    { return AufklappHauptMenuButtonViewModel(hoehe: buttonHeight, pressed: aufklappButtonPressed, badgeCount: badgeCount) }
+}
 
-    let aufklappButtonPressed = MutableProperty<SubmenuButtonTyp>(.freunde)
+//✅
+class HauptMenuVC: DesignViewControllerPortrait,UIPopoverPresentationControllerDelegate {
+    let viewModel:HauptMenuViewModel! = HauptMenuViewModel()
+    
+    // VC LifeCycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print("hier")
+        //viewModels
+        aufklappButton.viewModel    = viewModel.getViewModelForAufKlappButton(buttonHeight: buttonHeightConstraint.constant)
+        statistikView.viewModel     = viewModel.getViewModelForStatistik()
+        
+        //ButtonActions
+        viewModel.aufklappButtonPressed.signal.observeValues    {[weak self] typ in self?.buttonPressed(typ) }
+        viewModel.infoButtonAction.signal.observe {[weak self] _ in self?.performSegue(withIdentifier: "statistikStartDatumInfoSegue", sender: nil)}
+        
+        //Notification über Firebase (News)
+        newNotification.signal.observeValues  {[weak self] notification in self?.show(notification:notification)}
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //update Badge und Statistics
+        Statistics.setCoreDataStatisticsAsync { [weak self] in self?.viewModel.updateStatistics() }
+        viewModel.updateBadgCount()
+        
+        //Aufklappbutton schließen
+        aufklappButton.viewModel.isAufgeklappt.value = false
+        
+        //HealthManager update
+        // um Bewertung bitten
+        HealthManager().updateHealthKit()
+        StoreReviewHelper.checkAndAskForReview()
+    }
+
+    // IBOutlets
     @IBOutlet weak var buttonHeightConstraint:  NSLayoutConstraint!
     @IBOutlet weak var aufklappButton:          AufklappHauptMenuButton!
     @IBOutlet weak var meditationStartenButton: UIButton!
@@ -35,62 +68,8 @@ class HauptMenuVC: UIViewController,UIPopoverPresentationControllerDelegate {
     @IBOutlet weak var statistikButton:         UIButton!
     @IBOutlet weak var statistikView:           HauptMenuStatistikenView!
     
-    //MARK: VC LifeCycle
-    let badgeCount = MutableProperty<Int>(0)
-    override func viewDidLoad() {
-        print("-->")
-        super.viewDidLoad()
-        view.backgroundColor = DesignPatterns.mainBackground
-        
-        aufklappButton.viewModel    = AufklappHauptMenuButtonViewModel(hoehe: buttonHeightConstraint.constant,pressed:aufklappButtonPressed, badgeCount: badgeCount)
-        aufklappButtonPressed.signal.observeValues      {[weak self] typ in self?.buttonPressed(typ) }
-        
-        statistikView.viewModel     = HauptMenuStatistikenViewModel(statistics:statistics, infoButtonAction: infoButtonAction)
-        
-        //Notification über Firebase (News)
-        mainModel.newNotification.signal.observeValues  {[weak self] notification in self?.show(notification:notification)}
-        
-        infoButtonAction.signal.observe                 {[weak self] _ in self?.performSegue(withIdentifier: "statistikStartDatumInfoSegue", sender: nil)}
-    }
-
-    
-    
-    private func show(notification:(key:String,message:String?)){
-        print("alert: \(notification)")
-        guard let message = notification.message else {return}
-        let alert = UIAlertController(title: "News", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Nicht erneut zeigen", style: .default) { _ in
-            AppConfig.get()?.firLastNotification = notification.key
-            saveContext()
-            self.dismiss(animated: true, completion: nil)
-        })
-        present(alert, animated: true, completion: nil)
-    }
-    
-    let infoButtonAction    = MutableProperty<Void>(Void())
-    let statistics          = MutableProperty<Statistics>(Statistics.get())
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        Statistics.setCoreDataStatisticsAsync { [weak self] in self?.statistics.value      = Statistics.get()  }
-       
-        badgeCount.value        = Freund.getFreundesAnfragen().count
-        
-        
-        HealthManager().updateHealthKit()
-        StoreReviewHelper.checkAndAskForReview()
-        aufklappButton.viewModel.isAufgeklappt.value = false
-    }
-
-   
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        (segue.destination.contentViewController as? MeditationsTimerVC)?.viewModel = MeditationsTimerVCModel(model: MeditationsTimerModel())
-    }
-    
-    
-    
+    // Segues
+    @IBAction func unwindToHauptmenu(segue: UIStoryboardSegue){ saveContext() }
     private func buttonPressed(_ typ:SubmenuButtonTyp){
         dismiss(animated: true, completion: nil)
         switch typ {
@@ -108,6 +87,25 @@ class HauptMenuVC: UIViewController,UIPopoverPresentationControllerDelegate {
             present(alert, animated: true, completion: nil)
         }
         else{ performSegue(withIdentifier: "freunde", sender: nil) }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        (segue.destination.contentViewController as? MeditationsTimerVC)?.viewModel = MeditationsTimerVCModel()
+        (segue.destination.contentViewController as? FreundeTableVC)?.viewModel     = FreundeTableVCModel()
+        
+    }
+    
+    //helper
+    // zeigt Neuigkeiten, die über FirebaseEintrg kommen
+    private func show(notification:(key:String,message:String?)){
+        guard let message = notification.message else {return}
+        let alert = UIAlertController(title: "News", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Nicht erneut zeigen", style: .default) { _ in
+            AppConfig.get()?.firLastNotification = notification.key
+            saveContext()
+            self.dismiss(animated: true, completion: nil)
+        })
+        present(alert, animated: true, completion: nil)
     }
 }
 

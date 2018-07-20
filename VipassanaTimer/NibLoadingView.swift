@@ -12,9 +12,7 @@ import UIKit
 //@IBDesignable
 open class NibLoadingView:UIView,NibDefinable{
     @IBOutlet weak var view: UIView!
-    var nibName: String {
-        return String(describing: type(of: self))
-    }
+    var nibName: String { return String(describing: type(of: self)) }
     override init(frame: CGRect) {
         super.init(frame: frame)
         nibSetup()
@@ -38,6 +36,4 @@ open class NibLoadingView:UIView,NibDefinable{
         return nibView
     }
 }
-protocol NibDefinable {
-    var nibName: String { get }
-}
+protocol NibDefinable { var nibName: String { get } }

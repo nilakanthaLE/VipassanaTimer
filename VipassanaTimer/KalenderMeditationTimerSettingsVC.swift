@@ -8,24 +8,22 @@
 
 import UIKit
 
-class KalenderMeditationTimerSettingsVC: UIViewController {
+//✅
+class KalenderMeditationTimerSettingsVC: DesignViewControllerPortrait {
     var viewModel:TimerSettingsViewControllerModel!
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return UIInterfaceOrientationMask.portrait  }
     
+    // VC LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         timerSettingsView.viewModel = viewModel.getViewModelForSettingsView()
         timerSettingsView.soundFileView.tapOnBluerViewGesture.addTarget(self, action: #selector(go2sound))
-        view.backgroundColor        = UIColor(patternImage: #imageLiteral(resourceName: "backGroundImage.png"))
         // Do any additional setup after loading the view.
     }
-
+    
+    //IBOutles
     @IBOutlet weak var timerSettingsView: TimerSettingsView!
     
-    
-    
-    @objc func go2sound(){ performSegue(withIdentifier: "go2sound", sender: nil) }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        (segue.destination.contentViewController as? SoundFilesTableVC)?.viewModel = viewModel.getViewModelForSoundFilesTableVC()
-    }
+    // segues
+     @objc func go2sound(){ performSegue(withIdentifier: "go2sound", sender: nil) }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) { (segue.destination.contentViewController as? SoundFilesTableVC)?.viewModel = viewModel.getViewModelForSoundFilesTableVC() }
 }

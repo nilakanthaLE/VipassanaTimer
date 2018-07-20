@@ -7,58 +7,30 @@
 //
 
 import UIKit
-import ReactiveSwift
 
-class ProfilConfigVCViewModel{
+//✅
+class ProfilConfigVC: DesignViewControllerPortrait{
+    let model:ProfilConfigModel = ProfilConfigModel()
     
-    let model:ProfilConfigModel
-    init(model:ProfilConfigModel){
-        print("init ProfilConfigVCViewModel")
-        self.model  = model
-    }
-    func getViewModelForProfilConfigView()->ProfilConfigViewModel{
-        return ProfilConfigViewModel(model: model)
-    }
-    func getViewModelForFlaggeWahlVC() -> FlaggeWahlVCViewModel{
-        return FlaggeWahlVCViewModel(flagge: model.flagge)
-    }
-    func getViewModelForMeditationsPlatzConfigView() -> MeditationsPlatzConfigViewModel{
-        return MeditationsPlatzConfigViewModel(meditationsPlatzTitle: model.meditationsPlatzTitle)
-    }
-    func getViewModelForProfilPublicVorschauVC() -> PublicMeditationInfoViewModel{
-        return PublicMeditationInfoViewModel(model: PublicMeditationInfoModel(publicMeditation: PublicMeditation()))
-    }
-    deinit {
-        print("deinit ProfilConfigVCViewModel")
-    }
-}
+    //IBOutlet
+    @IBOutlet weak var profilConfigView: ProfilConfigView!          { didSet{  profilConfigView.viewModel = ProfilConfigViewModel(model: model)  }  }
 
-class ProfilConfigVC: UIViewController {
-    var viewModel:ProfilConfigVCViewModel = ProfilConfigVCViewModel(model: ProfilConfigModel())
-    @IBOutlet weak var profilConfigView: ProfilConfigView!{ didSet{  profilConfigView.viewModel = viewModel.getViewModelForProfilConfigView()  }  }
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return UIInterfaceOrientationMask.portrait  }
+    //IBAction
+    @IBAction func zurueckButtonPressed(_ sender: UIBarButtonItem)  { dismiss(animated: true, completion: nil) }
+    
+    //VC LifeCycle
     override func viewDidLoad() {
-        print("ProfilConfigVC viewDidLoad")
         super.viewDidLoad()
-        view.backgroundColor            = UIColor(patternImage: #imageLiteral(resourceName: "backGroundImage.png"))
-        navigationController?.navigationBar.setDesignPattern()
         
-        profilConfigView.viewModel.flaggeButtonPressed.signal.observe{[weak self] _ in
-            self?.performSegue(withIdentifier: "flaggeWahl", sender: nil)
-        }
-        profilConfigView.viewModel.meditationsPlatzTapped.signal.observe{[weak self] _ in
-            self?.performSegue(withIdentifier: "sitzplatzConfig", sender: nil)
-        }
+        profilConfigView.viewModel.flaggeButtonPressed.signal.observe       {[weak self] _ in self?.performSegue(withIdentifier: "flaggeWahl", sender: nil) }
+        profilConfigView.viewModel.meditationsPlatzTapped.signal.observe    {[weak self] _ in self?.performSegue(withIdentifier: "sitzplatzConfig", sender: nil) }
     }
     
-    @IBAction func zurueckButtonPressed(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
-    }
-    
+    //segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        (segue.destination.contentViewController as? FlaggeWahlVC)?.viewModel               = viewModel.getViewModelForFlaggeWahlVC()
-        (segue.destination.contentViewController as? MeditationsPlatzConfigVC)?.viewModel   = viewModel.getViewModelForMeditationsPlatzConfigView()
-        (segue.destination.contentViewController as? ProfilPublicVorschauVC)?.viewModel     = viewModel.getViewModelForProfilPublicVorschauVC()
+        (segue.destination.contentViewController as? FlaggeWahlVC)?.viewModel               = FlaggeWahlViewModel(flag: model.flagge)
+        (segue.destination.contentViewController as? MeditationsPlatzConfigVC)?.viewModel   = MeditationsPlatzConfigViewModel(meditationsPlatzTitle: model.meditationsPlatzTitle)
+        (segue.destination.contentViewController as? ProfilPublicVorschauVC)?.viewModel     = PublicMeditationInfoViewModel(publicMeditation: PublicMeditation())
     }
 }
 

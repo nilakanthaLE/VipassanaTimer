@@ -7,35 +7,24 @@
 //
 
 import UIKit
-import ReactiveSwift
 
-class TimerSettingsViewControllerModel{
-    let timerData:TimerData
-    let timerSettingsModel:TimerSettingsModel
-    init(timerData:TimerData){
-        timerSettingsModel = TimerSettingsModel(timerData: timerData)
-        self.timerData = timerData  }
-    func getViewModelForSettingsView() -> TimerSettingsViewModel        { return TimerSettingsViewModel(model: timerSettingsModel) }
-    func getViewModelForSoundFilesTableVC() -> SoundFilesTableVCModel   { return SoundFilesTableVCModel(soundFileData:timerSettingsModel.soundFileData)  }
-}
-
-class TimerSettingsVC: UIViewController {
+//✅
+class TimerSettingsVC: DesignViewControllerPortrait {
     var viewModel:TimerSettingsViewControllerModel!
     override func viewDidLoad() {
         super.viewDidLoad()
         timerSettingsView.viewModel = viewModel.getViewModelForSettingsView()
         timerSettingsView.soundFileView.tapOnBluerViewGesture.addTarget(self, action: #selector(go2sound))
-        view.backgroundColor        = UIColor(patternImage: #imageLiteral(resourceName: "backGroundImage.png"))
     }
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return UIInterfaceOrientationMask.portrait  }
-    @objc func go2sound(){
-        performSegue(withIdentifier: "go2sound", sender: nil)
-    }
+    @objc func go2sound(){ performSegue(withIdentifier: "go2sound", sender: nil) }
 
-    
+    //Outlets
     @IBOutlet weak var timerSettingsView: TimerSettingsView!
     
+    //segues (-> SoundFiles)
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         (segue.destination.contentViewController as? SoundFilesTableVC)?.viewModel = viewModel.getViewModelForSoundFilesTableVC()
     }
+    
+    deinit { print("deinit TimerSettingsVC") }
 }

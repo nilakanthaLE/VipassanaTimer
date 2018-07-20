@@ -8,47 +8,30 @@
 
 import ReactiveSwift
 
-class MeditationsPlatzCellViewModel{
-    let meditationsPlatzViewModel:MeditationsPlatzViewModel
-    init(publicMeditation:PublicMeditation){
-        print("init MeditationsPlatzCellViewModel")
-        meditationsPlatzViewModel = MeditationsPlatzViewModel(publicMeditation: publicMeditation)
-    }
-    deinit {
-        meditationsPlatzViewModel.timer?.invalidate()
-        print("deinit MeditationsPlatzCellViewModel")
-    }
-}
-
-
-
-
+//✅
 class MeditationsPlatzViewModel{
     let meditationsPlatzTitle   = MutableProperty<String?>(nil)
     let mettaEffektHasStarted   = MutableProperty<Bool>(false)
     init(publicMeditation:PublicMeditation){
-        print("init MeditationsPlatzViewModel (publicMeditation)")
         meditationsPlatzTitle.value   = publicMeditation.meditator.meditationsPlatzTitle
-        setTimer(for: publicMeditation.startZeitMetta)
-        
-        
-        
+        if publicMeditation.mettaEndlos || publicMeditation.mettaDauer > 0 { setTimer(for: publicMeditation.startZeitMetta) }
     }
+    //init für MeditationsPlatz Konfiguration
     init(meditationsPlatzTitle:MutableProperty<String?>){
-        print("init MeditationsPlatzViewModel")
         self.meditationsPlatzTitle <~ meditationsPlatzTitle.producer
     }
+    
+    //Timer
     var timer:Timer?
-    func setTimer(for date:Date){
-        print("set Timer for mettaEffektHasStarted \(date.string("hh:ss"))")
+    private func setTimer(for date:Date){
         timer?.invalidate()
-        timer = Timer(fireAt: date, interval: 0, target: self, selector: #selector(startMetteEffekt), userInfo: nil, repeats: false)
-        RunLoop.main.add(timer!, forMode: RunLoopMode.commonModes)
-        
+        timer = Timer(fireAt: date, interval: 0, target: self, selector: #selector(startMettaEffekt), userInfo: nil, repeats: false)
+        RunLoop.main.add(timer!, forMode: RunLoopMode.commonModes)        
     }
-    @objc func startMetteEffekt(){
-        print("startMettaEffekt")
-        weak var weakSelf = self //????
+    
+    //TimerAction (Metta Effekt - pulsieren)
+    @objc private func startMettaEffekt(){
+        weak var weakSelf = self
         weakSelf?.mettaEffektHasStarted.value = true
     }
     

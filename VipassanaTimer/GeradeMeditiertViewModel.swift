@@ -6,37 +6,34 @@
 //  Copyright © 2018 Matthias Pochmann. All rights reserved.
 //
 
-import Foundation
 import ReactiveSwift
 
+//✅
 class GeradeMeditiertViewModel{
     var aktuelleMeditationen    = MutableProperty([PublicMeditation]())
-    
-    let model:GeradeMeditiertModel
-    init(model:GeradeMeditiertModel){
-        self.model = model
-        aktuelleMeditationen <~ model.aktuelleMeditationen.producer 
+    let tappedMeditationsPlatz  = MutableProperty<PublicMeditation?>(nil)
+    init(tappedMeditationsPlatz:MutableProperty<PublicMeditation?>,aktuelleMeditationen:MutableProperty<[PublicMeditation]>){
+        tappedMeditationsPlatz      <~ self.tappedMeditationsPlatz.signal
+        self.aktuelleMeditationen   <~ aktuelleMeditationen.producer
     }
     
     //CollectionView DataSource
-    let minmalProzeile  = 3
-    let maximalProZeile = 5
+    private let minmalProzeile  = 3
+    private let maximalProZeile = 5
+    var numberOfItems:Int{return aktuelleMeditationen.value.count}
     var anzahlProZeile:CGFloat {
         let wurzel      = sqrt(Double(numberOfItems))
         let toAdd:Int   = ((wurzel - Double(Int(wurzel))) == 0) ? 0 :  1
         let anzahl      = Int(wurzel) + toAdd
-        return CGFloat(anzahl < minmalProzeile ? minmalProzeile : anzahl > maximalProZeile ? maximalProZeile : anzahl)}
-    var numberOfItems:Int{return aktuelleMeditationen.value.count}
-    
-    func sitzPlatzTapped(at indexPath:IndexPath){
-        mainModel.tappedMeditationsPlatz.value = aktuelleMeditationen.value[indexPath.row]
+        return CGFloat(anzahl < minmalProzeile ? minmalProzeile : anzahl > maximalProZeile ? maximalProZeile : anzahl)
     }
     
+    
+    //CollectionView Delegate Action
+    func sitzPlatzTapped(at indexPath:IndexPath){ tappedMeditationsPlatz.value = aktuelleMeditationen.value[indexPath.row] }
     
     //ViewModels
-    func getViewModelForCell(indexPath:IndexPath) -> MeditationsPlatzCellViewModel{
-        return MeditationsPlatzCellViewModel(publicMeditation: aktuelleMeditationen.value[indexPath.row])
-    }
+    func getViewModelForCell(indexPath:IndexPath) -> MeditationsPlatzViewModel{ return MeditationsPlatzViewModel(publicMeditation: aktuelleMeditationen.value[indexPath.row]) }
     
     deinit { print("deinit GeradeMeditiertViewModel") }
 }

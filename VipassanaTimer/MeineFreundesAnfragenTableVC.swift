@@ -7,52 +7,44 @@
 //
 
 import UIKit
+import ReactiveSwift
 
-class MeineFreundesAnfragenTableVC: UITableViewController {
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return UIInterfaceOrientationMask.portrait  }
-    private var meineFreundesAnfragen = [[Freund]]()
-        { didSet{tableView.reloadData()} }
+//✅
+class MeineFreundesAnfragenTableVC: DesignTableViewControllerPortrait {
+    var viewModel:MeineFreundesAnfragenTableVCModel!    { didSet{ viewModel.updateTableView.signal.observeValues {[weak self] _ in self?.tableView.reloadData() } } }
     
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int { return 2 }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return meineFreundesAnfragen[section].count }
+    // MARK: - Table view data source && delegate
+    override func numberOfSections(in tableView: UITableView) -> Int                                        { return 2 }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int            { return viewModel.numberOfRows(in: section) }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text    = meineFreundesAnfragen[indexPath.section][indexPath.row].freundNick
-        cell.textLabel?.textColor = DesignPatterns.mocha
-        cell.backgroundColor = DesignPatterns.controlBackground
+        let cell                    = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MeineFreundesAnfragenTableViewCell
+        cell.title                  = viewModel.getCellTitle(for: indexPath)
         return cell
     }
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return [NSLocalizedString("meineAnfragen", comment: "meineAnfragen"), NSLocalizedString("zurueckGewieseneAnfragen", comment: "zurueckGewieseneAnfragen")][section]
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?                                  { return viewModel.header(for: section) }
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool                                        { return true }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)  { if editingStyle == .delete { viewModel.deleteAction(indexPath: indexPath) } }
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
+        view.tintColor = headerBackground
+        (view as? UITableViewHeaderFooterView)?.textLabel?.textColor = standardSchriftFarbe
     }
     
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool { return true }
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            FirUserConnections.deleteUserConnection(withUserID: meineFreundesAnfragen[indexPath.section][indexPath.row].freundID)
-        }
+    //segues
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        (segue.destination.contentViewController as? FreundeFindenVC)?.viewModel = FreundeFindenVCModel()
     }
     
-    override func viewDidLoad() {
-        meineFreundesAnfragen = Freund.getMeineAnfragen()
-        Singleton.sharedInstance.freundesAnfragenEreignis = updateFreundeUndFreundesAnfragenList
-        view.backgroundColor = DesignPatterns.mainBackground
-    }
-    
-    private func updateFreundeUndFreundesAnfragenList(){
-        let when = DispatchTime.now() + 1
-        DispatchQueue.main.asyncAfter(deadline: when) { [weak self] in self?.meineFreundesAnfragen = Freund.getMeineAnfragen() }
-    }
     
     deinit { print("deinit: MeineFreundesAnfragenTableVC")}
+}
 
-    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
-        view.tintColor = DesignPatterns.headerBackground
-        let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.textColor = DesignPatterns.mocha
+//✅
+class MeineFreundesAnfragenTableViewCell:UITableViewCell{
+    var title:String?{
+        didSet{
+            textLabel?.text         = title
+            textLabel?.textColor    = standardSchriftFarbe
+            backgroundColor         = standardBackgroundFarbe
+        }
     }
 }

@@ -5,16 +5,14 @@
 //  Created by Matthias Pochmann on 04.06.18.
 //  Copyright © 2018 Matthias Pochmann. All rights reserved.
 //
-
-import Foundation
 import UIKit
 import ReactiveSwift
 
-
-
+//✅
 @IBDesignable class ProfilConfigView:NibLoadingView{
     var viewModel:ProfilConfigViewModel!{
         didSet{
+            //in
             spitzNameTextFeld.reactive.text             <~ viewModel.spitzNameText.producer
             flaggeButton.reactive.title                 <~ viewModel.flaggeButtonTitle.producer
             spitznameSichtbarSwitch.reactive.isOn       <~ viewModel.spitznameIstSichtbar.producer
@@ -24,9 +22,7 @@ import ReactiveSwift
             spitznameIstVergebenLabel.reactive.text     <~ viewModel.spitzNameVergebenLabelText.producer
             messageTextField.reactive.text              <~ viewModel.message.producer
             
-            sitzplatzView.viewModel = viewModel.getViewModelForSitzPlatzView()
-            
-            
+            //out
             viewModel.model.spitznameIstSichtbar    <~ spitznameSichtbarSwitch.reactive.isOnValues
             viewModel.model.flaggeIstSichtbar       <~ flaggeSichtbarSwitch.reactive.isOnValues
             viewModel.model.statistikIstSichtbar    <~ statisticsSichtbarSwitch.reactive.isOnValues
@@ -34,15 +30,14 @@ import ReactiveSwift
             viewModel.model.spitzName               <~ nickNamePruefenButton.reactive.controlEvents(UIControlEvents.touchUpInside).map{[weak self] _ in self?.spitzNameTextFeld.text }
             viewModel.model.message                 <~ messageTextField.reactive.continuousTextValues
             
-            layer.borderColor   = standardRahmenFarbe.cgColor
-            layer.borderWidth   = standardBorderWidth
-            layer.cornerRadius  = standardCornerRadius
-            clipsToBounds       = true
+            //viewModel
+            sitzplatzView.viewModel = viewModel.getViewModelForSitzPlatzView()
+            
+            //Design
+            self.setStandardDesign()
         }
-        
     }
-    
-    @IBAction func sitzPlatzTapped(_ sender: UITapGestureRecognizer) { viewModel.meditationsPlatzTapped.value  = Void() }
+    //IBOutlet
     @IBOutlet weak var spitzNameTextFeld: UITextField!
     @IBOutlet weak var spitznameIstVergebenLabel: UILabel!
     @IBOutlet weak var flaggeButton: UIButton!
@@ -53,4 +48,6 @@ import ReactiveSwift
     @IBOutlet weak var nickNamePruefenButton: UIButton!
     @IBOutlet weak var messageTextField: UITextField!
     
+    //IBActions
+     @IBAction func sitzPlatzTapped(_ sender: UITapGestureRecognizer) { viewModel.meditationsPlatzTapped.value  = Void() }
 }

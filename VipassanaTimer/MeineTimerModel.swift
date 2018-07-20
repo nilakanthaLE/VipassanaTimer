@@ -6,14 +6,14 @@
 //  Copyright © 2018 Matthias Pochmann. All rights reserved.
 //
 
-import Foundation
 import ReactiveSwift
 
-//MARK: MainModel
+//✅
 class MeineTimerModel{
     let gewaehlterTimerFuerMeditation   = MutableProperty<TimerData>(TimerData())
     init(gewaehlerTimer:MutableProperty<TimerData>)     { gewaehlerTimer <~ gewaehlterTimerFuerMeditation.signal }
     
+    //TimerDatas
     let timerDatas                      = MutableProperty<[TimerData]>(TimerConfig.getAll().map{TimerData(timerConfig: $0)})
     func addTimerData() -> TimerData{
         print("addTimerData")
@@ -27,4 +27,5 @@ class MeineTimerModel{
         timerDatas.value.remove(at: index)
     }
     
+    deinit { print("deinit MeineTimerModel") }
 }

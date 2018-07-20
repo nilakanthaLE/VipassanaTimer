@@ -5,9 +5,12 @@
 //  Created by Matthias Pochmann on 05.05.18.
 //  Copyright © 2018 Matthias Pochmann. All rights reserved.
 //
-
 import Foundation
 
+//✅
+//Daten für MeditationsTimer
+// wird von User konfiguriert
+// updated CD TimerConfig
 class TimerData:MeditationConfigProto{
     var meditationTitle:String?         = "Eine Stunde - 5 min Anapana und Metta"
     var gesamtDauer:TimeInterval        = 60*60
@@ -17,6 +20,8 @@ class TimerData:MeditationConfigProto{
     var soundFileData:SoundFileData?    = nil
     var soundSchalenAreOn:Bool          = false
     
+    
+    //MARK: init
     let timerConfig:TimerConfig?
     init(){ timerConfig = nil }
     init(timerConfig:TimerConfig){
@@ -38,8 +43,7 @@ class TimerData:MeditationConfigProto{
         meditationTitle     = meditation.name
         timerConfig         = nil
     }
-    
-    //Initialisierung für PublicMeditationInfoView
+    // PublicMeditationInfoView
     init(publicMeditation:PublicMeditation){
         meditationTitle     = "Gesamt Dauer: \(publicMeditation.gesamtDauer.hhmm)"
         gesamtDauer         = publicMeditation.gesamtDauer
@@ -48,25 +52,17 @@ class TimerData:MeditationConfigProto{
         mettaEndlos         = publicMeditation.mettaEndlos
         timerConfig         = nil
     }
-    func setTimerConfig(){
-        print("setTimerConfig")
-        timerConfig?.name               = meditationTitle
-        timerConfig?.gesamtDauer        = gesamtDauer
-        timerConfig?.anapanaDauer       = anapanaDauer
-        timerConfig?.mettaDauer         = mettaDauer
-        timerConfig?.mettaEndlos        = mettaEndlos
-        timerConfig?.soundFileDataCD    = SoundFileDataCD.get(soundFileData: soundFileData)
-        timerConfig?.soundSchalenAreOn  = soundSchalenAreOn
-        
-        saveContext()
-    }
+    
+    //delete und auf aktiv setzen
     func deleteTimerConfig()        { timerConfig?.delete() }
     func setTimerConfigToActive()   { timerConfig?.setActive() }
+    
+    //MARK: ConfigMethoden
+    // setzt Werte, die User eingestellt hat
     func setAnapanaUndMetta(newValue:TimeInterval,meditationTyp:MeditationsTyp) -> TimerData{
-        
         switch meditationTyp{
         case .anapana:
-            if (gesamtDauer - newValue) < mettaDauer  { mettaDauer      = gesamtDauer - newValue}
+            if (gesamtDauer - newValue) < mettaDauer    { mettaDauer      = gesamtDauer - newValue}
             anapanaDauer    = newValue
         case .metta:
             if (gesamtDauer - newValue) < anapanaDauer  { anapanaDauer    = gesamtDauer - newValue }
@@ -80,15 +76,15 @@ class TimerData:MeditationConfigProto{
     }
     func setGesamtDauer(_ newValue:TimeInterval) -> TimerData{
         gesamtDauer = newValue < (soundFileData?.duration ?? newValue) ? soundFileData?.duration ?? newValue : newValue
-        
         // wenn gesamtDauer geringer als aktuelle VipassanaDauer
-        var mettaUndAnapanaDauerNeedUpdate:Bool {return gesamtDauer - anapanaDauer - mettaDauer < 0}
+        var mettaUndAnapanaDauerNeedUpdate:Bool     {return gesamtDauer - anapanaDauer - mettaDauer < 0}
         //1) MettaDauer anpassen
-        if mettaUndAnapanaDauerNeedUpdate   { mettaDauer = (gesamtDauer - anapanaDauer) > 0 ? (gesamtDauer - anapanaDauer) : 0 }
+        if mettaUndAnapanaDauerNeedUpdate           { mettaDauer = (gesamtDauer - anapanaDauer) > 0 ? (gesamtDauer - anapanaDauer) : 0 }
         //2) AnapanaDauer anpassen
-        if mettaUndAnapanaDauerNeedUpdate   { anapanaDauer = gesamtDauer }
+        if mettaUndAnapanaDauerNeedUpdate           { anapanaDauer = gesamtDauer }
+        // falls Soundfile vorhanden - anapanaDauer anpassen
+        if soundFileData != nil                     { anapanaDauer = gesamtDauer - soundFileData!.duration }
         
-        if soundFileData != nil             { anapanaDauer = gesamtDauer - (soundFileData?.duration ?? gesamtDauer) }
         setTimerConfig()
         return self
     }
@@ -115,6 +111,18 @@ class TimerData:MeditationConfigProto{
         return self
     }
     
+    //helper
+    private func setTimerConfig(){
+        print("setTimerConfig")
+        timerConfig?.name               = meditationTitle
+        timerConfig?.gesamtDauer        = gesamtDauer
+        timerConfig?.anapanaDauer       = anapanaDauer
+        timerConfig?.mettaDauer         = mettaDauer
+        timerConfig?.mettaEndlos        = mettaEndlos
+        timerConfig?.soundFileDataCD    = SoundFileDataCD.get(soundFileData: soundFileData)
+        timerConfig?.soundSchalenAreOn  = soundSchalenAreOn
+        saveContext()
+    }
     private func setData(for soundFileData:SoundFileData?) -> TimerData{
         gesamtDauer         = soundFileData?.duration ?? 60 * 60
         anapanaDauer        = soundFileData != nil ? 0 : 5 * 60
@@ -124,19 +132,21 @@ class TimerData:MeditationConfigProto{
     }
 }
 
-enum TimerDataChangeTyp { case gesamtDauer, anapanaDauer, mettaDauer, title, mettaEndlos, soundFileData, none }
+
+//MARK: enums
 enum MeditationsTyp     { case anapana,metta,vipassana }
 enum TimerState{
     case nichtGestartet,laueft,pausiert
     
-    var startButtonTitle:String{
+    //calc Properties
+    var startButtonTitle:String {
         switch self{
         case .nichtGestartet:   return "starten"
         case .laueft:           return "pause"
         case .pausiert:         return "fortsetzen"
         }
     }
-    var beendenButtonIsHidden:Bool{ return self == .nichtGestartet }
+    var beendenButtonIsHidden:Bool  { return self == .nichtGestartet }
     var nextStartPressed:TimerState{
         switch self{
         case .nichtGestartet:   return .laueft

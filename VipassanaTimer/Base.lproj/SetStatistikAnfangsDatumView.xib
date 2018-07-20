@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SetStatistikAnfangsDatumView" customModule="VipassanaTimer">
+            <connections>
+                <outlet property="datePicker" destination="34j-U8-LcI" id="x5u-6u-uUE"/>
+                <outlet property="datumLabel" destination="CAc-bM-jff" id="PYd-zP-h81"/>
+                <outlet property="infoTextLabel" destination="r3H-57-ri4" id="Aan-rK-mob"/>
+                <outlet property="zuruecksetzenButton" destination="Vod-P7-gcA" id="aOv-en-1ip"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="u28-zk-8mW">
+                    <rect key="frame" x="8" y="28" width="359" height="631"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3H-57-ri4">
+                            <rect key="frame" x="0.0" y="0.0" width="359" height="183"/>
+                            <string key="text">Ohne Angabe eines Datums wird der Durchschnitt basierend auf dem Datum der ersten eingetragenen Meditation berechnet. Sollten Sie bereits länger zurückliegende Kurse nachgetragen haben, so kann das die Durchschnittswerte verfälschen. Geben Sie in diesem Fall bitte hier das Datum ein, seit dem die app regelmäßig zum Einsatz kommt.
+</string>
+                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                            <color key="textColor" red="0.41274607390000001" green="0.32337761599999998" blue="0.18693663939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVk-Us-azU" userLabel="platzHalter">
+                            <rect key="frame" x="59.5" y="188" width="240" height="267.5"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="01.01.2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAc-bM-jff">
+                            <rect key="frame" x="139.5" y="460.5" width="80.5" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.41274607390000001" green="0.32337761599999998" blue="0.18693663939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="34j-U8-LcI">
+                            <rect key="frame" x="19.5" y="486" width="320" height="110"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="110" id="4QF-Gx-cjo"/>
+                            </constraints>
+                            <date key="date" timeIntervalSinceReferenceDate="508087098.927293">
+                                <!--2017-02-06 15:18:18 +0000-->
+                            </date>
+                        </datePicker>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vod-P7-gcA">
+                            <rect key="frame" x="133.5" y="601" width="92" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="FXN-7G-0E5"/>
+                            </constraints>
+                            <state key="normal" title="zurücksetzen">
+                                <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="0.79580073920000005" alpha="0.66315282529999997" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="u28-zk-8mW" secondAttribute="bottom" constant="8" id="CCq-cD-741"/>
+                <constraint firstItem="u28-zk-8mW" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="Uni-qA-i9g"/>
+                <constraint firstAttribute="trailing" secondItem="u28-zk-8mW" secondAttribute="trailing" constant="8" id="dOf-6g-Wpa"/>
+                <constraint firstItem="u28-zk-8mW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="eqk-v7-JiR"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        </view>
+    </objects>
+</document>

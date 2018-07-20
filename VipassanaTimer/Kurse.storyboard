@@ -14,31 +14,20 @@
         <scene sceneID="gsh-X9-0hz">
             <objects>
                 <tableViewController id="dKC-TO-lnL" customClass="MeineKurseTableVC" customModule="VipassanaTimer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="pQG-Lp-Mm6">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="68" sectionHeaderHeight="28" sectionFooterHeight="28" id="pQG-Lp-Mm6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="cell" id="Luk-SM-GJ9">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="cell" rowHeight="68" id="Luk-SM-GJ9" customClass="KursTableCell" customModule="VipassanaTimer">
+                                <rect key="frame" x="0.0" y="28" width="375" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Luk-SM-GJ9" id="KEb-LX-wPV">
-                                    <rect key="frame" x="0.0" y="0.0" width="327" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="327" height="68"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XgA-CU-mJc" customClass="KursTableCellView" customModule="VipassanaTimer" customModuleProvider="target">
-                                            <rect key="frame" x="8" y="8" width="311" height="28"/>
-                                        </view>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="XgA-CU-mJc" firstAttribute="top" secondItem="KEb-LX-wPV" secondAttribute="top" constant="8" id="JQP-57-K37"/>
-                                        <constraint firstAttribute="bottom" secondItem="XgA-CU-mJc" secondAttribute="bottom" constant="8" id="YJ0-88-uJH"/>
-                                        <constraint firstItem="XgA-CU-mJc" firstAttribute="leading" secondItem="KEb-LX-wPV" secondAttribute="leading" constant="8" id="hDq-F0-LxQ"/>
-                                        <constraint firstAttribute="trailing" secondItem="XgA-CU-mJc" secondAttribute="trailing" constant="8" id="jRX-Ne-iUB"/>
-                                    </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="0.41274607390000001" green="0.32337761599999998" blue="0.18693663939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </tableViewCell>
                         </prototypes>
@@ -63,7 +52,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="03z-wn-Sue" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="4eM-Ub-EaI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5355" y="-1120"/>
+            <point key="canvasLocation" x="5354.3999999999996" y="-1120.3898050974515"/>
         </scene>
         <!--Kurse-->
         <scene sceneID="OLU-ce-cah">
@@ -103,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F6C-Tg-xvl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6497" y="-1107"/>
+            <point key="canvasLocation" x="6188" y="-1120"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="N9a-Ia-VYY">

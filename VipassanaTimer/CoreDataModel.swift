@@ -8,14 +8,19 @@
 
 import Foundation
 
-let coreDataModel:CoreDataModel = CoreDataModel()
+//✅
+//CoreDataModel
+// neue Meditation starten
+// Meditation beenden
+// Pausen eintragen
 class CoreDataModel{
     private var myActiveMeditation:Meditation?
+    
     func updateMyMeditation(myMeditation:PublicMeditation?){
         guard let myMeditation = myMeditation else {
+            
             if let myActiveMeditation = myActiveMeditation{
                 //Meditation wurde beendet
-                print("CoreDataModel - Meditation wurde beendet")
                 myActiveMeditation.beendet(Date())
                 
                 //Firebase (auslagern --> FirebaseModel)
@@ -27,13 +32,12 @@ class CoreDataModel{
             return
         }
         //neue Meditation wurde gestartet
-        print("CoreDataModel - Meditation wurde gestartet")
         myActiveMeditation      = Meditation.start(myMeditation: myMeditation)
         
         
         //Firebase (auslagern --> FirebaseModel)
         FirMeditations.update(meditation: myActiveMeditation)
-        FirActiveMeditations.createActiveMeditation(meditation: myActiveMeditation)
+        FirActiveMeditations.createActiveMeditation(meditation: myMeditation)
         saveContext()
     }
     

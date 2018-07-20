@@ -6,16 +6,22 @@
 //  Copyright © 2018 Matthias Pochmann. All rights reserved.
 //
 
-import Foundation
 import ReactiveSwift
 
-
+//✅
+// Model für die Konfiguration des eigenen Profils
 class ProfilConfigModel{
-    
+    let spitzName                           = MutableProperty<String?>(nil)
+    let spitznameIstSichtbar                = MutableProperty<Bool> (false)
+    let statistikIstSichtbar                = MutableProperty<Bool> (false)
+    let meditationsPlatzTitle               = MutableProperty<String?>(nil)
+    let flagge                              = MutableProperty<String>("🇮🇳")
+    let flaggeIstSichtbar                   = MutableProperty<Bool> (false)
+    let message                             = MutableProperty<String?>(nil)
     let userSuchErgebnis = MutableProperty<UserSuchErgebnis>(UserSuchErgebnis.Fehler)
+    
+    //init
     init(){
-        print("init ProfilConfigModel \(Meditierender.get()?.meditationsPlatzTitle)")
-        
         //init set
         spitzName.value                 = Meditierender.get()?.nickName
         spitznameIstSichtbar.value      = Meditierender.get()?.nickNameSichtbarkeit     == 2
@@ -23,12 +29,7 @@ class ProfilConfigModel{
         meditationsPlatzTitle.value     = Meditierender.get()?.meditationsPlatzTitle ?? "?"
         flaggeIstSichtbar.value         = Meditierender.get()?.flaggeIstSichtbar == true
         message.value                   = Meditierender.get()?.message
-        var _flagge:String{
-            if let _flagge = Meditierender.get()?.flagge        { return _flagge}
-            if let countryCode = NSLocale.current.regionCode    { return String(emoji(countryCode: countryCode))}
-            return "🇮🇳"
-        }
-        flagge.value                    = _flagge
+        flagge.value                    = ProfilConfigModel.getFlagge()
         
         //user set
         spitznameIstSichtbar.signal.observeValues   { Meditierender.get()?.nickNameSichtbarkeit = $0 ? 2 : 0 }
@@ -48,15 +49,12 @@ class ProfilConfigModel{
         
     }
     
-    let spitzName                           = MutableProperty<String?>(nil)
-    let spitznameIstSichtbar                = MutableProperty<Bool> (false)
-    let statistikIstSichtbar                = MutableProperty<Bool> (false)
-    
-    let meditationsPlatzTitle               = MutableProperty<String?>(nil)
-    let flagge                              = MutableProperty<String>("🇮🇳")
-    let flaggeIstSichtbar                   = MutableProperty<Bool> (false)
-    let message                             = MutableProperty<String?>(nil)
-    
+    //helper
+    private static func getFlagge() -> String{
+        if let _flagge = Meditierender.get()?.flagge        { return _flagge}
+        if let countryCode = NSLocale.current.regionCode    { return String(emoji(countryCode: countryCode))}
+        return "🇮🇳"
+    }
     
     deinit {
         print("deinit ProfilConfigModel")

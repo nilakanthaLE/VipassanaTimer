@@ -6,10 +6,12 @@
 //  Copyright © 2018 Matthias Pochmann. All rights reserved.
 //
 
-import Foundation
 import ReactiveSwift
 
+//✅
+//ViewModel für die Konfiguration des eigenen Profils
 class ProfilConfigViewModel{
+    //init
     let model:ProfilConfigModel
     init(model:ProfilConfigModel){
         self.model  = model
@@ -36,10 +38,7 @@ class ProfilConfigViewModel{
     let meditationsPlatzTapped  = MutableProperty<Void>(Void())
     
     //ViewModel
-    func getViewModelForSitzPlatzView() -> MeditationsPlatzViewModel{
-        return MeditationsPlatzViewModel(meditationsPlatzTitle: model.meditationsPlatzTitle)
-    }
-
+    func getViewModelForSitzPlatzView() -> MeditationsPlatzViewModel{ return MeditationsPlatzViewModel(meditationsPlatzTitle: model.meditationsPlatzTitle) }
     
     //helper
     func spitzNameVergebenLabelText(userSuchErgebnis:UserSuchErgebnis) -> String{
@@ -54,11 +53,6 @@ class ProfilConfigViewModel{
 }
 
 enum UserSuchErgebnis{ case gefunden,nichtGefunden,Fehler }
-
-
-
-
-class FlaggeConfigViewModel{ init(flagge:MutableProperty<String>){ } }
 
 
 

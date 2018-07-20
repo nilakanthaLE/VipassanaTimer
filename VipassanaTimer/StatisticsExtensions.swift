@@ -6,23 +6,72 @@
 //  Copyright © 2017 Matthias Pochmann. All rights reserved.
 //
 
-import Foundation
 import CoreData
 
+//✅
+// Statistiken für die Startseite
+// werden asynchron aktualisiert
+// stehen (nicht aktualisiert) ohne zeitverzögerung zur Verfügung
 extension Statistics{
+    // das Statistik Objekt holen oder erzeugen
     class func get()->Statistics{
         let request             = NSFetchRequest<Statistics>(entityName: "Statistics")
-        let statistics          = (try? context.fetch(request))?.first
-        return statistics ?? NSEntityDescription.insertNewObject(forEntityName: "Statistics", into: context) as! Statistics
+        return (try? context.fetch(request))?.first ?? NSEntityDescription.insertNewObject(forEntityName: "Statistics", into: context) as! Statistics
     }
     
+    // CoreData aktualisieren
+    static func setCoreDataStatisticsAsync(update:@escaping ()->Void){
+        // Move to a background thread to do some long running work
+        DispatchQueue.global(qos: .userInitiated).async {
+            let start = Date()
+            defer { print("setCoreDataStatisticsAsync -> \(Date().timeIntervalSince(start)) s") }
+            
+            let data = StatistikUeberblickDaten()
+            // Bounce back to the main thread to update the UI
+            DispatchQueue.main.async {
+                let statistics  = Statistics.get()
+                statistics.regelmaessigZweimalAmTagMax      = Int16(data.regelmaessigkeit.zweiMalTaeglichMax)
+                statistics.regelmaessigZweiMalAmTag         = Int16(data.regelmaessigkeit.zweiMalTaeglichBisHeute)
+                statistics.regelmaessigEinmalAmTagMax       = Int16(data.regelmaessigkeit.taeglichEinmalMax)
+                statistics.regelmaessigEinmalAmTag          = Int16(data.regelmaessigkeit.taeglichEinmalBisHeute)
+                
+                statistics.gesamtDauer                      = data.gesamt
+                statistics.gesamtDauerOhneKurse             = data.gesamtOhneKurse
+                statistics.kursTage                         = Int16(data.kursTage)
+                
+                statistics.gesamtVorletzterTag              = data.gesamtVorletzterTag
+                statistics.gesamtVorletzteWoche             = data.gesamtVorletzteWoche
+                statistics.gesamtVorletzterMonat            = data.gesamtVorletzterMonat
+                statistics.gesamtVorherigWoche              = data.gesamtVorherigWoche
+                statistics.gesamtVorherigTag                = data.gesamtVorherigTag
+                statistics.gesamtVorherigMonat              = data.gesamtVorherigMonat
+                statistics.gesamtAktuellWoche               = data.gesamtAktuellWoche
+                statistics.gesamtAktuellTag                 = data.gesamtAktuellTag
+                statistics.gesamtAktuellMonat               = data.gesamtAktuellMonat
+                
+                statistics.durchschnittWoche                = data.durchSchnittWoche
+                statistics.durchschnittVorherigWoche        = data.gesamtVorherigWoche
+                statistics.durchschnittVorherigTag          = data.gesamtVorherigTag
+                statistics.durchschnittVorherigMonat        = data.gesamtVorherigMonat
+                statistics.durchschnittTag                  = data.durchschnittTag
+                statistics.durchschnittMonat                = data.durchSchnittMonat
+                
+                saveContext()
+                update()
+            }
+        }
+    }
+    
+    // Daten für Balkengraph auf Startseite holen
     func getGraphData(takt:StatistikTakt) -> StatistikUeberblickGraphData{
         return StatistikUeberblickGraphData(takt: takt,
-                                     aktuell:       getValue(takt: takt, zeitraum: .aktuell) ,
-                                     letzter:       getValue(takt: takt, zeitraum: .letzter) ,
-                                     vorletzter:    getValue(takt: takt, zeitraum: .vorletzter),
-                                     durchSchnitt:  getValue(takt: takt, zeitraum: .durchSchnitt))
+                                            aktuell:       getValue(takt: takt, zeitraum: .aktuell) ,
+                                            letzter:       getValue(takt: takt, zeitraum: .letzter) ,
+                                            vorletzter:    getValue(takt: takt, zeitraum: .vorletzter),
+                                            durchSchnitt:  getValue(takt: takt, zeitraum: .durchSchnitt))
     }
+    
+    //helper
     private func getValue(takt:StatistikTakt,zeitraum:StatistikZeitraum) -> Double{
         switch takt{
         case .taeglich:
@@ -45,85 +94,6 @@ extension Statistics{
             case .letzter:      return gesamtVorherigMonat      / 3600
             case .vorletzter:   return gesamtVorletzterMonat    / 3600
             case .durchSchnitt: return durchschnittMonat        / 3600
-            }
-        }
-    }
-    
-    
-    static func setCoreDataStatisticsAsync(update:@escaping ()->Void){
-        // Move to a background thread to do some long running work
-        DispatchQueue.global(qos: .userInitiated).async {
-            let start = Date()
-            defer { print("setCoreDataStatisticsAsync -> \(Date().timeIntervalSince(start)) s") }
-            
-            let data = StatistikUeberblickDaten()
-            print("Statistik StartDatum: \(StatistikUeberblickDaten.startDateFuerDurchschnitt?.string("dd.MM.yyyy"))")
-            
-            
-            let regelmaessigZweimalAmTagMax     = Int16(data.regelmaessigkeit.zweiMalTaeglichMax)
-            let regelmaessigZweiMalAmTag        = Int16(data.regelmaessigkeit.zweiMalTaeglichBisHeute)
-            let regelmaessigEinmalAmTagMax      = Int16(data.regelmaessigkeit.taeglichEinmalMax)
-            let regelmaessigEinmalAmTag         = Int16(data.regelmaessigkeit.taeglichEinmalBisHeute)
-            let kursTage                        = Int16(data.kursTage)
-            let gesamtDauerOhneKurse            = data.gesamtOhneKurse
-            
-            let gesamtVorletzterTag             = data.gesamtVorletzterTag
-            let gesamtVorletzteWoche            = data.gesamtVorletzteWoche
-            let gesamtVorletzterMonat           = data.gesamtVorletzterMonat
-            
-            let gesamtVorherigWoche             = data.gesamtVorherigWoche
-            let gesamtVorherigTag               = data.gesamtVorherigTag
-            let gesamtVorherigMonat             = data.gesamtVorherigMonat
-            
-            let gesamtDauer                     = data.gesamt
-            
-            let gesamtAktuellWoche              = data.gesamtAktuellWoche
-            let gesamtAktuellTag                = data.gesamtAktuellTag
-            let gesamtAktuellMonat              = data.gesamtAktuellMonat
-            
-            let durchschnittWoche               = data.durchSchnittWoche
-            let durchschnittVorherigWoche       = data.gesamtVorherigWoche
-            let durchschnittVorherigTag         = data.gesamtVorherigTag
-            let durchschnittVorherigMonat       = data.gesamtVorherigMonat
-            let durchschnittTag                 = data.durchschnittTag
-            let durchschnittMonat               = data.durchSchnittMonat
-            
-            // Bounce back to the main thread to update the UI
-            DispatchQueue.main.async {
-                let statistics  = Statistics.get()
-                statistics.regelmaessigZweimalAmTagMax     = regelmaessigZweimalAmTagMax
-                statistics.regelmaessigZweiMalAmTag        = regelmaessigZweiMalAmTag
-                statistics.regelmaessigEinmalAmTagMax      = regelmaessigEinmalAmTagMax
-                statistics.regelmaessigEinmalAmTag         = regelmaessigEinmalAmTag
-                statistics.kursTage                        = kursTage
-                
-                statistics.gesamtVorletzterTag              = gesamtVorletzterTag
-                statistics.gesamtVorletzteWoche             = gesamtVorletzteWoche
-                statistics.gesamtVorletzterMonat            = gesamtVorletzterMonat
-                
-                
-                statistics.gesamtVorherigWoche             = gesamtVorherigWoche
-                statistics.gesamtVorherigTag               = gesamtVorherigTag
-                statistics.gesamtVorherigMonat             = gesamtVorherigMonat
-                
-                statistics.gesamtAktuellWoche              = gesamtAktuellWoche
-                statistics.gesamtAktuellTag                = gesamtAktuellTag
-                statistics.gesamtAktuellMonat              = gesamtAktuellMonat
-                
-                statistics.gesamtDauerOhneKurse            = gesamtDauerOhneKurse
-                statistics.gesamtDauer                     = gesamtDauer
-                
-                
-                
-                statistics.durchschnittWoche               = durchschnittWoche
-                statistics.durchschnittVorherigWoche       = durchschnittVorherigWoche
-                statistics.durchschnittVorherigTag         = durchschnittVorherigTag
-                statistics.durchschnittVorherigMonat       = durchschnittVorherigMonat
-                statistics.durchschnittTag                 = durchschnittTag
-                statistics.durchschnittMonat               = durchschnittMonat
-                
-                saveContext()
-                update()
             }
         }
     }

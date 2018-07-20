@@ -135,7 +135,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
         print("fail...")
         if let transactionError = transaction.error as NSError? {
             if transactionError.code != SKError.paymentCancelled.rawValue {
-                print("Transaction Error: \(transaction.error?.localizedDescription)")
+                print("Transaction Error: \(String(describing: transaction.error?.localizedDescription))")
             }
         }
         
@@ -154,12 +154,12 @@ extension IAPHelper: SKPaymentTransactionObserver {
 
 
 public struct DanaProducts {
-    public static let dana0 = "DNS.VipassanaTimer.dana0"
-    public static let dana01 = "DNS.VipassanaTimer.dana01"
-    public static let dana02 = "DNS.VipassanaTimer.dana02"
-    public static let dana03 = "DNS.VipassanaTimer.dana03"
-    public static let dana04 = "DNS.VipassanaTimer.dana04"
-    public static let dana05 = "DNS.VipassanaTimer.dana05"
+    public static let dana0     = "DNS.VipassanaTimer.dana0"
+    public static let dana01    = "DNS.VipassanaTimer.dana01"
+    public static let dana02    = "DNS.VipassanaTimer.dana02"
+    public static let dana03    = "DNS.VipassanaTimer.dana03"
+    public static let dana04    = "DNS.VipassanaTimer.dana04"
+    public static let dana05    = "DNS.VipassanaTimer.dana05"
     
     fileprivate static let productIdentifiers: Set<ProductIdentifier> = [DanaProducts.dana0,
                                                                          DanaProducts.dana01,

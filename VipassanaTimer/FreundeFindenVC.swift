@@ -5,51 +5,36 @@
 //  Created by Matthias Pochmann on 20.03.17.
 //  Copyright © 2017 Matthias Pochmann. All rights reserved.
 //
-
 import UIKit
-import Firebase
+import ReactiveSwift
 
-extension UISearchBar{
-    func setTransparent(){
-        backgroundColor   = UIColor.clear
-        backgroundImage   = UIImage()
-        alpha             = 1
-        isTranslucent     = true
-    }
-}
-class FreundeFindenVC: UIViewController,UISearchBarDelegate {
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return UIInterfaceOrientationMask.portrait  }
-    @IBOutlet weak var searchBar: UISearchBar!          { didSet{ searchBar.setTransparent() } }
-    @IBOutlet weak var freundesanfrageButton: UIButton! { didSet { freundesanfrageButton.setControlDesignPatterns() } }
+//✅
+class FreundeFindenVC: DesignViewControllerPortrait,UISearchBarDelegate {
+    var viewModel:FreundeFindenVCModel!
     
+    //IBOutlets
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var freundesanfrageButton: UIButton!
+    
+    //IBActions
     @IBAction func freundesanfrageButtonPressed(_ sender: UIButton) {
-        guard let gefundenerUser = gefundenerUser else{return}
-        FirUserConnections.createFreundesanfrage(withUserDict:gefundenerUser)
+        viewModel.freundschaftAnfragen()
         _ = navigationController?.popViewController(animated: true)
     }
 
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) { FirUser.getUser(byNickname: searchText) }
+    // VC LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        freundesanfrageButton.isHidden              = true
-        Singleton.sharedInstance.userWurdeGefunden  = userWurdeGefunden
-        view.backgroundColor = DesignPatterns.mainBackground
+        
+        searchBar.setTransparent()
+        freundesanfrageButton.setStandardDesign()
+        
+        freundesanfrageButton.reactive.isHidden <~ viewModel.freundAnfragenButtonIsHidden.producer
+        freundesanfrageButton.reactive.title    <~ viewModel.freundAnfragenButtonTitel.producer
+        
+        viewModel.searchString                  <~ searchBar.reactive.continuousTextValues
     }
     
-    
-    private func userWurdeGefunden(){ gefundenerUser = Singleton.sharedInstance.gefundenerUser }
-    var gefundenerUser:NSDictionary?{
-        didSet{
-            if let nickName = gefundenerUser?["spitzname"] as? String{
-                let title = NSLocalizedString("freundesAnfrageSenden1", comment: "freundesAnfrageSenden1") + nickName + NSLocalizedString("freundesAnfrageSenden2", comment: "freundesAnfrageSenden2")
-                freundesanfrageButton.setTitle(title, for: .normal)
-                freundesanfrageButton.isHidden  = false
-            } else {
-                freundesanfrageButton.setTitle("", for: .normal)
-                freundesanfrageButton.isHidden  = true
-            }
-        }
-    }
     deinit { print ("deinit FreundeFindenVC") }
 }
 

@@ -9,51 +9,37 @@
 import UIKit
 import ReactiveSwift
 
-
-@IBDesignable class MeditationsTimerVC: UIViewController {
+//✅
+class MeditationsTimerVC: DesignViewControllerPortrait {
     var viewModel:MeditationsTimerVCModel!
     
+    //VC LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        view.backgroundColor            = UIColor(patternImage: #imageLiteral(resourceName: "backGroundImage.png"))
-        navigationController?.navigationBar.setDesignPattern()
-        
-        
-        
-        fireBaseModel.observerFuerListeAktiv        = true
-        
+        // App aktiv halten
         UIApplication.shared.isIdleTimerDisabled    = true
-        
-        
-        mainModel.tappedMeditationsPlatz.signal.observeValues{[weak self] publicMeditation in self?.performSegue(withIdentifier: "showUserInfo", sender: publicMeditation)}
+        //startet Observer Liste aktiver Meditationen
+        //Aktion show PublicMeditationInfo
+        viewModel.tappedMeditationsPlatz.signal.observeValues{[weak self] publicMeditation in self?.performSegue(withIdentifier: "showUserInfo", sender: publicMeditation)}
+        //timerView
+        timerView.viewModel             = viewModel.getTimerAsTimerViewModel()
+        timerView.timerAnzeigeTapped    = {[weak self] in self?.performSegue(withIdentifier: "nextVC", sender: nil)}
     }
     
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return UIInterfaceOrientationMask.portrait  }
+    //Outlets
+    @IBOutlet weak var timerView: TimerAsTimerView!
     
-    
-    
-    
- 
-    func timerAnzeigeTapped(){ performSegue(withIdentifier: "nextVC", sender: nil) }
-    @IBOutlet weak var timerView: TimerAsTimerView!{
-        didSet{
-            timerView.viewModel             = viewModel.getTimerAsTimerViewModel()
-            timerView.timerAnzeigeTapped    = {[weak self] in self?.timerAnzeigeTapped()}
-        }
-    }
+    //segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         (segue.destination as? GeradeMeditiertView)?.viewModel  = viewModel.getGeradeMeditiertViewModel()
         (segue.destination as? TimerTableVC)?.viewModel         = viewModel.getTimerTableVCViewModel()
-        
         guard let sender = sender as? PublicMeditation else {return}
-        (segue.destination.contentViewController as? PublicMeditationInfoVC)?.viewModel = PublicMeditationInfoViewModel(model: PublicMeditationInfoModel(publicMeditation: sender))
+        (segue.destination.contentViewController as? PublicMeditationInfoVC)?.viewModel = PublicMeditationInfoViewModel(publicMeditation: sender)
     }
 
+    //deinit
     deinit {
-        mainModel.myActiveMeditation.value          = nil
         UIApplication.shared.isIdleTimerDisabled    = false
-        fireBaseModel.observerFuerListeAktiv        = false
         print("deinit MeditationsTimerVC") }
 }
 

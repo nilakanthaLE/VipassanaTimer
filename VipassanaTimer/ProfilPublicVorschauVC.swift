@@ -8,20 +8,15 @@
 
 import UIKit
 
-class ProfilPublicVorschauVC:UIViewController{
+//✅
+class ProfilPublicVorschauVC:DesignViewControllerPortrait{
     var viewModel:PublicMeditationInfoViewModel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        view.backgroundColor            = UIColor(patternImage: #imageLiteral(resourceName: "backGroundImage.png"))
-        navigationController?.navigationBar.setDesignPattern()
-        title                           = viewModel.title
+        title                               = viewModel.title
+        publicMeditationInfoView.viewModel  = viewModel
     }
-    @IBOutlet weak var publicMeditationInfoView: PublicMeditationInfoView!{
-        didSet{ publicMeditationInfoView.viewModel = viewModel }
-    }
-    @IBAction func zurueckButtonPressed(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
-    }
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return UIInterfaceOrientationMask.portrait  }
+    @IBOutlet weak var publicMeditationInfoView: PublicMeditationInfoView!
+    @IBAction func zurueckButtonPressed(_ sender: UIBarButtonItem)          { dismiss(animated: true, completion: nil)  }
+    deinit { print("deinit ProfilPublicVorschauVC") }
 }

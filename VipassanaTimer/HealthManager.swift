@@ -6,7 +6,6 @@
 //  Copyright © 2017 Matthias Pochmann. All rights reserved.
 //
 
-import Foundation
 import HealthKit
 import UIKit
 
@@ -14,9 +13,9 @@ class HealthManager{
     static let healthKitStore:HKHealthStore = HKHealthStore()
     
     class func saveMeditation(start:Date,ende:Date,meditation:Meditation){
-        guard let mindfulType = HKSampleType.categoryType(forIdentifier: HKCategoryTypeIdentifier.mindfulSession) else {return}
+        guard let mindfulType   = HKSampleType.categoryType(forIdentifier: HKCategoryTypeIdentifier.mindfulSession) else {return}
         // Now create the sample
-        let mindfulSample   = HKCategorySample(type: mindfulType, value: HKCategoryValue.notApplicable.rawValue, start: start, end: ende)
+        let mindfulSample       = HKCategorySample(type: mindfulType, value: HKCategoryValue.notApplicable.rawValue, start: start, end: ende)
         // Finally save to health store
         healthKitStore.save(mindfulSample) { (result:Bool, error:Error?) in
             if result{
@@ -25,7 +24,6 @@ class HealthManager{
             }else{ print("error saving mindfulSession",error?.localizedDescription ?? "Fehler") }
         }
     }
-    
     
     func updateHealthKit(){
         let status = HealthManager.healthKitStore.authorizationStatus(for: HKObjectType.categoryType(forIdentifier: .mindfulSession)!)
@@ -43,9 +41,7 @@ class HealthManager{
         let predicate           = NSPredicate(format: "startDate == %@ && endDate == %@", start as CVarArg, ende as CVarArg)
         let query               = HKSampleQuery(sampleType: mindfulType, predicate: predicate, limit: 10, sortDescriptors: nil)
         { (query, results, error) in
-            if let results = results as? [HKCategorySample], let _ = results.first {
-                meditation.inHealthKit = true
-            }
+            if let results = results as? [HKCategorySample], let _ = results.first  { meditation.inHealthKit = true }
             else{ HealthManager.saveMeditation(start: start as Date, ende: ende as Date,meditation: meditation) }
         }
         HealthManager.healthKitStore.execute(query)
@@ -65,7 +61,6 @@ class HealthManager{
             }
             HealthManager.healthKitStore.execute(query)
         }
-        
     }
     private static func deleteMeditation(meditation:HKCategorySample){
         HealthManager.healthKitStore.delete(meditation) {(success, error) -> Void in

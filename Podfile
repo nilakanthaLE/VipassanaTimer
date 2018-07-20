@@ -7,15 +7,17 @@ target 'VipassanaTimer' do
 
   # Pods for VipassanaTimer
 
-pod 'YSRangeSlider', '~> 3.1.0'
-pod "MIBadgeButton-Swift", :git => 'https://github.com/mustafaibrahim989/MIBadgeButton-Swift.git', :branch => 'master'
+#pod 'YSRangeSlider', '~> 3.1.0'
+#pod "MIBadgeButton-Swift", :git => 'https://github.com/mustafaibrahim989/MIBadgeButton-Swift.git', :branch => 'master'
 
 
-
+#Firebase
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
 pod 'Firebase/Storage'
+
+#Reactive
 pod 'ReactiveSwift', '~> 3.0'
 pod 'ReactiveCocoa', '~> 7.0'
   

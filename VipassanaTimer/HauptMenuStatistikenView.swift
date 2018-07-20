@@ -9,70 +9,38 @@
 import UIKit
 import ReactiveSwift
 
-class HauptMenuStatistikenViewModel{
-    
-    let taeglichStats       : MutableProperty<StatistikUeberblickGraphData>
-    let woechentlichStats   : MutableProperty<StatistikUeberblickGraphData>
-    let monatlichStats      : MutableProperty<StatistikUeberblickGraphData>
-    let updateRegelmaessigkeit = MutableProperty<Void>(Void())
-    
-    let infoButtonAction = MutableProperty<Void>(Void())
-    init(statistics:MutableProperty<Statistics>,infoButtonAction:MutableProperty<Void>){
-        taeglichStats       =  MutableProperty<StatistikUeberblickGraphData>(statistics.value.getGraphData(takt: .taeglich))
-        woechentlichStats   =  MutableProperty<StatistikUeberblickGraphData>(statistics.value.getGraphData(takt: .woechentlich))
-        monatlichStats      =  MutableProperty<StatistikUeberblickGraphData>(statistics.value.getGraphData(takt: .monatlich))
-        
-        taeglichStats           <~ statistics.signal.map{$0.getGraphData(takt: .taeglich)}
-        woechentlichStats       <~ statistics.signal.map{$0.getGraphData(takt: .woechentlich)}
-        monatlichStats          <~ statistics.signal.map{$0.getGraphData(takt: .monatlich)}
-        updateRegelmaessigkeit  <~ statistics.signal.map{_ in Void()}
-        
-        infoButtonAction    <~ self.infoButtonAction.signal
-    }
-    
-    func getViewModelForStatistikUeberlick1View(takt:StatistikTakt) -> StatistikUeberblick1ViewModel{
-        let property:MutableProperty<StatistikUeberblickGraphData> = {
-            switch takt{
-                case .taeglich:     return taeglichStats
-                case .woechentlich: return woechentlichStats
-                case .monatlich:    return monatlichStats
-            }
-        }()
-        return StatistikUeberblick1ViewModel(data: property, infoButtonAction: infoButtonAction)
-    }
-    
-    func getViewModelForStatistikUeberblick2View() -> StatistikUeberblick2ViewModel{
-        return StatistikUeberblick2ViewModel(update: updateRegelmaessigkeit)
-    }
-}
-
+//✅
+//Statistiken der Startseite
+// zum durchblättern
 @IBDesignable class HauptMenuStatistikenView:NibLoadingView{
+    private var reihenFolge:[UIView] = [UIView]()
     var viewModel:HauptMenuStatistikenViewModel!{
         didSet{
+            //views (zum blättern) init
+            let regelmaessigkeitView:StatistikUeberblickRegelmaessigkeitView    = StatistikUeberblickRegelmaessigkeitView(frame:CGRect.zero)
+            let taeglichView:StatistikUeberblickBalkenView                      = StatistikUeberblickBalkenView(frame:CGRect.zero)
+            let woechentlichView:StatistikUeberblickBalkenView                  = StatistikUeberblickBalkenView(frame:CGRect.zero)
+            let monatlichView:StatistikUeberblickBalkenView                     = StatistikUeberblickBalkenView(frame:CGRect.zero)
+            reihenFolge = [regelmaessigkeitView,  taeglichView, woechentlichView, monatlichView]
+            resetStackForReihenfolge()
+            
+            //viewModels
             taeglichView.viewModel          = viewModel.getViewModelForStatistikUeberlick1View(takt: .taeglich)
             woechentlichView.viewModel      = viewModel.getViewModelForStatistikUeberlick1View(takt: .woechentlich)
             monatlichView.viewModel         = viewModel.getViewModelForStatistikUeberlick1View(takt: .monatlich)
             regelmaessigkeitView.viewModel  = viewModel.getViewModelForStatistikUeberblick2View()
             
-            reihenFolge = [regelmaessigkeitView,taeglichView,woechentlichView,monatlichView]
-            resetStackForReihenfolge()
-            
-
+            //design
             clipsToBounds = true
         }
     }
+    //IBActions
     @IBAction func swipeAction(_ sender: UISwipeGestureRecognizer) { animateStack(direction: sender.direction) }
     
-    
-    var reihenFolge:[UIView] = [UIView]()
-    let regelmaessigkeitView:StatistikUeberblick2   = StatistikUeberblick2.init(frame:CGRect.zero)
-    let taeglichView:StatistikUeberblick1View       = StatistikUeberblick1View(frame:CGRect.zero)
-    let woechentlichView:StatistikUeberblick1View   = StatistikUeberblick1View(frame:CGRect.zero)
-    let monatlichView:StatistikUeberblick1View      = StatistikUeberblick1View(frame:CGRect.zero)
-    
+    //IBOutlets
     @IBOutlet weak var stackView: UIStackView!
     
-
+    //helper
     private func animateStack(direction:UISwipeGestureRecognizerDirection){
         let newX:CGFloat = {
             let multiplier:CGFloat = direction == .left ? -1 : direction == .right ? 1 : 0

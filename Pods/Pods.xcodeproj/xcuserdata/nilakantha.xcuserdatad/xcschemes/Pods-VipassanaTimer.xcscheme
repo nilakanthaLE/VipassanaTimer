@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A2939A8F0F3C38CE75DC1AECC2FECD69"
+               BlueprintIdentifier = "955D5FA55BFB28F2E3CA24A8CFFD462C"
                BuildableName = "Pods_VipassanaTimer.framework"
                BlueprintName = "Pods-VipassanaTimer"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A2939A8F0F3C38CE75DC1AECC2FECD69"
+            BlueprintIdentifier = "955D5FA55BFB28F2E3CA24A8CFFD462C"
             BuildableName = "Pods_VipassanaTimer.framework"
             BlueprintName = "Pods-VipassanaTimer"
             ReferencedContainer = "container:Pods.xcodeproj">

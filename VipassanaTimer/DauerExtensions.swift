@@ -8,21 +8,15 @@
 
 import Foundation
 import CoreData
-import UIKit
 
+//✅
+//Pausen(dauer)
 extension Dauer{
-    
     class func new(start:Date,ende:Date)->Dauer?{
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        
-        if let dauer = NSEntityDescription.insertNewObject(forEntityName: "Dauer", into: context) as? Dauer{
-            dauer.start            = start
-            dauer.ende             = ende
-            return dauer
-        }
-        return nil
+        let dauer       = NSEntityDescription.insertNewObject(forEntityName: "Dauer", into: context) as? Dauer
+        dauer?.start    = start
+        dauer?.ende     = ende
+        return dauer
     }
-    var asTimeInterval:TimeInterval{
-        return ende!.timeIntervalSince(start! as Date)
-    }
+    var asTimeInterval:TimeInterval{ return ende!.timeIntervalSince(start! as Date) }
 }
