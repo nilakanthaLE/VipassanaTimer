@@ -9,7 +9,7 @@ import UIKit
 import ReactiveSwift
 
 //✅
-class MeditationsPlatzConfigVC:DesignTableViewControllerPortrait{
+class MeditationsPlatzConfigVC:DesignViewControllerPortrait{
     var viewModel:MeditationsPlatzConfigViewModel!
     
     //IBOutlet
@@ -35,7 +35,6 @@ class MeditationsPlatzConfigViewModel{
     
     //ViewModels
     func getViewModelForMeditationsPlatzView() -> MeditationsPlatzViewModel{ return MeditationsPlatzViewModel(meditationsPlatzTitle: meditationsPlatzTitle) }
-    
     deinit { print("deinit MeditationsPlatzConfigViewModel") }
 }
 //✅

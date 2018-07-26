@@ -54,8 +54,8 @@ class TimerAsTimerModel:TimerAnzeigeModel{
         
         //  Klangschalen Sound Ereignisse
         let audioPlayer = AudioPlayer()
-        now.signal.filter{$0 != nil}.observeValues{[weak self] now in self?.setEndeEreignisse(now: now!) }
-        let observer = Signal<Void,NoError>.Observer{[weak self] _ in if self?.klangschalenAreOn.value == true { audioPlayer.playKlangSchale()  } }
+        now.signal.filter{$0 != nil}.observeValues      {[weak self] now in self?.setEndeEreignisse(now: now!) }
+        let observer = Signal<Void,NoError>.Observer    {[weak self] _ in if self?.klangschalenAreOn.value == true { audioPlayer.playKlangSchale()  } }
         anapanaBeendet.signal.observe(observer)
         meditationBeendet.signal.observe(observer)
         vipassanaBeendet.signal.observe(observer)

@@ -62,4 +62,7 @@ class PublicKursProto{
         kursTitle       = "10day"
         days            = [MeditationsTag]()
     }
+    
+    var localizedName:String{  return Locale.current.languageCode == "de" ? kursNameD : kursNameEng }
+    var kursTage:Int{return days.filter{$0.meditationen.count > 1}.count}
 }

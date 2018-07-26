@@ -44,11 +44,18 @@ class ProfilConfigViewModel{
     func spitzNameVergebenLabelText(userSuchErgebnis:UserSuchErgebnis) -> String{
         let spitzname = spitzNameText.value ?? "???"
         switch userSuchErgebnis{
-        case .gefunden:         return  spitzname + NSLocalizedString("NicknameVergeben", comment: "NicknameVergeben")
-        case .nichtGefunden:    return spitzname +  NSLocalizedString("NicknameErlaubt", comment: "NicknameErlaubt")
+        case .gefunden:         return spitzname + NSLocalizedString("NicknameVergeben", comment: "NicknameVergeben")
+        case .nichtGefunden:    return spitzname + NSLocalizedString("NicknameErlaubt", comment: "NicknameErlaubt")
         case .Fehler:           return "Fehler"
         }
-        
+    }
+    func freundeStatistikenSehenLabelText() -> NSAttributedString{
+        let teil1 = NSAttributedString(string: NSLocalizedString("FreundeStatistikErlaubt1", comment: "FreundeStatistikErlaubt1"), attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 16)])
+        let teil2 = NSAttributedString(string: NSLocalizedString("FreundeStatistikErlaubt2", comment: "FreundeStatistikErlaubt2"), attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 11)])
+        let combination     = NSMutableAttributedString()
+        combination.append(teil1)
+        combination.append(teil2)
+        return combination
     }
 }
 

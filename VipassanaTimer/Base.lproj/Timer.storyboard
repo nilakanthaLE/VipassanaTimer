@@ -64,7 +64,7 @@
             </objects>
             <point key="canvasLocation" x="1710" y="358"/>
         </scene>
-        <!--Konfigurieren-->
+        <!--Configure-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="TimerSettingsVC" customModule="VipassanaTimer" sceneMemberID="viewController">
@@ -87,7 +87,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Konfigurieren" id="XtQ-NS-MSm"/>
+                    <navigationItem key="navigationItem" title="Configure" id="XtQ-NS-MSm"/>
                     <connections>
                         <outlet property="timerSettingsView" destination="ZPH-ah-hcd" id="8I1-eF-Tga"/>
                         <segue destination="ObJ-1v-pdB" kind="show" identifier="go2sound" id="kBV-F3-11d"/>
@@ -128,18 +128,18 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoSoundFileCell" rowHeight="38" id="gPJ-Lz-2SK">
-                                <rect key="frame" x="0.0" y="158" width="320" height="38"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoSoundFileCell" rowHeight="56" id="gPJ-Lz-2SK">
+                                <rect key="frame" x="0.0" y="158" width="320" height="56"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gPJ-Lz-2SK" id="QnH-rB-Z20">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="38"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kein Soundfile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXw-AZ-dDE">
-                                            <rect key="frame" x="8" y="8" width="304" height="30"/>
+                                            <rect key="frame" x="8" y="8" width="304" height="40"/>
                                             <color key="backgroundColor" red="1" green="1" blue="0.79580073920000005" alpha="0.66315282529999997" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="TwZ-h1-fof"/>
+                                                <constraint firstAttribute="height" constant="40" id="TwZ-h1-fof"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.41274607390000001" green="0.32337761599999998" blue="0.18693663939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -150,7 +150,7 @@
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="bXw-AZ-dDE" secondAttribute="trailing" constant="8" id="Ah5-sF-l0h"/>
                                         <constraint firstItem="bXw-AZ-dDE" firstAttribute="top" secondItem="QnH-rB-Z20" secondAttribute="top" constant="8" id="Cnp-wZ-oyj"/>
-                                        <constraint firstAttribute="bottom" secondItem="bXw-AZ-dDE" secondAttribute="bottom" id="n9r-X7-0KV"/>
+                                        <constraint firstAttribute="bottom" secondItem="bXw-AZ-dDE" secondAttribute="bottom" constant="8" id="n9r-X7-0KV"/>
                                         <constraint firstItem="bXw-AZ-dDE" firstAttribute="leading" secondItem="QnH-rB-Z20" secondAttribute="leading" constant="8" id="nej-Qz-gSf"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -187,13 +187,13 @@
                                     <segue destination="bbI-Fb-WkM" kind="embed" id="tIy-e9-G8M"/>
                                 </connections>
                             </containerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Im Augenblick meditieren" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkd-8w-1ZW">
-                                <rect key="frame" x="16" y="224.5" width="139" height="13.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now Meditating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkd-8w-1ZW">
+                                <rect key="frame" x="16" y="224.5" width="86" height="13.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
                                 <color key="textColor" red="0.41274607390000001" green="0.32337761599999998" blue="0.18693663939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Damit die Hinweistöne erklingen können, darf die App während der Meditation nicht geschlossen werden." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OxH-Yd-nyW">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you close tha app during your meditation you will not hear any sound." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OxH-Yd-nyW">
                                 <rect key="frame" x="16" y="72" width="288" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" red="0.41274607390000001" green="0.32337761599999998" blue="0.18693663939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -218,7 +218,7 @@
                         <viewLayoutGuide key="safeArea" id="iHk-lx-BtN"/>
                     </view>
                     <navigationItem key="navigationItem" title="Meditieren" id="QNA-9K-qGH">
-                        <barButtonItem key="leftBarButtonItem" title="zurück" id="oTg-su-FUg">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="oTg-su-FUg">
                             <connections>
                                 <segue destination="OmI-JF-ycI" kind="unwind" unwindAction="unwindToHauptmenuWithSegue:" id="ntH-40-UQd"/>
                             </connections>

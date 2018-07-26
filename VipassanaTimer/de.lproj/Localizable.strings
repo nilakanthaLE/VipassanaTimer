@@ -33,9 +33,8 @@ TimerConfigViewContinue         = "fortsetzen";
 
 NicknameErlaubt                 = " ist noch frei und wurde gespeichert";
 NicknameVergeben                = " ist leider bereits vergeben, bitte wählen Sie einen anderen Spitznamen";
-FreundeStatistikErlaubt1        = "Freunde dürfen statistische Daten";
+FreundeStatistikErlaubt1        = "Freunde dürfen statistische Daten sehen";
 FreundeStatistikErlaubt2        = "(Durchschnittsdauer pro Tag, Gesamtmeditationsdauer)";
-FreundeStatistikErlaubt3        = "sehen";
 
 Freundesanfragen                = "Freundesanfragen";
 meineFreunde                    = "Meine Freunde";
@@ -48,6 +47,58 @@ freundesAnfrageAbweisen         = "abweisen";
 freundschaftBeenden             = "Freundschaft beenden";
 
 freundschaftsanfrageButton      = "Freundesanfrage senden";
+freundschaftBestaetigen         = " bestätigen ";
+
+//BalkenStatistik
+// Takt
+taeglich                        = "täglich";
+woechentlich                    = "wöchentlich";
+monatlich                       = "monatlich";
+
+heute                           = "heute";
+aktuellWoche                    = "aktuelle";
+aktuellMonat                    = "aktueller";
+
+gestern                         = "gestern";
+letzteWoche                     = "letzte";
+letzterMonat                    = "letzter";
+
+vorgestern                      = "vorgestern";
+vorletzteWoche                  = "vorletzte";
+vorletzterMonat                 = "vorletzter";
+
+woche                           = "Woche";
+monat                           = "Monat";
+
+//HauptmenuButton
+kurse                           = "Kurse";
+freunde                         = "Freunde";
+profil                          = "Freunde";
+profil                          = "Mein Profil";
+
+dauer                           = "Dauer: ";
+
+//Spitzname benötigt
+nickNeededTitle                 = "Spitzname benötigt";
+nickNeededMessage               = "Um sich mit anderen Benutzern zu vernetzen, ist es notwendig zuvor einen Spitznamen zu vergeben";
+
+//Kurslistenerweiterung
+kursListenInfoTitle             = "andere Kurse";
+kursListenInfoMessage           = "Diese Liste soll im Laufe der Zeit erweitert werden.\n\nBei Bedarf bitte Kontakt aufnehmen";
+
+//LehreName
+lehrerMessage                   = "Bitte Name des Lehrers eingeben";
+abbrechen                       = "abbrechen";
+uebernehmen                     = "übernehmen";
+nameOfTeacher                   = "Name des Lehrers";
+
+
+//Dana
+noSoundfileDownloadTitle        = "Nicht möglich!";
+noSoundfileDownloadMessage      = "Bitte über dana auf der Startseite weitere Soundfiles freischalten. (auch kostenlos)";
+danaEinzelErlaubnisCell         = "einzelnes Sounfile freischalten";
+danaInfoMessage                 = "Wenn Sie mögen, können Sie dieses Projekt mit dana unterstützen.\n\nBeim Download der Soundfiles entstehen Kosten. Deshalb ist eine Beschränkung des Zugriffs erforderlich. Mit dana erhalten Sie freien Zugriff auf alle Soundfiles. Andernfalls können Sie hier jeweils einzelne Soundfiles freischalten.";
+
 
 Week = "woche";
 PerDay  = "pro Tag";

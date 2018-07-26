@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="99" id="KGk-i7-Jjw" customClass="DanaTableViewCell" customModule="VipassanaTimer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="372" height="99"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="372" height="98.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KuP-FW-LBf">
+                        <rect key="frame" x="8" y="4" width="356" height="90.5"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LEX-C5-UcT">
+                                <rect key="frame" x="8" y="0.0" width="340" height="90.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J01-HV-MeS">
+                                        <rect key="frame" x="0.0" y="0.0" width="298" height="90.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.41274607390000001" green="0.32337761599999998" blue="0.18693663939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="di8-9G-EJP">
+                                        <rect key="frame" x="298" y="0.0" width="42" height="90.5"/>
+                                        <state key="normal" title=" dana ">
+                                            <color key="titleColor" red="0.41274607390000001" green="0.32337761599999998" blue="0.18693663939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="0.79580073920000005" alpha="0.66315282529999997" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="LEX-C5-UcT" secondAttribute="bottom" id="3sd-IH-6oB"/>
+                            <constraint firstAttribute="trailing" secondItem="LEX-C5-UcT" secondAttribute="trailing" constant="8" id="8hZ-3G-czj"/>
+                            <constraint firstItem="LEX-C5-UcT" firstAttribute="leading" secondItem="KuP-FW-LBf" secondAttribute="leading" constant="8" id="YV6-Tx-E9J"/>
+                            <constraint firstItem="LEX-C5-UcT" firstAttribute="top" secondItem="KuP-FW-LBf" secondAttribute="top" id="aun-8d-zhU"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="KuP-FW-LBf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Sub-da-A8F"/>
+                    <constraint firstItem="KuP-FW-LBf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="Uvr-tm-BoK"/>
+                    <constraint firstAttribute="trailing" secondItem="KuP-FW-LBf" secondAttribute="trailing" constant="8" id="bYn-ge-SDP"/>
+                    <constraint firstAttribute="bottom" secondItem="KuP-FW-LBf" secondAttribute="bottom" constant="4" id="rsA-wl-80n"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="button" destination="di8-9G-EJP" id="Iqs-PE-Oxe"/>
+                <outlet property="designBackgroundView" destination="KuP-FW-LBf" id="aCg-6L-5NE"/>
+                <outlet property="label" destination="J01-HV-MeS" id="fvI-Qz-BmZ"/>
+            </connections>
+            <point key="canvasLocation" x="60" y="81.5"/>
+        </tableViewCell>
+    </objects>
+</document>

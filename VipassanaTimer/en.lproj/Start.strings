@@ -1,0 +1,15 @@
+
+/* Class = "UIButton"; normalTitle = "Start Meditation"; ObjectID = "3WK-7L-aoh"; */
+"3WK-7L-aoh.normalTitle" = "Start Meditations";
+
+/* Class = "UINavigationItem"; title = "Anfangsdatum für Durchschnitte"; ObjectID = "UAf-zE-Htz"; */
+"UAf-zE-Htz.title" = "Start Date For Statistics";
+
+/* Class = "UIButton"; normalTitle = "Statistics"; ObjectID = "dPj-Yp-57x"; */
+"dPj-Yp-57x.normalTitle" = "Statistics";
+
+/* Class = "UINavigationItem"; title = "Hauptmenu"; ObjectID = "nHo-Ys-MIv"; */
+"nHo-Ys-MIv.title" = "Hauptmenu";
+
+/* Class = "UIButton"; normalTitle = "Calendar"; ObjectID = "sPV-FH-kCn"; */
+"sPV-FH-kCn.normalTitle" = "Calendar";

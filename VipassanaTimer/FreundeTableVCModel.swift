@@ -18,7 +18,10 @@ class FreundeTableVCModel{
     let updateTableView             = MutableProperty<Void>( Void() )
     
     //init
-    init(){ freundEreignis.signal.observeValues { [weak self] _ in self?.updateTableViewAction() } }
+    init(){
+        print("freundesAnfragen\(freundesAnfragen.count) freunde:\(freunde.count )")
+
+        freundEreignis.signal.observeValues { [weak self] _ in self?.updateTableViewAction() } }
     
     //tableView Methods
     func numberOfRows(section:Int) -> Int       { return [freundesAnfragen,freunde][section].count }
@@ -39,8 +42,7 @@ class FreundeTableVCModel{
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             self?.freundesAnfragen          = Freund.getFreundesAnfragen()
             self?.freunde                   = Freund.getFreunde()
-            self?.updateTableView.value     = Void()
-        }
+            self?.updateTableView.value     = Void() }
         
     }
     

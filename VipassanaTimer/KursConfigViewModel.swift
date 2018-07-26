@@ -27,13 +27,13 @@ class KursConfigViewModel{
         //holt Kursprotos aus Firebase
         FirebaseKursProto.getList(publicKursProtos: kursProtos)
         
-        pickerTitles            <~ kursProtos.signal.map{ $0.map {$0?.kursNameD ?? "-----"} }
+        pickerTitles            <~ kursProtos.signal.map{ $0.map {$0?.localizedName ?? "-----"} }
         startDateText           <~ selectedDate.producer.map{$0.string("dd.MM.yyyy")}
         stacksAreHidden         <~ selectedRow.map{$0 == 0}
         endDateText             <~ selectedDate.signal.map{[weak self] _ in (self?.endDate ?? Date()).string("dd.MM.yyyy") }
         endDateText             <~ selectedRow.signal.map{[weak self] _ in (self?.endDate ?? Date()).string("dd.MM.yyyy") }
         
-        erstellenButtonAction.signal.observe{[weak self] _ in
+        erstellenButtonAction.signal.observeValues{[weak self] _ in
             guard let kursProto =  self?.kursProtos.value[self?.selectedRow.value ?? 0] else {return}
             let kursData = KursData(publicKursProto: kursProto, startTag: self!.selectedDate.value, teacher: self?.teacher.value )
             _ = Kurs.new(kursData: kursData)

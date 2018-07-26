@@ -20,7 +20,7 @@ class StatistikUeberblickBalkenViewModel{
     init(data:MutableProperty<StatistikUeberblickGraphData>, infoButtonAction: MutableProperty<Void>){
         self.data = MutableProperty<StatistikUeberblickGraphData>(data.value)
         self.data           <~ data.signal
-        taktLabelText       <~ data.producer.map{$0.takt.rawValue}
+        taktLabelText       <~ data.producer.map{$0.takt.taktString}
         infoButtonAction    <~ self.infoButtonAction.signal
     }
     

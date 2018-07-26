@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "Damit die Hinweistöne erklingen können, darf die App während der Meditation nicht geschlossen werden."; ObjectID = "OxH-Yd-nyW"; */
+"OxH-Yd-nyW.text" = "Damit die Hinweistöne erklingen können, darf die App während der Meditation nicht geschlossen werden.";
+
+/* Class = "UINavigationItem"; title = "Meditieren"; ObjectID = "QNA-9K-qGH"; */
+"QNA-9K-qGH.title" = "Meditieren";
+
+/* Class = "UINavigationItem"; title = "Konfigurieren"; ObjectID = "XtQ-NS-MSm"; */
+"XtQ-NS-MSm.title" = "Konfigurieren";
+
+/* Class = "UILabel"; text = "Kein Soundfile"; ObjectID = "bXw-AZ-dDE"; */
+"bXw-AZ-dDE.text" = "Kein Soundfile";
+
+/* Class = "UILabel"; text = "Im Augenblick meditieren"; ObjectID = "pkd-8w-1ZW"; */
+"pkd-8w-1ZW.text" = "Im Augenblick meditieren";
+
+/* Class = "UINavigationItem"; title = "Name"; ObjectID = "qLw-8P-xAC"; */
+"qLw-8P-xAC.title" = "Name";
+
+/* Class = "UINavigationItem"; title = "Meine Timer"; ObjectID = "yPP-vY-M6h"; */
+"yPP-vY-M6h.title" = "Meine Timer";

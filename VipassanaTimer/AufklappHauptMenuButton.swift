@@ -25,7 +25,7 @@ class AufklappHauptMenuButtonViewModel{
         pressed <~ pressedButton.signal
         
         //Aktion
-        klappAction.signal.observe{[weak self] _ in self?.klappen()}
+        klappAction.signal.observeValues{[weak self] _ in self?.klappen()}
     }
     //helper
     private func klappen(){ isAufgeklappt.value = !isAufgeklappt.value }
@@ -78,9 +78,9 @@ enum SubmenuButtonTyp{
     case kurse,freunde,profil,klappButton,dana
     var title:String{
         switch self{
-            case .kurse:        return "Kurse"
-            case .freunde:      return "Freunde"
-            case .profil:       return "Mein Profil"
+            case .kurse:        return NSLocalizedString("kurse", comment: "kurse")
+            case .freunde:      return NSLocalizedString("freunde", comment: "freunde")
+            case .profil:       return NSLocalizedString("profil", comment: "profil")
             case .klappButton:  return "..."
             case .dana:         return "dana"
         }

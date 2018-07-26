@@ -39,7 +39,7 @@ NicknameErlaubt                 = " is free and was saved";
 NicknameVergeben                = " is already in use. Please choose another nickname";
 FreundeStatistikErlaubt1        = "Friends are allowed to see my statistics ";
 FreundeStatistikErlaubt2        = "(average per day, total time)";
-FreundeStatistikErlaubt3        = "";
+
 
 Freundesanfragen                = "Friend Requests";
 meineFreunde                    = "My Friends";
@@ -52,7 +52,63 @@ freundesAnfrageAbweisen         = "reject";
 freundschaftBeenden             = "end friendship";
 
 freundschaftsanfrageButton      = "ask for friendship";
+freundschaftBestaetigen         = " confirm ";
 
+//BalkenStatistik
+// Takt
+taeglich                        = "daily";
+woechentlich                    = "weekly";
+monatlich                       = "monthly";
+
+heute                           = "today";
+aktuellWoche                    = "current";
+aktuellMonat                    = "current";
+
+gestern                         = "yesterday";
+letzteWoche                     = "last";
+letzterMonat                    = "last";
+
+vorgestern                      = "d.b.y.";
+vorletzteWoche                  = "penultimate";
+vorletzterMonat                 = "penultimate";
+
+woche                           = "week";
+monat                           = "month";
+
+
+//HauptmenuButton
+kurse                           = "Courses";
+freunde                         = "Friends";
+profil                          = "My Profile";
+
+
+dauer                           = "Duration: ";
+
+
+//Spitzname benötigt
+nickNeededTitle                 = "Nickname Needed";
+nickNeededMessage               = "You need a nickname to have friends";
+
+
+//Kurslistenerweiterung
+kursListenInfoTitle             = "Other Courses";
+kursListenInfoMessage           = "This list will be expanded.\n\nFeel free to contact me";
+
+//LehreName
+lehrerMessage                   = "Please provide the name of the teacher";
+abbrechen                       = "cancel";
+uebernehmen                     = "apply";
+nameOfTeacher                   = "Name of the teacher";
+
+//Dana
+noSoundfileDownloadTitle        = "Impossible!";
+noSoundfileDownloadMessage      = "Please go to dana on start page. There you can unlock more soundfiles. (also for free)";
+danaEinzelErlaubnisCell         = "unlock single soundfile";
+danaInfoMessage                 = "If you like, you can support this project with dana.\n\nI have to pay for the soundfiles you download. Therefore I need to restrict the access somehow. With dana, you get free access to all files. Otherwise you can unlock file by file";
+
+
+
+//obsolet
 TenDayCourse        = "10-day course";
 TenDayCourse0       = "day zero";
 
@@ -148,3 +204,7 @@ TenDayCourse10_7     = "day ten VII";
 TenDayCourse10_8     = "day ten VIII";
 
 TenDayCourse11      = "day eleven";
+
+
+
+

@@ -61,4 +61,12 @@ class FireBaseSoundFilesStorage{
 }
 
 //SoundFileDaten
-let SoundFileDubaiLongEnglish = SoundFileData(title: "Dubai Long English", duration: 3925, mettaDuration: 710, fireBaseTitle: "Dubai_Long-Instr_E_GS")
+let DubaiLongEng                   = SoundFileData(title: "Dubai Long English - 1999",      duration: 3917, mettaDuration: 702, fireBaseTitle: "Dubai_Long-Instr_E_GS")
+let MinimalShortEng                = SoundFileData(title: "Minimal Short - 1985",           duration: 3904, mettaDuration: 310, fireBaseTitle: "Minimal_Short-Instr_E_GS")
+let JuhuShortEng                   = SoundFileData(title: "Juhu (Mumbai) Short - 1987",     duration: 3928, mettaDuration: 337, fireBaseTitle: "Juhu_Short-Instr_E-only_GS")
+let KhettaShortEng                 = SoundFileData(title: "Dhamma Khetta Short - 1984",     duration: 3907, mettaDuration: 383, fireBaseTitle: "Khetta_Short-Instr_E_GS")
+let SalilaLongEng                  = SoundFileData(title: "Dhamma Salila Long - 1998",      duration: 3874, mettaDuration: 577, fireBaseTitle: "Salila_Long-Instr_E_GS")
+let SalilaShortEng                 = SoundFileData(title: "Dhamma Salila Short - 1998",     duration: 3957, mettaDuration: 510, fireBaseTitle: "Salila_Short-Instr_E_GS")
+let SikharaShortEng                = SoundFileData(title: "Dhamma Sikhara Short - 2000",    duration: 3901, mettaDuration: 376, fireBaseTitle: "Sikhara_Short-Instr_E_GS")
+let VIALongEng                     = SoundFileData(title: "(VIA) Dhamma Giri Long - 1992",  duration: 3901, mettaDuration: 807, fireBaseTitle: "VIA_Long-Instr_E_GS")
+let SetuLongEng                    = SoundFileData(title: "Dhamma Setu Long - 2000",        duration: 3900, mettaDuration: 539, fireBaseTitle: "Setu_Long-Instr_E_GS")

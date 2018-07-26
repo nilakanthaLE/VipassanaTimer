@@ -17,8 +17,10 @@ class MeineFreundesAnfragenTableVC: DesignTableViewControllerPortrait {
     override func numberOfSections(in tableView: UITableView) -> Int                                        { return 2 }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int            { return viewModel.numberOfRows(in: section) }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell                    = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MeineFreundesAnfragenTableViewCell
-        cell.title                  = viewModel.getCellTitle(for: indexPath)
+        let cell                    = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) //as! MeineFreundesAnfragenTableViewCell
+        cell.textLabel?.text        = viewModel.getCellTitle(for: indexPath)
+        cell.textLabel?.textColor    = standardSchriftFarbe
+//        cell.title                  = viewModel.getCellTitle(for: indexPath)
         return cell
     }
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?                                  { return viewModel.header(for: section) }
@@ -39,12 +41,11 @@ class MeineFreundesAnfragenTableVC: DesignTableViewControllerPortrait {
 }
 
 //✅
-class MeineFreundesAnfragenTableViewCell:UITableViewCell{
-    var title:String?{
-        didSet{
-            textLabel?.text         = title
-            textLabel?.textColor    = standardSchriftFarbe
-            backgroundColor         = standardBackgroundFarbe
-        }
-    }
-}
+//class MeineFreundesAnfragenTableViewCell:UITableViewCell{
+//    var title:String?{
+//        didSet{
+//            textLabel?.text         = title
+//            textLabel?.textColor    = standardSchriftFarbe
+//        }
+//    }
+//}

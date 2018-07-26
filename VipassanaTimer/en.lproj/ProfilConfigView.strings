@@ -1,0 +1,24 @@
+
+/* Class = "UILabel"; text = "Spitzname:"; ObjectID = "31R-EE-7jD"; */
+"31R-EE-7jD.text" = "Nickname:";
+
+/* Class = "UIButton"; normalTitle = "🇮🇳"; ObjectID = "5AD-oz-7xR"; */
+"5AD-oz-7xR.normalTitle" = "🇮🇳";
+
+/* Class = "UITextField"; placeholder = "mein Spitzname"; ObjectID = "7FU-6G-2vx"; */
+"7FU-6G-2vx.placeholder" = "My Nickname";
+
+/* Class = "UITextField"; placeholder = "Nachricht an andere"; ObjectID = "BkF-MH-zt5"; */
+"BkF-MH-zt5.placeholder" = "Message To Other Students";
+
+/* Class = "UILabel"; text = "Andere Meditierende dürfen meine Flagge sehen."; ObjectID = "DDH-TY-GFg"; */
+"DDH-TY-GFg.text" = "Other Students can see my Flag.";
+
+/* Class = "UILabel"; text = "\"...\" ist schon vergeben, bitte wählen Sie einen anderen Spitznamen."; ObjectID = "P5x-1o-mOa"; */
+"P5x-1o-mOa.text" = "\"...\" ist schon vergeben, bitte wählen Sie einen anderen Spitznamen.";
+
+/* Class = "UILabel"; text = "Andere Meditierende dürfen meinen Spitznamen sehen."; ObjectID = "W6q-qH-TKf"; */
+"W6q-qH-TKf.text" = "Other Students can see my Nickname.";
+
+/* Class = "UIButton"; normalTitle = "prüfen"; ObjectID = "ueo-bi-qaW"; */
+"ueo-bi-qaW.normalTitle" = "check";

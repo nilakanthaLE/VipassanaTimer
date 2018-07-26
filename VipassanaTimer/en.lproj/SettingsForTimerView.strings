@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "Klangschalen erklingen"; ObjectID = "1Al-Pv-cej"; */
+"1Al-Pv-cej.text" = "Singingbowls are on";
+
+/* Class = "UILabel"; text = "Metta"; ObjectID = "DWz-4v-COJ"; */
+"DWz-4v-COJ.text" = "Metta";
+
+/* Class = "UITextField"; placeholder = "Name des Timers, z.B. MorgenMeditation"; ObjectID = "WNX-UO-y8J"; */
+"WNX-UO-y8J.placeholder" = "Name of the Timer, e.G. Morning Meditation";
+
+/* Class = "UILabel"; text = "Anapana"; ObjectID = "XlM-dd-pkw"; */
+"XlM-dd-pkw.text" = "Anapana";
+
+/* Class = "UILabel"; text = "Metta ohne zeitliche Begrenzung"; ObjectID = "php-Xp-0br"; */
+"php-Xp-0br.text" = "Endless Metta";

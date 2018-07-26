@@ -12,7 +12,7 @@ import Foundation
 // wird von User konfiguriert
 // updated CD TimerConfig
 class TimerData:MeditationConfigProto{
-    var meditationTitle:String?         = "Eine Stunde - 5 min Anapana und Metta"
+    var meditationTitle:String?         = NSLocalizedString("FirstMeditation", comment: "FirstMeditation")
     var gesamtDauer:TimeInterval        = 60*60
     var anapanaDauer:TimeInterval       = 5*60
     var mettaDauer:TimeInterval         = 5*60
@@ -32,7 +32,7 @@ class TimerData:MeditationConfigProto{
         mettaDauer          = timerConfig.mettaDauer
         mettaEndlos         = timerConfig.mettaEndlos
         soundFileData       = timerConfig.soundFileDataCD?.soundFileData
-        soundSchalenAreOn   = timerConfig.soundSchalenAreOn
+        soundSchalenAreOn   = soundFileData == nil ? true : timerConfig.soundSchalenAreOn
     }
     init?(meditation:Meditation?){
         guard let meditation = meditation else {return nil}
@@ -45,7 +45,7 @@ class TimerData:MeditationConfigProto{
     }
     // PublicMeditationInfoView
     init(publicMeditation:PublicMeditation){
-        meditationTitle     = "Gesamt Dauer: \(publicMeditation.gesamtDauer.hhmm)"
+        meditationTitle     = NSLocalizedString("dauer", comment: "dauer") + "\(publicMeditation.gesamtDauer.hhmm)"
         gesamtDauer         = publicMeditation.gesamtDauer
         anapanaDauer        = publicMeditation.anapanaDauer
         mettaDauer          = publicMeditation.mettaDauer

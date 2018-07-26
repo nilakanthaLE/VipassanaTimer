@@ -32,7 +32,10 @@ class HauptMenuVC: DesignViewControllerPortrait,UIPopoverPresentationControllerD
     // VC LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("hier")
+        
+        //löscht alle Meditationen kürzer als 5 min
+        Meditation.cleanShortMeditations()
+        
         //viewModels
         aufklappButton.viewModel    = viewModel.getViewModelForAufKlappButton(buttonHeight: buttonHeightConstraint.constant)
         statistikView.viewModel     = viewModel.getViewModelForStatistik()
@@ -82,7 +85,9 @@ class HauptMenuVC: DesignViewControllerPortrait,UIPopoverPresentationControllerD
     }
     private func segueToFreunde(){
         if Meditierender.get()?.nickName?.isEmpty ?? true{
-            let alert = UIAlertController(title: "Spitzname benötigt", message: "Um sich mit anderen Benutzern zu vernetzen, ist es notwendig zuvor einen Spitznamen zu vergeben", preferredStyle: .alert)
+            let alert = UIAlertController(title: NSLocalizedString("nickNeededTitle",       comment: "nickNeededTitle"),
+                                          message: NSLocalizedString("nickNeededMessage",   comment: "nickNeededMessage"),
+                                          preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel){ (action) in })
             present(alert, animated: true, completion: nil)
         }

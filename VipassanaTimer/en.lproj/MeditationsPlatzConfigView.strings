@@ -1,0 +1,6 @@
+
+/* Class = "UILabel"; text = "Der Sitzplatz kann in drei Größen erscheinen. "; ObjectID = "7Gk-TQ-SPD"; */
+"7Gk-TQ-SPD.text" = "The seat can occur in three different sizes. ";
+
+/* Class = "UITextField"; placeholder = "Sitzplatzbeschriftung"; ObjectID = "XmF-J0-XC3"; */
+"XmF-J0-XC3.placeholder" = "Label Of Your Seat";

@@ -15,6 +15,9 @@ class StatisticGraphView:UIView{
     
     //draw
     override func draw(_ rect: CGRect) {
+        print(viewModel.values.value)
+        
+        
         //clean
         for subView in subviews {subView.removeFromSuperview()}
         
@@ -23,6 +26,8 @@ class StatisticGraphView:UIView{
         let height      = rect.size.height - 2 * rand
         let schritte    = schritteYAchse(maxY: viewModel.maxY)
 
+        guard schritte.schritt > 0 else {return} //erster App Start
+        
         //draw action
         drawXAchse(width: width,height: height)
         drawYAchse(height: height)

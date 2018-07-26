@@ -30,6 +30,12 @@ class FreundeTableVC: DesignTableViewControllerPortrait {
         (view as? UITableViewHeaderFooterView)?.textLabel?.textColor    = standardSchriftFarbe
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.register(UINib(nibName: "FreundeTableViewCell", bundle: .main), forCellReuseIdentifier: "cell")
+    }
+    
+    
     //segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { (segue.destination.contentViewController as? MeineFreundesAnfragenTableVC)?.viewModel = MeineFreundesAnfragenTableVCModel() }
     

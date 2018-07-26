@@ -27,12 +27,13 @@ open class IAPHelper : NSObject  {
             if purchased {
                 purchasedProductIdentifiers.insert(productIdentifier)
                 print("Previously purchased: \(productIdentifier)")
+                AppConfig.get()?.soundFileZugriff = SoundFileAccess.all
             } else {
                 print("Not purchased: \(productIdentifier)")
             }
         }
-        
-        
+
+
         super.init()
         SKPaymentQueue.default().add(self)
     }
@@ -52,6 +53,7 @@ extension IAPHelper  {
     }
     
     public func buyProduct(_ product: SKProduct) {
+        startDanaRequest.value = Void()
         print("buy product :\(product.productIdentifier)")
         let payment = SKPayment(product: product)
         SKPaymentQueue.default().add(payment)
@@ -104,35 +106,42 @@ extension IAPHelper: SKPaymentTransactionObserver {
     
     public func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
+            print("paymentQueue -> transaction: \(transaction.transactionDate)")
             switch (transaction.transactionState) {
-            case .purchased:    complete(transaction: transaction)
-                
-            case .failed:       fail(transaction: transaction)
-                
-            case .restored:     restore(transaction: transaction)
-                
-            case .deferred:     break
-            case .purchasing:   break
+            case .purchased:
+                complete(transaction: transaction)
+            case .failed:
+                fail(transaction: transaction)
+            case .restored:
+                restore(transaction: transaction)
+            case .deferred:
+                break
+            case .purchasing:
+                break
             }
         }
     }
     
     private func complete(transaction: SKPaymentTransaction) {
         print("complete...")
+        endDanaRequest.value = Void()
+        AppConfig.get()?.soundFileZugriff = .all
         deliverPurchaseNotificationFor(identifier: transaction.payment.productIdentifier)
         SKPaymentQueue.default().finishTransaction(transaction)
     }
     
     private func restore(transaction: SKPaymentTransaction) {
         guard let productIdentifier = transaction.original?.payment.productIdentifier else { return }
-        
+        AppConfig.get()?.soundFileZugriff = .all
         print("restore... \(productIdentifier)")
+        endDanaRequest.value = Void()
         deliverPurchaseNotificationFor(identifier: productIdentifier)
         SKPaymentQueue.default().finishTransaction(transaction)
     }
     
     private func fail(transaction: SKPaymentTransaction) {
         print("fail...")
+        endDanaRequest.value = Void()
         if let transactionError = transaction.error as NSError? {
             if transactionError.code != SKError.paymentCancelled.rawValue {
                 print("Transaction Error: \(String(describing: transaction.error?.localizedDescription))")
@@ -154,14 +163,14 @@ extension IAPHelper: SKPaymentTransactionObserver {
 
 
 public struct DanaProducts {
-    public static let dana0     = "DNS.VipassanaTimer.dana0"
+    //public static let dana0     = "DNS.VipassanaTimer.dana0"
     public static let dana01    = "DNS.VipassanaTimer.dana01"
     public static let dana02    = "DNS.VipassanaTimer.dana02"
     public static let dana03    = "DNS.VipassanaTimer.dana03"
     public static let dana04    = "DNS.VipassanaTimer.dana04"
     public static let dana05    = "DNS.VipassanaTimer.dana05"
     
-    fileprivate static let productIdentifiers: Set<ProductIdentifier> = [DanaProducts.dana0,
+    fileprivate static let productIdentifiers: Set<ProductIdentifier> = [//DanaProducts.dana0,
                                                                          DanaProducts.dana01,
                                                                          DanaProducts.dana02,
                                                                          DanaProducts.dana03,

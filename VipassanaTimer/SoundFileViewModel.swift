@@ -29,7 +29,7 @@ class SoundFileViewModel{
         
         
         //Steuerung Play/Stop per Button
-        playSoundButtonAction.signal.observe{[weak self] _ in
+        playSoundButtonAction.signal.observeValues{[weak self] _ in
             let newSoundIsPlaying =  !(self?.soundIsPlaying.value ?? true)
             self?.soundIsPlaying.value                  = newSoundIsPlaying
             soundFileAudioPlayer.soundFileData.value    = newSoundIsPlaying ? self?.soundFileData.value : nil

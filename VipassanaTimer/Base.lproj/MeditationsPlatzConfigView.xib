@@ -26,26 +26,26 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Zts-6N-0Ta">
-                    <rect key="frame" x="8" y="40" width="359" height="256"/>
+                    <rect key="frame" x="8" y="40" width="359" height="215.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="gdC-mr-Vqh">
                             <rect key="frame" x="0.0" y="0.0" width="359" height="125"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Uq-v5-xP6" customClass="MeditationsPlatzView" customModule="VipassanaTimer" customModuleProvider="target">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Uq-v5-xP6" customClass="MeditationsPlatzView" customModule="VipassanaTimer">
                                     <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="7Uq-v5-xP6" secondAttribute="height" multiplier="1:1" id="oCI-ul-EAo"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WaI-vn-PZx" customClass="MeditationsPlatzView" customModule="VipassanaTimer" customModuleProvider="target">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WaI-vn-PZx" customClass="MeditationsPlatzView" customModule="VipassanaTimer">
                                     <rect key="frame" x="157.5" y="31" width="94" height="94"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="WaI-vn-PZx" secondAttribute="height" multiplier="1:1" id="Vdj-kf-nUe"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I37-hO-Pce" customClass="MeditationsPlatzView" customModule="VipassanaTimer" customModuleProvider="target">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I37-hO-Pce" customClass="MeditationsPlatzView" customModule="VipassanaTimer">
                                     <rect key="frame" x="284" y="49.5" width="75" height="75.5"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
@@ -61,8 +61,8 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hier können Sie die Beschriftung des Sitzplatzes konfigurieren. Dieser kann in drei Größen erscheinen. " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Gk-TQ-SPD">
-                            <rect key="frame" x="0.0" y="195" width="359" height="61"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Der Sitzplatz kann in drei Größen erscheinen. " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Gk-TQ-SPD">
+                            <rect key="frame" x="0.0" y="195" width="359" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.41176470588235292" green="0.32337761599999998" blue="0.18693663939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>

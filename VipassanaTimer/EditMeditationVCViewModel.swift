@@ -26,13 +26,14 @@ class EditMeditationVCViewModel{
         loeschenButtonIsHidden  = meditation == nil
         startZeit.value         = meditation?.start ?? date
         
-        eintragenAction.signal.observe{[weak self] _ in self?.meditationEintragenAction()}
-        loeschenAction.signal.observe{[weak self] _ in self?.loeschenActionFunc()}
+        eintragenAction.signal.observeValues    { [weak self] _ in self?.meditationEintragenAction() }
+        loeschenAction.signal.observeValues     { [weak self] _ in self?.loeschenActionFunc() }
     }
     
     //ViewActions
     func meditationEintragenAction() {
-        meditation = meditation?.update(with: timerData) ?? Meditation.new(timerData: timerData, start: startZeit.value)
+        meditation          = meditation?.update(with: timerData) ?? Meditation.new(timerData: timerData, start: startZeit.value)
+        meditation?.start   = startZeit.value
         HealthManager().saveMeditationIfNeeded(meditation: meditation!)
         FirMeditations.update(meditation: meditation!)
         saveContext()

@@ -14,7 +14,7 @@ import ReactiveSwift
     var viewModel:MeditationsPlatzViewModel!{
         didSet{
             userNameLabel.reactive.text <~ viewModel.meditationsPlatzTitle.producer
-            viewModel.meditationsPlatzTitle.signal.observe{[weak self] _ in self?.setFontSize()}
+            viewModel.meditationsPlatzTitle.signal.observeValues{[weak self] _ in self?.setFontSize()}
             viewModel.mettaEffektHasStarted.producer.filter{$0 == true}.startWithValues(){  [weak self] _ in self?.mettaEffektHasStarted() }
         }
     }

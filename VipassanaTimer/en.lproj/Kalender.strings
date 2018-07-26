@@ -1,0 +1,9 @@
+
+/* Class = "UINavigationItem"; title = "Meditation anpassen"; ObjectID = "4HH-mb-pbJ"; */
+"4HH-mb-pbJ.title" = "Edit Meditation";
+
+/* Class = "UIButton"; normalTitle = " löschen "; ObjectID = "q6M-5f-ORJ"; */
+"q6M-5f-ORJ.normalTitle" = " delete ";
+
+/* Class = "UIButton"; normalTitle = " eintragen "; ObjectID = "uGf-3e-YxJ"; */
+"uGf-3e-YxJ.normalTitle" = " apply ";

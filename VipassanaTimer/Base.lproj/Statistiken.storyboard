@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1VQ-Sf-ZdZ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Statistics-->
+        <scene sceneID="CSx-M8-oJa">
+            <objects>
+                <viewController id="hTH-2v-QKF" customClass="StatistikVC" customModule="VipassanaTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PdT-ks-JVh"/>
+                        <viewControllerLayoutGuide type="bottom" id="Q2f-gu-YiL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="m9D-H3-ogq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pFo-HL-WDK" customClass="StatisticsView" customModule="VipassanaTimer">
+                                <rect key="frame" x="16" y="72" width="343" height="575"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="pFo-HL-WDK" secondAttribute="bottom" constant="20" symbolic="YES" id="0pE-Oe-3eW"/>
+                            <constraint firstItem="pFo-HL-WDK" firstAttribute="leading" secondItem="m9D-H3-ogq" secondAttribute="leadingMargin" id="4dm-LS-Ef7"/>
+                            <constraint firstItem="pFo-HL-WDK" firstAttribute="trailing" secondItem="m9D-H3-ogq" secondAttribute="trailingMargin" id="bIr-6q-pLC"/>
+                            <constraint firstItem="pFo-HL-WDK" firstAttribute="top" secondItem="PdT-ks-JVh" secondAttribute="bottom" constant="8" symbolic="YES" id="oha-xc-fOc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Statistics" id="tDa-Ao-Zrl">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="CpM-Eq-Cev">
+                            <connections>
+                                <segue destination="ZiK-LN-IqR" kind="unwind" unwindAction="unwindToHauptmenuWithSegue:" id="804-eP-xlk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="statisticsView" destination="pFo-HL-WDK" id="9fz-bD-gyO"/>
+                    </connections>
+                </viewController>
+                <exit id="ZiK-LN-IqR" userLabel="Exit" sceneMemberID="exit"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="htw-cL-QaY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2138" y="822"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Vqg-l3-I8S">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1VQ-Sf-ZdZ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VEu-8N-OYf">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hTH-2v-QKF" kind="relationship" relationship="rootViewController" id="Guf-qQ-dP8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OLA-n4-kS5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2966" y="822"/>
+        </scene>
+    </scenes>
+</document>

@@ -17,13 +17,18 @@ import ReactiveSwift
             startDateLabel.reactive.text                <~ viewModel.startDateText.producer
             endDateLabel.reactive.text                  <~ viewModel.endDateText.producer
             viewModel.stacksAreHidden.producer.startWithValues{[weak self] isHidden in self?.setHiddenForStacksToHide(isHidden: isHidden)}
+            kursPickerView.reactive.isUserInteractionEnabled    <~ viewModel.pickerTitles.producer.map{$0.count > 0}
+            
             
             viewModel.selectedRow           <~ kursPickerView.reactive.selections.map{$0.row}
             viewModel.selectedDate          <~ startDatePicker.reactive.dates
             viewModel.erstellenButtonAction <~ erstellenButton.reactive.controlEvents(UIControlEvents.touchUpInside).map{_ in Void()}
             viewModel.teacher               <~ teacherTextField.reactive.textValues
             
+            //Design
             self.setStandardDesign()
+            startDatePicker.setValue(standardSchriftFarbe, forKey: "textColor")
+            kursPickerView.setValue(standardSchriftFarbe, forKey: "textColor")
         }
     }
     //Picker

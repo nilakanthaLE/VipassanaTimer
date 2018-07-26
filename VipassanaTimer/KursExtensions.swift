@@ -26,25 +26,32 @@ extension Kurs{
     //bestehenden Kurs aktualisieren oder neu erstellen
     // aus Firebase
     static func createOrUpdate(withChild snapshot:DataSnapshot?){
-        guard let snapshot = snapshot, let kurs = Kurs.getOrCreateEmpty(withID: snapshot.key) else {return}
+        guard let snapshot = snapshot else {return}
         guard snapshot.valueAsDict?["deleted"] as? Bool != true else {
-            kurs.delete(inFirebaseToo: false)
+            Kurs.get(withID: snapshot.key)?.delete(inFirebaseToo: false)
             return
         }
+        guard let kurs = Kurs.getOrCreateEmpty(withID: snapshot.key) else {return}
+        
         kurs.name                   = snapshot.valueAsDict?["name"] as? String
         kurs.kursTage               = snapshot.valueAsDict?["kurstage"] as? Int16 ?? 0
         kurs.start                  = Date(timeIntervalSinceReferenceDate: snapshot.valueAsDict?["start"] as? TimeInterval ?? 0)
         kurs.inFirebase             = true
         saveContext()
     }
-    // bestehenden Kurs finden oder leeren Kurs erstellen
-    static func getOrCreateEmpty(withID kursID:String) -> Kurs?{
+    //bestehenden Kurs finden
+    static func get(withID kursID:String) -> Kurs?{
         let request             = NSFetchRequest<Kurs>(entityName: "Kurs")
         request.predicate       = NSPredicate(format: "kursID == %@", kursID)
-        let kurs                = (try? context.fetch(request))?.first ?? NSEntityDescription.insertNewObject(forEntityName: "Kurs", into: context) as? Kurs
+        return (try? context.fetch(request))?.first
+    }
+    // bestehenden Kurs finden oder leeren Kurs erstellen
+    static func getOrCreateEmpty(withID kursID:String) -> Kurs?{
+        let kurs                = get(withID: kursID) ?? NSEntityDescription.insertNewObject(forEntityName: "Kurs", into: context) as? Kurs
         kurs?.kursID            = kursID
         return kurs
     }
+    
 }
 
 //✅
@@ -78,7 +85,8 @@ extension Kurs{
     //einen Kurs, mit Meditationen löschen
     // aus Firebase löschen
     func delete(inFirebaseToo:Bool){
-        for case let meditation as Meditation in meditations!{ meditation.delete(inFirebaseToo: true) }
+        let toDelete = meditations as? Set<Meditation> ?? Set<Meditation>()
+        for meditation in toDelete{ meditation.delete(inFirebaseToo: true) }
         if inFirebaseToo{ FirKurse.deleteKurs(kurs: self) }
         context.delete(self)
         saveContext()

@@ -2,53 +2,42 @@
 //  FreundeTableViewCell.swift
 //  VipassanaTimer
 //
-//  Created by Matthias Pochmann on 12.07.18.
+//  Created by Matthias Pochmann on 25.07.18.
 //  Copyright © 2018 Matthias Pochmann. All rights reserved.
 //
 
 import UIKit
 import ReactiveSwift
 
-//✅
 class FreundeTableViewCellModel{
-    let confirmButtonPressed    = MutableProperty<Void>(Void())
-    let nickName:String?
-    let hasButton:Bool
-    let freund:Freund
+    let labelText:String?
+    let buttonText:String?
+    let buttonIsHidden:Bool
+    let buttonPressed = MutableProperty<Void>(Void())
     init(freund:Freund){
-        self.freund = freund
-        nickName    = freund.freundNick
-        hasButton   = freund.status != FreundStatus.granted
-        confirmButtonPressed.signal.observeValues { [weak self] _ in  self?.confirmButtonPressedAction() }
-    }
-    
-    
-    private func confirmButtonPressedAction(){
-        FirUserConnections.setFreundschaftsstatus(withUserID: freund.freundID,
-                                                  userStatus: FreundStatus.granted.rawValue,
-                                                  meinStatus: FreundStatus.granted.rawValue)
-    }
-}
-
-//✅
-class FreundeTableViewCell:UITableViewCell{
-    var viewModel:FreundeTableViewCellModel!{
-        didSet{
-            textLabel?.textColor    = standardSchriftFarbe
-            backgroundColor         = standardBackgroundFarbe
-            textLabel?.text         = viewModel.nickName
-            accessoryView           = viewModel.hasButton ? getButton() : nil
+        labelText       = freund.freundNick
+        buttonText      = NSLocalizedString("freundschaftBestaetigen", comment: "freundschaftBestaetigen")
+        buttonIsHidden  = freund.meinFreundStatus == FreundStatus.granted
+        buttonPressed.signal.observeValues{_ in
+            FirUserConnections.setFreundschaftsstatus(withUserID: freund.freundID,
+                                                      userStatus: FreundStatus.granted.rawValue,
+                                                      meinStatus: FreundStatus.granted.rawValue)
         }
     }
     
-    //helper
-    func getButton() -> UIButton{
-        let button              = UIButton()
-        button.backgroundColor  = gruen
-        button.setTitle(" bestätigen ", for: .normal)
-        viewModel.confirmButtonPressed <~ button.reactive.controlEvents(.touchUpInside).map { _ in Void()}
-        button.sizeToFit()
-        return button
-    }
 }
 
+
+class FreundeTableViewCell: UITableViewCell {
+    var viewModel:FreundeTableViewCellModel!{
+        didSet{
+            label.text     = viewModel.labelText
+            button.setTitle(viewModel.buttonText, for: .normal)
+            button.backgroundColor  = gruen
+            button.isHidden         = viewModel.buttonIsHidden
+            viewModel.buttonPressed <~ button.reactive.controlEvents(UIControlEvents.touchUpInside).signal.map{_ in Void()}
+        }
+    }
+    @IBOutlet weak var button: UIButton!  
+    @IBOutlet weak var label: UILabel!
+}

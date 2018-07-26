@@ -14,6 +14,7 @@ class StatistikVC:UIViewController{
         super.viewDidLoad()
         view.backgroundColor        = UIColor(patternImage: #imageLiteral(resourceName: "backGroundImage.png"))
         statisticsView.viewModel    = StatisticsViewModel()
+        navigationController?.navigationBar.setDesignPattern()
     }
     @IBOutlet weak var statisticsView: StatisticsView!
 }
@@ -24,5 +25,6 @@ class SetAnfangsDatumStatistikVC: DesignViewControllerPortrait {
     override func viewDidLoad() {
         super.viewDidLoad()
         setStatistikAnfangsDatumView.viewModel = SetStatistikAnfangsDatumViewModel()
+        
     }
 }

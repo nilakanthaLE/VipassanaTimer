@@ -21,7 +21,7 @@ import UIKit
             messageLabel.isHidden                   = viewModel.message == nil
             flaggeView.isHidden                     = viewModel.flagge == nil
             flaggeView.setTitle(viewModel.flagge, for: .normal)
-            flaggeView.reactive.controlEvents(.touchUpInside).signal.observe{[weak self] _ in
+            flaggeView.reactive.controlEvents(.touchUpInside).signal.observeValues{[weak self] _ in
                 self?.countryName.alpha = 1
                 UIView.animate(withDuration: 3) {  self?.countryName.alpha = 0 }
             }

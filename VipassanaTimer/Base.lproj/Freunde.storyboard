@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="spK-1p-wq9">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Freunde-->
+        <scene sceneID="Ez1-qp-e8U">
+            <objects>
+                <tableViewController id="gm9-3j-yI4" customClass="FreundeTableVC" customModule="VipassanaTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="GXk-k0-OPl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.83767229320000003" green="0.66306155919999998" blue="0.47537291050000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="rpZ-41-dBe" customClass="FreundeTableViewCell" customModule="VipassanaTimer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rpZ-41-dBe" id="rgb-ak-ckE">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.83767229320000003" green="0.66306155919999998" blue="0.47537291050000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gm9-3j-yI4" id="pMY-FT-sxG"/>
+                            <outlet property="delegate" destination="gm9-3j-yI4" id="g8Z-wd-tS7"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Freunde" id="lH9-t4-mAx">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="7aQ-jD-PTw">
+                            <connections>
+                                <segue destination="k53-IA-ysm" kind="unwind" unwindAction="unwindToHauptmenuWithSegue:" id="paX-fw-UtZ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="meine Anfragen" id="Xs1-Ap-Rbs">
+                            <connections>
+                                <segue destination="2Jb-fa-I1N" kind="show" id="9Hf-p2-mx6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hsv-d8-drM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="k53-IA-ysm" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-2601" y="1687"/>
+        </scene>
+        <!--Meine Anfragen-->
+        <scene sceneID="Xv0-Ep-Atz">
+            <objects>
+                <tableViewController id="2Jb-fa-I1N" customClass="MeineFreundesAnfragenTableVC" customModule="VipassanaTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="N2m-ic-dtB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.83767229320000003" green="0.66306155919999998" blue="0.47537291050000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="2ze-tf-Tyq" style="IBUITableViewCellStyleDefault" id="iCA-MS-Qe1">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iCA-MS-Qe1" id="4yk-93-qfb">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2ze-tf-Tyq">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="1" green="1" blue="0.79580073920000005" alpha="0.66315282529999997" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="2Jb-fa-I1N" id="T1Z-HO-P1r"/>
+                            <outlet property="delegate" destination="2Jb-fa-I1N" id="Pj5-WK-gMq"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Meine Anfragen" id="Xjd-u5-ptQ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="841-lU-m3F">
+                            <connections>
+                                <segue destination="wC1-1X-uuE" kind="show" id="VG6-Zb-zIV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XtQ-rx-Cuv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1800" y="1686"/>
+        </scene>
+        <!--Neue Anfrage-->
+        <scene sceneID="CQa-fV-R9P">
+            <objects>
+                <viewController id="wC1-1X-uuE" customClass="FreundeFindenVC" customModule="VipassanaTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YkT-uX-ypu"/>
+                        <viewControllerLayoutGuide type="bottom" id="hNW-an-RIt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WiP-MJ-uem">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hR5-cV-TJO">
+                                <rect key="frame" x="16" y="140" width="343" height="40"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.79580073920000005" alpha="0.66315282529999997" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="dp7-MP-eIl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.41274607390000001" green="0.32337761599999998" blue="0.18693663939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="freundesanfrageButtonPressed:" destination="wC1-1X-uuE" eventType="touchUpInside" id="WWi-qk-m6A"/>
+                                </connections>
+                            </button>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="eFq-UV-B6T">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="wC1-1X-uuE" id="nfS-Cb-EhX"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hR5-cV-TJO" firstAttribute="leading" secondItem="WiP-MJ-uem" secondAttribute="leadingMargin" id="HcN-6D-1xJ"/>
+                            <constraint firstItem="hR5-cV-TJO" firstAttribute="top" secondItem="eFq-UV-B6T" secondAttribute="bottom" constant="20" id="IgK-01-0fO"/>
+                            <constraint firstAttribute="trailing" secondItem="eFq-UV-B6T" secondAttribute="trailing" id="QZW-AT-vdy"/>
+                            <constraint firstItem="eFq-UV-B6T" firstAttribute="leading" secondItem="WiP-MJ-uem" secondAttribute="leading" id="WJb-Ac-AVq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hR5-cV-TJO" secondAttribute="trailing" id="ohY-yO-wZr"/>
+                            <constraint firstItem="eFq-UV-B6T" firstAttribute="top" secondItem="YkT-uX-ypu" secondAttribute="bottom" id="ypf-Cp-ZTH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Neue Anfrage" id="aCy-Ts-fDh"/>
+                    <connections>
+                        <outlet property="freundesanfrageButton" destination="hR5-cV-TJO" id="nGO-Ff-4Fa"/>
+                        <outlet property="searchBar" destination="eFq-UV-B6T" id="SDd-mG-d8c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z3d-43-QdS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1056" y="1686"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lV4-AF-IUX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="spK-1p-wq9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="APU-CO-sSM">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gm9-3j-yI4" kind="relationship" relationship="rootViewController" id="kkG-Bi-yAn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4El-FG-JCA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2602" y="922"/>
+        </scene>
+    </scenes>
+</document>

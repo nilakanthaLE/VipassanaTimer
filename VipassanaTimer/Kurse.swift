@@ -18,9 +18,9 @@ class KursData{
     let meditationSet:[KursMeditation]
     let kursTage:Int
     init(publicKursProto:PublicKursProto,startTag:Date,teacher:String?){
-        self.title      = publicKursProto.kursNameD
+        self.title      = publicKursProto.localizedName
         self.startTag   = startTag
-        kursTage        = publicKursProto.days.count
+        kursTage        = publicKursProto.kursTage
         meditationSet   = KursData.setMeditationSet(publicKursProto: publicKursProto, startTag: startTag)
         lehrer          = teacher
     }

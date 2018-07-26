@@ -1,0 +1,6 @@
+
+/* Class = "UIButton"; normalTitle = "beenden"; ObjectID = "HXJ-WH-11H"; */
+"HXJ-WH-11H.normalTitle" = "stop";
+
+/* Class = "UIButton"; normalTitle = "starten"; ObjectID = "wwh-RU-jut"; */
+"wwh-RU-jut.normalTitle" = "start";

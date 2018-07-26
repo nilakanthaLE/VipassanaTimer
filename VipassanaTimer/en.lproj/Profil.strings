@@ -1,0 +1,12 @@
+
+/* Class = "UINavigationItem"; title = "Platz konfigurieren"; ObjectID = "IC3-Kj-90k"; */
+"IC3-Kj-90k.title" = "Configure Your Seat";
+
+/* Class = "UINavigationItem"; title = "Mein  Profil"; ObjectID = "WXE-be-keN"; */
+"WXE-be-keN.title" = "My  Profile";
+
+/* Class = "UIBarButtonItem"; title = "Vorschau"; ObjectID = "gBN-zr-gq8"; */
+"gBN-zr-gq8.title" = "Preview";
+
+/* Class = "UINavigationItem"; title = "Flagge wählen"; ObjectID = "gQo-YU-Ij1"; */
+"gQo-YU-Ij1.title" = "Choose Flag";

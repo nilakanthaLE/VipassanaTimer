@@ -28,4 +28,18 @@ extension AppConfig{
         guard get()?.firLastNotification != snapshot.key else {return}
         newNotification.value = (key:snapshot.key,message:snapshot.value as? String)
     }
+    var soundFileZugriff:SoundFileAccess{
+        get {
+            print("get soundFilezugriff :\(SoundFileAccess.init(rawValue: self.soundFilesAccess) ?? .one)")
+            return SoundFileAccess.init(rawValue: self.soundFilesAccess) ?? .one }
+        set {
+            print("set soundFilezugriff: new\(newValue) old:\(soundFileZugriff)")
+            if newValue == .all { reloadDanaAfterPurchase.value = Void() }
+            self.soundFilesAccess = newValue.rawValue
+            saveContext()
+        }
+    }
 }
+
+
+enum SoundFileAccess:Int16{ case none = 0,one = 1,all = 1000 }

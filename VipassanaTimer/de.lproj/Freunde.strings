@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "E7Y-mt-Hbi"; */
+"E7Y-mt-Hbi.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "Meine Anfragen"; ObjectID = "Xjd-u5-ptQ"; */
+"Xjd-u5-ptQ.title" = "Meine Anfragen";
+
+/* Class = "UIBarButtonItem"; title = "meine Anfragen"; ObjectID = "Xs1-Ap-Rbs"; */
+"Xs1-Ap-Rbs.title" = "meine Anfragen";
+
+/* Class = "UINavigationItem"; title = "Neue Anfrage"; ObjectID = "aCy-Ts-fDh"; */
+"aCy-Ts-fDh.title" = "Neue Anfrage";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "hR5-cV-TJO"; */
+"hR5-cV-TJO.normalTitle" = "Button";
+
+/* Class = "UINavigationItem"; title = "Freunde"; ObjectID = "lH9-t4-mAx"; */
+"lH9-t4-mAx.title" = "Freunde";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "tuv-ZT-qBG"; */
+"tuv-ZT-qBG.text" = "Title";

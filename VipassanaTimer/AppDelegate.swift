@@ -52,59 +52,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    private func firebaseStart(){
-        let when = DispatchTime.now() + 1
-        DispatchQueue.main.asyncAfter(deadline: when) {
-            //logOut, wenn noch keine firebaseID gesetzt ist (erster Start der App nach löschung)
-            if  AppUser.get()?.firebaseID == nil{
-                do { try Auth.auth().signOut() }
-                catch let signOutError as NSError { print ("Error signing out: %@", signOutError) }
-            }
-            FirebaseStart.start()
-        }
-    }
     
-    
-    //clean CloudKit Version
-    func cleanCloudKitVersion() {
-        //Kurse
-        //ID setzen, falls keine ID gesetzt
-        for kurs in Kurs.getAll()               { if kurs.kursID == nil{ kurs.kursID = UUID().uuidString} }
-        
-        //Meditationen
-        //ID setzen, falls keine ID gesetzt
-        for meditation in Meditation.getAll()   { if meditation.meditationsID == nil  { meditation.meditationsID    = UUID().uuidString } }
-        
-        //Freunde
-        for freund in Freund.getAll()           { if freund.recordID != nil {freund.delete()} }
-        saveContext()
-    }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         print("application DidFinishLaunchingWithOptions")
-        _ = Meditierender.get()
         
-        cleanCloudKitVersion()
-
-        // Firebase
+        // Firebase Start
         FirebaseApp.configure()
         database.isPersistenceEnabled = true
-        FirActiveMeditations.deleteActiveMeditation()
+        firebaseStart()
         
-        //erstellt ersten TimerConfig (wenn kein Timer existiert)
-//        TimerConfig.createFirstTimer()
+        _ = Meditierender.get()
+        cleanCloudKitVersion()
+
         
+
+        //authoriziert HealthKit
+        HealthManager().authorizeHealthKit{ (authorized,  error) -> Void in
+            if authorized {  print("HealthKit authorization received.") }
+            else {
+                print("HealthKit authorization denied!")
+                if error != nil { print("\(String(describing: error))") }
+            }
+        }
+
         //neueVersion mit sitzplatzTitle
         if Meditierender.get()?.meditationsPlatzTitle == nil{
             Meditierender.get()?.meditationsPlatzTitle = Meditierender.get()?.nickNameSichtbarkeit == 2 ? Meditierender.get()?.nickName ?? "?" : "?"
         }
-        
-        FirActiveMeditations.cleaningActiveMeditations()
-        AppConfig.get()?.starts += 1
-        FirNotitification.setObserver()
 
-        //test
-        
+        AppConfig.get()?.starts += 1
+
+        //wurde bereits etwas gekauft?
+        DanaProducts.store.requestProducts{ _,_  in }
+ 
         return true
     }
 
@@ -131,26 +112,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        
-        //löscht alle Meditationen kürzer als 5 min
-        Meditation.cleanShortMeditations()
-        
-        
-        //für übergang zu CloudKIT Production
-//        AppUser.get()?.firebaseID = nil
-//        for meditation in Meditation.getAll()   { meditation.inFirebase = false }
-//        for kurs in Kurs.getAll()               { kurs.inFirebase = false }
-//        saveContext()
-        
-        //Firebase Login/Sync ...
-        firebaseStart()
-
-        //authoriziert HealthKit
-        HealthManager().authorizeHealthKit{ (authorized,  error) -> Void in
-            if authorized {  print("HealthKit authorization received.") }
-            else { print("HealthKit authorization denied!")
-                if error != nil { print("\(String(describing: error))") } } }
-        
         print("applicationDidBecomeActive")
     }
 
@@ -158,7 +119,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         print("applicationWillTerminate")
-        FirActiveMeditations.deleteActiveMeditation()
         self.saveContext()
     }
     
@@ -210,6 +170,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+    
+    
+    private func firebaseStart(){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            //logOut, wenn noch keine firebaseID gesetzt ist (erster Start der App nach löschung)
+            if  AppUser.get()?.firebaseID == nil{
+                do { try Auth.auth().signOut() }
+                catch let signOutError as NSError { print ("Error signing out: %@", signOutError) }
+            }
+            FirebaseStart.start()
+        }
+    }
+    
+    
+    //clean CloudKit Version
+    func cleanCloudKitVersion() {
+        //Kurse
+        //ID setzen, falls keine ID gesetzt
+        for kurs in Kurs.getAll()               { if kurs.kursID == nil{ kurs.kursID = UUID().uuidString} }
+        
+        //Meditationen
+        //ID setzen, falls keine ID gesetzt
+        for meditation in Meditation.getAll()   { if meditation.meditationsID == nil  { meditation.meditationsID    = UUID().uuidString } }
+        
+        //Freunde
+        for freund in Freund.getAll()           { if freund.recordID != nil {freund.delete()} }
+        saveContext()
+    }
 }
 

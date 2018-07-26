@@ -12,6 +12,7 @@ import ReactiveSwift
 @IBDesignable class ProfilConfigView:NibLoadingView{
     var viewModel:ProfilConfigViewModel!{
         didSet{
+            freundeStatistikSehenLabel.attributedText   = viewModel.freundeStatistikenSehenLabelText()
             //in
             spitzNameTextFeld.reactive.text             <~ viewModel.spitzNameText.producer
             flaggeButton.reactive.title                 <~ viewModel.flaggeButtonTitle.producer
@@ -47,6 +48,7 @@ import ReactiveSwift
     @IBOutlet weak var statisticsSichtbarSwitch: UISwitch!
     @IBOutlet weak var nickNamePruefenButton: UIButton!
     @IBOutlet weak var messageTextField: UITextField!
+    @IBOutlet weak var freundeStatistikSehenLabel: UILabel!
     
     //IBActions
      @IBAction func sitzPlatzTapped(_ sender: UITapGestureRecognizer) { viewModel.meditationsPlatzTapped.value  = Void() }

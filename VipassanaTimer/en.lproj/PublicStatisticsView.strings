@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "32:34"; ObjectID = "MsH-Iz-LiM"; */
+"MsH-Iz-LiM.text" = "32:34";
+
+/* Class = "UILabel"; text = "2:34"; ObjectID = "OWX-am-hRh"; */
+"OWX-am-hRh.text" = "2:34";
+
+/* Class = "UILabel"; text = "Kurstage"; ObjectID = "YPf-Vz-egP"; */
+"YPf-Vz-egP.text" = "Days on a course";
+
+/* Class = "UILabel"; text = "40"; ObjectID = "a0F-dk-1OL"; */
+"a0F-dk-1OL.text" = "40";
+
+/* Class = "UILabel"; text = "GesamtDauer"; ObjectID = "iWf-7B-RQB"; */
+"iWf-7B-RQB.text" = "Total Duration";
+
+/* Class = "UILabel"; text = "Statistiken"; ObjectID = "lq0-7F-47c"; */
+"lq0-7F-47c.text" = "Statistics";
+
+/* Class = "UILabel"; text = "DurchSchnitt pro Tag"; ObjectID = "r2P-d9-ylu"; */
+"r2P-d9-ylu.text" = "Average Per Day";

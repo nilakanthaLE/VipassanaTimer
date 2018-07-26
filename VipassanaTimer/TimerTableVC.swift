@@ -40,7 +40,7 @@ class TimerTableVC: DesignTableViewControllerPortrait {
         super.viewDidLoad()
         tableView.rowHeight             = UITableViewAutomaticDimension
         tableView.estimatedRowHeight    = 44
-        viewModel.updateTable.signal.observe{ [weak self] _ in self?.tableView.reloadData() }
+        viewModel.updateTable.signal.observeValues{ [weak self] _ in self?.tableView.reloadData() }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

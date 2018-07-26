@@ -181,8 +181,7 @@ extension Meditation{
 
 //✅
 // Kalender 
-extension Meditation
-{
+extension Meditation{
     //Kalendereinträge für Tage holen
     static func getKalenderEintraege(days:[Date])->[[KalenderEintrag]]{
         var eintraege = [[KalenderEintrag]]()

@@ -21,7 +21,10 @@ class FirSync{
         for kurs in Kurs.getNotInFirebase()                 { FirKurse.update(kurs: kurs) }
 
         FirKurse.sync()
-//        FirMeditations.sync()
-//        FirUserConnections.setObserver()
+        FirMeditations.sync()
+        FirUserConnections.setObserver()
+        FirNotitification.setObserver()
+        FirActiveMeditations.cleaningActiveMeditations()
+        FirActiveMeditations.deleteActiveMeditation()
     }
 }

@@ -36,13 +36,17 @@ class MeineKurseTableVC: DesignTableViewControllerPortrait {
     
     //helper
     private func presentAlertController(kurs:Kurs){
-        let alertController = UIAlertController(title:"\(kurs.name ?? "?") \(kurs.startDate.string("MM/yy"))" , message: "Bitte Name des Lehrers eingeben", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "abbrechen" , style: .cancel, handler: nil))
+        let alertController = UIAlertController(title:"\(kurs.name ?? "?") \(kurs.startDate.string("MM/yy"))" ,
+            message: NSLocalizedString("lehrerMessage",comment: "lehrerMessage"),
+            preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("abbrechen",comment: "abbrechen") ,
+                                                style: .cancel, handler: nil))
         alertController.addTextField { textfield in
-            textfield.placeholder   = "Name des Lehrers"
+            textfield.placeholder   = NSLocalizedString("abbrechen",comment: "abbrechen")
             textfield.text          = kurs.teacher
         }
-        alertController.addAction(UIAlertAction(title: "übernehmen", style: .default) {[weak self] _ in
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("nameOfTeacher",comment: "nameOfTeacher"),
+                                                style: .default) {[weak self] _ in
             kurs.teacher = alertController.textFields?.first?.text
             saveContext()
             self?.kurse = Kurs.getAll()

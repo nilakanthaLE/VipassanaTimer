@@ -39,8 +39,8 @@ class EditMeditationVC: DesignViewControllerPortrait {
         viewModel.eintragenAction   <~ eintragenButton.reactive.controlEvents(UIControlEvents.touchUpInside).map{_ in Void()}
         viewModel.loeschenAction    <~ loeschenButton.reactive.controlEvents(UIControlEvents.touchUpInside).map{_ in Void()}
         
-        viewModel.loeschenAction.signal.observe{[weak self] _ in    self?.performSegue(withIdentifier: "reloadKalender", sender: nil)}
-        viewModel.eintragenAction.signal.observe{[weak self] _ in   self?.performSegue(withIdentifier: "reloadKalender", sender: nil)}
+        viewModel.loeschenAction.signal.observeValues   {[weak self] _ in    self?.performSegue(withIdentifier: "reloadKalender", sender: nil)}
+        viewModel.eintragenAction.signal.observeValues  {[weak self] _ in   self?.performSegue(withIdentifier: "reloadKalender", sender: nil)}
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

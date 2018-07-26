@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="101" id="KGk-i7-Jjw" customClass="DanaEinzelFreischaltCell" customModule="VipassanaTimer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="381" height="101"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="381" height="100.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3f5-91-qha">
+                        <rect key="frame" x="8" y="4" width="365" height="92.5"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ze2-9c-TdG">
+                                <rect key="frame" x="8" y="0.0" width="349" height="92.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRh-GN-RQv">
+                                        <rect key="frame" x="0.0" y="36" width="300" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.41274607390000001" green="0.32337761599999998" blue="0.18693663939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TtU-K1-lvd">
+                                        <rect key="frame" x="300" y="31" width="51" height="31"/>
+                                    </switch>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="0.79580073920000005" alpha="0.66315282529999997" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Ze2-9c-TdG" secondAttribute="bottom" id="7dW-tu-vS9"/>
+                            <constraint firstAttribute="trailing" secondItem="Ze2-9c-TdG" secondAttribute="trailing" constant="8" id="Vom-CD-i2p"/>
+                            <constraint firstItem="Ze2-9c-TdG" firstAttribute="leading" secondItem="3f5-91-qha" secondAttribute="leading" constant="8" id="Vvq-p8-mcr"/>
+                            <constraint firstItem="Ze2-9c-TdG" firstAttribute="top" secondItem="3f5-91-qha" secondAttribute="top" id="v0y-nr-Zxv"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="3f5-91-qha" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="La1-CL-bvD"/>
+                    <constraint firstAttribute="trailing" secondItem="3f5-91-qha" secondAttribute="trailing" constant="8" id="jqc-Zj-2hK"/>
+                    <constraint firstItem="3f5-91-qha" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="l0Y-1i-7rJ"/>
+                    <constraint firstAttribute="bottom" secondItem="3f5-91-qha" secondAttribute="bottom" constant="4" id="sQv-g3-BoK"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="designBackgroundView" destination="3f5-91-qha" id="IOT-Yu-2XK"/>
+                <outlet property="label" destination="eRh-GN-RQv" id="txO-VQ-RaY"/>
+                <outlet property="schalter" destination="TtU-K1-lvd" id="gol-79-BjG"/>
+            </connections>
+            <point key="canvasLocation" x="263" y="84"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -37,7 +37,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="meine Kurse" id="goF-IV-fqF">
-                        <barButtonItem key="leftBarButtonItem" title="zurück" id="NRu-yX-al3">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="NRu-yX-al3">
                             <connections>
                                 <segue destination="4eM-Ub-EaI" kind="unwind" unwindAction="unwindToHauptmenuWithSegue:" id="UHd-G8-oYm"/>
                             </connections>

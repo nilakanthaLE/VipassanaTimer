@@ -1,0 +1,27 @@
+
+/* Class = "UIButton"; normalTitle = "erstellen"; ObjectID = "3do-5Z-7jw"; */
+"3do-5Z-7jw.normalTitle" = "erstellen";
+
+/* Class = "UILabel"; text = "Kurstyp wählen"; ObjectID = "J3a-q8-ooR"; */
+"J3a-q8-ooR.text" = "Kurstyp wählen";
+
+/* Class = "UILabel"; text = "02.05.2017"; ObjectID = "LQv-8R-wgz"; */
+"LQv-8R-wgz.text" = "02.05.2017";
+
+/* Class = "UILabel"; text = "von:"; ObjectID = "NMU-Sc-IXT"; */
+"NMU-Sc-IXT.text" = "von:";
+
+/* Class = "UILabel"; text = "bis:"; ObjectID = "d4V-1J-dRg"; */
+"d4V-1J-dRg.text" = "bis:";
+
+/* Class = "UITextField"; placeholder = "Name des Lehrers"; ObjectID = "l58-qm-kPr"; */
+"l58-qm-kPr.placeholder" = "Name des Lehrers";
+
+/* Class = "UILabel"; text = "13.05.2017"; ObjectID = "o2T-wP-ZnZ"; */
+"o2T-wP-ZnZ.text" = "13.05.2017";
+
+/* Class = "UILabel"; text = "Lehrer"; ObjectID = "pMk-Zi-5Et"; */
+"pMk-Zi-5Et.text" = "Lehrer";
+
+/* Class = "UILabel"; text = "Startdatum"; ObjectID = "xCq-zR-7ay"; */
+"xCq-zR-7ay.text" = "Startdatum";

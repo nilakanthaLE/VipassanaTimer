@@ -15,6 +15,7 @@
             <connections>
                 <outlet property="flaggeButton" destination="5AD-oz-7xR" id="pd8-ad-4SJ"/>
                 <outlet property="flaggeSichtbarSwitch" destination="Ypg-8R-TAi" id="ejS-ov-msh"/>
+                <outlet property="freundeStatistikSehenLabel" destination="Jma-tD-LWb" id="GmA-DL-837"/>
                 <outlet property="messageTextField" destination="BkF-MH-zt5" id="ShR-al-ZFu"/>
                 <outlet property="nickNamePruefenButton" destination="ueo-bi-qaW" id="D6k-xx-a5d"/>
                 <outlet property="sitzplatzView" destination="8zN-kp-ys8" id="gqd-eu-4UV"/>
@@ -95,7 +96,7 @@
                                         <constraint firstAttribute="width" secondItem="8zN-kp-ys8" secondAttribute="height" multiplier="1:1" id="Ycw-XL-Imk"/>
                                     </constraints>
                                     <connections>
-                                        <outletCollection property="gestureRecognizers" destination="lky-TI-0Ra" appends="YES" id="lqQ-on-Ar2"/>
+                                        <outletCollection property="gestureRecognizers" destination="13H-B0-baO" appends="YES" id="zkI-LT-J50"/>
                                     </connections>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zaq-vp-YCD">
@@ -164,7 +165,7 @@
                                     </constraints>
                                 </switch>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="1" translatesAutoresizingMaskIntoConstraints="NO" id="Jma-tD-LWb">
-                                    <rect key="frame" x="60" y="34.5" width="299" height="51.5"/>
+                                    <rect key="frame" x="60" y="35" width="299" height="51"/>
                                     <attributedString key="attributedText">
                                         <fragment content="Freunde dürfen statistischen Daten ">
                                             <attributes>
@@ -172,16 +173,16 @@
                                                 <font key="NSFont" metaFont="system" size="16"/>
                                             </attributes>
                                         </fragment>
+                                        <fragment content="sehen ">
+                                            <attributes>
+                                                <color key="NSColor" red="0.50195999999999996" green="0.25097999999999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                            </attributes>
+                                        </fragment>
                                         <fragment content="(Durchschnittsdauer pro Tag, Kurstage, Gesamtmeditationsdauer)">
                                             <attributes>
                                                 <color key="NSColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <font key="NSFont" size="11" name=".AppleSystemUIFont"/>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment content=" sehen">
-                                            <attributes>
-                                                <color key="NSColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" metaFont="system" size="16"/>
                                             </attributes>
                                         </fragment>
                                     </attributedString>
@@ -206,11 +207,11 @@
                 <constraint firstItem="A1R-n9-rfG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" symbolic="YES" id="tCg-gj-wQr"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="175" y="-52"/>
+            <point key="canvasLocation" x="136" y="-59"/>
         </view>
-        <tapGestureRecognizer id="lky-TI-0Ra">
+        <tapGestureRecognizer id="13H-B0-baO">
             <connections>
-                <action selector="sitzPlatzTapped:" destination="-1" id="0Vg-Mu-l81"/>
+                <action selector="sitzPlatzTapped:" destination="-1" id="i26-gs-I3w"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

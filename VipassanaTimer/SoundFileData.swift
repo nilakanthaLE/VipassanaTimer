@@ -11,7 +11,7 @@ import Firebase
 //Daten der Soundfiles
 // name, dauer usw.
 // Filename, wie er in FireStore gespeichert ist
-struct SoundFileData:Equatable{
+struct SoundFileData:Equatable,Hashable{
     var title: String
     var duration:TimeInterval
     var mettaDuration:TimeInterval

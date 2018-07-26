@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4F729124BDB8FC647A780650 /* Pods_VipassanaTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA9F84A927CF18181FB1766 /* Pods_VipassanaTimer.framework */; };
-		5C023F1C209742D400882911 /* Freunde.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C023F1B209742D400882911 /* Freunde.storyboard */; };
-		5C023F21209743AA00882911 /* Kalender.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C023F20209743AA00882911 /* Kalender.storyboard */; };
-		5C023F232097440600882911 /* Kurse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C023F222097440600882911 /* Kurse.storyboard */; };
-		5C0F57A120F7579800ACB8CE /* FreundeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F579F20F7579800ACB8CE /* FreundeTableViewCell.swift */; };
 		5C0F57A420F76B6600ACB8CE /* FreundeTableVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F57A320F76B6600ACB8CE /* FreundeTableVCModel.swift */; };
 		5C0F57A620F772A300ACB8CE /* MeineFreundesAnfragenTableVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F57A520F772A300ACB8CE /* MeineFreundesAnfragenTableVCModel.swift */; };
 		5C0F57A920F7817500ACB8CE /* FreundeFindenVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F57A820F7817500ACB8CE /* FreundeFindenVCModel.swift */; };
@@ -27,7 +23,6 @@
 		5C142CAB1E803E9B0085191B /* FreundeFindenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C142CAA1E803E9B0085191B /* FreundeFindenVC.swift */; };
 		5C142CAD1E828BA80085191B /* MeineFreundesAnfragenTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C142CAC1E828BA80085191B /* MeineFreundesAnfragenTableVC.swift */; };
 		5C142CAF1E8295630085191B /* FreundeTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C142CAE1E8295630085191B /* FreundeTableVC.swift */; };
-		5C17034620CE7E61008D7EEA /* KursConfigView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C17034520CE7E61008D7EEA /* KursConfigView.xib */; };
 		5C17034820CE8118008D7EEA /* KursConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17034720CE8118008D7EEA /* KursConfigView.swift */; };
 		5C17034A20CEAB7C008D7EEA /* KursConfigVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17034920CEAB7C008D7EEA /* KursConfigVC.swift */; };
 		5C17034D20D0522F008D7EEA /* KalenderMeditationTimerSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17034C20D0522F008D7EEA /* KalenderMeditationTimerSettingsVC.swift */; };
@@ -41,7 +36,6 @@
 		5C2D03861E3B6C4500A113FF /* KalenderTagHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2D03851E3B6C4500A113FF /* KalenderTagHeader.xib */; };
 		5C2D03891E3B882800A113FF /* KalenderTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2D03881E3B882800A113FF /* KalenderTitleView.xib */; };
 		5C2D03911E3F7E5B00A113FF /* MeineKurseTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D03901E3F7E5B00A113FF /* MeineKurseTableVC.swift */; };
-		5C2F2F8720BC4B6E00ECE7A2 /* Timer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C2F2F8620BC4B6D00ECE7A2 /* Timer.storyboard */; };
 		5C2F2F8A20BC4D6100ECE7A2 /* MeditationsTimerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2F8920BC4D6100ECE7A2 /* MeditationsTimerVC.swift */; };
 		5C2F2FA320BC522D00ECE7A2 /* SoundFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2F9F20BC522C00ECE7A2 /* SoundFileView.swift */; };
 		5C2F2FA420BC522D00ECE7A2 /* GeradeMeditiertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2FA020BC522C00ECE7A2 /* GeradeMeditiertView.swift */; };
@@ -51,13 +45,9 @@
 		5C2F2FB020BC527500ECE7A2 /* SoundFilesTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2FAD20BC527400ECE7A2 /* SoundFilesTableVC.swift */; };
 		5C2F2FB120BC527500ECE7A2 /* TimerSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2FAE20BC527500ECE7A2 /* TimerSettingsVC.swift */; };
 		5C2F2FB220BC527500ECE7A2 /* TimerTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2FAF20BC527500ECE7A2 /* TimerTableVC.swift */; };
-		5C2F2FBD20BC52BD00ECE7A2 /* SoundFileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2F2FB620BC52BB00ECE7A2 /* SoundFileView.xib */; };
 		5C2F2FBE20BC52BD00ECE7A2 /* TimerAnzeigeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2F2FB720BC52BB00ECE7A2 /* TimerAnzeigeView.xib */; };
 		5C2F2FBF20BC52BD00ECE7A2 /* MeditationsPlatzView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2F2FB820BC52BC00ECE7A2 /* MeditationsPlatzView.xib */; };
-		5C2F2FC020BC52BD00ECE7A2 /* TimerSettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2F2FB920BC52BC00ECE7A2 /* TimerSettingsView.xib */; };
 		5C2F2FC120BC52BD00ECE7A2 /* MeditationsPlatzCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2F2FBA20BC52BC00ECE7A2 /* MeditationsPlatzCell.xib */; };
-		5C2F2FC220BC52BD00ECE7A2 /* TimerAsTimerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2F2FBB20BC52BD00ECE7A2 /* TimerAsTimerView.xib */; };
-		5C2F2FC320BC52BD00ECE7A2 /* SettingsForTimerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2F2FBC20BC52BD00ECE7A2 /* SettingsForTimerView.xib */; };
 		5C2F2FC520BC52CD00ECE7A2 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2FC420BC52CD00ECE7A2 /* AudioPlayer.swift */; };
 		5C2F2FCE20BC52E200ECE7A2 /* FirebaseNotitifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2FC920BC52E200ECE7A2 /* FirebaseNotitifications.swift */; };
 		5C2F2FCF20BC52E200ECE7A2 /* TimerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F2FCA20BC52E200ECE7A2 /* TimerData.swift */; };
@@ -85,7 +75,6 @@
 		5C30976F2100E7A5000B0FA1 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C30976E2100E7A5000B0FA1 /* DateExtensions.swift */; };
 		5C3097712100E7EB000B0FA1 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3097702100E7EB000B0FA1 /* UIExtensions.swift */; };
 		5C3097732100EF44000B0FA1 /* FlagsAndCountries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3097722100EF44000B0FA1 /* FlagsAndCountries.swift */; };
-		5C31AD5320C7D17700CD367E /* PublicMeditationInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C31AD5220C7D17700CD367E /* PublicMeditationInfoView.xib */; };
 		5C31AD5720C7D27D00CD367E /* PublicMeditationInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C31AD5620C7D27D00CD367E /* PublicMeditationInfoView.swift */; };
 		5C31AD5920C7D4B400CD367E /* PublicMeditationInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C31AD5820C7D4B400CD367E /* PublicMeditationInfoViewModel.swift */; };
 		5C31AD5B20C7DAF200CD367E /* ProfilPublicVorschauVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C31AD5A20C7DAF200CD367E /* ProfilPublicVorschauVC.swift */; };
@@ -96,16 +85,12 @@
 		5C342A581E1C03DD007D2305 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C342A561E1C03DD007D2305 /* LaunchScreen.storyboard */; };
 		5C40D03220C4313C0015A1F9 /* PublicMeditationInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C40D03120C4313C0015A1F9 /* PublicMeditationInfoVC.swift */; };
 		5C40D03420C434580015A1F9 /* TimerInPublicMeditationInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C40D03320C434580015A1F9 /* TimerInPublicMeditationInfoView.xib */; };
-		5C40D03820C469990015A1F9 /* PublicStatisticsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C40D03720C469990015A1F9 /* PublicStatisticsView.xib */; };
 		5C40D03A20C46B230015A1F9 /* PublicStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C40D03920C46B230015A1F9 /* PublicStatisticsView.swift */; };
-		5C47C1B120E25D100011F76B /* StatisticsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C47C1B020E25D100011F76B /* StatisticsView.xib */; };
 		5C47C1B320E25F5E0011F76B /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C47C1B220E25F5E0011F76B /* StatisticsView.swift */; };
 		5C47C1B720E274E10011F76B /* StatisticGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C47C1B620E274E10011F76B /* StatisticGraphView.swift */; };
 		5C47C1BA20E517620011F76B /* AufklappHauptMenuButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C47C1B920E517620011F76B /* AufklappHauptMenuButton.xib */; };
 		5C47C1BC20E518700011F76B /* AufklappHauptMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C47C1BB20E518700011F76B /* AufklappHauptMenuButton.swift */; };
-		5C47C1BE20E528B50011F76B /* Profil.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C47C1BD20E528B50011F76B /* Profil.storyboard */; };
 		5C4B5DD31E2A7BF300307437 /* MeditationsKalenderEintrag.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C4B5DD21E2A7BF300307437 /* MeditationsKalenderEintrag.xib */; };
-		5C4DE60B1E66F6DB00715F83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C4DE6091E66F6DB00715F83 /* Main.storyboard */; };
 		5C4DE62A1E68581600715F83 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C4DE62C1E68581600715F83 /* Localizable.strings */; };
 		5C4DE62E1E685D7B00715F83 /* StatistikUeberblickRegelmaessigkeitView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C4DE6301E685D7B00715F83 /* StatistikUeberblickRegelmaessigkeitView.xib */; };
 		5C4DE63D1E6EF3C100715F83 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C4DE63C1E6EF3C100715F83 /* CloudKit.framework */; };
@@ -115,6 +100,26 @@
 		5C5E92B920CAAC2700CB15ED /* Kurse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E92B820CAAC2700CB15ED /* Kurse.swift */; };
 		5C5F270A1F1CD1950080A12F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C5F27091F1CD1950080A12F /* GoogleService-Info.plist */; };
 		5C61C45F1E44B9A8005B744D /* StatistikUeberblickRegelmaessigkeit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C61C45E1E44B9A8005B744D /* StatistikUeberblickRegelmaessigkeit.swift */; };
+		5C64845F2105F8690048443E /* Dana.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C64845E2105F8690048443E /* Dana.storyboard */; };
+		5C648471210602010048443E /* Statistiken.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C648473210602010048443E /* Statistiken.storyboard */; };
+		5C6484882106043B0048443E /* Profil.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C64848A2106043B0048443E /* Profil.storyboard */; };
+		5C64849C21060ADC0048443E /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C64849E21060ADC0048443E /* Start.storyboard */; };
+		5C6484C9210612960048443E /* Timer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C6484CB210612960048443E /* Timer.storyboard */; };
+		5C6484D6210617320048443E /* Kurse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C6484D8210617320048443E /* Kurse.storyboard */; };
+		5C6484E82106182A0048443E /* Kalender.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C6484EA2106182A0048443E /* Kalender.storyboard */; };
+		5C6484EF210618890048443E /* Freunde.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C6484F1210618890048443E /* Freunde.storyboard */; };
+		5C6484F62106192F0048443E /* SettingsForTimerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C6484F82106192F0048443E /* SettingsForTimerView.xib */; };
+		5C6484FD21061A080048443E /* SoundFileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C6484FF21061A080048443E /* SoundFileView.xib */; };
+		5C64850421061A9B0048443E /* TimerAsTimerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C64850621061A9B0048443E /* TimerAsTimerView.xib */; };
+		5C64850B21061ACE0048443E /* TimerSettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C64850D21061ACE0048443E /* TimerSettingsView.xib */; };
+		5C64851221061B500048443E /* PublicMeditationInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C64851421061B500048443E /* PublicMeditationInfoView.xib */; };
+		5C64851921061B8B0048443E /* KursConfigView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C64851B21061B8B0048443E /* KursConfigView.xib */; };
+		5C64852021061BF10048443E /* KursTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C64852221061BF10048443E /* KursTableCellView.xib */; };
+		5C64852721061C310048443E /* PublicStatisticsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C64852921061C310048443E /* PublicStatisticsView.xib */; };
+		5C64852E21061CAC0048443E /* ProfilConfigView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C64853021061CAC0048443E /* ProfilConfigView.xib */; };
+		5C64853521061D6F0048443E /* MeditationsPlatzConfigView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C64853721061D6F0048443E /* MeditationsPlatzConfigView.xib */; };
+		5C64853C21061DD30048443E /* FlaggeWahlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C64853E21061DD30048443E /* FlaggeWahlView.xib */; };
+		5C64854321061DF20048443E /* StatisticsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C64854521061DF20048443E /* StatisticsView.xib */; };
 		5C70572D1E2CF11500D307EF /* KalenderMeditationEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C70572C1E2CF11500D307EF /* KalenderMeditationEditVC.swift */; };
 		5C7296B91E5B523000F9B4B1 /* MyCalendar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5CEE46071E3A3765005C8713 /* MyCalendar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5C94DDF41F23676500BEA142 /* StatisticsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C94DDF31F23676500BEA142 /* StatisticsExtensions.swift */; };
@@ -126,7 +131,6 @@
 		5CA3680F20ED1047005F9F71 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA3680E20ED1047005F9F71 /* IAPHelper.swift */; };
 		5CA3681120ED1BAA005F9F71 /* DanaTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA3681020ED1BAA005F9F71 /* DanaTableVC.swift */; };
 		5CA9A1331E3F9A64000C28F6 /* KursExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9A1321E3F9A64000C28F6 /* KursExtensions.swift */; };
-		5CA9A1361E40B84C000C28F6 /* KursTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CA9A1351E40B84C000C28F6 /* KursTableCellView.xib */; };
 		5CA9A13A1E40D2B9000C28F6 /* StatistikVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9A1391E40D2B9000C28F6 /* StatistikVC.swift */; };
 		5CADDD1D20F61F8A00B77A59 /* TimerAnzeigeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CADDD1C20F61F8A00B77A59 /* TimerAnzeigeModel.swift */; };
 		5CADDD1F20F6206A00B77A59 /* TimerAsTimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CADDD1E20F6206A00B77A59 /* TimerAsTimerModel.swift */; };
@@ -140,9 +144,12 @@
 		5CB25C741E71984500E37EAF /* MeditierenderExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB25C731E71984500E37EAF /* MeditierenderExtensions.swift */; };
 		5CBB48311F1F4C99003750C7 /* AppUserExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBB48301F1F4C99003750C7 /* AppUserExtensions.swift */; };
 		5CBD4BC420C6AC15009CC0D0 /* FlaggeWahlViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBD4BC320C6AC15009CC0D0 /* FlaggeWahlViewModels.swift */; };
-		5CBD4BC620C6B101009CC0D0 /* MeditationsPlatzConfigView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CBD4BC520C6B101009CC0D0 /* MeditationsPlatzConfigView.xib */; };
 		5CBD4BC820C6B10F009CC0D0 /* MeditationsPlatzConfigViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBD4BC720C6B10F009CC0D0 /* MeditationsPlatzConfigViews.swift */; };
-		5CCC695B20C5536500AC022A /* ProfilConfigView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CCC695A20C5536500AC022A /* ProfilConfigView.xib */; };
+		5CC033982108855200FE28C4 /* DanaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC033962108855200FE28C4 /* DanaTableViewCell.swift */; };
+		5CC033992108855200FE28C4 /* DanaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CC033972108855200FE28C4 /* DanaTableViewCell.xib */; };
+		5CC0339D21088BE500FE28C4 /* DanaEinzelFreischaltCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CC0339B21088BE500FE28C4 /* DanaEinzelFreischaltCell.xib */; };
+		5CC033A1210899F100FE28C4 /* FreundeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC0339F210899F100FE28C4 /* FreundeTableViewCell.swift */; };
+		5CC033A2210899F100FE28C4 /* FreundeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CC033A0210899F100FE28C4 /* FreundeTableViewCell.xib */; };
 		5CCC695D20C5692900AC022A /* ProfilConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCC695C20C5692900AC022A /* ProfilConfigView.swift */; };
 		5CCC696020C56B9500AC022A /* ProfilConfigViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCC695F20C56B9500AC022A /* ProfilConfigViewModel.swift */; };
 		5CCE42B71E5B5942001373D8 /* EndlessScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7296BC1E5B523F00F9B4B1 /* EndlessScrollView.framework */; };
@@ -180,7 +187,6 @@
 		5CDD758420D2B8740044B541 /* StatistikUeberblickBalkenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDD758320D2B8740044B541 /* StatistikUeberblickBalkenView.swift */; };
 		5CDF3E9B20C677BE00020260 /* ProfilConfigVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDF3E9A20C677BE00020260 /* ProfilConfigVC.swift */; };
 		5CDF3E9E20C67AF400020260 /* ProfilConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDF3E9D20C67AF400020260 /* ProfilConfigModel.swift */; };
-		5CDF3EA520C6881300020260 /* FlaggeWahlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CDF3EA420C6881300020260 /* FlaggeWahlView.xib */; };
 		5CDF3EA720C689A900020260 /* FlaggeWahlViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDF3EA620C689A900020260 /* FlaggeWahlViews.swift */; };
 		5CEE460B1E3A3832005C8713 /* KalenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEE460A1E3A3832005C8713 /* KalenderVC.swift */; };
 		5CEE460F1E3A391E005C8713 /* MyCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CEE46071E3A3765005C8713 /* MyCalendar.framework */; };
@@ -221,10 +227,6 @@
 
 /* Begin PBXFileReference section */
 		3DA9F84A927CF18181FB1766 /* Pods_VipassanaTimer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VipassanaTimer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5C023F1B209742D400882911 /* Freunde.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Freunde.storyboard; sourceTree = "<group>"; };
-		5C023F20209743AA00882911 /* Kalender.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Kalender.storyboard; sourceTree = "<group>"; };
-		5C023F222097440600882911 /* Kurse.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Kurse.storyboard; sourceTree = "<group>"; };
-		5C0F579F20F7579800ACB8CE /* FreundeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreundeTableViewCell.swift; sourceTree = "<group>"; };
 		5C0F57A320F76B6600ACB8CE /* FreundeTableVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreundeTableVCModel.swift; sourceTree = "<group>"; };
 		5C0F57A520F772A300ACB8CE /* MeineFreundesAnfragenTableVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeineFreundesAnfragenTableVCModel.swift; sourceTree = "<group>"; };
 		5C0F57A820F7817500ACB8CE /* FreundeFindenVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreundeFindenVCModel.swift; sourceTree = "<group>"; };
@@ -242,7 +244,6 @@
 		5C142CAA1E803E9B0085191B /* FreundeFindenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreundeFindenVC.swift; sourceTree = "<group>"; };
 		5C142CAC1E828BA80085191B /* MeineFreundesAnfragenTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeineFreundesAnfragenTableVC.swift; sourceTree = "<group>"; };
 		5C142CAE1E8295630085191B /* FreundeTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreundeTableVC.swift; sourceTree = "<group>"; };
-		5C17034520CE7E61008D7EEA /* KursConfigView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KursConfigView.xib; sourceTree = "<group>"; };
 		5C17034720CE8118008D7EEA /* KursConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KursConfigView.swift; sourceTree = "<group>"; };
 		5C17034920CEAB7C008D7EEA /* KursConfigVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KursConfigVC.swift; sourceTree = "<group>"; };
 		5C17034C20D0522F008D7EEA /* KalenderMeditationTimerSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KalenderMeditationTimerSettingsVC.swift; sourceTree = "<group>"; };
@@ -257,7 +258,6 @@
 		5C2D03851E3B6C4500A113FF /* KalenderTagHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KalenderTagHeader.xib; sourceTree = "<group>"; };
 		5C2D03881E3B882800A113FF /* KalenderTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KalenderTitleView.xib; sourceTree = "<group>"; };
 		5C2D03901E3F7E5B00A113FF /* MeineKurseTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeineKurseTableVC.swift; sourceTree = "<group>"; };
-		5C2F2F8620BC4B6D00ECE7A2 /* Timer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timer.storyboard; sourceTree = "<group>"; };
 		5C2F2F8920BC4D6100ECE7A2 /* MeditationsTimerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeditationsTimerVC.swift; sourceTree = "<group>"; };
 		5C2F2F9F20BC522C00ECE7A2 /* SoundFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundFileView.swift; sourceTree = "<group>"; };
 		5C2F2FA020BC522C00ECE7A2 /* GeradeMeditiertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeradeMeditiertView.swift; sourceTree = "<group>"; };
@@ -267,13 +267,9 @@
 		5C2F2FAD20BC527400ECE7A2 /* SoundFilesTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundFilesTableVC.swift; sourceTree = "<group>"; };
 		5C2F2FAE20BC527500ECE7A2 /* TimerSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerSettingsVC.swift; sourceTree = "<group>"; };
 		5C2F2FAF20BC527500ECE7A2 /* TimerTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerTableVC.swift; sourceTree = "<group>"; };
-		5C2F2FB620BC52BB00ECE7A2 /* SoundFileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SoundFileView.xib; sourceTree = "<group>"; };
 		5C2F2FB720BC52BB00ECE7A2 /* TimerAnzeigeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimerAnzeigeView.xib; sourceTree = "<group>"; };
 		5C2F2FB820BC52BC00ECE7A2 /* MeditationsPlatzView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeditationsPlatzView.xib; sourceTree = "<group>"; };
-		5C2F2FB920BC52BC00ECE7A2 /* TimerSettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimerSettingsView.xib; sourceTree = "<group>"; };
 		5C2F2FBA20BC52BC00ECE7A2 /* MeditationsPlatzCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeditationsPlatzCell.xib; sourceTree = "<group>"; };
-		5C2F2FBB20BC52BD00ECE7A2 /* TimerAsTimerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimerAsTimerView.xib; sourceTree = "<group>"; };
-		5C2F2FBC20BC52BD00ECE7A2 /* SettingsForTimerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsForTimerView.xib; sourceTree = "<group>"; };
 		5C2F2FC420BC52CD00ECE7A2 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		5C2F2FC920BC52E200ECE7A2 /* FirebaseNotitifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseNotitifications.swift; sourceTree = "<group>"; };
 		5C2F2FCA20BC52E200ECE7A2 /* TimerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerData.swift; sourceTree = "<group>"; };
@@ -301,7 +297,6 @@
 		5C30976E2100E7A5000B0FA1 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		5C3097702100E7EB000B0FA1 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		5C3097722100EF44000B0FA1 /* FlagsAndCountries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsAndCountries.swift; sourceTree = "<group>"; };
-		5C31AD5220C7D17700CD367E /* PublicMeditationInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PublicMeditationInfoView.xib; sourceTree = "<group>"; };
 		5C31AD5620C7D27D00CD367E /* PublicMeditationInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMeditationInfoView.swift; sourceTree = "<group>"; };
 		5C31AD5820C7D4B400CD367E /* PublicMeditationInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMeditationInfoViewModel.swift; sourceTree = "<group>"; };
 		5C31AD5A20C7DAF200CD367E /* ProfilPublicVorschauVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilPublicVorschauVC.swift; sourceTree = "<group>"; };
@@ -314,22 +309,15 @@
 		5C342A591E1C03DD007D2305 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C40D03120C4313C0015A1F9 /* PublicMeditationInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMeditationInfoVC.swift; sourceTree = "<group>"; };
 		5C40D03320C434580015A1F9 /* TimerInPublicMeditationInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimerInPublicMeditationInfoView.xib; sourceTree = "<group>"; };
-		5C40D03720C469990015A1F9 /* PublicStatisticsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PublicStatisticsView.xib; sourceTree = "<group>"; };
 		5C40D03920C46B230015A1F9 /* PublicStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicStatisticsView.swift; sourceTree = "<group>"; };
-		5C47C1B020E25D100011F76B /* StatisticsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticsView.xib; sourceTree = "<group>"; };
 		5C47C1B220E25F5E0011F76B /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		5C47C1B620E274E10011F76B /* StatisticGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticGraphView.swift; sourceTree = "<group>"; };
 		5C47C1B920E517620011F76B /* AufklappHauptMenuButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AufklappHauptMenuButton.xib; sourceTree = "<group>"; };
 		5C47C1BB20E518700011F76B /* AufklappHauptMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AufklappHauptMenuButton.swift; sourceTree = "<group>"; };
-		5C47C1BD20E528B50011F76B /* Profil.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profil.storyboard; sourceTree = "<group>"; };
 		5C4B5DD21E2A7BF300307437 /* MeditationsKalenderEintrag.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeditationsKalenderEintrag.xib; sourceTree = "<group>"; };
-		5C4DE60A1E66F6DB00715F83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		5C4DE60D1E66F76500715F83 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		5C4DE60E1E66F7AB00715F83 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		5C4DE62B1E68581600715F83 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5C4DE62D1E68581900715F83 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5C4DE62F1E685D7B00715F83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/StatistikUeberblickRegelmaessigkeitView.xib; sourceTree = "<group>"; };
-		5C4DE6321E685D8000715F83 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/StatistikUeberblickRegelmaessigkeitView.strings; sourceTree = "<group>"; };
 		5C4DE6341E685D8300715F83 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/StatistikUeberblickRegelmaessigkeitView.strings; sourceTree = "<group>"; };
 		5C4DE63C1E6EF3C100715F83 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		5C5502031E1E614F004C700D /* TimerConfigExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerConfigExtensions.swift; sourceTree = "<group>"; };
@@ -338,6 +326,65 @@
 		5C5E92B820CAAC2700CB15ED /* Kurse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kurse.swift; sourceTree = "<group>"; };
 		5C5F27091F1CD1950080A12F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5C61C45E1E44B9A8005B744D /* StatistikUeberblickRegelmaessigkeit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatistikUeberblickRegelmaessigkeit.swift; sourceTree = "<group>"; };
+		5C64845E2105F8690048443E /* Dana.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Dana.storyboard; sourceTree = "<group>"; };
+		5C6484892106043B0048443E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profil.storyboard; sourceTree = "<group>"; };
+		5C64848C2106043F0048443E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Profil.strings; sourceTree = "<group>"; };
+		5C64848E210604420048443E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Profil.strings; sourceTree = "<group>"; };
+		5C6484CA210612960048443E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Timer.storyboard; sourceTree = "<group>"; };
+		5C6484CD2106129C0048443E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Timer.strings; sourceTree = "<group>"; };
+		5C6484CF210612A50048443E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Timer.strings; sourceTree = "<group>"; };
+		5C6484D0210612C40048443E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Start.storyboard; sourceTree = "<group>"; };
+		5C6484D1210612E10048443E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Start.strings; sourceTree = "<group>"; };
+		5C6484D2210612EF0048443E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Start.strings; sourceTree = "<group>"; };
+		5C6484D3210613510048443E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Statistiken.storyboard; sourceTree = "<group>"; };
+		5C6484D4210613580048443E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Statistiken.strings; sourceTree = "<group>"; };
+		5C6484D52106135B0048443E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Statistiken.strings; sourceTree = "<group>"; };
+		5C6484DD210617830048443E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Kurse.storyboard; sourceTree = "<group>"; };
+		5C6484E3210617DE0048443E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Kurse.strings; sourceTree = "<group>"; };
+		5C6484E7210617E90048443E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Kurse.strings; sourceTree = "<group>"; };
+		5C6484E92106182A0048443E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Kalender.storyboard; sourceTree = "<group>"; };
+		5C6484EC2106182F0048443E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Kalender.strings; sourceTree = "<group>"; };
+		5C6484EE210618310048443E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Kalender.strings; sourceTree = "<group>"; };
+		5C6484F0210618890048443E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Freunde.storyboard; sourceTree = "<group>"; };
+		5C6484F32106188C0048443E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Freunde.strings; sourceTree = "<group>"; };
+		5C6484F52106188D0048443E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Freunde.strings; sourceTree = "<group>"; };
+		5C6484F72106192F0048443E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SettingsForTimerView.xib; sourceTree = "<group>"; };
+		5C6484FA210619320048443E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SettingsForTimerView.strings; sourceTree = "<group>"; };
+		5C6484FC210619340048443E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SettingsForTimerView.strings; sourceTree = "<group>"; };
+		5C6484FE21061A080048443E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SoundFileView.xib; sourceTree = "<group>"; };
+		5C64850121061A0A0048443E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SoundFileView.strings; sourceTree = "<group>"; };
+		5C64850321061A0F0048443E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SoundFileView.strings; sourceTree = "<group>"; };
+		5C64850521061A9B0048443E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TimerAsTimerView.xib; sourceTree = "<group>"; };
+		5C64850821061A9D0048443E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TimerAsTimerView.strings; sourceTree = "<group>"; };
+		5C64850A21061AA00048443E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/TimerAsTimerView.strings; sourceTree = "<group>"; };
+		5C64850C21061ACE0048443E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TimerSettingsView.xib; sourceTree = "<group>"; };
+		5C64850F21061AD10048443E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TimerSettingsView.strings; sourceTree = "<group>"; };
+		5C64851121061AD30048443E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/TimerSettingsView.strings; sourceTree = "<group>"; };
+		5C64851321061B500048443E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PublicMeditationInfoView.xib; sourceTree = "<group>"; };
+		5C64851621061B580048443E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PublicMeditationInfoView.strings; sourceTree = "<group>"; };
+		5C64851821061B5E0048443E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/PublicMeditationInfoView.strings; sourceTree = "<group>"; };
+		5C64851A21061B8B0048443E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/KursConfigView.xib; sourceTree = "<group>"; };
+		5C64851D21061B8D0048443E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/KursConfigView.strings; sourceTree = "<group>"; };
+		5C64851F21061B8F0048443E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/KursConfigView.strings; sourceTree = "<group>"; };
+		5C64852121061BF10048443E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/KursTableCellView.xib; sourceTree = "<group>"; };
+		5C64852421061BF30048443E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/KursTableCellView.strings; sourceTree = "<group>"; };
+		5C64852621061BF50048443E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/KursTableCellView.strings; sourceTree = "<group>"; };
+		5C64852821061C310048443E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PublicStatisticsView.xib; sourceTree = "<group>"; };
+		5C64852B21061C330048443E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PublicStatisticsView.strings; sourceTree = "<group>"; };
+		5C64852D21061C350048443E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/PublicStatisticsView.strings; sourceTree = "<group>"; };
+		5C64852F21061CAC0048443E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProfilConfigView.xib; sourceTree = "<group>"; };
+		5C64853221061CAE0048443E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ProfilConfigView.strings; sourceTree = "<group>"; };
+		5C64853421061CB10048443E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ProfilConfigView.strings; sourceTree = "<group>"; };
+		5C64853621061D6F0048443E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MeditationsPlatzConfigView.xib; sourceTree = "<group>"; };
+		5C64853921061D710048443E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MeditationsPlatzConfigView.strings; sourceTree = "<group>"; };
+		5C64853B21061D730048443E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/MeditationsPlatzConfigView.strings; sourceTree = "<group>"; };
+		5C64853D21061DD30048443E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FlaggeWahlView.xib; sourceTree = "<group>"; };
+		5C64854021061DD60048443E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FlaggeWahlView.strings; sourceTree = "<group>"; };
+		5C64854221061DD80048443E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/FlaggeWahlView.strings; sourceTree = "<group>"; };
+		5C64854421061DF20048443E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/StatisticsView.xib; sourceTree = "<group>"; };
+		5C64854721061DF40048443E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/StatisticsView.strings; sourceTree = "<group>"; };
+		5C64854921061DF70048443E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/StatisticsView.strings; sourceTree = "<group>"; };
+		5C64854B210620A20048443E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/StatistikUeberblickRegelmaessigkeitView.strings; sourceTree = "<group>"; };
 		5C70572C1E2CF11500D307EF /* KalenderMeditationEditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KalenderMeditationEditVC.swift; sourceTree = "<group>"; };
 		5C7296BC1E5B523F00F9B4B1 /* EndlessScrollView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EndlessScrollView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C94DDF31F23676500BEA142 /* StatisticsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsExtensions.swift; sourceTree = "<group>"; };
@@ -349,7 +396,6 @@
 		5CA3680E20ED1047005F9F71 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		5CA3681020ED1BAA005F9F71 /* DanaTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanaTableVC.swift; sourceTree = "<group>"; };
 		5CA9A1321E3F9A64000C28F6 /* KursExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KursExtensions.swift; sourceTree = "<group>"; };
-		5CA9A1351E40B84C000C28F6 /* KursTableCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KursTableCellView.xib; sourceTree = "<group>"; };
 		5CA9A1391E40D2B9000C28F6 /* StatistikVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatistikVC.swift; sourceTree = "<group>"; };
 		5CADDD1C20F61F8A00B77A59 /* TimerAnzeigeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerAnzeigeModel.swift; sourceTree = "<group>"; };
 		5CADDD1E20F6206A00B77A59 /* TimerAsTimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerAsTimerModel.swift; sourceTree = "<group>"; };
@@ -363,9 +409,12 @@
 		5CB25C731E71984500E37EAF /* MeditierenderExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeditierenderExtensions.swift; sourceTree = "<group>"; };
 		5CBB48301F1F4C99003750C7 /* AppUserExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUserExtensions.swift; sourceTree = "<group>"; };
 		5CBD4BC320C6AC15009CC0D0 /* FlaggeWahlViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlaggeWahlViewModels.swift; sourceTree = "<group>"; };
-		5CBD4BC520C6B101009CC0D0 /* MeditationsPlatzConfigView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeditationsPlatzConfigView.xib; sourceTree = "<group>"; };
 		5CBD4BC720C6B10F009CC0D0 /* MeditationsPlatzConfigViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationsPlatzConfigViews.swift; sourceTree = "<group>"; };
-		5CCC695A20C5536500AC022A /* ProfilConfigView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfilConfigView.xib; sourceTree = "<group>"; };
+		5CC033962108855200FE28C4 /* DanaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanaTableViewCell.swift; sourceTree = "<group>"; };
+		5CC033972108855200FE28C4 /* DanaTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DanaTableViewCell.xib; sourceTree = "<group>"; };
+		5CC0339B21088BE500FE28C4 /* DanaEinzelFreischaltCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DanaEinzelFreischaltCell.xib; sourceTree = "<group>"; };
+		5CC0339F210899F100FE28C4 /* FreundeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreundeTableViewCell.swift; sourceTree = "<group>"; };
+		5CC033A0210899F100FE28C4 /* FreundeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FreundeTableViewCell.xib; sourceTree = "<group>"; };
 		5CCC695C20C5692900AC022A /* ProfilConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilConfigView.swift; sourceTree = "<group>"; };
 		5CCC695F20C56B9500AC022A /* ProfilConfigViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilConfigViewModel.swift; sourceTree = "<group>"; };
 		5CCFE59820C003B6009925C1 /* MeditationsTimerVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationsTimerVCModel.swift; sourceTree = "<group>"; };
@@ -401,7 +450,6 @@
 		5CDD758320D2B8740044B541 /* StatistikUeberblickBalkenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatistikUeberblickBalkenView.swift; sourceTree = "<group>"; };
 		5CDF3E9A20C677BE00020260 /* ProfilConfigVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilConfigVC.swift; sourceTree = "<group>"; };
 		5CDF3E9D20C67AF400020260 /* ProfilConfigModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilConfigModel.swift; sourceTree = "<group>"; };
-		5CDF3EA420C6881300020260 /* FlaggeWahlView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlaggeWahlView.xib; sourceTree = "<group>"; };
 		5CDF3EA620C689A900020260 /* FlaggeWahlViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlaggeWahlViews.swift; sourceTree = "<group>"; };
 		5CEE46021E3A3765005C8713 /* MyCalendar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MyCalendar.xcodeproj; path = ../MyCalendar/MyCalendar.xcodeproj; sourceTree = "<group>"; };
 		5CEE460A1E3A3832005C8713 /* KalenderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KalenderVC.swift; sourceTree = "<group>"; };
@@ -448,7 +496,8 @@
 				5C0F57AC20F785A400ACB8CE /* SetStatistikAnfangsDatumView.swift */,
 				5CCC695C20C5692900AC022A /* ProfilConfigView.swift */,
 				5C31AD5620C7D27D00CD367E /* PublicMeditationInfoView.swift */,
-				5C0F579F20F7579800ACB8CE /* FreundeTableViewCell.swift */,
+				5CC0339F210899F100FE28C4 /* FreundeTableViewCell.swift */,
+				5CC033962108855200FE28C4 /* DanaTableViewCell.swift */,
 				5C0F57BD20F79A9300ACB8CE /* KalenderViews */,
 				5CD1F8B220F8BDD200E60F0D /* Kurse */,
 				5CD94F5E20EE4B120025025B /* Buttons */,
@@ -460,12 +509,14 @@
 		5C023F1D209742EA00882911 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				5C4DE6091E66F6DB00715F83 /* Main.storyboard */,
-				5C2F2F8620BC4B6D00ECE7A2 /* Timer.storyboard */,
-				5C47C1BD20E528B50011F76B /* Profil.storyboard */,
-				5C023F222097440600882911 /* Kurse.storyboard */,
-				5C023F20209743AA00882911 /* Kalender.storyboard */,
-				5C023F1B209742D400882911 /* Freunde.storyboard */,
+				5C64849E21060ADC0048443E /* Start.storyboard */,
+				5C648473210602010048443E /* Statistiken.storyboard */,
+				5C64845E2105F8690048443E /* Dana.storyboard */,
+				5C6484CB210612960048443E /* Timer.storyboard */,
+				5C64848A2106043B0048443E /* Profil.storyboard */,
+				5C6484D8210617320048443E /* Kurse.storyboard */,
+				5C6484EA2106182A0048443E /* Kalender.storyboard */,
+				5C6484F1210618890048443E /* Freunde.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -585,11 +636,11 @@
 			children = (
 				5C2F2FBA20BC52BC00ECE7A2 /* MeditationsPlatzCell.xib */,
 				5C2F2FB820BC52BC00ECE7A2 /* MeditationsPlatzView.xib */,
-				5C2F2FBC20BC52BD00ECE7A2 /* SettingsForTimerView.xib */,
-				5C2F2FB620BC52BB00ECE7A2 /* SoundFileView.xib */,
+				5C6484F82106192F0048443E /* SettingsForTimerView.xib */,
+				5C6484FF21061A080048443E /* SoundFileView.xib */,
 				5C2F2FB720BC52BB00ECE7A2 /* TimerAnzeigeView.xib */,
-				5C2F2FBB20BC52BD00ECE7A2 /* TimerAsTimerView.xib */,
-				5C2F2FB920BC52BC00ECE7A2 /* TimerSettingsView.xib */,
+				5C64850621061A9B0048443E /* TimerAsTimerView.xib */,
+				5C64850D21061ACE0048443E /* TimerSettingsView.xib */,
 				5C40D03320C434580015A1F9 /* TimerInPublicMeditationInfoView.xib */,
 			);
 			name = Xibs;
@@ -739,10 +790,10 @@
 		5C47C1B820E5172A0011F76B /* Profil */ = {
 			isa = PBXGroup;
 			children = (
-				5C40D03720C469990015A1F9 /* PublicStatisticsView.xib */,
-				5CCC695A20C5536500AC022A /* ProfilConfigView.xib */,
-				5CBD4BC520C6B101009CC0D0 /* MeditationsPlatzConfigView.xib */,
-				5CDF3EA420C6881300020260 /* FlaggeWahlView.xib */,
+				5C64852921061C310048443E /* PublicStatisticsView.xib */,
+				5C64853021061CAC0048443E /* ProfilConfigView.xib */,
+				5C64853721061D6F0048443E /* MeditationsPlatzConfigView.xib */,
+				5C64853E21061DD30048443E /* FlaggeWahlView.xib */,
 			);
 			name = Profil;
 			sourceTree = "<group>";
@@ -800,8 +851,10 @@
 			isa = PBXGroup;
 			children = (
 				5C0F57B020F7895F00ACB8CE /* SetStatistikAnfangsDatumView.xib */,
-				5C31AD5220C7D17700CD367E /* PublicMeditationInfoView.xib */,
+				5C64851421061B500048443E /* PublicMeditationInfoView.xib */,
 				5C4B5DD21E2A7BF300307437 /* MeditationsKalenderEintrag.xib */,
+				5CC033A0210899F100FE28C4 /* FreundeTableViewCell.xib */,
+				5CC0339E210898C800FE28C4 /* DanaCells */,
 				5CD94F6020EE4B3D0025025B /* Kurse */,
 				5CD94F5F20EE4B300025025B /* Buttons */,
 				5C47C1B820E5172A0011F76B /* Profil */,
@@ -830,6 +883,15 @@
 				5CADDD2220F624F100B77A59 /* TimerInPublicMeditationInfoModel.swift */,
 			);
 			name = Timer;
+			sourceTree = "<group>";
+		};
+		5CC0339E210898C800FE28C4 /* DanaCells */ = {
+			isa = PBXGroup;
+			children = (
+				5CC033972108855200FE28C4 /* DanaTableViewCell.xib */,
+				5CC0339B21088BE500FE28C4 /* DanaEinzelFreischaltCell.xib */,
+			);
+			name = DanaCells;
 			sourceTree = "<group>";
 		};
 		5CCC695E20C56B7200AC022A /* ViewModels */ = {
@@ -931,9 +993,9 @@
 		5CD94F6020EE4B3D0025025B /* Kurse */ = {
 			isa = PBXGroup;
 			children = (
-				5C17034520CE7E61008D7EEA /* KursConfigView.xib */,
+				5C64851B21061B8B0048443E /* KursConfigView.xib */,
 				5CADDD2520F6586300B77A59 /* KursTableCell.xib */,
-				5CA9A1351E40B84C000C28F6 /* KursTableCellView.xib */,
+				5C64852221061BF10048443E /* KursTableCellView.xib */,
 			);
 			name = Kurse;
 			sourceTree = "<group>";
@@ -975,7 +1037,7 @@
 		5CDD757A20D28E9D0044B541 /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
-				5C47C1B020E25D100011F76B /* StatisticsView.xib */,
+				5C64854521061DF20048443E /* StatisticsView.xib */,
 				5C47C1B520E25F880011F76B /* Hauptmenu */,
 			);
 			name = Statistics;
@@ -1130,49 +1192,54 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C648471210602010048443E /* Statistiken.storyboard in Resources */,
 				5C2A721D1E66EBBE00D19E22 /* buddha_gold.png in Resources */,
 				5CDD758120D294F60044B541 /* StatistikUeberblickBalkenView.xib in Resources */,
-				5C023F1C209742D400882911 /* Freunde.storyboard in Resources */,
-				5C2F2FC220BC52BD00ECE7A2 /* TimerAsTimerView.xib in Resources */,
-				5C2F2FC020BC52BD00ECE7A2 /* TimerSettingsView.xib in Resources */,
-				5C023F21209743AA00882911 /* Kalender.storyboard in Resources */,
+				5C6484EF210618890048443E /* Freunde.storyboard in Resources */,
+				5C64850421061A9B0048443E /* TimerAsTimerView.xib in Resources */,
+				5C64850B21061ACE0048443E /* TimerSettingsView.xib in Resources */,
+				5C6484E82106182A0048443E /* Kalender.storyboard in Resources */,
 				5C258E931E8D4E1200B98A49 /* tibetan-bell.wav in Resources */,
-				5C2F2F8720BC4B6E00ECE7A2 /* Timer.storyboard in Resources */,
 				5CD00D351E53640A0092A352 /* DayViewForMonthView.xib in Resources */,
-				5C023F232097440600882911 /* Kurse.storyboard in Resources */,
+				5C6484D6210617320048443E /* Kurse.storyboard in Resources */,
 				5CA3680920ECE6F2005F9F71 /* HauptmenuBadgeButton.xib in Resources */,
+				5C6484C9210612960048443E /* Timer.storyboard in Resources */,
 				5C2D03861E3B6C4500A113FF /* KalenderTagHeader.xib in Resources */,
+				5CC033992108855200FE28C4 /* DanaTableViewCell.xib in Resources */,
 				5C0F57AE20F7895F00ACB8CE /* SetStatistikAnfangsDatumView.xib in Resources */,
-				5C47C1B120E25D100011F76B /* StatisticsView.xib in Resources */,
+				5C64854321061DF20048443E /* StatisticsView.xib in Resources */,
 				5C342A581E1C03DD007D2305 /* LaunchScreen.storyboard in Resources */,
+				5CC033A2210899F100FE28C4 /* FreundeTableViewCell.xib in Resources */,
 				5CADDD2720F6586300B77A59 /* KursTableCell.xib in Resources */,
-				5C2F2FC320BC52BD00ECE7A2 /* SettingsForTimerView.xib in Resources */,
-				5C4DE60B1E66F6DB00715F83 /* Main.storyboard in Resources */,
+				5C6484F62106192F0048443E /* SettingsForTimerView.xib in Resources */,
 				5C342A551E1C03DD007D2305 /* Assets.xcassets in Resources */,
 				5C40D03420C434580015A1F9 /* TimerInPublicMeditationInfoView.xib in Resources */,
-				5CA9A1361E40B84C000C28F6 /* KursTableCellView.xib in Resources */,
+				5C64852021061BF10048443E /* KursTableCellView.xib in Resources */,
 				5CDD757920D28B670044B541 /* GraphBackGround.xib in Resources */,
 				5C2F2FD320BC54E700ECE7A2 /* backGroundImage.png in Resources */,
 				5C2F2FBF20BC52BD00ECE7A2 /* MeditationsPlatzView.xib in Resources */,
-				5CBD4BC620C6B101009CC0D0 /* MeditationsPlatzConfigView.xib in Resources */,
+				5C64853521061D6F0048443E /* MeditationsPlatzConfigView.xib in Resources */,
 				5C4DE62E1E685D7B00715F83 /* StatistikUeberblickRegelmaessigkeitView.xib in Resources */,
 				5C96B02220D3BD1B00D50435 /* HauptMenuStatistikenView.xib in Resources */,
 				5C47C1BA20E517620011F76B /* AufklappHauptMenuButton.xib in Resources */,
-				5C31AD5320C7D17700CD367E /* PublicMeditationInfoView.xib in Resources */,
+				5CC0339D21088BE500FE28C4 /* DanaEinzelFreischaltCell.xib in Resources */,
+				5C64851221061B500048443E /* PublicMeditationInfoView.xib in Resources */,
 				5C2A721C1E66EBBE00D19E22 /* buddha_black.png in Resources */,
 				5C2F2FBE20BC52BD00ECE7A2 /* TimerAnzeigeView.xib in Resources */,
 				5C2F2FC120BC52BD00ECE7A2 /* MeditationsPlatzCell.xib in Resources */,
-				5CCC695B20C5536500AC022A /* ProfilConfigView.xib in Resources */,
-				5C40D03820C469990015A1F9 /* PublicStatisticsView.xib in Resources */,
-				5C2F2FBD20BC52BD00ECE7A2 /* SoundFileView.xib in Resources */,
+				5C64852E21061CAC0048443E /* ProfilConfigView.xib in Resources */,
+				5C64845F2105F8690048443E /* Dana.storyboard in Resources */,
+				5C64852721061C310048443E /* PublicStatisticsView.xib in Resources */,
+				5C6484FD21061A080048443E /* SoundFileView.xib in Resources */,
 				5CDD757720D286A20044B541 /* StatistikUeberblickGraph.xib in Resources */,
-				5C47C1BE20E528B50011F76B /* Profil.storyboard in Resources */,
+				5C6484882106043B0048443E /* Profil.storyboard in Resources */,
 				5C4DE62A1E68581600715F83 /* Localizable.strings in Resources */,
 				5CD00D331E5360C40092A352 /* KalenderMonatHeaderView.xib in Resources */,
 				5C2D03891E3B882800A113FF /* KalenderTitleView.xib in Resources */,
-				5CDF3EA520C6881300020260 /* FlaggeWahlView.xib in Resources */,
+				5C64849C21060ADC0048443E /* Start.storyboard in Resources */,
+				5C64853C21061DD30048443E /* FlaggeWahlView.xib in Resources */,
 				5C5F270A1F1CD1950080A12F /* GoogleService-Info.plist in Resources */,
-				5C17034620CE7E61008D7EEA /* KursConfigView.xib in Resources */,
+				5C64851921061B8B0048443E /* KursConfigView.xib in Resources */,
 				5C4B5DD31E2A7BF300307437 /* MeditationsKalenderEintrag.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1267,6 +1334,7 @@
 				5C2F2FB020BC527500ECE7A2 /* SoundFilesTableVC.swift in Sources */,
 				5C30976F2100E7A5000B0FA1 /* DateExtensions.swift in Sources */,
 				5C30976420FF6B36000B0FA1 /* FirebaseStart.swift in Sources */,
+				5CC033982108855200FE28C4 /* DanaTableViewCell.swift in Sources */,
 				5CD94F6920EE6A6D0025025B /* TimerSettingsVCModel.swift in Sources */,
 				5CDD758420D2B8740044B541 /* StatistikUeberblickBalkenView.swift in Sources */,
 				5CDF3E9B20C677BE00020260 /* ProfilConfigVC.swift in Sources */,
@@ -1296,7 +1364,6 @@
 				5CD1F8BE20F8D53200E60F0D /* StatistikUeberblickRegelmaessigkeitViewModel.swift in Sources */,
 				5CCC696020C56B9500AC022A /* ProfilConfigViewModel.swift in Sources */,
 				5C30974B20FE038B000B0FA1 /* PublicUser.swift in Sources */,
-				5C0F57A120F7579800ACB8CE /* FreundeTableViewCell.swift in Sources */,
 				5CBB48311F1F4C99003750C7 /* AppUserExtensions.swift in Sources */,
 				5C0F57BA20F799F500ACB8CE /* KalenderMonatHeaderView.swift in Sources */,
 				5C30975820FF4DE3000B0FA1 /* FirebaseKurse.swift in Sources */,
@@ -1336,6 +1403,7 @@
 				5C31AD5920C7D4B400CD367E /* PublicMeditationInfoViewModel.swift in Sources */,
 				5C30975620FE4FD0000B0FA1 /* FireBaseSoundFiles.swift in Sources */,
 				5CA9A1331E3F9A64000C28F6 /* KursExtensions.swift in Sources */,
+				5CC033A1210899F100FE28C4 /* FreundeTableViewCell.swift in Sources */,
 				5CD1F8BC20F8CE4D00E60F0D /* HauptMenuStatistikenViewModel.swift in Sources */,
 				5CADDD2320F624F100B77A59 /* TimerInPublicMeditationInfoModel.swift in Sources */,
 				5C31AD5B20C7DAF200CD367E /* ProfilPublicVorschauVC.swift in Sources */,
@@ -1394,16 +1462,6 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		5C4DE6091E66F6DB00715F83 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5C4DE60A1E66F6DB00715F83 /* Base */,
-				5C4DE60D1E66F76500715F83 /* en */,
-				5C4DE60E1E66F7AB00715F83 /* de */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5C4DE62C1E68581600715F83 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1417,10 +1475,200 @@
 			isa = PBXVariantGroup;
 			children = (
 				5C4DE62F1E685D7B00715F83 /* Base */,
-				5C4DE6321E685D8000715F83 /* en */,
 				5C4DE6341E685D8300715F83 /* de */,
+				5C64854B210620A20048443E /* en */,
 			);
 			name = StatistikUeberblickRegelmaessigkeitView.xib;
+			sourceTree = "<group>";
+		};
+		5C648473210602010048443E /* Statistiken.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C6484D3210613510048443E /* Base */,
+				5C6484D4210613580048443E /* en */,
+				5C6484D52106135B0048443E /* de */,
+			);
+			name = Statistiken.storyboard;
+			sourceTree = "<group>";
+		};
+		5C64848A2106043B0048443E /* Profil.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C6484892106043B0048443E /* Base */,
+				5C64848C2106043F0048443E /* en */,
+				5C64848E210604420048443E /* de */,
+			);
+			name = Profil.storyboard;
+			sourceTree = "<group>";
+		};
+		5C64849E21060ADC0048443E /* Start.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C6484D0210612C40048443E /* Base */,
+				5C6484D1210612E10048443E /* en */,
+				5C6484D2210612EF0048443E /* de */,
+			);
+			name = Start.storyboard;
+			sourceTree = "<group>";
+		};
+		5C6484CB210612960048443E /* Timer.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C6484CA210612960048443E /* Base */,
+				5C6484CD2106129C0048443E /* en */,
+				5C6484CF210612A50048443E /* de */,
+			);
+			name = Timer.storyboard;
+			sourceTree = "<group>";
+		};
+		5C6484D8210617320048443E /* Kurse.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C6484DD210617830048443E /* Base */,
+				5C6484E3210617DE0048443E /* en */,
+				5C6484E7210617E90048443E /* de */,
+			);
+			name = Kurse.storyboard;
+			sourceTree = "<group>";
+		};
+		5C6484EA2106182A0048443E /* Kalender.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C6484E92106182A0048443E /* Base */,
+				5C6484EC2106182F0048443E /* en */,
+				5C6484EE210618310048443E /* de */,
+			);
+			name = Kalender.storyboard;
+			sourceTree = "<group>";
+		};
+		5C6484F1210618890048443E /* Freunde.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C6484F0210618890048443E /* Base */,
+				5C6484F32106188C0048443E /* en */,
+				5C6484F52106188D0048443E /* de */,
+			);
+			name = Freunde.storyboard;
+			sourceTree = "<group>";
+		};
+		5C6484F82106192F0048443E /* SettingsForTimerView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C6484F72106192F0048443E /* Base */,
+				5C6484FA210619320048443E /* en */,
+				5C6484FC210619340048443E /* de */,
+			);
+			name = SettingsForTimerView.xib;
+			sourceTree = "<group>";
+		};
+		5C6484FF21061A080048443E /* SoundFileView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C6484FE21061A080048443E /* Base */,
+				5C64850121061A0A0048443E /* en */,
+				5C64850321061A0F0048443E /* de */,
+			);
+			name = SoundFileView.xib;
+			sourceTree = "<group>";
+		};
+		5C64850621061A9B0048443E /* TimerAsTimerView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C64850521061A9B0048443E /* Base */,
+				5C64850821061A9D0048443E /* en */,
+				5C64850A21061AA00048443E /* de */,
+			);
+			name = TimerAsTimerView.xib;
+			sourceTree = "<group>";
+		};
+		5C64850D21061ACE0048443E /* TimerSettingsView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C64850C21061ACE0048443E /* Base */,
+				5C64850F21061AD10048443E /* en */,
+				5C64851121061AD30048443E /* de */,
+			);
+			name = TimerSettingsView.xib;
+			sourceTree = "<group>";
+		};
+		5C64851421061B500048443E /* PublicMeditationInfoView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C64851321061B500048443E /* Base */,
+				5C64851621061B580048443E /* en */,
+				5C64851821061B5E0048443E /* de */,
+			);
+			name = PublicMeditationInfoView.xib;
+			sourceTree = "<group>";
+		};
+		5C64851B21061B8B0048443E /* KursConfigView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C64851A21061B8B0048443E /* Base */,
+				5C64851D21061B8D0048443E /* en */,
+				5C64851F21061B8F0048443E /* de */,
+			);
+			name = KursConfigView.xib;
+			sourceTree = "<group>";
+		};
+		5C64852221061BF10048443E /* KursTableCellView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C64852121061BF10048443E /* Base */,
+				5C64852421061BF30048443E /* en */,
+				5C64852621061BF50048443E /* de */,
+			);
+			name = KursTableCellView.xib;
+			sourceTree = "<group>";
+		};
+		5C64852921061C310048443E /* PublicStatisticsView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C64852821061C310048443E /* Base */,
+				5C64852B21061C330048443E /* en */,
+				5C64852D21061C350048443E /* de */,
+			);
+			name = PublicStatisticsView.xib;
+			sourceTree = "<group>";
+		};
+		5C64853021061CAC0048443E /* ProfilConfigView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C64852F21061CAC0048443E /* Base */,
+				5C64853221061CAE0048443E /* en */,
+				5C64853421061CB10048443E /* de */,
+			);
+			name = ProfilConfigView.xib;
+			sourceTree = "<group>";
+		};
+		5C64853721061D6F0048443E /* MeditationsPlatzConfigView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C64853621061D6F0048443E /* Base */,
+				5C64853921061D710048443E /* en */,
+				5C64853B21061D730048443E /* de */,
+			);
+			name = MeditationsPlatzConfigView.xib;
+			sourceTree = "<group>";
+		};
+		5C64853E21061DD30048443E /* FlaggeWahlView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C64853D21061DD30048443E /* Base */,
+				5C64854021061DD60048443E /* en */,
+				5C64854221061DD80048443E /* de */,
+			);
+			name = FlaggeWahlView.xib;
+			sourceTree = "<group>";
+		};
+		5C64854521061DF20048443E /* StatisticsView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C64854421061DF20048443E /* Base */,
+				5C64854721061DF40048443E /* en */,
+				5C64854921061DF70048443E /* de */,
+			);
+			name = StatisticsView.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1551,7 +1799,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = DNS.VipassanaTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1571,7 +1819,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = DNS.VipassanaTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -14,8 +14,8 @@ class KursConfigVC: DesignViewControllerPortrait {
     
     //IBAction
     @IBAction func infoButtonPressed(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "alternative Kurse",
-                                      message: "Diese Liste soll im Laufe der Zeit erweitert werden.\n\nBei Bedarf bitte Kontakt aufnehmen.",
+        let alert = UIAlertController(title:    NSLocalizedString("kursListenInfoTitle",comment: "kursListenInfoTitle"),
+                                      message:  NSLocalizedString("kursListenInfoMessage",comment: "kursListenInfoMessage"),
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "E-Mail", style: .default) { _ in
@@ -29,6 +29,6 @@ class KursConfigVC: DesignViewControllerPortrait {
     override func viewDidLoad() {
         super.viewDidLoad()
         kursConfigView.viewModel    = KursConfigViewModel()
-        kursConfigView.viewModel.erstellenButtonAction.signal.observe{[weak self] _ in self?.navigationController?.popViewController(animated: true)}
+        kursConfigView.viewModel.erstellenButtonAction.signal.observeValues{[weak self] _ in self?.navigationController?.popViewController(animated: true)}
     }
 }

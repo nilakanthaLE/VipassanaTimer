@@ -49,4 +49,9 @@ extension SoundFileDataCD{
         guard let title = title, let fireBaseTitle = fireBaseTitle else {return nil}
         return SoundFileData(title: title, duration: duration, mettaDuration: mettaDuration, fireBaseTitle: fireBaseTitle)
     }
+    
+    func delete(){
+        context.delete(self)
+        saveContext()
+    }
 }

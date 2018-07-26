@@ -73,7 +73,8 @@ extension Freund{
         }
     }
     //FreundStatus
-    var status:FreundStatus?    { return FreundStatus.getStatus(freundStatus) }
+    var status:FreundStatus?            { return FreundStatus.getStatus(freundStatus) }
+    var meinFreundStatus:FreundStatus?  { return FreundStatus.getStatus(meinStatus) }
     //helper
     private static func setData(_ freund:Freund?,snapshot:DataSnapshot)->Freund?{
         guard let freund = freund else {return nil}

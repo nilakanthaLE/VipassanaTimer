@@ -40,6 +40,7 @@ class MeditationsTimerVC: DesignViewControllerPortrait {
     //deinit
     deinit {
         UIApplication.shared.isIdleTimerDisabled    = false
+        soundFileAudioPlayer.soundFileData.value = nil
         print("deinit MeditationsTimerVC") }
 }
 

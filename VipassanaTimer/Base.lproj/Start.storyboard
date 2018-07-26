@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Hauptmenu-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="HauptMenuVC" customModule="VipassanaTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="MUz-V0-keT">
+                                <rect key="frame" x="20" y="28" width="374" height="688"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3WK-7L-aoh" customClass="HauptMenuButton" customModule="VipassanaTimer">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
+                                        <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="igi-KJ-Euh"/>
+                                        </constraints>
+                                        <state key="normal" title="Start Meditation">
+                                            <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="hasStyle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="XwN-bm-37T" kind="presentation" modalTransitionStyle="flipHorizontal" id="zYd-0G-3iP"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6yL-Vb-a9L" customClass="HauptMenuStatistikenView" customModule="VipassanaTimer">
+                                        <rect key="frame" x="0.0" y="44" width="374" height="600"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="tte-3h-Jrp">
+                                        <rect key="frame" x="0.0" y="648" width="374" height="40"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Rez-c3-x0g">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPV-FH-kCn" customClass="HauptMenuButton" customModule="VipassanaTimer" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="121.33333333333333" height="40"/>
+                                                        <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <state key="normal" title="Calendar">
+                                                            <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="hasStyle" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        </variation>
+                                                        <connections>
+                                                            <segue destination="FaI-1l-eCA" kind="presentation" modalTransitionStyle="flipHorizontal" id="o7J-Ea-2Od"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPj-Yp-57x" customClass="HauptMenuButton" customModule="VipassanaTimer" customModuleProvider="target">
+                                                        <rect key="frame" x="126.33333333333334" y="0.0" width="121.33333333333334" height="40"/>
+                                                        <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <state key="normal" title="Statistics">
+                                                            <color key="titleColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="hasStyle" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        </variation>
+                                                        <connections>
+                                                            <segue destination="Qrf-vD-uVT" kind="presentation" modalTransitionStyle="flipHorizontal" id="SBZ-A9-a3F"/>
+                                                        </connections>
+                                                    </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v2C-cj-xQU" userLabel="PlaceHolder KlappButton">
+                                                        <rect key="frame" x="252.66666666666671" y="0.0" width="121.33333333333334" height="40"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Rez-c3-x0g" firstAttribute="height" secondItem="3WK-7L-aoh" secondAttribute="height" id="QzC-by-6Wg"/>
+                                </constraints>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0lN-Dp-wAq" customClass="AufklappHauptMenuButton" customModule="VipassanaTimer">
+                                <rect key="frame" x="272.66666666666669" y="676" width="121.33333333333331" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.83767229320000003" green="0.66306155919999998" blue="0.47537291050000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="MUz-V0-keT" secondAttribute="bottom" constant="20" symbolic="YES" id="2Sr-xR-r6p"/>
+                            <constraint firstItem="0lN-Dp-wAq" firstAttribute="trailing" secondItem="v2C-cj-xQU" secondAttribute="trailing" id="3IN-nV-bc4"/>
+                            <constraint firstItem="MUz-V0-keT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="KW9-GJ-oc6"/>
+                            <constraint firstItem="MUz-V0-keT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="T38-gV-hjr"/>
+                            <constraint firstItem="0lN-Dp-wAq" firstAttribute="leading" secondItem="v2C-cj-xQU" secondAttribute="leading" id="Y1z-qj-aCi"/>
+                            <constraint firstItem="0lN-Dp-wAq" firstAttribute="height" secondItem="v2C-cj-xQU" secondAttribute="height" placeholder="YES" id="cZq-Wf-EAq"/>
+                            <constraint firstItem="0lN-Dp-wAq" firstAttribute="bottom" secondItem="v2C-cj-xQU" secondAttribute="bottom" id="dd0-6m-FoL"/>
+                            <constraint firstAttribute="trailing" secondItem="MUz-V0-keT" secondAttribute="trailing" constant="20" symbolic="YES" id="zay-Qu-T3E"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Hauptmenu" id="nHo-Ys-MIv">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="Irj-Ia-CBq"/>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="aufklappButton" destination="0lN-Dp-wAq" id="aPh-8N-hIY"/>
+                        <outlet property="buttonHeightConstraint" destination="igi-KJ-Euh" id="7dH-0R-cBA"/>
+                        <outlet property="kalenderButton" destination="sPV-FH-kCn" id="dzd-Xy-agM"/>
+                        <outlet property="meditationStartenButton" destination="3WK-7L-aoh" id="cPx-Tu-rfd"/>
+                        <outlet property="statistikButton" destination="dPj-Yp-57x" id="CEs-mD-FYG"/>
+                        <outlet property="statistikView" destination="6yL-Vb-a9L" id="h31-yh-BDN"/>
+                        <segue destination="GHq-yl-v76" kind="presentation" identifier="statistikStartDatumInfoSegue" modalTransitionStyle="partialCurl" id="yHX-1c-niS"/>
+                        <segue destination="2hG-Y3-e18" kind="presentation" identifier="meinProfil" modalTransitionStyle="flipHorizontal" id="nHg-1J-lp5"/>
+                        <segue destination="JGK-Qf-YBg" kind="presentation" identifier="freunde" modalTransitionStyle="flipHorizontal" id="646-Lv-CK2"/>
+                        <segue destination="Ko9-qh-fxu" kind="presentation" identifier="go2Kurse" modalTransitionStyle="flipHorizontal" id="kYd-PB-MOi"/>
+                        <segue destination="nyb-TQ-MKM" kind="presentation" identifier="showDana" modalTransitionStyle="flipHorizontal" id="8bo-cm-ndr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2156.25" y="-19.014084507042252"/>
+        </scene>
+        <!--Anfangsdatum für Durchschnitte-->
+        <scene sceneID="e3D-gF-HE4">
+            <objects>
+                <viewController id="8Lh-VC-RV7" customClass="SetAnfangsDatumStatistikVC" customModule="VipassanaTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3cz-T9-IXR"/>
+                        <viewControllerLayoutGuide type="bottom" id="jmB-P1-73h"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oJ8-K3-QCz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mqh-1O-Kkw" customClass="SetStatistikAnfangsDatumView" customModule="VipassanaTimer" customModuleProvider="target">
+                                <rect key="frame" x="20" y="80" width="374" height="640"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="mqh-1O-Kkw" firstAttribute="leading" secondItem="oJ8-K3-QCz" secondAttribute="leadingMargin" id="DeI-uj-L51"/>
+                            <constraint firstItem="jmB-P1-73h" firstAttribute="top" secondItem="mqh-1O-Kkw" secondAttribute="bottom" constant="16" id="WBb-GQ-5GZ"/>
+                            <constraint firstItem="mqh-1O-Kkw" firstAttribute="top" secondItem="3cz-T9-IXR" secondAttribute="bottom" constant="16" id="jga-hT-oXY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mqh-1O-Kkw" secondAttribute="trailing" id="rID-kb-s8Z"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Anfangsdatum für Durchschnitte" id="UAf-zE-Htz">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="Fea-Y3-rRf">
+                            <connections>
+                                <segue destination="qHB-hT-Xg7" kind="unwind" unwindAction="unwindToHauptmenuWithSegue:" id="7is-XU-CMg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="setStatistikAnfangsDatumView" destination="mqh-1O-Kkw" id="hmJ-ZA-uax"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AhB-gu-hxm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="qHB-hT-Xg7" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-2157" y="1470"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fpX-fS-x4v">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GHq-yl-v76" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qa3-Cc-nM7">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8Lh-VC-RV7" kind="relationship" relationship="rootViewController" id="Sl6-xB-Z7l"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eeP-xV-dKe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2157" y="757"/>
+        </scene>
+        <!--Timer-->
+        <scene sceneID="k6P-Xu-xcL">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Timer" id="XwN-bm-37T" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ETM-xF-6ok" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1389" y="-224"/>
+        </scene>
+        <!--Freunde-->
+        <scene sceneID="axZ-9M-0jL">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Freunde" id="JGK-Qf-YBg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lrl-ft-DXm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1391" y="-53"/>
+        </scene>
+        <!--Kalender-->
+        <scene sceneID="3Tk-ZK-HvP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Kalender" id="FaI-1l-eCA" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Czy-xk-ERU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1375" y="235"/>
+        </scene>
+        <!--Kurse-->
+        <scene sceneID="Kei-rm-qhT">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Kurse" id="Ko9-qh-fxu" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5b0-Ho-E9l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1402" y="36"/>
+        </scene>
+        <!--Profil-->
+        <scene sceneID="7X0-UR-qL8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profil" id="2hG-Y3-e18" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JPP-GA-8Pv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1402" y="-130"/>
+        </scene>
+        <!--Statistiken-->
+        <scene sceneID="MU5-bW-hUf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Statistiken" id="Qrf-vD-uVT" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vhf-BF-eE2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1370" y="-308"/>
+        </scene>
+        <!--Dana-->
+        <scene sceneID="VIU-oR-PGD">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Dana" id="nyb-TQ-MKM" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RUl-FM-QQw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1389" y="126"/>
+        </scene>
+    </scenes>
+</document>

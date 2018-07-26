@@ -44,12 +44,13 @@ class HauptmenuBadgeButton:NibLoadingView{
     //IBOutlets
     @IBOutlet weak var button: UIButton!
     @IBOutlet fileprivate weak var badgeLabel: CircleLabel!
+    override func layoutSubviews() { badgeLabel.circle() }
 }
 private class CircleLabel:UILabel{
-    override func layoutSubviews() {
+    override func layoutSubviews() { circle() }
+    func circle(){
         layer.cornerRadius  = bounds.width / 2
         clipsToBounds       = true
-        backgroundColor     = .red
     }
 }
 
