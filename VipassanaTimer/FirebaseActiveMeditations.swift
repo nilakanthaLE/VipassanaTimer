@@ -12,17 +12,6 @@ import Firebase
 //Methoden für Einträge von ActiveMeditations in Firebase
 // neu erstellen, updaten, löschen
 class FirActiveMeditations{
-    //aufräumen
-    // löscht alle aktiven Meditationen, die bereits länger als 5h existieren
-    static func cleaningActiveMeditations(){
-        print("cleaningActiveMeditations ....")
-        let timestamp   = String(Date().timeIntervalSinceReferenceDate - 5*60*60)
-        let ref         = database.reference(withPath: "activeMeditations")
-        ref.queryOrdered(byChild: "start").queryEnding(atValue: timestamp ).observeSingleEvent(of: .value){ snapshot in
-            guard let ids = (snapshot.valueAsDict?.allKeys as? Array<String> ) else {return}
-            for id in ids   { ref.child(id).removeValue() }
-        }
-    }
     
     //activMeditation erstellen
     static func createActiveMeditation(meditation:PublicMeditation?) {
@@ -39,4 +28,20 @@ class FirActiveMeditations{
         let ref             = database.reference(withPath: "activeMeditations").child(userID)
         ref.removeValue()
     }
+    
+    //aufräumen
+    // löscht alle aktiven Meditationen, die bereits länger als 5h existieren
+    
+    /*
+     erledigt  eine FirebaseFunction
+     static func cleaningActiveMeditations(){
+     print("cleaningActiveMeditations ....")
+     let timestamp   = String(Date().timeIntervalSinceReferenceDate - 5*60*60)
+     let ref         = database.reference(withPath: "activeMeditations")
+     ref.queryOrdered(byChild: "start").queryEnding(atValue: timestamp ).observeSingleEvent(of: .value){ snapshot in
+     guard let ids = (snapshot.valueAsDict?.allKeys as? Array<String> ) else {return}
+     for id in ids   { ref.child(id).removeValue() }
+     }
+     }
+     */
 }

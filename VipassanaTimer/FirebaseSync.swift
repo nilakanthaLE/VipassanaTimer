@@ -24,7 +24,7 @@ class FirSync{
         FirMeditations.sync()
         FirUserConnections.setObserver()
         FirNotitification.setObserver()
-        FirActiveMeditations.cleaningActiveMeditations()
+        //FirActiveMeditations.cleaningActiveMeditations()
         FirActiveMeditations.deleteActiveMeditation()
     }
 }

@@ -25,6 +25,12 @@ class FirUser{
         
         //erstellt neue Usereinträge (mit uid als key)
         // notwendig für FirebaseRules (Security)
+        usersNewVersionUpdate()
+    }
+    //userNewVersion
+    // erstellt Eintrag in usersNewVersion
+    // egal, ob Spitzname oder nicht
+    static func usersNewVersionUpdate(){
         guard let authUID = Auth.auth().currentUser?.uid else {return}
         database.reference(withPath: "usersNewVersion").child(authUID).setValue(true)
     }

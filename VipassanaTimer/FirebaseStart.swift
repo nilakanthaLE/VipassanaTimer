@@ -102,6 +102,7 @@ class FirebaseStart{
             if auth.currentUser?.email != nil{
                 if Meditierender.get()?.nickName != nil     { appUser?.userDatenInitialSync = true }    // Falls keine Neuinstallation und User mit Nickname : userDatenInitialSync = true
                 if appUser?.userDatenInitialSync == true    { FirUser.updateUserEintrag() }
+                else{ FirUser.usersNewVersionUpdate() }     // usersNewVersion wird in jedem Fall gesetzt
                 FirUser.observeMyUserData()
                 FirSync.sync()
             }
